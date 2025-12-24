@@ -7,7 +7,7 @@
     "year": 2024,
     "abstract": "This research presents a novel approach for mental health diagnosis using voice data analysis through hybrid ViT-CNN architecture, achieving significant classification accuracy in mental stability detection.",
     "link": "http://www.sciencedirect.com/science/article/pii/S0892199724003539",
-    "bibtex": "@article{islam2024voice,...}"
+    "bibtex": "@article{islam2024mental,\n  title={Mental health diagnosis from voice data using convolutional neural networks and vision transformers},\n  author={Islam, R. and Ahad, M. T. and Ahmed, F. and Song, B. and Li, Y.},\n  journal={Journal of Voice},\n  year={2024},\n  doi={10.1016/j.jvoice.2024.10.010},\n  url={https://doi.org/10.1016/j.jvoice.2024.10.010}\n}"
   },
   {
     "id": "arxiv2025",
