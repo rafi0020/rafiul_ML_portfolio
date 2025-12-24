@@ -2,7 +2,7 @@
 
 A modern, responsive portfolio website showcasing my work as an **Applied AI Engineer & Researcher**. Built with React and Vite, featuring a sleek design with glassmorphism effects and smooth animations.
 
-🌐 **Live Site**: [https://rafi0020.github.io/rafiul_portfolio_ultimate/](https://rafi0020.github.io/rafiul_portfolio_ultimate/)
+🌐 **Live Site**: [https://rafi0020.github.io/rafiul_ML_portfolio/](https://rafi0020.github.io/rafiul_ML_portfolio/)
 
 ## 🚀 Features
 
@@ -35,7 +35,7 @@ A modern, responsive portfolio website showcasing my work as an **Applied AI Eng
 ## 📁 Project Structure
 
 ```
-rafiul_portfolio_ultimate/
+rafiul_ML_portfolio/
 ├── public/
 │   ├── assets/
 │   │   └── images/
@@ -91,8 +91,8 @@ rafiul_portfolio_ultimate/
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/rafi0020/rafiul_portfolio_ultimate.git
-   cd rafiul_portfolio_ultimate
+   git clone https://github.com/rafi0020/rafiul_ML_portfolio.git
+   cd rafiul_ML_portfolio
    ```
 
 2. **Install dependencies**
