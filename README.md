@@ -117,18 +117,6 @@ rafiul_ML_portfolio/
    npm run preview
    ```
 
-## 📦 Deployment
-
-The site is automatically deployed to GitHub Pages using GitHub Actions whenever changes are pushed to the `main` branch.
-
-### Manual Deployment
-
-To deploy manually:
-```bash
-npm run build
-# The dist/ folder contains the production build
-```
-
 ## 🎨 Key Sections
 
 ### Home Page
@@ -171,7 +159,7 @@ Two versions available:
 
 ## 🔗 Connect With Me
 
-- **Email**: mdrafi234@gmail.com
+- **Email**: rafiulislam1921@gmail.com
 - **LinkedIn**: [MD Rafiul Islam](https://www.linkedin.com/in/md-rafiul-islam-13b397143/)
 - **GitHub**: [@rafi0020](https://github.com/rafi0020)
 - **Google Scholar**: [MD Rafiul Islam](https://scholar.google.com/citations?user=YOUR_ID)
