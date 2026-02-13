@@ -987,6 +987,7 @@
       "images": [],
       "videos": []
     },
+    "demoLink": "https://rafi0020.github.io/Mental_Health_Diagnosis_Voice_with_ViT-CNN/",
     "github": "https://github.com/rafi0020/Mental_Health_Diagnosis_Voice_with_ViT-CNN"
   },
   {
@@ -1060,7 +1061,157 @@
       "images": [],
       "videos": []
     },
+    "demoLink": "https://rafi0020.github.io/Mental_Stability_TransferLearning/",
     "github": "https://github.com/rafi0020/Mental_Stability_TransferLearning"
+  },
+  {
+    "id": "hybrid-densevitgru-xai",
+    "title": "Hybrid Deep Models for Mental Health Detection with XAI Techniques",
+    "category": "Research",
+    "company": "Daffodil International University",
+    "companyLogo": "./assets/logo/diu_logo.png",
+    "timeline": "2025-2026",
+    "scale": "Ongoing Research",
+    "summary": "Hybrid DenseNet–ViT–GRU architecture with Explainable AI (Grad-CAM, LIME, SHAP) for diagnosing psychological stability from voice spectrograms. Combines local, global, and sequential feature learning with transparent, interpretable predictions.",
+    "problem": "Mental health diagnostics are often subjective and dependent on self-reports and clinician observation. Existing deep learning models lack transparency in clinical decision-making. There is a need for interpretable, multi-level feature extraction that captures local patterns, global context, and temporal sequences in voice data simultaneously.",
+    "approach": "Proposed a three-stage hybrid deep learning architecture: DenseNet-style CNN for extracting local time–frequency patterns from log-mel spectrograms, Vision Transformer (ViT) for capturing long-range global dependencies, and GRU for sequential aggregation of learned representations. Applied SMOTE on training spectrogram features for class balancing. Used SpecAugment-style time/frequency masking and random shifts for augmentation. Evaluated with 5-Fold Cross Validation. Integrated three XAI methods — Grad-CAM heatmaps, LIME local explanations, and SHAP global/local attributions — to interpret model predictions on spectrograms.",
+    "impact": "Achieved ~89.81% combined accuracy across all folds with mean AUC of 0.962. Grad-CAM highlights the most influential time–frequency regions used by the model. LIME identifies positive/negative contributing spectrogram regions. SHAP provides Shapley-value attribution for both stable and unstable predictions. Research carried out under Dr. Md. Taimur Ahad at the 4IR Research Cell, DIU. Manuscript in preparation. Dataset not included due to privacy/ethical constraints.",
+    "stack": [
+      "TensorFlow",
+      "Keras",
+      "DenseNet",
+      "Vision Transformer",
+      "GRU",
+      "LIME",
+      "SHAP",
+      "Grad-CAM",
+      "Librosa",
+      "OpenCV",
+      "Scikit-learn"
+    ],
+    "features": [
+      "Log-mel spectrogram generation from audio signals (128 mel bands, 48 kHz)",
+      "Hybrid DenseNet → ViT → GRU architecture for multi-level feature extraction",
+      "SMOTE applied on training features for class balancing",
+      "SpecAugment-style time/frequency masking and random shifts",
+      "5-Fold Cross Validation with stable ROC-AUC across folds",
+      "Grad-CAM heatmap visualization for model attention",
+      "LIME local explanations (positive/negative contributing regions)",
+      "SHAP global and local attributions on spectrograms"
+    ],
+    "metrics": {
+      "accuracy": "~89.81%",
+      "Mean AUC": "0.962",
+      "AUC Fold Range": "0.95–0.97",
+      "XAI Methods": "Grad-CAM, LIME, SHAP"
+    },
+    "architecture": {
+      "description": "Hybrid DenseNet–ViT–GRU pipeline with XAI for voice-based mental health detection",
+      "components": [
+        {
+          "name": "Audio Preprocessing",
+          "description": "Log-mel spectrogram extraction at 48 kHz sample rate, 2-second segments, 128 mel bands"
+        },
+        {
+          "name": "DenseNet Feature Extractor",
+          "description": "Dense connectivity CNN extracting local time–frequency patterns from spectrograms"
+        },
+        {
+          "name": "Vision Transformer (ViT)",
+          "description": "Captures long-range global dependencies across the spectrogram using self-attention"
+        },
+        {
+          "name": "GRU Sequence Aggregator",
+          "description": "Gated Recurrent Unit for sequential aggregation of learned multi-level representations"
+        },
+        {
+          "name": "XAI Interpretation Layer",
+          "description": "Grad-CAM heatmaps, LIME local explanations, and SHAP attributions for transparent predictions"
+        }
+      ]
+    },
+    "media": {
+      "images": [],
+      "videos": []
+    },
+    "demoLink": "https://rafi0020.github.io/Hybrid-DenseViTGRU-XAI-Voice/",
+    "github": "https://github.com/rafi0020/Hybrid-DenseViTGRU-XAI-Voice"
+  },
+  {
+    "id": "selfsupervised-vit-noisy-voice",
+    "title": "Self-Supervised Learning with ViT for Noisy Real-World Data",
+    "category": "Research",
+    "company": "Daffodil International University",
+    "companyLogo": "./assets/logo/diu_logo.png",
+    "timeline": "2025-2026",
+    "scale": "Ongoing Research",
+    "summary": "Self-supervised pretraining with masked spectrogram reconstruction followed by supervised ViT-style classification for robust mental stability detection from noisy, unprocessed real-world voice data.",
+    "problem": "Real-world voice data collected outside laboratory conditions is often noisy, untrimmed, and distribution-shifted, which significantly degrades the performance of fully supervised models trained on curated datasets. Labeled data is expensive and scarce in the mental health domain. Robust classification under real-world noisy conditions remains a key challenge.",
+    "approach": "Introduced a two-stage framework: (1) Self-supervised pretraining on unlabeled voice spectrograms using a masked reconstruction objective with MSE loss — randomly masks time–frequency regions and trains a reconstruction network to recover the original spectrogram. (2) Supervised fine-tuning of a ViT-style classifier with frequency band attention, Conv1D blocks for local temporal features, and Transformer blocks (Multi-Head Self-Attention + FFN) for global dependencies. Pretrained SSL weights are transferred to the classifier for fine-tuning on unprocessed/noisy data. Evaluated with 5-Fold Cross-Validation and ensemble of top-performing folds.",
+    "impact": "Ensemble accuracy of 84.90% on noisy real-world data (precision 89.79%, recall 82.69%, F1-score 86.10%). Demonstrated that self-supervised pretraining significantly improves robustness under distribution shift. Stable convergence across folds under noisy conditions. Research carried out under Dr. Md. Taimur Ahad at the 4IR Research Cell, DIU. Manuscript in preparation. Dataset not included due to privacy/ethical constraints.",
+    "stack": [
+      "TensorFlow",
+      "Keras",
+      "Vision Transformer",
+      "Conv1D",
+      "Librosa",
+      "NumPy",
+      "Pandas",
+      "Scikit-learn",
+      "imbalanced-learn",
+      "OpenCV"
+    ],
+    "features": [
+      "Self-supervised masked spectrogram reconstruction pretraining (MSE loss)",
+      "ViT-style Transformer classifier with frequency band attention",
+      "Conv1D blocks for local temporal feature extraction",
+      "Multi-Head Self-Attention + FFN for global dependencies",
+      "Transfer learning from SSL pretrained weights to supervised classifier",
+      "5-Fold Cross-Validation with ensemble of top-performing folds",
+      "Robust classification on unprocessed, noisy real-world voice data",
+      "Log-mel spectrogram input representation"
+    ],
+    "metrics": {
+      "Ensemble Accuracy": "84.90%",
+      "Precision": "89.79%",
+      "Recall": "82.69%",
+      "F1-Score": "86.10%"
+    },
+    "architecture": {
+      "description": "Two-stage SSL pretraining + supervised ViT-style classification for noisy voice data",
+      "components": [
+        {
+          "name": "Audio Preprocessing",
+          "description": "Log-mel spectrogram extraction from raw voice segments at 48 kHz, 2-second segments"
+        },
+        {
+          "name": "Self-Supervised Reconstruction",
+          "description": "Masked spectrogram reconstruction on unlabeled data using MSE loss for representation learning"
+        },
+        {
+          "name": "Frequency Band Attention",
+          "description": "Learns importance weights across frequency regions of the spectrogram"
+        },
+        {
+          "name": "Conv1D Temporal Encoder",
+          "description": "Local temporal feature extraction from spectrogram representations"
+        },
+        {
+          "name": "Transformer Classifier",
+          "description": "Multi-Head Self-Attention + Feed-Forward Networks for global dependency modeling"
+        },
+        {
+          "name": "Ensemble Evaluator",
+          "description": "Combines top-performing folds for robust final prediction on noisy test data"
+        }
+      ]
+    },
+    "media": {
+      "images": [],
+      "videos": []
+    },
+    "demoLink": "https://rafi0020.github.io/SelfSupervised-ViT-Noisy-Voice-Spectrograms/",
+    "github": "https://github.com/rafi0020/SelfSupervised-ViT-Noisy-Voice-Spectrograms"
   },
   {
     "id": "skin-cancer-detection",
