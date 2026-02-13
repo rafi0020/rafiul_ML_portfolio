@@ -1,0 +1,22 @@
+[
+  {
+    "id": "jov2024",
+    "title": "Mental Health Diagnosis from Voice Data Using Convolutional Neural Networks and Vision Transformers",
+    "authors": "MD Rafiul Islam, Md. Taimur Ahad, Faisal Ahmed, Bo Song, Yan Li",
+    "venue": "Journal of Voice (Scopus Indexed Q1)",
+    "year": 2024,
+    "abstract": "A hybrid ViT–CNN pipeline for voice-based psychological stability and mental health diagnosis using spectrogram representations. Bengali voice data collected ethically from mental health institutions in Bangladesh is transformed into log-mel spectrograms. The pipeline addresses class imbalance (e.g., SMOTE), applies robust evaluation methodology, and achieves ~91% accuracy with ROC-AUC around 0.97, demonstrating clinically meaningful diagnostic potential.",
+    "link": "http://www.sciencedirect.com/science/article/pii/S0892199724003539",
+    "bibtex": "@article{islam2024mental,\n  title={Mental health diagnosis from voice data using convolutional neural networks and vision transformers},\n  author={Islam, R. and Ahad, M. T. and Ahmed, F. and Song, B. and Li, Y.},\n  journal={Journal of Voice},\n  year={2024},\n  doi={10.1016/j.jvoice.2024.10.010},\n  url={https://doi.org/10.1016/j.jvoice.2024.10.010}\n}"
+  },
+  {
+    "id": "arxiv2025",
+    "title": "Using Computer Vision for Skin Disease Diagnosis in Bangladesh: Enhancing Interpretability and Transparency in Deep Learning Models for Skin Cancer Classification",
+    "authors": "MD Rafiul Islam et al.",
+    "venue": "arXiv Preprint",
+    "year": 2025,
+    "abstract": "Skin lesion classification with emphasis on interpretability and transparent decision support for the Bangladesh healthcare context. Includes comparative analysis across transfer learning models alongside a computationally efficient model approach, aiming to enhance early detection and provide explainable predictions for clinical adoption.",
+    "link": "https://arxiv.org/abs/2501.18161",
+    "bibtex": "@article{islam2025skin,\n  title={Using Computer Vision for Skin Disease Diagnosis in Bangladesh: Enhancing Interpretability and Transparency in Deep Learning Models for Skin Cancer Classification},\n  author={Islam, MD Rafiul et al.},\n  journal={arXiv preprint arXiv:2501.18161},\n  year={2025}\n}"
+  }
+]

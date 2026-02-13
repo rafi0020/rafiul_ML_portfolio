@@ -1,0 +1,1217 @@
+[
+  {
+    "id": "anpr-bangla",
+    "title": "New Asia IntelliScan (ANPR: Vehicle & Driver Verification)",
+    "category": "Industry",
+    "company": "New Asia LTD",
+    "companyLogo": "./assets/logo/new-asia.png",
+    "demoLink": "https://rafi0020.github.io/anpr-demo/",
+    "timeline": "2025",
+    "scale": "Multiple Deployments",
+    "summary": "End-to-end Automatic Number Plate Recognition system for New Asia LTD specifically designed for Bengali license plates. Track-centric plate recognition pipeline with YOLO-OBB plate detection + vehicle tracking + per-track crop sessions; OCR worker with Bangla dictionary + format validation + confidence voting; sender service with deduplication logic across entry/exit and temporal rate limiting.",
+    "problem": "Existing ANPR systems failed on Bangla scripts due to unique character shapes, variable font styles, and environmental challenges (lighting, angles, occlusion). Manual gate operations caused bottlenecks and security gaps.",
+    "approach": "Developed end-to-end pipeline: YOLOv11 for plate detection, custom PaddleOCR model fine-tuned on Bangla characters with data augmentation for rotation/distortion invariance. Implemented post-processing with Bangla dictionary validation, format validation, confidence voting, and temporal smoothing for vehicle tracking across frames. Sender service with deduplication logic across entry/exit and temporal rate limiting.",
+    "impact": "Deployed at multiple entry points for automated access control. Achieved 95%+ accuracy on clean plates and 85%+ on challenging conditions. Reduced manual intervention by 90% and eliminated unauthorized access incidents.",
+    "stack": [
+      "PaddleOCR",
+      "YOLOv11",
+      "OpenCV",
+      "Python",
+      "RTSP",
+      "Face Recognition",
+      "Dashboard Development"
+    ],
+    "features": [
+      "Real-time vehicle detection from live RTSP feeds",
+      "Custom Bengali OCR with 94% accuracy",
+      "Driver face recognition integration",
+      "Dashboard with search, filter, and analytics",
+      "Cloud and on-premise deployment options",
+      "Scalable for ANY country license plates"
+    ],
+    "metrics": {
+      "Accuracy": "94%",
+      "Real-time": "Live RTSP",
+      "Deployment": "Multi-site"
+    },
+    "challenges": [
+      {
+        "challenge": "Low OCR Accuracy on Bengali Characters",
+        "description": "Existing OCR models failed to recognize Bengali alphanumeric characters with acceptable accuracy due to unique script characteristics and variable font styles.",
+        "solution": "Fine-tuned PaddleOCR specifically for Bengali license plates with augmented dataset including rotations, distortions, and lighting variations. Implemented custom character recognition pipeline with dictionary validation.",
+        "technical_details": "PaddleOCR Bengali fine-tuning, data augmentation (rotation, blur, brightness), dictionary-based post-processing, confidence thresholding"
+      },
+      {
+        "challenge": "YOLOv11 Model Selection for Plate Detection",
+        "description": "Standard YOLOv11 models struggled with small license plate detection at various distances and angles, especially in cluttered backgrounds.",
+        "solution": "Tested multiple YOLO versions (v5, v8, v11) and selected YOLOv11 after extensive benchmarking. Fine-tuned on custom dataset with focus on small object detection and multi-scale feature extraction.",
+        "technical_details": "YOLOv11 with custom anchor boxes, data augmentation, hyperparameter tuning, mAP@0.5 evaluation, inference optimization"
+      },
+      {
+        "challenge": "Hardware Limitations on Deployment Sites",
+        "description": "Client sites lacked GPU infrastructure, requiring CPU-only deployment with real-time performance constraints.",
+        "solution": "Optimized inference pipeline with model quantization (FP32 to INT8), batch processing for multiple cameras, and multi-threading for parallel frame processing. Achieved 15+ FPS on CPU.",
+        "technical_details": "ONNX model export, INT8 quantization, OpenCV optimization flags, multi-threaded frame capture, batch inference"
+      },
+      {
+        "challenge": "Data Annotation at Scale",
+        "description": "Needed thousands of annotated Bengali license plate images but manual annotation was extremely time-consuming and expensive.",
+        "solution": "Created multiple annotation accounts and parallelized the work. Used active learning to prioritize difficult samples and semi-supervised learning to leverage unlabeled data.",
+        "technical_details": "CVAT for annotation, active learning sampling, pseudo-labeling for unlabeled data, quality control with inter-annotator agreement"
+      },
+      {
+        "challenge": "Night-time Plate Visibility",
+        "description": "Plates were barely visible in low-light conditions, causing detection failures and OCR errors even after successful detection.",
+        "solution": "Collaborated with electricians to install proper lighting at entry gates. Implemented image enhancement techniques (CLAHE, gamma correction) as preprocessing step.",
+        "technical_details": "CLAHE (Contrast Limited Adaptive Histogram Equalization), gamma correction, adaptive thresholding, night-specific model fine-tuning"
+      },
+      {
+        "challenge": "RTSP Stream Configuration Issues",
+        "description": "RTSP cameras had varying configurations, compression levels, and network latencies causing frame drops and connection failures.",
+        "solution": "Worked closely with IT team to standardize RTSP configurations. Implemented robust connection handling with automatic reconnection and frame buffering strategies.",
+        "technical_details": "OpenCV VideoCapture with FFMPEG backend, connection retry logic, frame buffer management, network latency compensation"
+      },
+      {
+        "challenge": "Camera Angle and Perspective Distortion",
+        "description": "Plates captured at extreme angles were distorted, reducing both detection and OCR accuracy significantly.",
+        "solution": "Conducted on-site visits to adjust camera positions for optimal angles. Implemented perspective transformation to correct distortions before OCR processing.",
+        "technical_details": "OpenCV perspective transformation (cv2.getPerspectiveTransform), four-point transform, angle estimation, geometric correction"
+      },
+      {
+        "challenge": "Data Variety and Edge Cases",
+        "description": "Model performed poorly on edge cases like damaged plates, partially occluded plates, and non-standard formats.",
+        "solution": "Manually collected diverse real-world images including edge cases during site visits. Performed targeted fine-tuning on these challenging samples with data augmentation.",
+        "technical_details": "Hard example mining, focal loss for class imbalance, test-time augmentation, ensemble predictions for difficult cases"
+      }
+    ],
+    "architecture": {
+      "description": "End-to-end pipeline with modular design for scalability and maintainability",
+      "components": [
+        {
+          "name": "RTSP Stream Manager",
+          "description": "Handles multiple camera connections with automatic reconnection and frame buffering"
+        },
+        {
+          "name": "YOLOv11 Detection Module",
+          "description": "Detects and localizes license plates in video frames with multi-scale detection"
+        },
+        {
+          "name": "PaddleOCR Engine",
+          "description": "Custom Bengali OCR with preprocessing pipeline and confidence scoring"
+        },
+        {
+          "name": "Validation & Post-processing",
+          "description": "Dictionary validation, temporal smoothing, and duplicate filtering"
+        },
+        {
+          "name": "Face Recognition Module",
+          "description": "Driver identification and verification against database"
+        },
+        {
+          "name": "Analytics Dashboard",
+          "description": "Real-time monitoring, search, filter, and reporting interface"
+        },
+        {
+          "name": "Database Layer",
+          "description": "Stores vehicle records, timestamps, and access logs with search indexing"
+        }
+      ]
+    },
+    "media": {
+      "images": [],
+      "videos": []
+    }
+  },
+  {
+    "id": "track-my-container",
+    "title": "Track My Container (KDS Logistics)",
+    "category": "Industry",
+    "company": "KDS Logistics",
+    "companyLogo": "./assets/logo/kdsll_logo.png",
+    "demoLink": "https://rafi0020.github.io/track-my-container-demo/",
+    "timeline": "2025",
+    "scale": "6000+ Containers",
+    "summary": "Real-time container tracking and management system for KDS Logistics LTD handling 6000+ containers with 3000+ daily operations. Fisheye correction + YOLO-OBB detection + OCR (PaddleOCR) + ISO 6346 check-digit validation + prefix correction heuristics + real-time device/API integration.",
+    "problem": "Port logistics faced massive inefficiencies with manual container logging. Human operators struggled with reading distorted container IDs under harsh lighting, weathering, and partial occlusions. Error rates exceeded 15%, causing shipment delays and inventory mismatches.",
+    "approach": "Built custom YOLOv11 (Oriented Bounding Box) model to detect containers at any angle. Integrated PaddleOCR with custom preprocessing (fisheye correction, perspective correction, adaptive thresholding) for robust character recognition. Implemented ISO 6346 check-digit validation with prefix correction heuristics. Deployed on NVIDIA Jetson Xavier for edge inference with multi-camera support and real-time device/API integration.",
+    "impact": "Reduced logging errors from 15% to under 2%. Cut container processing time by 70%. Enabled 24/7 automated operations with audit trails. System handles 500+ containers daily per site with 99.9% uptime.",
+    "stack": [
+      "Jetson Orin Nano",
+      "OpenCV",
+      "Kalman Filtering",
+      "YOLOv11",
+      "OCR",
+      "GPS/SONAR",
+      "ISO 6346",
+      "RTSP"
+    ],
+    "features": [
+      "Real-time GPS tracking and movement updates",
+      "Hybrid IoT with GPS, SONAR, height sensors",
+      "AI camera with automatic OCR reading",
+      "Depot space optimization and crane efficiency",
+      "Infrastructure-less scalable deployment",
+      "ISO 6346 validation and error correction"
+    ],
+    "metrics": {
+      "Containers": "6000+",
+      "Daily Ops": "3000+",
+      "Accuracy": "98%"
+    },
+    "challenges": [
+      {
+        "challenge": "RTSP Stream Instability",
+        "description": "RTSP streams from industrial cameras were unstable due to network issues, causing frame drops and missed container readings during critical operations.",
+        "solution": "Implemented frame-queueing mechanism with Kalman filtering for temporal smoothing. Deployed on Jetson Orin Nano for edge processing to reduce network dependency.",
+        "technical_details": "OpenCV RTSP handling, frame buffer queue, Kalman filter for prediction during frame drops, Jetson Orin Nano edge deployment"
+      },
+      {
+        "challenge": "Fisheye Lens Distortion",
+        "description": "Wide-angle cameras introduced significant radial distortion making container IDs unreadable at frame edges.",
+        "solution": "Calibrated cameras to extract intrinsic matrix and distortion coefficients. Applied OpenCV undistortion as preprocessing step before OCR.",
+        "technical_details": "OpenCV camera calibration (cv2.calibrateCamera), distortion coefficient extraction, cv2.undistort for real-time correction, checkerboard pattern calibration"
+      },
+      {
+        "challenge": "Vertically Oriented Container IDs",
+        "description": "Container IDs were often written vertically, which standard horizontal OCR models failed to read correctly.",
+        "solution": "Developed ver_to_hor.py script using YOLOv11 to detect individual characters, sort them vertically, and reassemble into horizontal text string before OCR processing.",
+        "technical_details": "YOLOv11 character-level detection, bounding box sorting by y-coordinate, character reassembly algorithm, rotation-invariant OCR"
+      },
+      {
+        "challenge": "Faded and Damaged Text",
+        "description": "Container IDs faded due to weather exposure, rust, and physical damage, leading to OCR errors and misreadings.",
+        "solution": "Implemented ISO 6346 validation to detect and correct OCR errors using checksum algorithm. Built intelligent error correction system for common character confusions.",
+        "technical_details": "ISO 6346 standard implementation, checksum validation, character confusion matrix (0/O, 1/I, 8/B), confidence-based correction"
+      },
+      {
+        "challenge": "Glare from Industrial Lights",
+        "description": "Strong overhead industrial lighting caused glare and reflections on container surfaces, washing out ID text.",
+        "solution": "Installed polarizing filters on camera lenses and adjusted lighting angles. Implemented adaptive preprocessing with shadow/highlight correction algorithms.",
+        "technical_details": "Polarizing filter installation, CLAHE for local contrast enhancement, shadow removal algorithms, adaptive thresholding"
+      },
+      {
+        "challenge": "Operator Handling Errors",
+        "description": "Crane operators sometimes moved containers too quickly or at awkward angles, causing motion blur and poor capture angles.",
+        "solution": "Created Standard Operating Procedures (SOPs) for optimal container handling. Conducted training sessions with operators emphasizing camera-friendly movements.",
+        "technical_details": "SOP documentation, operator training programs, motion blur detection alerts, optimal speed recommendations"
+      },
+      {
+        "challenge": "Camera Damage from Operations",
+        "description": "Cameras were occasionally damaged by crane operations or falling objects, requiring expensive replacements and downtime.",
+        "solution": "Implemented accountability policies with documented training. Installed protective housings and warning signage. Regular maintenance schedules.",
+        "technical_details": "Camera enclosure specifications, maintenance protocols, damage tracking system, operator accountability framework"
+      },
+      {
+        "challenge": "Gate-Side Technical Issues",
+        "description": "Multiple simultaneous issues at entry gates: camera positioning, poor network connectivity, inadequate lighting, and unreliable power supply.",
+        "solution": "Comprehensive infrastructure upgrade: repositioned cameras, upgraded to gigabit LAN, installed LED lighting with backup power, and deployed UPS systems.",
+        "technical_details": "Camera mounting optimization, Cat6 LAN installation, LED floodlight specifications, UPS capacity planning, network switch configuration"
+      },
+      {
+        "challenge": "Data Integrity and Synchronization",
+        "description": "Container data needed cross-referencing with gate logs, GPS data, and depot inventory. Mismatches caused operational confusion.",
+        "solution": "Built backend cross-referencing system with automated reconciliation. Implemented API optimization with retry logic and conflict resolution strategies.",
+        "technical_details": "PostgreSQL with foreign key constraints, API rate limiting, exponential backoff retry logic, data validation middleware, conflict resolution algorithms"
+      }
+    ],
+    "architecture": {
+      "description": "Hybrid IoT system with edge AI processing and cloud synchronization",
+      "components": [
+        {
+          "name": "Jetson Orin Nano Edge Device",
+          "description": "Runs YOLOv11 and OCR inference at depot edge with local buffering for offline operation"
+        },
+        {
+          "name": "Multi-Camera Manager",
+          "description": "Handles RTSP streams from multiple angles with synchronized frame capture"
+        },
+        {
+          "name": "OCR Pipeline",
+          "description": "PaddleOCR with preprocessing (undistortion, enhancement, rotation) and ISO 6346 validation"
+        },
+        {
+          "name": "IoT Sensor Integration",
+          "description": "Collects GPS coordinates, SONAR depth data, and height sensor readings"
+        },
+        {
+          "name": "Data Validation Engine",
+          "description": "Cross-references OCR results with sensor data and historical records"
+        },
+        {
+          "name": "Cloud Sync Service",
+          "description": "Uploads container logs to cloud database with retry logic and offline buffering"
+        },
+        {
+          "name": "Analytics Dashboard",
+          "description": "Real-time container tracking, search, depot visualization, and reporting"
+        }
+      ]
+    },
+    "media": {
+      "images": [],
+      "videos": []
+    }
+  },
+  {
+    "id": "unilever-argus",
+    "title": "Unilever Argus Automata (KGF Smart Surveillance)",
+    "category": "Industry",
+    "company": "Unilever",
+    "companyLogo": "./assets/logo/unilever-logo.png",
+    "demoLink": "https://rafi0020.github.io/argus-automata-demo/",
+    "timeline": "2025",
+    "scale": "90+ Cameras",
+    "summary": "Comprehensive multi-module AI surveillance system for Unilever Bangladesh LTD featuring intrusion detection, vehicle overspeed estimation via homography and tracking, collision risk logic with state machines, PPE compliance detection (helmet/vest), safety-violation temporal smoothing with hysteresis/EMA, and throwing behavior detection using pose estimation. Includes SQLite logging, evidence snapshots, and async sender.",
+    "problem": "Manual monitoring of 100+ cameras across factory floors was infeasible. Safety violations (missing helmets/vests) went undetected. Restricted zone intrusions lacked real-time alerts. Video footage was reactive, not proactive.",
+    "approach": "Architected distributed system with YOLOv11 for object detection, ByteTrack for multi-object tracking across cameras, and SAHI (Slicing Aided Hyper Inference) for small object detection. Built event-driven microservices with real-time alerting via Telegram/email. Deployed on hybrid edge-cloud infrastructure for scalability.",
+    "impact": "Achieved real-time monitoring of 100+ cameras with sub-second alert delivery. Reduced safety incidents by 60% through proactive PPE detection. Automated zone intrusion alerts enabled rapid response. System processes 3000+ hours of footage daily.",
+    "stack": [
+      "YOLOv11",
+      "DeepSORT",
+      "ByteTrack",
+      "Homography",
+      "TensorRT",
+      "SAHI",
+      "Kalman Filtering",
+      "Multi-Camera"
+    ],
+    "features": [
+      "Access control with facial recognition",
+      "Boundary security for throw/go-over detection",
+      "PPE monitoring with >80% MOTA accuracy",
+      "Helmet use tracking in stacking alleys",
+      "Collision prevention for forklifts and humans",
+      "Over-speeding and unsafe behavior detection"
+    ],
+    "metrics": {
+      "Cameras": "90+",
+      "MOTA": ">80%",
+      "Alert Time": "<1sec"
+    },
+    "challenges": [
+      {
+        "challenge": "Intrusion Detection - ROI-based Logic",
+        "description": "Factory had multiple restricted zones with complex polygonal boundaries. Simple bounding box detection caused excessive false positives from nearby workers.",
+        "solution": "Implemented polygon-based Region of Interest (ROI) with point-in-polygon algorithms. Added dwell time thresholds to ignore brief border crossings.",
+        "technical_details": "Shapely library for polygon operations, ray casting algorithm for point-in-polygon, temporal filtering with configurable dwell time (3-10 seconds)"
+      },
+      {
+        "challenge": "PPE Detection - Helmet Occlusion",
+        "description": "Helmets were often partially occluded by equipment, shadows, or viewing angles, leading to false negatives in safety compliance.",
+        "solution": "Fine-tuned YOLOv11 with augmented dataset including partial occlusions. Implemented multi-angle verification using multiple camera views of same zone.",
+        "technical_details": "YOLOv11 with focal loss for hard examples, occlusion augmentation (random cutout, gridmask), multi-camera fusion with homography mapping"
+      },
+      {
+        "challenge": "PPE Detection - Small Object Detection",
+        "description": "Safety vests and helmets appeared very small in wide-angle factory cameras, making detection difficult at distances >15 meters.",
+        "solution": "Deployed SAHI (Slicing Aided Hyper Inference) to process frames in overlapping tiles, enabling detection of small objects. Optimized tile size and overlap ratio.",
+        "technical_details": "SAHI with 640x640 tiles, 0.2 overlap ratio, NMS post-processing across tiles, multi-scale pyramid testing"
+      },
+      {
+        "challenge": "PPE Detection - Lighting Variations",
+        "description": "Factory lighting varied dramatically between zones (bright warehouse, dim storage) causing detector performance degradation.",
+        "solution": "Applied adaptive preprocessing with CLAHE and implemented domain adaptation techniques. Fine-tuned separate models for different lighting zones.",
+        "technical_details": "CLAHE preprocessing, histogram equalization, zone-specific model selection, ensemble predictions for boundary zones"
+      },
+      {
+        "challenge": "PPE Detection - Class Imbalance",
+        "description": "Training dataset had 10:1 ratio of compliant vs. non-compliant workers, causing model bias toward predicting compliance.",
+        "solution": "Applied focal loss to emphasize hard examples and used weighted sampling during training. Synthetic data generation for violation cases.",
+        "technical_details": "Focal loss with alpha=0.25 and gamma=2.0, weighted random sampler, synthetic violation generation using image composition"
+      },
+      {
+        "challenge": "PPE Detection - Real-time Processing",
+        "description": "Processing 90+ camera feeds in real-time with complex detection pipelines exceeded available compute resources.",
+        "solution": "Deployed TensorRT optimization for GPU inference. Implemented intelligent frame skipping (process every Nth frame) and zone-based prioritization.",
+        "technical_details": "TensorRT FP16 optimization, dynamic frame skip (2-5 fps based on activity), priority queue for high-risk zones, load balancing across GPUs"
+      },
+      {
+        "challenge": "PPE Detection - Worker Re-identification",
+        "description": "Needed to track individual workers across multiple cameras to avoid duplicate alerts and maintain violation history.",
+        "solution": "Implemented appearance-based re-identification using deep person features combined with ByteTrack for cross-camera tracking.",
+        "technical_details": "OSNet for person Re-ID features, ByteTrack for multi-camera association, cosine similarity matching with threshold 0.7, temporal smoothing"
+      },
+      {
+        "challenge": "PPE Detection - Alert Fatigue Management",
+        "description": "Continuous alerts for same violation caused supervisor alert fatigue and ignored notifications.",
+        "solution": "Implemented smart alert aggregation: single alert per worker per zone per shift. Escalation logic for repeated violations.",
+        "technical_details": "Alert deduplication with worker ID and zone hash, Redis for alert state management, escalation rules (3 violations = supervisor alert)"
+      },
+      {
+        "challenge": "Vehicle Detection - Speed Estimation",
+        "description": "Needed to measure forklift speed without physical sensors. Camera perspective and varying distances complicated calculations.",
+        "solution": "Applied homography transformation to map image coordinates to real-world coordinates. Calculated speed using position changes over time.",
+        "technical_details": "OpenCV homography (cv2.findHomography), perspective transformation, Kalman filter for speed smoothing, ground truth calibration with GPS"
+      },
+      {
+        "challenge": "Vehicle Detection - License Plate Recognition",
+        "description": "Needed to identify specific forklifts for violation tracking, but plates were small and often dirty/damaged.",
+        "solution": "Cropped vehicle detections and applied super-resolution before OCR. Maintained vehicle database with appearance features for fallback identification.",
+        "technical_details": "ESRGAN for super-resolution, PaddleOCR for plate reading, vehicle Re-ID with appearance features, database lookup with fuzzy matching"
+      },
+      {
+        "challenge": "Vehicle Detection - Occlusion Handling",
+        "description": "Vehicles were frequently occluded by warehouse structures, pallets, and other vehicles, causing tracking ID switches.",
+        "solution": "Enhanced ByteTrack with longer prediction horizon and appearance features. Implemented track recovery after occlusion periods.",
+        "technical_details": "ByteTrack with appearance embedding, extended Kalman filter prediction (up to 30 frames), track buffer for recovery, IOU threshold tuning"
+      },
+      {
+        "challenge": "Vehicle Detection - Multi-Class Tracking",
+        "description": "Factory had multiple vehicle types (forklifts, carts, trucks) requiring different speed limits and safety rules.",
+        "solution": "Implemented multi-class tracking with per-class rule engine. Maintained separate trackers for each vehicle category.",
+        "technical_details": "Class-specific ByteTrack instances, rule engine with vehicle type parameters, hierarchical tracking (vehicle -> type -> individual)"
+      },
+      {
+        "challenge": "Collision Detection - Prediction Window",
+        "description": "Needed to predict potential collisions early enough to generate preventive alerts, but not so early that false positives became annoying.",
+        "solution": "Implemented trajectory prediction using Kalman filter with velocity estimation. Optimized prediction window to 3-5 seconds based on average reaction time.",
+        "technical_details": "Kalman filter with constant acceleration model, trajectory extrapolation, collision detection using swept volume analysis, tunable time horizon"
+      },
+      {
+        "challenge": "Collision Detection - False Positives from Parallel Movement",
+        "description": "System generated false collision alerts when vehicles/people moved in parallel paths without actual collision risk.",
+        "solution": "Implemented direction-aware collision detection using trajectory angles. Only triggered alerts when trajectories were converging.",
+        "technical_details": "Vector angle calculation, relative velocity analysis, threshold for converging trajectories (<30 degree difference), distance-time analysis"
+      },
+      {
+        "challenge": "Collision Detection - Zone-specific Rules",
+        "description": "Different factory zones had different collision risk profiles (loading docks vs. storage aisles) requiring customized detection parameters.",
+        "solution": "Built zone-based configuration system with per-zone parameters for sensitivity, prediction window, and alert thresholds.",
+        "technical_details": "Zone polygon definitions with metadata, configuration YAML files, dynamic parameter loading, A/B testing framework for threshold optimization"
+      },
+      {
+        "challenge": "Collision Detection - Multi-Object Interactions",
+        "description": "Needed to simultaneously monitor interactions between multiple objects (pedestrian-forklift, forklift-forklift, pedestrian-pedestrian) with different risk levels.",
+        "solution": "Implemented pairwise collision checking with priority queue based on risk scores. High-risk pairs (pedestrian-vehicle) processed first.",
+        "technical_details": "N-squared collision checking optimized with spatial indexing (quadtree), risk scoring matrix, priority queue for alert generation, parallel processing"
+      }
+    ],
+    "architecture": {
+      "description": "Distributed multi-module surveillance system with real-time processing and alert generation",
+      "components": [
+        {
+          "name": "Multi-Camera Orchestrator",
+          "description": "Manages 90+ RTSP streams with load balancing across GPU servers and intelligent frame distribution"
+        },
+        {
+          "name": "YOLOv11 Detection Service",
+          "description": "Detects people, vehicles, PPE items across all camera feeds with TensorRT optimization"
+        },
+        {
+          "name": "ByteTrack Multi-Object Tracker",
+          "description": "Maintains persistent IDs for all detected objects with cross-camera association and Re-ID"
+        },
+        {
+          "name": "Module Router",
+          "description": "Routes detections to appropriate analysis modules (Intrusion, PPE, Vehicle, Collision) based on zone and object type"
+        },
+        {
+          "name": "Intrusion Detection Module",
+          "description": "Monitors restricted zones with polygon-based ROI logic and dwell time filtering"
+        },
+        {
+          "name": "PPE Compliance Module",
+          "description": "Verifies helmet and vest presence using SAHI for small object detection with multi-angle fusion"
+        },
+        {
+          "name": "Vehicle Monitoring Module",
+          "description": "Tracks vehicle speed using homography, identifies vehicles via plates, and enforces zone-specific speed limits"
+        },
+        {
+          "name": "Collision Prevention Module",
+          "description": "Predicts potential collisions using Kalman-based trajectory forecasting with direction-aware logic"
+        },
+        {
+          "name": "Alert Management System",
+          "description": "Aggregates alerts, manages deduplication, implements escalation rules, and sends notifications via Telegram/email"
+        },
+        {
+          "name": "Analytics Dashboard",
+          "description": "Real-time monitoring interface with zone heatmaps, compliance metrics, violation playback, and trend analysis"
+        },
+        {
+          "name": "Configuration Service",
+          "description": "Centralized management of zone definitions, detection parameters, alert rules, and user permissions"
+        }
+      ]
+    },
+    "media": {
+      "images": [],
+      "videos": []
+    }
+  },
+  {
+    "id": "bat-sop",
+    "title": "BAT AI Leaf SOP Checker",
+    "category": "Industry",
+    "company": "British American Tobacco",
+    "companyLogo": "./assets/logo/Bat_bangladesh_logo.png",
+    "demoLink": "https://rafi0020.github.io/bat-ai-leaf-sop-demo/",
+    "timeline": "2025",
+    "scale": "Manufacturing",
+    "summary": "AI-powered Standard Operating Procedure compliance system for British American Tobacco (BAT Bangladesh) automating leaf buying process monitoring. Designed as a multi-process, real-time computer vision auditing system on live RTSP cameras to monitor factory SOP steps and generate evidence-based compliance events. Modular checks include bale opening + barcode scan, weighing step-back/unwanted activity detection, moisture inspection, and layer-by-layer quality verification using YOLO-based models with ROI/IoU-driven logic.",
+    "problem": "Manual SOP audits were time-consuming, subjective, and inconsistent. Workers often skipped critical steps in leaf inspection, grading, and packaging. Compliance rates varied by shift. Quality assurance bottlenecks slowed production.",
+    "approach": "Developed multi-stage CV pipeline: YOLOv11 for worker and object detection, DeepSORT for persistent tracking, and ROI-based action recognition to verify SOP steps (e.g., leaf inspection angle, tool usage, packaging sequence). Built rule engine to flag violations with timestamped video evidence.",
+    "impact": "Increased SOP compliance from 70% to 95%. Reduced quality defects by 40%. Automated audit report generation saved 20 hours/week. Provided objective, tamper-proof compliance records for regulatory audits.",
+    "stack": [
+      "DeepSORT",
+      "Multi-Object Tracking",
+      "IoU Matching",
+      "RTSP Processing",
+      "State Management",
+      "Kalman Filtering",
+      "Python"
+    ],
+    "features": [
+      "Unique bale tracking across multiple stages",
+      "Worker presence detection in restricted zones",
+      "Real-time SOP violation alerts",
+      "Automated bale counting and inventory",
+      "Multi-camera synchronized tracking",
+      "Dashboard with compliance analytics"
+    ],
+    "metrics": {
+      "False Alert Reduction": "80%",
+      "SOP Compliance": "100%",
+      "Process Stages": "3"
+    },
+    "challenges": [
+      {
+        "challenge": "Unique Bale Tracking Across Stages",
+        "description": "Each tobacco bale needed to be tracked across multiple process stages (entry, inspection, weighing) without losing identity, even with camera handoffs and occlusions.",
+        "solution": "Implemented DeepSORT for persistent object tracking with appearance descriptors and Kalman filtering. Created state management system to track bale lifecycle across camera zones.",
+        "technical_details": "DeepSORT with ResNet50 appearance features, Kalman filter for motion prediction, Hungarian algorithm for data association, state machine for bale lifecycle"
+      },
+      {
+        "challenge": "Worker False Alerts and Zone Management",
+        "description": "System generated excessive false alerts when workers briefly entered restricted zones for legitimate reasons (maintenance, supervision), causing alert fatigue.",
+        "solution": "Implemented IoU-based temporal logic to differentiate brief entries from prolonged violations. Added grace periods and role-based alert thresholds.",
+        "technical_details": "IoU (Intersection over Union) calculation for zone occupancy, temporal smoothing with configurable thresholds, role-based alert rules, alert de-duplication"
+      },
+      {
+        "challenge": "RTSP Camera Jitter and Frame Consistency",
+        "description": "Industrial RTSP cameras experienced jitter and timestamp inconsistencies, causing tracking errors and duplicate bale counts.",
+        "solution": "Applied Kalman filtering for motion smoothing and prediction during frame drops. Implemented frame interpolation and duplicate detection based on appearance similarity.",
+        "technical_details": "Kalman filter with constant velocity model, frame interpolation during drops, cosine similarity for appearance matching, duplicate suppression algorithm"
+      },
+      {
+        "challenge": "Manual Annotation Inefficiency",
+        "description": "Annotating thousands of frames for training required weeks of manual work, delaying model improvements and updates.",
+        "solution": "Built semi-automated annotation tool using pre-trained YOLOv11 for initial detection followed by human correction. Reduced annotation time by 70%.",
+        "technical_details": "YOLOv11 pre-annotation, CVAT integration, active learning for hard example selection, annotation quality metrics, export to COCO format"
+      }
+    ],
+    "architecture": {
+      "description": "Multi-stage monitoring pipeline with persistent tracking and rule-based alert system",
+      "components": [
+        {
+          "name": "Multi-Camera RTSP Handler",
+          "description": "Manages synchronized streams from cameras covering different process stages"
+        },
+        {
+          "name": "YOLOv11 Detection Engine",
+          "description": "Detects bales, workers, and equipment in each frame with class confidence scores"
+        },
+        {
+          "name": "DeepSORT Tracking Module",
+          "description": "Maintains consistent IDs for bales and workers across frames using appearance and motion features"
+        },
+        {
+          "name": "State Management System",
+          "description": "Tracks bale lifecycle states (entry, inspection, weighing, exit) and worker activities"
+        },
+        {
+          "name": "Rule Engine",
+          "description": "Validates SOP compliance using zone occupancy, temporal logic, and action sequence rules"
+        },
+        {
+          "name": "Alert & Notification Service",
+          "description": "Generates real-time alerts with video evidence and sends to supervisors via dashboard/email"
+        },
+        {
+          "name": "Analytics & Reporting",
+          "description": "Compliance metrics, violation trends, worker performance, and audit trail generation"
+        }
+      ]
+    },
+    "media": {
+      "images": [],
+      "videos": []
+    }
+  },
+  {
+    "id": "staircase-safety",
+    "title": "Unilever Smart Staircase Safety",
+    "category": "Industry",
+    "company": "Unilever",
+    "companyLogo": "./assets/logo/unilever-logo.png",
+    "demoLink": "https://rafi0020.github.io/stairs-ai-demo/",
+    "timeline": "2025",
+    "scale": "Multi-floor Coverage",
+    "summary": "AI-powered staircase safety monitoring system for Unilever Bangladesh LTD detecting unsafe behaviors including improper railing usage and phone usage while climbing stairs. Uses YOLO person detection + MediaPipe Pose with handrail compliance via wrist-in-polygon checks, phone-use detection via wrist–ear distance, temporal stability enforcement, and evidence + API delivery via watcher service.",
+    "problem": "Workplace staircase accidents caused injuries and liability issues. Manual safety monitoring was impractical. Post-incident analysis lacked objective data. Need for proactive intervention before accidents occur.",
+    "approach": "Implemented MediaPipe Pose for real-time human pose estimation. Built risk assessment model analyzing gait patterns, handrail usage, and posture. Created alert system for unsafe behaviors (running, improper posture, phone usage). Integrated with existing CCTV infrastructure.",
+    "impact": "Reduced staircase incidents by 75% within first 6 months. Enabled proactive safety interventions with audio warnings. Generated actionable safety insights for workplace training. Created objective incident documentation for insurance/compliance.",
+    "stack": [
+      "Mediapipe",
+      "Pose Landmarks",
+      "YOLOv11",
+      "Multi-Person Tracking",
+      "Safety Monitoring",
+      "Behavior Analysis"
+    ],
+    "features": [
+      "Railing grip detection via pose landmarks",
+      "Phone usage detection while on stairs",
+      "Multi-person simultaneous tracking",
+      "Multi-floor coverage with centralized AI",
+      "Real-time alerts via web dashboard",
+      "Live video analysis with NVR storage"
+    ],
+    "metrics": {
+      "Incident Reduction": "75%",
+      "Multi-person": "Simultaneous",
+      "Coverage": "Multi-floor"
+    },
+    "challenges": [
+      {
+        "challenge": "Pose Landmark Segmentation Failures",
+        "description": "MediaPipe Pose landmarks failed when multiple people overlapped on stairs, causing incorrect railing detection and missed safety violations.",
+        "solution": "Implemented YOLOv11-based person detection as preprocessing to segment individuals before pose estimation. Each person processed independently with dedicated landmark model.",
+        "technical_details": "YOLOv11 person detection, ROI cropping for each person, individual MediaPipe Pose inference, landmark coordinate remapping to original frame"
+      },
+      {
+        "challenge": "Multi-Person Simultaneous Tracking",
+        "description": "System initially designed for single person, failed when multiple people were on stairs simultaneously due to landmark confusion.",
+        "solution": "Upgraded to multi-instance pose estimation pipeline. Each detected person gets unique tracking ID with DeepSORT for temporal consistency across frames.",
+        "technical_details": "DeepSORT for person tracking, per-person pose estimation, ID association across frames, concurrent processing with thread pools"
+      }
+    ],
+    "architecture": {
+      "description": "Real-time pose-based safety monitoring system with multi-floor coverage",
+      "components": [
+        {
+          "name": "RTSP Stream Handler",
+          "description": "Manages camera feeds from multiple staircase locations with centralized processing"
+        },
+        {
+          "name": "YOLOv11 Person Detector",
+          "description": "Detects and segments individual people on stairs for isolated pose analysis"
+        },
+        {
+          "name": "MediaPipe Pose Engine",
+          "description": "Extracts 33 body landmarks per person for behavior analysis"
+        },
+        {
+          "name": "Safety Rule Engine",
+          "description": "Analyzes pose landmarks to detect railing grip, phone usage, and unsafe postures"
+        },
+        {
+          "name": "Multi-Person Tracker",
+          "description": "Maintains consistent IDs across frames using DeepSORT for behavior history"
+        },
+        {
+          "name": "Alert System",
+          "description": "Generates real-time audio warnings and dashboard notifications for unsafe behaviors"
+        },
+        {
+          "name": "Incident Logger",
+          "description": "Records violations with video clips for safety training and compliance reporting"
+        }
+      ]
+    },
+    "media": {
+      "images": [],
+      "videos": []
+    }
+  },
+  {
+    "id": "smart-space",
+    "title": "Smart Space Monitoring (Retail Intelligence Analytics)",
+    "category": "Industry",
+    "company": "Runner Group",
+    "companyLogo": "./assets/logo/runner-motorcycles-seeklogo.png",
+    "demoLink": "https://rafi0020.github.io/smart-space-demo/",
+    "timeline": "2025",
+    "scale": "Customer Intelligence",
+    "summary": "Data-driven retail intelligence analytics system for Runner Group showrooms with footfall analytics, bike tracking, model recognition, employee vs customer desk classification, customer capture for CRM, and service-delay analytics.",
+    "problem": "Retail stores lacked actionable insights on customer behavior, dwell times, and traffic patterns. Employee vs customer distinction needed for interaction analytics. Bike entry/exit and model recognition were required. ROI on merchandising changes couldn't be measured.",
+    "approach": "Developed YOLOv11-based people detection and tracking with trajectory analysis. Built bike model recognition using YOLO + ORB feature fallback. Implemented employee vs customer desk classification with hysteresis and InsightFace for face recognition. Created customer capture for CRM integration, time-to-interaction and service-delay analytics, shutter open/close monitoring, and decoupled uploaders for data sync.",
+    "impact": "Enabled data-driven store layout optimization, increasing conversion rates by 15%. Identified peak hours for optimal staff scheduling. Measured engagement for promotional displays. Provided ROI metrics for merchandising changes. Processed data for 5000+ daily visitors per store.",
+    "stack": [
+      "YOLOv11",
+      "DeepSORT",
+      "InsightFace",
+      "ORB Features",
+      "OpenCV",
+      "PostgreSQL",
+      "Grafana",
+      "Docker"
+    ],
+    "features": [
+      "Footfall analytics and real-time people counting",
+      "Bike entry/exit tracking and bike model recognition (YOLO + ORB fallback)",
+      "Employee vs customer desk classification with hysteresis and InsightFace",
+      "Customer capture for CRM integration",
+      "Time-to-interaction and service-delay analytics",
+      "Shutter open/close monitoring",
+      "Decoupled uploader services for data sync",
+      "Historical reports and trend visualization"
+    ],
+    "metrics": {
+      "visitors_tracked": "5000+ daily",
+      "conversion_increase": "15%",
+      "stores": "Multiple locations"
+    },
+    "architecture": {
+      "description": "Real-time customer analytics system with distributed processing and centralized reporting",
+      "components": [
+        {
+          "name": "Camera Network Manager",
+          "description": "Handles RTSP streams from entrance, aisle, and checkout cameras with synchronized capture"
+        },
+        {
+          "name": "YOLOv11 People Detection",
+          "description": "Detects and localizes customers in real-time with high accuracy in crowded scenes"
+        },
+        {
+          "name": "DeepSORT Tracker",
+          "description": "Maintains customer IDs across camera handoffs for complete journey tracking"
+        },
+        {
+          "name": "Trajectory Analyzer",
+          "description": "Records movement patterns, calculates dwell times, and identifies hotspots"
+        },
+        {
+          "name": "Heatmap Generator",
+          "description": "Creates density maps and traffic flow visualizations using accumulated trajectory data"
+        },
+        {
+          "name": "Zone Analytics Engine",
+          "description": "Computes metrics per store zone (entrance, departments, checkout) with dwell time analysis"
+        },
+        {
+          "name": "Demographics Estimator",
+          "description": "Estimates age and gender using computer vision for demographic segmentation"
+        },
+        {
+          "name": "PostgreSQL Database",
+          "description": "Stores visitor logs, trajectories, and analytics with time-series optimization"
+        },
+        {
+          "name": "Grafana Dashboard",
+          "description": "Real-time visualization of foot traffic, heatmaps, demographics, and conversion metrics"
+        },
+        {
+          "name": "POS Integration Module",
+          "description": "Correlates visitor data with sales transactions for conversion rate analysis"
+        }
+      ]
+    },
+    "media": {
+      "images": [],
+      "videos": []
+    }
+  },
+  {
+    "id": "crowd-mob-detection",
+    "title": "Crowd / Mob Detection (Multi-Modal Public Safety Analytics)",
+    "category": "Industry",
+    "company": "Bondstein Technologies (Internal R&D)",
+    "companyLogo": "./assets/logo/bondstein.png",
+    "demoLink": "https://rafi0020.github.io/Crowd_mob_demo/",
+    "timeline": "2025",
+    "scale": "Public Safety R&D",
+    "summary": "Multi-modal public safety analytics system combining YOLO multi-class detection, DeepSORT tracking, depth estimation, and heatmap smoothing for crowd monitoring, threat detection, and weapon-aware escalation.",
+    "problem": "Public safety monitoring required real-time detection of crowd densities, suspicious individuals, victims, and weapons across large areas. Traditional surveillance systems lacked depth awareness and intelligent escalation capabilities.",
+    "approach": "Developed YOLO-based multi-class detection pipeline for person, suspect, victim, and weapon categories. Integrated DeepSORT tracking with Depth-Anything-V2 for monocular depth estimation. Implemented depth-aware spatial clustering, heatmap smoothing for crowd density, and weapon-aware escalation logic with suspect pinning across frames.",
+    "impact": "Demonstrated capability for real-time multi-class threat detection with depth-aware spatial reasoning. Weapon detection triggers automatic escalation and suspect tracking across camera feeds. Heatmap visualization enables crowd density monitoring for proactive safety management.",
+    "stack": [
+      "YOLOv11",
+      "DeepSORT",
+      "Depth-Anything-V2",
+      "OpenCV",
+      "Python",
+      "Heatmap Smoothing"
+    ],
+    "features": [
+      "Multi-class detection (person/suspect/victim/weapon)",
+      "DeepSORT tracking with persistent IDs",
+      "Monocular depth estimation with Depth-Anything-V2",
+      "Depth-aware spatial clustering for crowd analysis",
+      "Heatmap smoothing for density visualization",
+      "Weapon-aware escalation and suspect pinning",
+      "Real-time threat level assessment"
+    ],
+    "metrics": {
+      "Detection Classes": "4 (person/suspect/victim/weapon)",
+      "Tracking": "DeepSORT + Depth",
+      "Depth Model": "Depth-Anything-V2"
+    },
+    "architecture": {
+      "description": "Multi-modal detection pipeline with depth-aware reasoning and escalation logic",
+      "components": [
+        {
+          "name": "YOLO Multi-Class Detector",
+          "description": "Detects persons, suspects, victims, and weapons in real-time video streams"
+        },
+        {
+          "name": "DeepSORT Tracker",
+          "description": "Maintains persistent object IDs across frames for continuous tracking"
+        },
+        {
+          "name": "Depth-Anything-V2 Module",
+          "description": "Monocular depth estimation for spatial awareness and distance reasoning"
+        },
+        {
+          "name": "Depth-Aware Clustering",
+          "description": "Groups detections using depth information for accurate crowd density analysis"
+        },
+        {
+          "name": "Heatmap Generator",
+          "description": "Produces smoothed density heatmaps for crowd visualization and hotspot detection"
+        },
+        {
+          "name": "Escalation Engine",
+          "description": "Weapon-aware threat escalation with suspect pinning and alert generation"
+        }
+      ]
+    },
+    "media": {
+      "images": [],
+      "videos": []
+    }
+  },
+  {
+    "id": "juice-flow-anomaly",
+    "title": "Juice Flow Anomaly Detection (Food-Safety Edge Anomaly Segmentation)",
+    "category": "Industry",
+    "company": "Bondstein Technologies (Internal R&D)",
+    "companyLogo": "./assets/logo/bondstein.png",
+    "inDevelopment": true,
+    "timeline": "2025",
+    "scale": "Edge Deployment R&D",
+    "summary": "U-Net segmentation-based anomaly detection system for juice-flow pipe inspection, designed for Jetson Orin Nano edge deployment with TensorRT optimization and temporal confirmation logic.",
+    "problem": "Food-safety inspection of juice-flow pipes required continuous, real-time monitoring for anomalies (contamination, discoloration, blockage). Manual inspection was inconsistent and couldn't cover all production lines simultaneously.",
+    "approach": "Developed U-Net segmentation model for pixel-level anomaly detection in juice-flow pipe imagery. Planned deployment on Jetson Orin Nano with TensorRT FP16/INT8 optimization for real-time edge inference. Evaluation emphasis on IoU, precision, recall, false alarm rate, and temporal confirmation to reduce false positives.",
+    "impact": "Demonstrated viable approach for food-safety anomaly segmentation at edge. TensorRT optimization enables real-time processing on resource-constrained hardware. Temporal confirmation logic significantly reduces false alarm rates while maintaining detection sensitivity.",
+    "stack": [
+      "U-Net",
+      "PyTorch",
+      "TensorRT",
+      "Jetson Orin Nano",
+      "OpenCV",
+      "Python"
+    ],
+    "features": [
+      "U-Net segmentation-based anomaly detection",
+      "Jetson Orin Nano edge deployment plan",
+      "TensorRT FP16/INT8 optimization",
+      "IoU/precision/recall/false alarm evaluation",
+      "Temporal confirmation for false positive reduction",
+      "Real-time pipe flow monitoring"
+    ],
+    "metrics": {
+      "Model": "U-Net Segmentation",
+      "Deployment": "Jetson Orin Nano",
+      "Optimization": "TensorRT FP16/INT8"
+    },
+    "architecture": {
+      "description": "Edge-optimized segmentation pipeline for real-time food-safety inspection",
+      "components": [
+        {
+          "name": "Camera Input Module",
+          "description": "Captures real-time video of juice-flow pipe for continuous monitoring"
+        },
+        {
+          "name": "U-Net Segmentation Model",
+          "description": "Pixel-level anomaly detection trained on normal vs anomalous pipe imagery"
+        },
+        {
+          "name": "TensorRT Inference Engine",
+          "description": "Optimized FP16/INT8 inference for Jetson Orin Nano edge deployment"
+        },
+        {
+          "name": "Temporal Confirmation Module",
+          "description": "Validates detections across multiple frames to reduce false alarms"
+        },
+        {
+          "name": "Alert & Logging Service",
+          "description": "Generates alerts for confirmed anomalies with image evidence and timestamps"
+        }
+      ]
+    },
+    "media": {
+      "images": [],
+      "videos": []
+    }
+  },
+  {
+    "id": "counterfeit",
+    "title": "Anti-Counterfeit Detection System",
+    "category": "Industry",
+    "company": "Bondstein Technologies (Internal R&D)",
+    "companyLogo": "./assets/logo/bondstein.png",
+    "inDevelopment": true,
+    "timeline": "2025",
+    "scale": "Production Scale",
+    "summary": "Deep learning-based system for detecting counterfeit tobacco packaging using multi-stage visual inspection.",
+    "problem": "Counterfeit products damaged brand reputation and revenue. Manual inspection was slow, subjective, and missed subtle differences. Need for automated, objective quality control at production scale.",
+    "approach": "Built two-stage pipeline: YOLOv11 for package detection/localization, followed by custom CNN classifier trained on authentic vs. counterfeit features (print quality, hologram patterns, text alignment). Used transfer learning from ImageNet with fine-tuning on proprietary dataset. Implemented ensemble model for high-confidence predictions.",
+    "impact": "Achieved 96%+ accuracy in controlled lab testing. Reduced manual inspection time by 80%. Enabled real-time screening of thousands of packages daily. Created tamper-proof audit trail with image evidence for law enforcement.",
+    "stack": [
+      "YOLOv11",
+      "PyTorch",
+      "EfficientNet",
+      "FastAPI",
+      "PostgreSQL",
+      "MLflow"
+    ],
+    "features": [
+      "Multi-class counterfeit detection",
+      "Fine-grained feature analysis (holograms, micro-text)",
+      "Confidence scoring with explainability",
+      "Real-time API for production line integration",
+      "Continuous learning pipeline with new samples",
+      "Audit trail with image storage"
+    ],
+    "metrics": {
+      "accuracy": "96%",
+      "throughput": "1000+ packages/hour",
+      "false_positive_rate": "<2%"
+    },
+    "media": {
+      "images": [],
+      "videos": []
+    }
+  },
+  {
+    "id": "hr-chatbot",
+    "title": "Intelligent HR Assistant with LLM",
+    "category": "Industry",
+    "company": "Bondstein Technologies (Internal R&D)",
+    "companyLogo": "./assets/logo/bondstein.png",
+    "inDevelopment": true,
+    "timeline": "2025",
+    "scale": "500+ Employees",
+    "summary": "Enterprise LLM-powered chatbot for automated HR query handling and policy assistance.",
+    "problem": "HR department overwhelmed with repetitive queries about policies, leave, benefits, and procedures. 60%+ of queries were routine but required human response. Knowledge base scattered across documents. New employees struggled with onboarding information.",
+    "approach": "Fine-tuned large language model (LLaMA 2) on company HR documents, policies, and FAQ corpus. Implemented RAG (Retrieval-Augmented Generation) with vector database for accurate, grounded responses. Built conversational interface with multi-turn context awareness. Added guardrails for sensitive topics requiring human escalation.",
+    "impact": "Reduced HR team workload by 65% for routine queries. Achieved 85%+ user satisfaction scores. Enabled 24/7 employee support. Reduced average query resolution time from 4 hours to 2 minutes. Onboarding time decreased by 40%.",
+    "stack": [
+      "LLaMA 2",
+      "LangChain",
+      "ChromaDB",
+      "FastAPI",
+      "React",
+      "PostgreSQL"
+    ],
+    "features": [
+      "Natural language query understanding",
+      "RAG-based accurate policy retrieval",
+      "Multi-turn conversation with context memory",
+      "Automatic escalation for sensitive queries",
+      "Integration with HRMS for personalized responses",
+      "Analytics on common queries and satisfaction",
+      "Multi-language support"
+    ],
+    "metrics": {
+      "workload_reduction": "65%",
+      "satisfaction": "85%",
+      "resolution_time": "2 minutes avg"
+    },
+    "media": {
+      "images": [],
+      "videos": []
+    }
+  },
+  {
+    "id": "voice-vit",
+    "title": "Mental Health Diagnosis Using CNNs and Vision Transformers",
+    "category": "Research",
+    "company": "Daffodil International University",
+    "companyLogo": "./assets/logo/diu_logo.png",
+    "timeline": "2023-2024",
+    "scale": "Published Research",
+    "summary": "Novel deep learning approach using Vision Transformers and CNNs for mental health condition classification from voice data. Published in Journal of Voice (Scopus Q1).",
+    "problem": "Mental health diagnosis relies heavily on subjective clinical assessment. Voice biomarkers offer objective, non-invasive screening but are under-researched. The Bengali voice data domain is especially scarce. Existing datasets are small and noisy, and robust models are needed for acoustic variability.",
+    "approach": "Converted audio to log-mel spectrograms, treating voice analysis as a vision-driven learning problem. Proposed hybrid CNN-ViT architecture: CNN layers extract local acoustic patterns, ViT captures long-range dependencies in temporal sequences. Applied class imbalance handling (SMOTE), data augmentation, and robust evaluation methodology. Used ethically collected Bengali voice data from mental health institutions in Bangladesh.",
+    "impact": "Published in Journal of Voice (Scopus Q1 journal). Achieved ~91% accuracy with ROC-AUC around 0.97. Demonstrated potential for scalable, clinically meaningful diagnostic pipelines. Contributed to the first open-source Bengali voice dataset for mental health diagnostics. Dataset: https://data.mendeley.com/datasets/s5j25b5tjk/1",
+    "stack": [
+      "PyTorch",
+      "Vision Transformer",
+      "Librosa",
+      "scikit-learn",
+      "Weights & Biases",
+      "Jupyter"
+    ],
+    "features": [
+      "Audio preprocessing pipeline with noise reduction and consistent 48 kHz sampling",
+      "Log-mel spectrogram conversion (spectrogram-as-image paradigm)",
+      "Hybrid CNN-ViT architecture for feature learning",
+      "Class imbalance handling with SMOTE",
+      "Attention visualization for interpretability",
+      "Cross-validation with robust evaluation methodology"
+    ],
+    "metrics": {
+      "accuracy": "~91%",
+      "ROC-AUC": "~0.97",
+      "dataset": "85 Bengali voice recordings"
+    },
+    "architecture": {
+      "description": "Hybrid CNN-ViT pipeline for voice-based mental health classification",
+      "components": [
+        {
+          "name": "Audio Preprocessing",
+          "description": "Noise reduction, normalization, and feature extraction (mel-spectrograms, MFCCs)"
+        },
+        {
+          "name": "CNN Feature Extractor",
+          "description": "Convolutional layers capturing local acoustic patterns and spectral features"
+        },
+        {
+          "name": "Vision Transformer",
+          "description": "Self-attention mechanism for long-range temporal dependencies in voice sequences"
+        },
+        {
+          "name": "Classification Head",
+          "description": "Multi-class classifier for mental health condition prediction with confidence scores"
+        },
+        {
+          "name": "Attention Visualization",
+          "description": "Interpretability module showing which audio segments contribute to predictions"
+        }
+      ]
+    },
+    "media": {
+      "images": [],
+      "videos": []
+    },
+    "github": "https://github.com/rafi0020/Mental_Health_Diagnosis_Voice_with_ViT-CNN"
+  },
+  {
+    "id": "mental-stability-transfer-learning",
+    "title": "Transfer Learning for Mental Stability Classification",
+    "category": "Research",
+    "company": "Daffodil International University",
+    "companyLogo": "./assets/logo/diu_logo.png",
+    "timeline": "2024",
+    "scale": "85 Voice Recordings",
+    "summary": "Novel transfer learning approach using CNNs and spectrogram analysis for voice-based mental health diagnostics.",
+    "problem": "Mental health diagnostics often rely on subjective clinical assessments with limited resources. Traditional methods lack objective, non-invasive screening tools. Voice biomarkers offer potential for early detection but face challenges with small datasets and acoustic variability.",
+    "approach": "Converted voice recordings to spectrograms using Short-Time Fourier Transform (STFT). Implemented transfer learning with three pre-trained CNN architectures: VGG16 for spatial hierarchies, InceptionV3 for multi-scale features, and DenseNet121 for feature reuse. Applied data augmentation techniques (SpecAugment, Gaussian noise, random erasing) to improve generalization. Pre-trained models on augmented data, then fine-tuned on non-augmented data for task-specific learning.",
+    "impact": "DenseNet121 achieved 94% accuracy and 0.99 AUC, outperforming other architectures. Demonstrated viability of voice-based mental health screening for tele-psychiatry applications. Research carried out under Dr. Md. Taimur Ahad at the 4IR Research Cell, DIU. Used ethically collected Bengali voice data (85 recordings, balanced stable/unstable, 48 kHz sampling, noise/trim normalization). Provides objective screening method to complement clinical assessment.",
+    "stack": [
+      "TensorFlow",
+      "Keras",
+      "VGG16",
+      "InceptionV3",
+      "DenseNet121",
+      "Librosa",
+      "NumPy"
+    ],
+    "features": [
+      "Voice-to-spectrogram conversion with STFT",
+      "Transfer learning with multiple CNN architectures",
+      "Data augmentation for improved robustness",
+      "Binary classification (stable vs. unstable)",
+      "Training/validation visualization (accuracy, loss, confusion matrix, ROC curves)",
+      "Comparative analysis of VGG16, InceptionV3, and DenseNet121"
+    ],
+    "metrics": {
+      "accuracy": "94%",
+      "auc": "0.99",
+      "dataset": "85 voice recordings"
+    },
+    "architecture": {
+      "description": "Transfer learning pipeline with pre-trained CNNs for voice-based mental health classification",
+      "components": [
+        {
+          "name": "Audio Preprocessing",
+          "description": "STFT conversion to spectrograms with configurable window and hop length"
+        },
+        {
+          "name": "Data Augmentation",
+          "description": "SpecAugment, Gaussian noise, and random erasing for improved generalization"
+        },
+        {
+          "name": "VGG16 Branch",
+          "description": "Pre-trained on ImageNet, fine-tuned for spatial hierarchies in spectrograms"
+        },
+        {
+          "name": "InceptionV3 Branch",
+          "description": "Multi-scale feature extraction with inception modules for diverse acoustic patterns"
+        },
+        {
+          "name": "DenseNet121 Branch",
+          "description": "Dense connectivity for feature reuse and gradient flow, best performer at 94% accuracy"
+        },
+        {
+          "name": "Ensemble Module",
+          "description": "Combines predictions from multiple architectures for robust classification"
+        },
+        {
+          "name": "Evaluation Framework",
+          "description": "Comprehensive metrics including accuracy, loss curves, confusion matrix, and ROC analysis"
+        }
+      ]
+    },
+    "media": {
+      "images": [],
+      "videos": []
+    },
+    "github": "https://github.com/rafi0020/Mental_Stability_TransferLearning"
+  },
+  {
+    "id": "skin-cancer-detection",
+    "title": "Skin Cancer Detection Using Computer Vision",
+    "category": "Research",
+    "company": "Daffodil International University",
+    "companyLogo": "./assets/logo/diu_logo.png",
+    "summary": "Deep CNN-based system for classifying benign and malignant skin lesions to enhance early detection in Bangladesh. Published as arXiv preprint with emphasis on interpretability and transparency in deep learning models.",
+    "problem": "Bangladesh faces significant dermatologist shortage while skin cancer prevalence rises. Early detection crucial for treatment but manual screening time-consuming and error-prone. Need for automated, accessible diagnostic tool.",
+    "approach": "Developed custom DCNN architecture trained on HAM10000 dataset (10,000+ dermoscopy images). Implemented preprocessing pipeline with noise removal, normalization, and data augmentation (rotation, flipping, color shifts). Used transfer learning from InceptionV3. Added saliency maps, Grad-CAM, and attention visualization for interpretability and transparent decision support. Included comparative analysis across transfer learning models plus a computationally efficient model approach.",
+    "impact": "Achieved 93.16% testing accuracy outperforming DenseNet (90.31%) and MobileNet (88.26%). Published paper demonstrating practical application for Bangladesh healthcare context. Model provides explainable predictions through attention maps. Reduced execution time compared to existing models.",
+    "stack": [
+      "TensorFlow",
+      "Keras",
+      "OpenCV",
+      "Scikit-learn",
+      "Matplotlib"
+    ],
+    "features": [
+      "Binary classification (benign/malignant)",
+      "Data preprocessing with augmentation",
+      "Transfer learning from InceptionV3",
+      "Saliency map visualization",
+      "ROC curve and confusion matrix analysis",
+      "Comparative model evaluation"
+    ],
+    "metrics": {
+      "accuracy": "93.16%",
+      "model_type": "Custom DCNN",
+      "dataset": "HAM10000 (10,015 images)",
+      "interpretability": "Saliency & Attention Maps"
+    },
+    "media": {
+      "images": [],
+      "videos": []
+    },
+    "github": "https://github.com/rafi0020/Skin_Cancer_Detection"
+  },
+  {
+    "id": "blockmedix-ai",
+    "title": "BlockMedix AI - Decentralized Healthcare System",
+    "category": "Academic",
+    "company": "Daffodil International University",
+    "companyLogo": "./assets/logo/diu_logo.png",
+    "timeline": "2023",
+    "scale": "Capstone Project",
+    "summary": "Blockchain-powered healthcare management system integrated with AI diagnostics for secure, transparent medical data storage and analysis.",
+    "problem": "Traditional healthcare systems face data security vulnerabilities, lack of patient data ownership, and inefficient data sharing between providers. Need for secure, immutable medical records with AI-powered diagnostic capabilities.",
+    "approach": "Built decentralized system using Ethereum smart contracts for data storage and access control. Integrated deep learning models (CNNs) for disease diagnosis and NLP for medical text analysis. Used BART transformer for health record summarization. Implemented end-to-end encryption for patient privacy compliance (GDPR/HIPAA).",
+    "impact": "Created proof-of-concept for secure healthcare data management with 100% data immutability. AI diagnostic module showed promising accuracy for disease classification. Demonstrated feasibility of patient-controlled health records. Academic project showcasing blockchain-AI integration potential.",
+    "stack": [
+      "Ethereum",
+      "Web3.js",
+      "PyTorch",
+      "Transformers (BART)",
+      "Solidity",
+      "Ganache"
+    ],
+    "features": [
+      "Blockchain-based immutable health records",
+      "Smart contracts for access control",
+      "AI-powered disease diagnosis",
+      "NLP for medical text summarization",
+      "Patient data ownership and consent management",
+      "Web interface for patient-provider interaction"
+    ],
+    "metrics": {
+      "data_immutability": "100%",
+      "encryption": "AES-256",
+      "project_type": "Academic"
+    },
+    "media": {
+      "images": [],
+      "videos": []
+    },
+    "github": "https://github.com/rafi0020/BlockMedix_AI"
+  },
+  {
+    "id": "smart-dining",
+    "title": "Smart Dining Caloric Display System",
+    "category": "Academic",
+    "company": "Daffodil International University",
+    "companyLogo": "./assets/logo/diu_logo.png",
+    "timeline": "2023",
+    "scale": "Course Project",
+    "summary": "Machine learning-based caloric estimation system for traditional Bangladeshi dishes to promote nutritional awareness.",
+    "problem": "Diet-related health issues prevalent in Bangladesh but traditional dishes lack nutritional information. Restaurant menus don't provide caloric content. Need for automated system to estimate calories for informed dietary choices.",
+    "approach": "Compiled dataset of Bangladeshi recipes with ingredient quantities from Food Composition Table for Bangladesh (2022). Trained multiple regression models: Linear Regression, Decision Tree, and Random Forest. Implemented ingredient-based feature extraction and recipe caloric calculation pipeline.",
+    "impact": "Random Forest achieved best performance with 99.99% R² and MSE of 15.75 on test set. System enables real-time caloric prediction for restaurant menus. Academic project demonstrating ML application to local nutritional challenges. Promotes healthier eating through data-driven insights.",
+    "stack": [
+      "Python",
+      "Scikit-learn",
+      "Pandas",
+      "Matplotlib",
+      "NumPy"
+    ],
+    "features": [
+      "Recipe ingredient parsing",
+      "Multi-model evaluation (LR, DT, RF)",
+      "Real-time caloric prediction API",
+      "Bangladeshi cuisine database",
+      "Model performance comparison",
+      "Feature importance analysis"
+    ],
+    "metrics": {
+      "r2_score": "0.9999",
+      "mse": "15.75",
+      "best_model": "Random Forest"
+    },
+    "media": {
+      "images": [],
+      "videos": []
+    },
+    "github": "https://github.com/rafi0020/Smart_Dining_Caloric_Display"
+  },
+  {
+    "id": "physical-activity-prediction",
+    "title": "Physical Activity Level Prediction",
+    "category": "Academic",
+    "company": "Daffodil International University",
+    "companyLogo": "./assets/logo/diu_logo.png",
+    "timeline": "2022",
+    "scale": "ML Course Project",
+    "summary": "Large-scale machine learning models to predict physical activity levels from health parameters for lifestyle intervention.",
+    "problem": "Sedentary lifestyles contribute to numerous health issues. Accurate activity level prediction enables personalized interventions. Need for automated classification system handling large-scale health data.",
+    "approach": "Processed 2.8 million records with features including heart rate, step count, and sleep duration. Implemented Logistic Regression, Decision Tree, and Random Forest with Apache Spark for distributed computing. Applied feature selection using correlation analysis and RFE. Performed hyperparameter tuning with k-fold cross-validation.",
+    "impact": "Random Forest achieved 78.02% accuracy outperforming Decision Tree (77.48%) and Logistic Regression (69.44%). Feature importance analysis identified heart rate and step count as key predictors. Demonstrated scalability with big data framework. Academic project showcasing ML for preventive healthcare.",
+    "stack": [
+      "Apache Spark",
+      "PySpark MLlib",
+      "Python",
+      "Scikit-learn",
+      "Pandas"
+    ],
+    "features": [
+      "Big data processing with Spark",
+      "Multi-class activity classification",
+      "Feature selection and engineering",
+      "Hyperparameter optimization",
+      "K-fold cross-validation",
+      "Confusion matrix and metrics analysis"
+    ],
+    "metrics": {
+      "accuracy": "78.02%",
+      "dataset_size": "2.8M records",
+      "best_model": "Random Forest"
+    },
+    "media": {
+      "images": [],
+      "videos": []
+    },
+    "github": "https://github.com/rafi0020/Physical_Activity_Prediction"
+  }
+]
