@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Redirecting…</title>
+  <meta name="robots" content="noindex"/>
+  <script>
+    // GitHub Pages serves this file for any unknown path. Stash the requested
+    // URL and hand control back to the SPA at the root, which restores it.
+    (function () {
+      try { sessionStorage.setItem('spa:redirect', location.href); } catch (e) {}
+      location.replace('/');
+    })();
+  </script>
+</head>
+<body style="background:#0d1117;color:#f0f6fc;font-family:system-ui,sans-serif;padding:2rem">
+  <p>Redirecting… <a href="/" style="color:#58a6ff">Go to the homepage</a>.</p>
+</body>
+</html>

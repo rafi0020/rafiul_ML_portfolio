@@ -1,42 +1,64 @@
-
+import { lazy, Suspense, useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
-import { useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import BackToTop from "./components/BackToTop";
 import Home from "./pages/Home";
-import ProjectDetail from "./pages/ProjectDetail";
-import Admin from "./pages/Admin";
-import AboutPage from "./pages/AboutPage";
-import ResearchPage from "./pages/ResearchPage";
-import ProjectsPage from "./pages/ProjectsPage";
-import ProductsPage from "./pages/ProductsPage";
-import SkillsPage from "./pages/SkillsPage";
-import ContactPage from "./pages/ContactPage";
 
-export default function App(){
-  const location = useLocation();
+// Route-level code splitting: the landing page ships in the initial bundle,
+// everything else is fetched on demand.
+const AboutPage = lazy(() => import("./pages/AboutPage"));
+const ResearchPage = lazy(() => import("./pages/ResearchPage"));
+const ProjectsPage = lazy(() => import("./pages/ProjectsPage"));
+const SkillsPage = lazy(() => import("./pages/SkillsPage"));
+const ContactPage = lazy(() => import("./pages/ContactPage"));
+const ProjectDetail = lazy(() => import("./pages/ProjectDetail"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+
+function RouteFallback() {
+  return (
+    <div className="route-fallback" role="status" aria-live="polite">
+      <span className="route-spinner" aria-hidden="true" />
+      <span className="sr-only">Loading page</span>
+    </div>
+  );
+}
+
+/**
+ * Reset scroll on navigation, but leave in-page anchor navigation alone
+ * so "View full experience" can still land on the right section.
+ */
+function ScrollToTop() {
+  const { pathname, state } = useLocation();
 
   useEffect(() => {
+    if (state?.scrollTo || state?.scrollToProject) return;
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-  }, [location.pathname]);
+  }, [pathname, state]);
 
+  return null;
+}
+
+export default function App() {
   return (
     <>
-      <Navbar/>
-      <Routes>
-        <Route path="/" element={<Home/>}/>
-        <Route path="/about" element={<AboutPage/>}/>
-        <Route path="/research" element={<ResearchPage/>}/>
-        <Route path="/projects" element={<ProjectsPage/>}/>
-        <Route path="/products" element={<ProductsPage/>}/>
-        <Route path="/skills" element={<SkillsPage/>}/>
-        <Route path="/contact" element={<ContactPage/>}/>
-        <Route path="/projects/:id" element={<ProjectDetail/>}/>
-        <Route path="/admin" element={<Admin/>}/>
-      </Routes>
-      <Footer/>
-      <BackToTop/>
+      <a className="skip-link" href="#main-content">Skip to main content</a>
+      <Navbar />
+      <ScrollToTop />
+      <Suspense fallback={<RouteFallback />}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/research" element={<ResearchPage />} />
+          <Route path="/projects" element={<ProjectsPage />} />
+          <Route path="/projects/:id" element={<ProjectDetail />} />
+          <Route path="/skills" element={<SkillsPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Suspense>
+      <Footer />
+      <BackToTop />
     </>
   );
 }

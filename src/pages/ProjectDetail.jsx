@@ -3,6 +3,9 @@ import { useParams, Link } from "react-router-dom";
 import { useEffect } from "react";
 import data from "../data/projects.json";
 import MediaGallery from "../sections/MediaGallery";
+import Icon from "../components/Icon";
+import useSEO from "../hooks/useSEO";
+import { metricIcon } from "../utils/projectMeta";
 
 const ChevronRightIcon = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -28,159 +31,32 @@ const ArchitectureIcon = () => (
   </svg>
 );
 
-// Function to get relevant icon for different metric types
-const getMetricIcon = (metricKey) => {
-  const key = metricKey.toLowerCase();
-  
-  // Accuracy/Precision/Performance metrics (checkmark/target)
-  if (key.includes('accuracy') || key.includes('precision') || key.includes('auc') || key.includes('mota')) {
-    return (
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-      </svg>
-    );
-  }
-  
-  // Speed/Time/Response/Resolution time (clock)
-  if (key.includes('time') || key.includes('speed') || key.includes('fps') || key.includes('latency') || key.includes('resolution')) {
-    return (
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
-      </svg>
-    );
-  }
-  
-  // Deployment/Scale/Coverage/Sites/Cameras (location/map)
-  if (key.includes('deployment') || key.includes('coverage') || key.includes('cameras') || key.includes('sites') || key.includes('floor')) {
-    return (
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-      </svg>
-    );
-  }
-  
-  // Volume/Quantity/Count (containers, ops, visitors, packages, throughput) (bar chart)
-  if (key.includes('containers') || key.includes('ops') || key.includes('daily') || key.includes('visitors') || key.includes('throughput') || key.includes('packages') || key.includes('tracked')) {
-    return (
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
-      </svg>
-    );
-  }
-  
-  // Reduction metrics (downward trending arrow)
-  if (key.includes('reduction') || key.includes('decrease') || key.includes('workload')) {
-    return (
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M16 18l2.29-2.29-4.88-4.88-4 4L2 7.41 3.41 6l6 6 4-4 6.3 6.29L22 12v6z"/>
-      </svg>
-    );
-  }
-  
-  // Increase/Growth/Improvement/Satisfaction/Compliance (upward trending arrow)
-  if (key.includes('increase') || key.includes('growth') || key.includes('satisfaction') || key.includes('compliance') || key.includes('conversion')) {
-    return (
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/>
-      </svg>
-    );
-  }
-  
-  // Alert notification (bell/alert icon)
-  if (key.includes('alert')) {
-    return (
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/>
-      </svg>
-    );
-  }
-  
-  // Multi-entities (multi-person, stores, locations, stages, processes) (people/group icon)
-  if (key.includes('multi') || key.includes('stages') || key.includes('stores') || key.includes('locations') || key.includes('process')) {
-    return (
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
-      </svg>
-    );
-  }
-  
-  // Safety/Incident (warning triangle)
-  if (key.includes('incident') || key.includes('safety')) {
-    return (
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/>
-      </svg>
-    );
-  }
-  
-  // False positive/Error rate (warning circle)
-  if (key.includes('false') || key.includes('error') || key.includes('rate')) {
-    return (
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
-      </svg>
-    );
-  }
-  
-  // Real-time/Live (broadcast icon)
-  if (key.includes('real') && key.includes('time') || key.includes('live') || key.includes('rtsp')) {
-    return (
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/>
-      </svg>
-    );
-  }
-  
-  // Dataset size (database/collection icon)
-  if (key.includes('dataset') || key.includes('samples') || key.includes('recordings') || key.includes('records')) {
-    return (
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM8 20H4v-4h4v4zm0-6H4v-4h4v4zm0-6H4V4h4v4zm6 12h-4v-4h4v4zm0-6h-4v-4h4v4zm0-6h-4V4h4v4zm6 12h-4v-4h4v4zm0-6h-4v-4h4v4zm0-6h-4V4h4v4z"/>
-      </svg>
-    );
-  }
-  
-  // Efficiency/Performance optimization (gear/settings)
-  if (key.includes('efficiency') || key.includes('savings')) {
-    return (
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94L14.4 2.81c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/>
-      </svg>
-    );
-  }
-  
-  // Model/Best model (star icon)
-  if (key.includes('model') || key.includes('best')) {
-    return (
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-      </svg>
-    );
-  }
-  
-  // Default icon for any other metric (metric/chart icon)
-  return (
-    <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4zm2.5 2.1h-15V5h15v14.1zm0-16.1h-15c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h15c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/>
-    </svg>
-  );
-};
+const getMetricIcon = (metricKey) => <Icon name={metricIcon(metricKey)} size={32} />;
 
 export default function ProjectDetail(){
   const { id } = useParams();
-  const p = data.find(x => x.id === id);
+  const p = data.find((x) => x.id === id);
+
+  useSEO({
+    title: p ? p.title : "Project not found",
+    description: p ? p.summary?.slice(0, 155) : "This project does not exist.",
+    path: `/projects/${id}`,
+  });
   
   // Scroll to top when component mounts or id changes
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }, [id]);
   
   if(!p) {
     return (
-      <div className="container project-detail">
-        <h2>Project Not Found</h2>
-        <Link to="/" className="btn btn-secondary">← Back to Home</Link>
-      </div>
+      <main id="main-content" tabIndex={-1} className="container project-detail section">
+        <h1 className="section-title">Project not found</h1>
+        <p className="section-subtitle">This case study may have been renamed or removed.</p>
+        <div className="section-cta">
+          <Link to="/projects" className="btn btn-primary">Back to all projects</Link>
+        </div>
+      </main>
     );
   }
 
@@ -221,7 +97,7 @@ export default function ProjectDetail(){
   );
 
   return (
-    <section className="container project-detail-page" style={{paddingTop: '100px'}}>
+    <main id="main-content" tabIndex={-1} className="container project-detail-page">
       <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem'}}>
         <Link to="/projects" state={{ scrollToProject: p.id }} className="back-link-detailed">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -245,7 +121,7 @@ export default function ProjectDetail(){
       <div className="project-detail-hero">
         {p.companyLogo && (
           <div style={{marginBottom: '16px'}}>
-            <img src={p.companyLogo} alt={p.company} style={{width: '100px', height: '100px', objectFit: 'contain', borderRadius: '8px'}} />
+            <img src={p.companyLogo} alt="" className="project-detail-logo" width="100" height="100" loading="lazy" decoding="async" />
           </div>
         )}
         <div className="project-detail-badges">
@@ -501,6 +377,6 @@ export default function ProjectDetail(){
           All Projects
         </Link>
       </div>
-    </section>
+    </main>
   );
 }

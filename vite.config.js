@@ -4,7 +4,20 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   base: "/",
   plugins: [react()],
-  server: {
-    port: 5173,
+  server: { port: 5173 },
+  build: {
+    target: "es2020",
+    cssCodeSplit: true,
+    reportCompressedSize: false,
+    rollupOptions: {
+      output: {
+        // Keep React in its own long-lived chunk so content edits don't
+        // invalidate the framework for returning visitors.
+        manualChunks: {
+          react: ["react", "react-dom"],
+          router: ["react-router-dom"],
+        },
+      },
+    },
   },
 });

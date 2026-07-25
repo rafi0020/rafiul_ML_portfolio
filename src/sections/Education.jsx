@@ -1,5 +1,6 @@
 
-import { Link } from "react-router-dom";
+import Icon from "../components/Icon";
+import SectionCTA from "../components/SectionCTA";
 
 const educationData = [
   {
@@ -35,9 +36,7 @@ export default function Education({ compact = false }){
       <div className="container">
         <div className="section-header">
           <span className="section-label">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-              <path d="M2 3.75C2 2.784 2.784 2 3.75 2h8.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0112.25 14h-8.5A1.75 1.75 0 012 12.25v-8.5zm1.75-.25a.25.25 0 00-.25.25v8.5c0 .138.112.25.25.25h8.5a.25.25 0 00.25-.25v-8.5a.25.25 0 00-.25-.25h-8.5z"/>
-            </svg>
+            <Icon name="cap" />
             Education
           </span>
           <h2 className="section-title">Academic Background</h2>
@@ -97,14 +96,9 @@ export default function Education({ compact = false }){
         </div>
         
         {compact && (
-          <div style={{textAlign: 'center', marginTop: '3rem'}}>
-            <Link to="/about" state={{ scrollTo: 'education' }} className="btn btn-primary" style={{display: 'inline-flex', alignItems: 'center', gap: '8px'}}>
-              View More Details
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
-              </svg>
-            </Link>
-          </div>
+          <SectionCTA to="/about" state={{ scrollTo: "education" }}>
+            View more details
+          </SectionCTA>
         )}
       </div>
     </section>

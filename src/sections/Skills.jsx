@@ -1,6 +1,7 @@
 
 import { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import Icon from "../components/Icon";
+import SectionCTA from "../components/SectionCTA";
 
 const skillCategories = [
   {
@@ -121,9 +122,7 @@ export default function Skills({ compact = false }){
       <div className="container">
         <div className="section-header">
           <span className="section-label">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-              <path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 01-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 01.872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 012.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 012.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 01.872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 01-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 01-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 110-5.86 2.929 2.929 0 010 5.858z"/>
-            </svg>
+            <Icon name="gear" />
             Tech Stack
           </span>
           <h2 className="section-title">Skills & Expertise</h2>
@@ -171,16 +170,7 @@ export default function Skills({ compact = false }){
         </div>
       </div>
       
-      {compact && (
-        <div style={{textAlign: 'center', marginTop: '3rem'}}>
-          <Link to="/skills" className="btn btn-primary" style={{display: 'inline-flex', alignItems: 'center', gap: '8px'}}>
-            View All Skills
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
-            </svg>
-          </Link>
-        </div>
-      )}
+      {compact && <SectionCTA to="/skills">View all skills</SectionCTA>}
     </section>
   );
 }

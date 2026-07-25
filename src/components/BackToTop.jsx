@@ -1,46 +1,41 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from "react";
+import Icon from "./Icon";
 
 export default function BackToTop() {
   const [isVisible, setIsVisible] = useState(false);
 
-  // Show button when page is scrolled down
   useEffect(() => {
-    const toggleVisibility = () => {
-      if (window.pageYOffset > 300) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
-      }
+    // rAF-throttled + passive so the listener never blocks scrolling.
+    let frame = null;
+    const onScroll = () => {
+      if (frame !== null) return;
+      frame = requestAnimationFrame(() => {
+        setIsVisible(window.scrollY > 300);
+        frame = null;
+      });
     };
 
-    window.addEventListener('scroll', toggleVisibility);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
 
     return () => {
-      window.removeEventListener('scroll', toggleVisibility);
+      window.removeEventListener("scroll", onScroll);
+      if (frame !== null) cancelAnimationFrame(frame);
     };
   }, []);
 
-  // Scroll to top smoothly
   const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.scrollTo({ top: 0, behavior: reduced ? "auto" : "smooth" });
+    // Send focus somewhere sensible instead of leaving it on a vanishing button.
+    document.getElementById("main-content")?.focus({ preventScroll: true });
   };
 
+  if (!isVisible) return null;
+
   return (
-    <>
-      {isVisible && (
-        <button
-          onClick={scrollToTop}
-          className="back-to-top-btn"
-          aria-label="Back to top"
-        >
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
-          </svg>
-        </button>
-      )}
-    </>
+    <button type="button" onClick={scrollToTop} className="back-to-top-btn" aria-label="Back to top">
+      <Icon name="arrowUp" size={20} />
+    </button>
   );
 }

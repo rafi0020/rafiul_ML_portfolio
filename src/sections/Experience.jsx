@@ -1,5 +1,6 @@
 
-import { Link } from "react-router-dom";
+import Icon from "../components/Icon";
+import SectionCTA from "../components/SectionCTA";
 
 const experiences = [
   {
@@ -33,9 +34,7 @@ export default function Experience({ compact = false }){
       <div className="container">
         <div className="section-header">
           <span className="section-label">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-              <path d="M1.5 14.25c0 .138.112.25.25.25H4v-1.25a.75.75 0 01.75-.75h2.5a.75.75 0 01.75.75v1.25h2.25a.25.25 0 00.25-.25V1.75a.25.25 0 00-.25-.25h-8.5a.25.25 0 00-.25.25v12.5zM1.75 16A1.75 1.75 0 010 14.25V1.75C0 .784.784 0 1.75 0h8.5C11.216 0 12 .784 12 1.75v12.5c0 .085-.006.168-.018.25h2.268a.25.25 0 00.25-.25V8.285a.25.25 0 00-.111-.208l-1.055-.703a.75.75 0 11.832-1.248l1.055.703c.487.325.779.871.779 1.456v5.965A1.75 1.75 0 0114.25 16h-3.5a.75.75 0 01-.197-.026c-.099.017-.2.026-.303.026h-3a.75.75 0 01-.75-.75V14h-1v1.25a.75.75 0 01-.75.75h-3z"/>
-            </svg>
+            <Icon name="briefcase" />
             Experience
           </span>
           <h2 className="section-title">Work History</h2>
@@ -63,14 +62,9 @@ export default function Experience({ compact = false }){
         </div>
         
         {compact && (
-          <div style={{textAlign: 'center', marginTop: '3rem'}}>
-            <Link to="/about" state={{ scrollTo: 'experience' }} className="btn btn-primary" style={{display: 'inline-flex', alignItems: 'center', gap: '8px'}}>
-              View Full Experience
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
-              </svg>
-            </Link>
-          </div>
+          <SectionCTA to="/about" state={{ scrollTo: "experience" }}>
+            View full experience
+          </SectionCTA>
         )}
       </div>
     </section>

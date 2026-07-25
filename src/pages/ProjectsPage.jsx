@@ -1,29 +1,35 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import useSEO from "../hooks/useSEO";
 import Projects from "../sections/Projects";
 
 export default function ProjectsPage() {
-  const location = useLocation();
+  const { state } = useLocation();
+
+  useSEO({
+    title: "Projects",
+    description:
+      "Production computer vision and Edge AI systems built for enterprise clients across logistics, manufacturing, and surveillance.",
+    path: "/projects",
+  });
 
   useEffect(() => {
-    if (location.state?.scrollToProject) {
-      // Small delay to ensure DOM is ready
-      setTimeout(() => {
-        const projectElement = document.getElementById(`project-${location.state.scrollToProject}`);
-        if (projectElement) {
-          projectElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          // Add a highlight effect
-          projectElement.style.boxShadow = '0 0 0 3px rgba(88, 166, 255, 0.5)';
-          setTimeout(() => {
-            projectElement.style.boxShadow = '';
-          }, 2000);
-        }
-      }, 100);
-    }
-  }, [location]);
+    if (!state?.scrollToProject) return;
+    const el = document.getElementById(`project-${state.scrollToProject}`);
+    if (!el) return;
+
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    el.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "center" });
+
+    // Highlight via a class rather than mutating inline styles, so the effect
+    // is themable and cannot clobber styles set elsewhere.
+    el.classList.add("is-highlighted");
+    const timer = setTimeout(() => el.classList.remove("is-highlighted"), 2000);
+    return () => clearTimeout(timer);
+  }, [state]);
 
   return (
-    <main>
+    <main id="main-content" tabIndex={-1}>
       <Projects defaultFilter="All" />
     </main>
   );

@@ -1,8 +1,16 @@
+import useSEO from "../hooks/useSEO";
 import Publications from "../sections/Publications";
 
 export default function ResearchPage() {
+  useSEO({
+    title: "Research",
+    description:
+      "Peer-reviewed publications in machine learning, computational healthcare, and trustworthy AI.",
+    path: "/research",
+  });
+
   return (
-    <main>
+    <main id="main-content" tabIndex={-1}>
       <Publications />
     </main>
   );
