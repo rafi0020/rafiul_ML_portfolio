@@ -8,7 +8,7 @@ A modern, responsive portfolio website showcasing my work as an **Applied AI Eng
 
 - **Modern UI/UX**: Clean, professional design with glassmorphism effects and smooth animations
 - **Responsive Design**: Fully responsive across all devices (desktop, tablet, mobile)
-- **Project Showcase**: Detailed display of 10+ industrial and 5+ research projects
+- **Project Showcase**: Detailed display of 17+ industrial and 5+ research projects
 - **Publications**: Showcasing peer-reviewed AI research papers
 - **Skills & Expertise**: Comprehensive display of technical skills and tools
 - **Contact Integration**: Multiple ways to connect (Email, LinkedIn, GitHub, Google Scholar, ResearchGate)

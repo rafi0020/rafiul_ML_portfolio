@@ -8,7 +8,7 @@ const CVS = [
 ];
 
 const STATS = [
-  { value: "10+", label: "Industrial projects" },
+  { value: "17+", label: "Industrial projects" },
   { value: "5+", label: "Research projects" },
   { value: "2", label: "Publications" },
 ];
