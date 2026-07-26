@@ -723,218 +723,6 @@
     }
   },
   {
-    "id": "crowd-mob-detection",
-    "title": "Crowd / Mob Detection (Multi-Modal Public Safety Analytics)",
-    "category": "Industry",
-    "company": "Bondstein Technologies (Internal R&D)",
-    "companyLogo": "./assets/logo/bondstein.png",
-    "demoLink": "https://rafi0020.github.io/Crowd_mob_demo/",
-    "timeline": "2025",
-    "scale": "Public Safety R&D",
-    "summary": "Multi-modal public safety analytics system combining YOLO multi-class detection, DeepSORT tracking, depth estimation, and heatmap smoothing for crowd monitoring, threat detection, and weapon-aware escalation.",
-    "problem": "Public safety monitoring required real-time detection of crowd densities, suspicious individuals, victims, and weapons across large areas. Traditional surveillance systems lacked depth awareness and intelligent escalation capabilities.",
-    "approach": "Developed YOLO-based multi-class detection pipeline for person, suspect, victim, and weapon categories. Integrated DeepSORT tracking with Depth-Anything-V2 for monocular depth estimation. Implemented depth-aware spatial clustering, heatmap smoothing for crowd density, and weapon-aware escalation logic with suspect pinning across frames.",
-    "impact": "Demonstrated capability for real-time multi-class threat detection with depth-aware spatial reasoning. Weapon detection triggers automatic escalation and suspect tracking across camera feeds. Heatmap visualization enables crowd density monitoring for proactive safety management.",
-    "stack": [
-      "YOLOv11",
-      "DeepSORT",
-      "Depth-Anything-V2",
-      "OpenCV",
-      "Python",
-      "Heatmap Smoothing"
-    ],
-    "features": [
-      "Multi-class detection (person/suspect/victim/weapon)",
-      "DeepSORT tracking with persistent IDs",
-      "Monocular depth estimation with Depth-Anything-V2",
-      "Depth-aware spatial clustering for crowd analysis",
-      "Heatmap smoothing for density visualization",
-      "Weapon-aware escalation and suspect pinning",
-      "Real-time threat level assessment"
-    ],
-    "metrics": {
-      "Detection Classes": "4 (person/suspect/victim/weapon)",
-      "Tracking": "DeepSORT + Depth",
-      "Depth Model": "Depth-Anything-V2"
-    },
-    "architecture": {
-      "description": "Multi-modal detection pipeline with depth-aware reasoning and escalation logic",
-      "components": [
-        {
-          "name": "YOLO Multi-Class Detector",
-          "description": "Detects persons, suspects, victims, and weapons in real-time video streams"
-        },
-        {
-          "name": "DeepSORT Tracker",
-          "description": "Maintains persistent object IDs across frames for continuous tracking"
-        },
-        {
-          "name": "Depth-Anything-V2 Module",
-          "description": "Monocular depth estimation for spatial awareness and distance reasoning"
-        },
-        {
-          "name": "Depth-Aware Clustering",
-          "description": "Groups detections using depth information for accurate crowd density analysis"
-        },
-        {
-          "name": "Heatmap Generator",
-          "description": "Produces smoothed density heatmaps for crowd visualization and hotspot detection"
-        },
-        {
-          "name": "Escalation Engine",
-          "description": "Weapon-aware threat escalation with suspect pinning and alert generation"
-        }
-      ]
-    },
-    "media": {
-      "images": [],
-      "videos": []
-    }
-  },
-  {
-    "id": "juice-flow-anomaly",
-    "title": "Juice Flow Anomaly Detection (Food-Safety Edge Anomaly Segmentation)",
-    "category": "Industry",
-    "company": "Bondstein Technologies (Internal R&D)",
-    "companyLogo": "./assets/logo/bondstein.png",
-    "inDevelopment": true,
-    "timeline": "2025",
-    "scale": "Edge Deployment R&D",
-    "summary": "U-Net segmentation-based anomaly detection system for juice-flow pipe inspection, designed for Jetson Orin Nano edge deployment with TensorRT optimization and temporal confirmation logic.",
-    "problem": "Food-safety inspection of juice-flow pipes required continuous, real-time monitoring for anomalies (contamination, discoloration, blockage). Manual inspection was inconsistent and couldn't cover all production lines simultaneously.",
-    "approach": "Developed U-Net segmentation model for pixel-level anomaly detection in juice-flow pipe imagery. Planned deployment on Jetson Orin Nano with TensorRT FP16/INT8 optimization for real-time edge inference. Evaluation emphasis on IoU, precision, recall, false alarm rate, and temporal confirmation to reduce false positives.",
-    "impact": "Demonstrated viable approach for food-safety anomaly segmentation at edge. TensorRT optimization enables real-time processing on resource-constrained hardware. Temporal confirmation logic significantly reduces false alarm rates while maintaining detection sensitivity.",
-    "stack": [
-      "U-Net",
-      "PyTorch",
-      "TensorRT",
-      "Jetson Orin Nano",
-      "OpenCV",
-      "Python"
-    ],
-    "features": [
-      "U-Net segmentation-based anomaly detection",
-      "Jetson Orin Nano edge deployment plan",
-      "TensorRT FP16/INT8 optimization",
-      "IoU/precision/recall/false alarm evaluation",
-      "Temporal confirmation for false positive reduction",
-      "Real-time pipe flow monitoring"
-    ],
-    "metrics": {
-      "Model": "U-Net Segmentation",
-      "Deployment": "Jetson Orin Nano",
-      "Optimization": "TensorRT FP16/INT8"
-    },
-    "architecture": {
-      "description": "Edge-optimized segmentation pipeline for real-time food-safety inspection",
-      "components": [
-        {
-          "name": "Camera Input Module",
-          "description": "Captures real-time video of juice-flow pipe for continuous monitoring"
-        },
-        {
-          "name": "U-Net Segmentation Model",
-          "description": "Pixel-level anomaly detection trained on normal vs anomalous pipe imagery"
-        },
-        {
-          "name": "TensorRT Inference Engine",
-          "description": "Optimized FP16/INT8 inference for Jetson Orin Nano edge deployment"
-        },
-        {
-          "name": "Temporal Confirmation Module",
-          "description": "Validates detections across multiple frames to reduce false alarms"
-        },
-        {
-          "name": "Alert & Logging Service",
-          "description": "Generates alerts for confirmed anomalies with image evidence and timestamps"
-        }
-      ]
-    },
-    "media": {
-      "images": [],
-      "videos": []
-    }
-  },
-  {
-    "id": "counterfeit",
-    "title": "Anti-Counterfeit Detection System",
-    "category": "Industry",
-    "company": "Bondstein Technologies (Internal R&D)",
-    "companyLogo": "./assets/logo/bondstein.png",
-    "inDevelopment": true,
-    "timeline": "2025",
-    "scale": "Production Scale",
-    "summary": "Deep learning-based system for detecting counterfeit tobacco packaging using multi-stage visual inspection.",
-    "problem": "Counterfeit products damaged brand reputation and revenue. Manual inspection was slow, subjective, and missed subtle differences. Need for automated, objective quality control at production scale.",
-    "approach": "Built two-stage pipeline: YOLOv11 for package detection/localization, followed by custom CNN classifier trained on authentic vs. counterfeit features (print quality, hologram patterns, text alignment). Used transfer learning from ImageNet with fine-tuning on proprietary dataset. Implemented ensemble model for high-confidence predictions.",
-    "impact": "Achieved 96%+ accuracy in controlled lab testing. Reduced manual inspection time by 80%. Enabled real-time screening of thousands of packages daily. Created tamper-proof audit trail with image evidence for law enforcement.",
-    "stack": [
-      "YOLOv11",
-      "PyTorch",
-      "EfficientNet",
-      "FastAPI",
-      "PostgreSQL",
-      "MLflow"
-    ],
-    "features": [
-      "Multi-class counterfeit detection",
-      "Fine-grained feature analysis (holograms, micro-text)",
-      "Confidence scoring with explainability",
-      "Real-time API for production line integration",
-      "Continuous learning pipeline with new samples",
-      "Audit trail with image storage"
-    ],
-    "metrics": {
-      "accuracy": "96%",
-      "throughput": "1000+ packages/hour",
-      "false_positive_rate": "<2%"
-    },
-    "media": {
-      "images": [],
-      "videos": []
-    }
-  },
-  {
-    "id": "hr-chatbot",
-    "title": "Intelligent HR Assistant with LLM",
-    "category": "Industry",
-    "company": "Bondstein Technologies (Internal R&D)",
-    "companyLogo": "./assets/logo/bondstein.png",
-    "inDevelopment": true,
-    "timeline": "2025",
-    "scale": "500+ Employees",
-    "summary": "Enterprise LLM-powered chatbot for automated HR query handling and policy assistance.",
-    "problem": "HR department overwhelmed with repetitive queries about policies, leave, benefits, and procedures. 60%+ of queries were routine but required human response. Knowledge base scattered across documents. New employees struggled with onboarding information.",
-    "approach": "Fine-tuned large language model (LLaMA 2) on company HR documents, policies, and FAQ corpus. Implemented RAG (Retrieval-Augmented Generation) with vector database for accurate, grounded responses. Built conversational interface with multi-turn context awareness. Added guardrails for sensitive topics requiring human escalation.",
-    "impact": "Reduced HR team workload by 65% for routine queries. Achieved 85%+ user satisfaction scores. Enabled 24/7 employee support. Reduced average query resolution time from 4 hours to 2 minutes. Onboarding time decreased by 40%.",
-    "stack": [
-      "LLaMA 2",
-      "LangChain",
-      "ChromaDB",
-      "FastAPI",
-      "React",
-      "PostgreSQL"
-    ],
-    "features": [
-      "Natural language query understanding",
-      "RAG-based accurate policy retrieval",
-      "Multi-turn conversation with context memory",
-      "Automatic escalation for sensitive queries",
-      "Integration with HRMS for personalized responses",
-      "Analytics on common queries and satisfaction",
-      "Multi-language support"
-    ],
-    "metrics": {
-      "workload_reduction": "65%",
-      "satisfaction": "85%",
-      "resolution_time": "2 minutes avg"
-    },
-    "media": {
-      "images": [],
-      "videos": []
-    }
-  },
-  {
     "id": "brac-bank-face-recognition",
     "title": "BRAC Bank ATM Face Recognition & Review System",
     "category": "Industry",
@@ -1424,6 +1212,218 @@
           "description": "Open-vocab flame detection with temporal voting and zone gating"
         }
       ]
+    },
+    "media": {
+      "images": [],
+      "videos": []
+    }
+  },
+  {
+    "id": "crowd-mob-detection",
+    "title": "Crowd / Mob Detection (Multi-Modal Public Safety Analytics)",
+    "category": "Industry",
+    "company": "Bondstein Technologies (Internal R&D)",
+    "companyLogo": "./assets/logo/bondstein.png",
+    "demoLink": "https://rafi0020.github.io/Crowd_mob_demo/",
+    "timeline": "2025",
+    "scale": "Public Safety R&D",
+    "summary": "Multi-modal public safety analytics system combining YOLO multi-class detection, DeepSORT tracking, depth estimation, and heatmap smoothing for crowd monitoring, threat detection, and weapon-aware escalation.",
+    "problem": "Public safety monitoring required real-time detection of crowd densities, suspicious individuals, victims, and weapons across large areas. Traditional surveillance systems lacked depth awareness and intelligent escalation capabilities.",
+    "approach": "Developed YOLO-based multi-class detection pipeline for person, suspect, victim, and weapon categories. Integrated DeepSORT tracking with Depth-Anything-V2 for monocular depth estimation. Implemented depth-aware spatial clustering, heatmap smoothing for crowd density, and weapon-aware escalation logic with suspect pinning across frames.",
+    "impact": "Demonstrated capability for real-time multi-class threat detection with depth-aware spatial reasoning. Weapon detection triggers automatic escalation and suspect tracking across camera feeds. Heatmap visualization enables crowd density monitoring for proactive safety management.",
+    "stack": [
+      "YOLOv11",
+      "DeepSORT",
+      "Depth-Anything-V2",
+      "OpenCV",
+      "Python",
+      "Heatmap Smoothing"
+    ],
+    "features": [
+      "Multi-class detection (person/suspect/victim/weapon)",
+      "DeepSORT tracking with persistent IDs",
+      "Monocular depth estimation with Depth-Anything-V2",
+      "Depth-aware spatial clustering for crowd analysis",
+      "Heatmap smoothing for density visualization",
+      "Weapon-aware escalation and suspect pinning",
+      "Real-time threat level assessment"
+    ],
+    "metrics": {
+      "Detection Classes": "4 (person/suspect/victim/weapon)",
+      "Tracking": "DeepSORT + Depth",
+      "Depth Model": "Depth-Anything-V2"
+    },
+    "architecture": {
+      "description": "Multi-modal detection pipeline with depth-aware reasoning and escalation logic",
+      "components": [
+        {
+          "name": "YOLO Multi-Class Detector",
+          "description": "Detects persons, suspects, victims, and weapons in real-time video streams"
+        },
+        {
+          "name": "DeepSORT Tracker",
+          "description": "Maintains persistent object IDs across frames for continuous tracking"
+        },
+        {
+          "name": "Depth-Anything-V2 Module",
+          "description": "Monocular depth estimation for spatial awareness and distance reasoning"
+        },
+        {
+          "name": "Depth-Aware Clustering",
+          "description": "Groups detections using depth information for accurate crowd density analysis"
+        },
+        {
+          "name": "Heatmap Generator",
+          "description": "Produces smoothed density heatmaps for crowd visualization and hotspot detection"
+        },
+        {
+          "name": "Escalation Engine",
+          "description": "Weapon-aware threat escalation with suspect pinning and alert generation"
+        }
+      ]
+    },
+    "media": {
+      "images": [],
+      "videos": []
+    }
+  },
+  {
+    "id": "juice-flow-anomaly",
+    "title": "Juice Flow Anomaly Detection (Food-Safety Edge Anomaly Segmentation)",
+    "category": "Industry",
+    "company": "Bondstein Technologies (Internal R&D)",
+    "companyLogo": "./assets/logo/bondstein.png",
+    "inDevelopment": true,
+    "timeline": "2025",
+    "scale": "Edge Deployment R&D",
+    "summary": "U-Net segmentation-based anomaly detection system for juice-flow pipe inspection, designed for Jetson Orin Nano edge deployment with TensorRT optimization and temporal confirmation logic.",
+    "problem": "Food-safety inspection of juice-flow pipes required continuous, real-time monitoring for anomalies (contamination, discoloration, blockage). Manual inspection was inconsistent and couldn't cover all production lines simultaneously.",
+    "approach": "Developed U-Net segmentation model for pixel-level anomaly detection in juice-flow pipe imagery. Planned deployment on Jetson Orin Nano with TensorRT FP16/INT8 optimization for real-time edge inference. Evaluation emphasis on IoU, precision, recall, false alarm rate, and temporal confirmation to reduce false positives.",
+    "impact": "Demonstrated viable approach for food-safety anomaly segmentation at edge. TensorRT optimization enables real-time processing on resource-constrained hardware. Temporal confirmation logic significantly reduces false alarm rates while maintaining detection sensitivity.",
+    "stack": [
+      "U-Net",
+      "PyTorch",
+      "TensorRT",
+      "Jetson Orin Nano",
+      "OpenCV",
+      "Python"
+    ],
+    "features": [
+      "U-Net segmentation-based anomaly detection",
+      "Jetson Orin Nano edge deployment plan",
+      "TensorRT FP16/INT8 optimization",
+      "IoU/precision/recall/false alarm evaluation",
+      "Temporal confirmation for false positive reduction",
+      "Real-time pipe flow monitoring"
+    ],
+    "metrics": {
+      "Model": "U-Net Segmentation",
+      "Deployment": "Jetson Orin Nano",
+      "Optimization": "TensorRT FP16/INT8"
+    },
+    "architecture": {
+      "description": "Edge-optimized segmentation pipeline for real-time food-safety inspection",
+      "components": [
+        {
+          "name": "Camera Input Module",
+          "description": "Captures real-time video of juice-flow pipe for continuous monitoring"
+        },
+        {
+          "name": "U-Net Segmentation Model",
+          "description": "Pixel-level anomaly detection trained on normal vs anomalous pipe imagery"
+        },
+        {
+          "name": "TensorRT Inference Engine",
+          "description": "Optimized FP16/INT8 inference for Jetson Orin Nano edge deployment"
+        },
+        {
+          "name": "Temporal Confirmation Module",
+          "description": "Validates detections across multiple frames to reduce false alarms"
+        },
+        {
+          "name": "Alert & Logging Service",
+          "description": "Generates alerts for confirmed anomalies with image evidence and timestamps"
+        }
+      ]
+    },
+    "media": {
+      "images": [],
+      "videos": []
+    }
+  },
+  {
+    "id": "counterfeit",
+    "title": "Anti-Counterfeit Detection System",
+    "category": "Industry",
+    "company": "Bondstein Technologies (Internal R&D)",
+    "companyLogo": "./assets/logo/bondstein.png",
+    "inDevelopment": true,
+    "timeline": "2025",
+    "scale": "Production Scale",
+    "summary": "Deep learning-based system for detecting counterfeit tobacco packaging using multi-stage visual inspection.",
+    "problem": "Counterfeit products damaged brand reputation and revenue. Manual inspection was slow, subjective, and missed subtle differences. Need for automated, objective quality control at production scale.",
+    "approach": "Built two-stage pipeline: YOLOv11 for package detection/localization, followed by custom CNN classifier trained on authentic vs. counterfeit features (print quality, hologram patterns, text alignment). Used transfer learning from ImageNet with fine-tuning on proprietary dataset. Implemented ensemble model for high-confidence predictions.",
+    "impact": "Achieved 96%+ accuracy in controlled lab testing. Reduced manual inspection time by 80%. Enabled real-time screening of thousands of packages daily. Created tamper-proof audit trail with image evidence for law enforcement.",
+    "stack": [
+      "YOLOv11",
+      "PyTorch",
+      "EfficientNet",
+      "FastAPI",
+      "PostgreSQL",
+      "MLflow"
+    ],
+    "features": [
+      "Multi-class counterfeit detection",
+      "Fine-grained feature analysis (holograms, micro-text)",
+      "Confidence scoring with explainability",
+      "Real-time API for production line integration",
+      "Continuous learning pipeline with new samples",
+      "Audit trail with image storage"
+    ],
+    "metrics": {
+      "accuracy": "96%",
+      "throughput": "1000+ packages/hour",
+      "false_positive_rate": "<2%"
+    },
+    "media": {
+      "images": [],
+      "videos": []
+    }
+  },
+  {
+    "id": "hr-chatbot",
+    "title": "Intelligent HR Assistant with LLM",
+    "category": "Industry",
+    "company": "Bondstein Technologies (Internal R&D)",
+    "companyLogo": "./assets/logo/bondstein.png",
+    "inDevelopment": true,
+    "timeline": "2025",
+    "scale": "500+ Employees",
+    "summary": "Enterprise LLM-powered chatbot for automated HR query handling and policy assistance.",
+    "problem": "HR department overwhelmed with repetitive queries about policies, leave, benefits, and procedures. 60%+ of queries were routine but required human response. Knowledge base scattered across documents. New employees struggled with onboarding information.",
+    "approach": "Fine-tuned large language model (LLaMA 2) on company HR documents, policies, and FAQ corpus. Implemented RAG (Retrieval-Augmented Generation) with vector database for accurate, grounded responses. Built conversational interface with multi-turn context awareness. Added guardrails for sensitive topics requiring human escalation.",
+    "impact": "Reduced HR team workload by 65% for routine queries. Achieved 85%+ user satisfaction scores. Enabled 24/7 employee support. Reduced average query resolution time from 4 hours to 2 minutes. Onboarding time decreased by 40%.",
+    "stack": [
+      "LLaMA 2",
+      "LangChain",
+      "ChromaDB",
+      "FastAPI",
+      "React",
+      "PostgreSQL"
+    ],
+    "features": [
+      "Natural language query understanding",
+      "RAG-based accurate policy retrieval",
+      "Multi-turn conversation with context memory",
+      "Automatic escalation for sensitive queries",
+      "Integration with HRMS for personalized responses",
+      "Analytics on common queries and satisfaction",
+      "Multi-language support"
+    ],
+    "metrics": {
+      "workload_reduction": "65%",
+      "satisfaction": "85%",
+      "resolution_time": "2 minutes avg"
     },
     "media": {
       "images": [],
