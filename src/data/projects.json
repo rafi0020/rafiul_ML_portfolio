@@ -935,442 +935,6 @@
     }
   },
   {
-    "id": "voice-vit",
-    "title": "Mental Health Diagnosis Using CNNs and Vision Transformers",
-    "category": "Research",
-    "company": "Daffodil International University",
-    "companyLogo": "./assets/logo/diu_logo.png",
-    "timeline": "2023-2024",
-    "scale": "Published Research",
-    "summary": "Novel deep learning approach using Vision Transformers and CNNs for mental health condition classification from voice data. Published in Journal of Voice (Scopus Q1).",
-    "problem": "Mental health diagnosis relies heavily on subjective clinical assessment. Voice biomarkers offer objective, non-invasive screening but are under-researched. The Bengali voice data domain is especially scarce. Existing datasets are small and noisy, and robust models are needed for acoustic variability.",
-    "approach": "Converted audio to log-mel spectrograms, treating voice analysis as a vision-driven learning problem. Proposed hybrid CNN-ViT architecture: CNN layers extract local acoustic patterns, ViT captures long-range dependencies in temporal sequences. Applied class imbalance handling (SMOTE), data augmentation, and robust evaluation methodology. Used ethically collected Bengali voice data from mental health institutions in Bangladesh.",
-    "impact": "Published in Journal of Voice (Scopus Q1 journal). Achieved ~91% accuracy with ROC-AUC around 0.97. Demonstrated potential for scalable, clinically meaningful diagnostic pipelines. Contributed to the first open-source Bengali voice dataset for mental health diagnostics. Dataset: https://data.mendeley.com/datasets/s5j25b5tjk/1",
-    "stack": [
-      "PyTorch",
-      "Vision Transformer",
-      "Librosa",
-      "scikit-learn",
-      "Weights & Biases",
-      "Jupyter"
-    ],
-    "features": [
-      "Audio preprocessing pipeline with noise reduction and consistent 48 kHz sampling",
-      "Log-mel spectrogram conversion (spectrogram-as-image paradigm)",
-      "Hybrid CNN-ViT architecture for feature learning",
-      "Class imbalance handling with SMOTE",
-      "Attention visualization for interpretability",
-      "Cross-validation with robust evaluation methodology"
-    ],
-    "metrics": {
-      "accuracy": "~91%",
-      "ROC-AUC": "~0.97",
-      "dataset": "85 Bengali voice recordings"
-    },
-    "architecture": {
-      "description": "Hybrid CNN-ViT pipeline for voice-based mental health classification",
-      "components": [
-        {
-          "name": "Audio Preprocessing",
-          "description": "Noise reduction, normalization, and feature extraction (mel-spectrograms, MFCCs)"
-        },
-        {
-          "name": "CNN Feature Extractor",
-          "description": "Convolutional layers capturing local acoustic patterns and spectral features"
-        },
-        {
-          "name": "Vision Transformer",
-          "description": "Self-attention mechanism for long-range temporal dependencies in voice sequences"
-        },
-        {
-          "name": "Classification Head",
-          "description": "Multi-class classifier for mental health condition prediction with confidence scores"
-        },
-        {
-          "name": "Attention Visualization",
-          "description": "Interpretability module showing which audio segments contribute to predictions"
-        }
-      ]
-    },
-    "media": {
-      "images": [],
-      "videos": []
-    },
-    "github": "https://rafi0020.github.io/Mental_Health_Diagnosis_Voice_with_ViT-CNN/"
-  },
-  {
-    "id": "mental-stability-transfer-learning",
-    "title": "Transfer Learning for Mental Stability Classification",
-    "category": "Research",
-    "company": "Daffodil International University",
-    "companyLogo": "./assets/logo/diu_logo.png",
-    "timeline": "2024",
-    "scale": "85 Voice Recordings",
-    "summary": "Novel transfer learning approach using CNNs and spectrogram analysis for voice-based mental health diagnostics.",
-    "problem": "Mental health diagnostics often rely on subjective clinical assessments with limited resources. Traditional methods lack objective, non-invasive screening tools. Voice biomarkers offer potential for early detection but face challenges with small datasets and acoustic variability.",
-    "approach": "Converted voice recordings to spectrograms using Short-Time Fourier Transform (STFT). Implemented transfer learning with three pre-trained CNN architectures: VGG16 for spatial hierarchies, InceptionV3 for multi-scale features, and DenseNet121 for feature reuse. Applied data augmentation techniques (SpecAugment, Gaussian noise, random erasing) to improve generalization. Pre-trained models on augmented data, then fine-tuned on non-augmented data for task-specific learning.",
-    "impact": "DenseNet121 achieved 94% accuracy and 0.99 AUC, outperforming other architectures. Demonstrated viability of voice-based mental health screening for tele-psychiatry applications. Research carried out under Dr. Md. Taimur Ahad at the 4IR Research Cell, DIU. Used ethically collected Bengali voice data (85 recordings, balanced stable/unstable, 48 kHz sampling, noise/trim normalization). Provides objective screening method to complement clinical assessment.",
-    "stack": [
-      "TensorFlow",
-      "Keras",
-      "VGG16",
-      "InceptionV3",
-      "DenseNet121",
-      "Librosa",
-      "NumPy"
-    ],
-    "features": [
-      "Voice-to-spectrogram conversion with STFT",
-      "Transfer learning with multiple CNN architectures",
-      "Data augmentation for improved robustness",
-      "Binary classification (stable vs. unstable)",
-      "Training/validation visualization (accuracy, loss, confusion matrix, ROC curves)",
-      "Comparative analysis of VGG16, InceptionV3, and DenseNet121"
-    ],
-    "metrics": {
-      "accuracy": "94%",
-      "auc": "0.99",
-      "dataset": "85 voice recordings"
-    },
-    "architecture": {
-      "description": "Transfer learning pipeline with pre-trained CNNs for voice-based mental health classification",
-      "components": [
-        {
-          "name": "Audio Preprocessing",
-          "description": "STFT conversion to spectrograms with configurable window and hop length"
-        },
-        {
-          "name": "Data Augmentation",
-          "description": "SpecAugment, Gaussian noise, and random erasing for improved generalization"
-        },
-        {
-          "name": "VGG16 Branch",
-          "description": "Pre-trained on ImageNet, fine-tuned for spatial hierarchies in spectrograms"
-        },
-        {
-          "name": "InceptionV3 Branch",
-          "description": "Multi-scale feature extraction with inception modules for diverse acoustic patterns"
-        },
-        {
-          "name": "DenseNet121 Branch",
-          "description": "Dense connectivity for feature reuse and gradient flow, best performer at 94% accuracy"
-        },
-        {
-          "name": "Ensemble Module",
-          "description": "Combines predictions from multiple architectures for robust classification"
-        },
-        {
-          "name": "Evaluation Framework",
-          "description": "Comprehensive metrics including accuracy, loss curves, confusion matrix, and ROC analysis"
-        }
-      ]
-    },
-    "media": {
-      "images": [],
-      "videos": []
-    },
-    "github": "https://rafi0020.github.io/Mental_Stability_TransferLearning/"
-  },
-  {
-    "id": "hybrid-densevitgru-xai",
-    "title": "Hybrid Deep Models for Mental Health Detection with XAI Techniques",
-    "category": "Research",
-    "company": "Daffodil International University",
-    "companyLogo": "./assets/logo/diu_logo.png",
-    "timeline": "2025-2026",
-    "scale": "Ongoing Research",
-    "summary": "Hybrid DenseNet–ViT–GRU architecture with Explainable AI (Grad-CAM, LIME, SHAP) for diagnosing psychological stability from voice spectrograms. Combines local, global, and sequential feature learning with transparent, interpretable predictions.",
-    "problem": "Mental health diagnostics are often subjective and dependent on self-reports and clinician observation. Existing deep learning models lack transparency in clinical decision-making. There is a need for interpretable, multi-level feature extraction that captures local patterns, global context, and temporal sequences in voice data simultaneously.",
-    "approach": "Proposed a three-stage hybrid deep learning architecture: DenseNet-style CNN for extracting local time–frequency patterns from log-mel spectrograms, Vision Transformer (ViT) for capturing long-range global dependencies, and GRU for sequential aggregation of learned representations. Applied SMOTE on training spectrogram features for class balancing. Used SpecAugment-style time/frequency masking and random shifts for augmentation. Evaluated with 5-Fold Cross Validation. Integrated three XAI methods — Grad-CAM heatmaps, LIME local explanations, and SHAP global/local attributions — to interpret model predictions on spectrograms.",
-    "impact": "Achieved ~89.81% combined accuracy across all folds with mean AUC of 0.962. Grad-CAM highlights the most influential time–frequency regions used by the model. LIME identifies positive/negative contributing spectrogram regions. SHAP provides Shapley-value attribution for both stable and unstable predictions. Research carried out under Dr. Md. Taimur Ahad at the 4IR Research Cell, DIU. Manuscript in preparation. Dataset not included due to privacy/ethical constraints.",
-    "stack": [
-      "TensorFlow",
-      "Keras",
-      "DenseNet",
-      "Vision Transformer",
-      "GRU",
-      "LIME",
-      "SHAP",
-      "Grad-CAM",
-      "Librosa",
-      "OpenCV",
-      "Scikit-learn"
-    ],
-    "features": [
-      "Log-mel spectrogram generation from audio signals (128 mel bands, 48 kHz)",
-      "Hybrid DenseNet → ViT → GRU architecture for multi-level feature extraction",
-      "SMOTE applied on training features for class balancing",
-      "SpecAugment-style time/frequency masking and random shifts",
-      "5-Fold Cross Validation with stable ROC-AUC across folds",
-      "Grad-CAM heatmap visualization for model attention",
-      "LIME local explanations (positive/negative contributing regions)",
-      "SHAP global and local attributions on spectrograms"
-    ],
-    "metrics": {
-      "accuracy": "~89.81%",
-      "Mean AUC": "0.962",
-      "AUC Fold Range": "0.95–0.97",
-      "XAI Methods": "Grad-CAM, LIME, SHAP"
-    },
-    "architecture": {
-      "description": "Hybrid DenseNet–ViT–GRU pipeline with XAI for voice-based mental health detection",
-      "components": [
-        {
-          "name": "Audio Preprocessing",
-          "description": "Log-mel spectrogram extraction at 48 kHz sample rate, 2-second segments, 128 mel bands"
-        },
-        {
-          "name": "DenseNet Feature Extractor",
-          "description": "Dense connectivity CNN extracting local time–frequency patterns from spectrograms"
-        },
-        {
-          "name": "Vision Transformer (ViT)",
-          "description": "Captures long-range global dependencies across the spectrogram using self-attention"
-        },
-        {
-          "name": "GRU Sequence Aggregator",
-          "description": "Gated Recurrent Unit for sequential aggregation of learned multi-level representations"
-        },
-        {
-          "name": "XAI Interpretation Layer",
-          "description": "Grad-CAM heatmaps, LIME local explanations, and SHAP attributions for transparent predictions"
-        }
-      ]
-    },
-    "media": {
-      "images": [],
-      "videos": []
-    },
-    "github": "https://rafi0020.github.io/Hybrid-DenseViTGRU-XAI-Voice/"
-  },
-  {
-    "id": "selfsupervised-vit-noisy-voice",
-    "title": "Self-Supervised Learning with ViT for Noisy Real-World Data",
-    "category": "Research",
-    "company": "Daffodil International University",
-    "companyLogo": "./assets/logo/diu_logo.png",
-    "timeline": "2025-2026",
-    "scale": "Ongoing Research",
-    "summary": "Self-supervised pretraining with masked spectrogram reconstruction followed by supervised ViT-style classification for robust mental stability detection from noisy, unprocessed real-world voice data.",
-    "problem": "Real-world voice data collected outside laboratory conditions is often noisy, untrimmed, and distribution-shifted, which significantly degrades the performance of fully supervised models trained on curated datasets. Labeled data is expensive and scarce in the mental health domain. Robust classification under real-world noisy conditions remains a key challenge.",
-    "approach": "Introduced a two-stage framework: (1) Self-supervised pretraining on unlabeled voice spectrograms using a masked reconstruction objective with MSE loss — randomly masks time–frequency regions and trains a reconstruction network to recover the original spectrogram. (2) Supervised fine-tuning of a ViT-style classifier with frequency band attention, Conv1D blocks for local temporal features, and Transformer blocks (Multi-Head Self-Attention + FFN) for global dependencies. Pretrained SSL weights are transferred to the classifier for fine-tuning on unprocessed/noisy data. Evaluated with 5-Fold Cross-Validation and ensemble of top-performing folds.",
-    "impact": "Ensemble accuracy of 84.90% on noisy real-world data (precision 89.79%, recall 82.69%, F1-score 86.10%). Demonstrated that self-supervised pretraining significantly improves robustness under distribution shift. Stable convergence across folds under noisy conditions. Research carried out under Dr. Md. Taimur Ahad at the 4IR Research Cell, DIU. Manuscript in preparation. Dataset not included due to privacy/ethical constraints.",
-    "stack": [
-      "TensorFlow",
-      "Keras",
-      "Vision Transformer",
-      "Conv1D",
-      "Librosa",
-      "NumPy",
-      "Pandas",
-      "Scikit-learn",
-      "imbalanced-learn",
-      "OpenCV"
-    ],
-    "features": [
-      "Self-supervised masked spectrogram reconstruction pretraining (MSE loss)",
-      "ViT-style Transformer classifier with frequency band attention",
-      "Conv1D blocks for local temporal feature extraction",
-      "Multi-Head Self-Attention + FFN for global dependencies",
-      "Transfer learning from SSL pretrained weights to supervised classifier",
-      "5-Fold Cross-Validation with ensemble of top-performing folds",
-      "Robust classification on unprocessed, noisy real-world voice data",
-      "Log-mel spectrogram input representation"
-    ],
-    "metrics": {
-      "Ensemble Accuracy": "84.90%",
-      "Precision": "89.79%",
-      "Recall": "82.69%",
-      "F1-Score": "86.10%"
-    },
-    "architecture": {
-      "description": "Two-stage SSL pretraining + supervised ViT-style classification for noisy voice data",
-      "components": [
-        {
-          "name": "Audio Preprocessing",
-          "description": "Log-mel spectrogram extraction from raw voice segments at 48 kHz, 2-second segments"
-        },
-        {
-          "name": "Self-Supervised Reconstruction",
-          "description": "Masked spectrogram reconstruction on unlabeled data using MSE loss for representation learning"
-        },
-        {
-          "name": "Frequency Band Attention",
-          "description": "Learns importance weights across frequency regions of the spectrogram"
-        },
-        {
-          "name": "Conv1D Temporal Encoder",
-          "description": "Local temporal feature extraction from spectrogram representations"
-        },
-        {
-          "name": "Transformer Classifier",
-          "description": "Multi-Head Self-Attention + Feed-Forward Networks for global dependency modeling"
-        },
-        {
-          "name": "Ensemble Evaluator",
-          "description": "Combines top-performing folds for robust final prediction on noisy test data"
-        }
-      ]
-    },
-    "media": {
-      "images": [],
-      "videos": []
-    },
-    "github": "https://rafi0020.github.io/SelfSupervised-ViT-Noisy-Voice-Spectrograms/"
-  },
-  {
-    "id": "skin-cancer-detection",
-    "title": "Skin Cancer Detection Using Computer Vision",
-    "category": "Research",
-    "company": "Daffodil International University",
-    "companyLogo": "./assets/logo/diu_logo.png",
-    "summary": "Deep CNN-based system for classifying benign and malignant skin lesions to enhance early detection in Bangladesh. Published as arXiv preprint with emphasis on interpretability and transparency in deep learning models.",
-    "problem": "Bangladesh faces significant dermatologist shortage while skin cancer prevalence rises. Early detection crucial for treatment but manual screening time-consuming and error-prone. Need for automated, accessible diagnostic tool.",
-    "approach": "Developed custom DCNN architecture trained on HAM10000 dataset (10,000+ dermoscopy images). Implemented preprocessing pipeline with noise removal, normalization, and data augmentation (rotation, flipping, color shifts). Used transfer learning from InceptionV3. Added saliency maps, Grad-CAM, and attention visualization for interpretability and transparent decision support. Included comparative analysis across transfer learning models plus a computationally efficient model approach.",
-    "impact": "Achieved 93.16% testing accuracy outperforming DenseNet (90.31%) and MobileNet (88.26%). Published paper demonstrating practical application for Bangladesh healthcare context. Model provides explainable predictions through attention maps. Reduced execution time compared to existing models.",
-    "stack": [
-      "TensorFlow",
-      "Keras",
-      "OpenCV",
-      "Scikit-learn",
-      "Matplotlib"
-    ],
-    "features": [
-      "Binary classification (benign/malignant)",
-      "Data preprocessing with augmentation",
-      "Transfer learning from InceptionV3",
-      "Saliency map visualization",
-      "ROC curve and confusion matrix analysis",
-      "Comparative model evaluation"
-    ],
-    "metrics": {
-      "accuracy": "93.16%",
-      "model_type": "Custom DCNN",
-      "dataset": "HAM10000 (10,015 images)",
-      "interpretability": "Saliency & Attention Maps"
-    },
-    "media": {
-      "images": [],
-      "videos": []
-    },
-    "github": "https://github.com/rafi0020/Skin_Cancer_Detection"
-  },
-  {
-    "id": "blockmedix-ai",
-    "title": "BlockMedix AI - Decentralized Healthcare System",
-    "category": "Academic",
-    "company": "Daffodil International University",
-    "companyLogo": "./assets/logo/diu_logo.png",
-    "timeline": "2023",
-    "scale": "Capstone Project",
-    "summary": "Blockchain-powered healthcare management system integrated with AI diagnostics for secure, transparent medical data storage and analysis.",
-    "problem": "Traditional healthcare systems face data security vulnerabilities, lack of patient data ownership, and inefficient data sharing between providers. Need for secure, immutable medical records with AI-powered diagnostic capabilities.",
-    "approach": "Built decentralized system using Ethereum smart contracts for data storage and access control. Integrated deep learning models (CNNs) for disease diagnosis and NLP for medical text analysis. Used BART transformer for health record summarization. Implemented end-to-end encryption for patient privacy compliance (GDPR/HIPAA).",
-    "impact": "Created proof-of-concept for secure healthcare data management with 100% data immutability. AI diagnostic module showed promising accuracy for disease classification. Demonstrated feasibility of patient-controlled health records. Academic project showcasing blockchain-AI integration potential.",
-    "stack": [
-      "Ethereum",
-      "Web3.js",
-      "PyTorch",
-      "Transformers (BART)",
-      "Solidity",
-      "Ganache"
-    ],
-    "features": [
-      "Blockchain-based immutable health records",
-      "Smart contracts for access control",
-      "AI-powered disease diagnosis",
-      "NLP for medical text summarization",
-      "Patient data ownership and consent management",
-      "Web interface for patient-provider interaction"
-    ],
-    "metrics": {
-      "data_immutability": "100%",
-      "encryption": "AES-256",
-      "project_type": "Academic"
-    },
-    "media": {
-      "images": [],
-      "videos": []
-    },
-    "github": "https://github.com/rafi0020/BlockMedix_AI"
-  },
-  {
-    "id": "smart-dining",
-    "title": "Smart Dining Caloric Display System",
-    "category": "Academic",
-    "company": "Daffodil International University",
-    "companyLogo": "./assets/logo/diu_logo.png",
-    "timeline": "2023",
-    "scale": "Course Project",
-    "summary": "Machine learning-based caloric estimation system for traditional Bangladeshi dishes to promote nutritional awareness.",
-    "problem": "Diet-related health issues prevalent in Bangladesh but traditional dishes lack nutritional information. Restaurant menus don't provide caloric content. Need for automated system to estimate calories for informed dietary choices.",
-    "approach": "Compiled dataset of Bangladeshi recipes with ingredient quantities from Food Composition Table for Bangladesh (2022). Trained multiple regression models: Linear Regression, Decision Tree, and Random Forest. Implemented ingredient-based feature extraction and recipe caloric calculation pipeline.",
-    "impact": "Random Forest achieved best performance with 99.99% R² and MSE of 15.75 on test set. System enables real-time caloric prediction for restaurant menus. Academic project demonstrating ML application to local nutritional challenges. Promotes healthier eating through data-driven insights.",
-    "stack": [
-      "Python",
-      "Scikit-learn",
-      "Pandas",
-      "Matplotlib",
-      "NumPy"
-    ],
-    "features": [
-      "Recipe ingredient parsing",
-      "Multi-model evaluation (LR, DT, RF)",
-      "Real-time caloric prediction API",
-      "Bangladeshi cuisine database",
-      "Model performance comparison",
-      "Feature importance analysis"
-    ],
-    "metrics": {
-      "r2_score": "0.9999",
-      "mse": "15.75",
-      "best_model": "Random Forest"
-    },
-    "media": {
-      "images": [],
-      "videos": []
-    },
-    "github": "https://github.com/rafi0020/Smart_Dining_Caloric_Display"
-  },
-  {
-    "id": "physical-activity-prediction",
-    "title": "Physical Activity Level Prediction",
-    "category": "Academic",
-    "company": "Daffodil International University",
-    "companyLogo": "./assets/logo/diu_logo.png",
-    "timeline": "2022",
-    "scale": "ML Course Project",
-    "summary": "Large-scale machine learning models to predict physical activity levels from health parameters for lifestyle intervention.",
-    "problem": "Sedentary lifestyles contribute to numerous health issues. Accurate activity level prediction enables personalized interventions. Need for automated classification system handling large-scale health data.",
-    "approach": "Processed 2.8 million records with features including heart rate, step count, and sleep duration. Implemented Logistic Regression, Decision Tree, and Random Forest with Apache Spark for distributed computing. Applied feature selection using correlation analysis and RFE. Performed hyperparameter tuning with k-fold cross-validation.",
-    "impact": "Random Forest achieved 78.02% accuracy outperforming Decision Tree (77.48%) and Logistic Regression (69.44%). Feature importance analysis identified heart rate and step count as key predictors. Demonstrated scalability with big data framework. Academic project showcasing ML for preventive healthcare.",
-    "stack": [
-      "Apache Spark",
-      "PySpark MLlib",
-      "Python",
-      "Scikit-learn",
-      "Pandas"
-    ],
-    "features": [
-      "Big data processing with Spark",
-      "Multi-class activity classification",
-      "Feature selection and engineering",
-      "Hyperparameter optimization",
-      "K-fold cross-validation",
-      "Confusion matrix and metrics analysis"
-    ],
-    "metrics": {
-      "accuracy": "78.02%",
-      "dataset_size": "2.8M records",
-      "best_model": "Random Forest"
-    },
-    "media": {
-      "images": [],
-      "videos": []
-    },
-    "github": "https://github.com/rafi0020/Physical_Activity_Prediction"
-  },
-  {
     "id": "brac-bank-face-recognition",
     "title": "BRAC Bank ATM Face Recognition & Review System",
     "category": "Industry",
@@ -1865,5 +1429,441 @@
       "images": [],
       "videos": []
     }
+  },
+  {
+    "id": "voice-vit",
+    "title": "Mental Health Diagnosis Using CNNs and Vision Transformers",
+    "category": "Research",
+    "company": "Daffodil International University",
+    "companyLogo": "./assets/logo/diu_logo.png",
+    "timeline": "2023-2024",
+    "scale": "Published Research",
+    "summary": "Novel deep learning approach using Vision Transformers and CNNs for mental health condition classification from voice data. Published in Journal of Voice (Scopus Q1).",
+    "problem": "Mental health diagnosis relies heavily on subjective clinical assessment. Voice biomarkers offer objective, non-invasive screening but are under-researched. The Bengali voice data domain is especially scarce. Existing datasets are small and noisy, and robust models are needed for acoustic variability.",
+    "approach": "Converted audio to log-mel spectrograms, treating voice analysis as a vision-driven learning problem. Proposed hybrid CNN-ViT architecture: CNN layers extract local acoustic patterns, ViT captures long-range dependencies in temporal sequences. Applied class imbalance handling (SMOTE), data augmentation, and robust evaluation methodology. Used ethically collected Bengali voice data from mental health institutions in Bangladesh.",
+    "impact": "Published in Journal of Voice (Scopus Q1 journal). Achieved ~91% accuracy with ROC-AUC around 0.97. Demonstrated potential for scalable, clinically meaningful diagnostic pipelines. Contributed to the first open-source Bengali voice dataset for mental health diagnostics. Dataset: https://data.mendeley.com/datasets/s5j25b5tjk/1",
+    "stack": [
+      "PyTorch",
+      "Vision Transformer",
+      "Librosa",
+      "scikit-learn",
+      "Weights & Biases",
+      "Jupyter"
+    ],
+    "features": [
+      "Audio preprocessing pipeline with noise reduction and consistent 48 kHz sampling",
+      "Log-mel spectrogram conversion (spectrogram-as-image paradigm)",
+      "Hybrid CNN-ViT architecture for feature learning",
+      "Class imbalance handling with SMOTE",
+      "Attention visualization for interpretability",
+      "Cross-validation with robust evaluation methodology"
+    ],
+    "metrics": {
+      "accuracy": "~91%",
+      "ROC-AUC": "~0.97",
+      "dataset": "85 Bengali voice recordings"
+    },
+    "architecture": {
+      "description": "Hybrid CNN-ViT pipeline for voice-based mental health classification",
+      "components": [
+        {
+          "name": "Audio Preprocessing",
+          "description": "Noise reduction, normalization, and feature extraction (mel-spectrograms, MFCCs)"
+        },
+        {
+          "name": "CNN Feature Extractor",
+          "description": "Convolutional layers capturing local acoustic patterns and spectral features"
+        },
+        {
+          "name": "Vision Transformer",
+          "description": "Self-attention mechanism for long-range temporal dependencies in voice sequences"
+        },
+        {
+          "name": "Classification Head",
+          "description": "Multi-class classifier for mental health condition prediction with confidence scores"
+        },
+        {
+          "name": "Attention Visualization",
+          "description": "Interpretability module showing which audio segments contribute to predictions"
+        }
+      ]
+    },
+    "media": {
+      "images": [],
+      "videos": []
+    },
+    "github": "https://rafi0020.github.io/Mental_Health_Diagnosis_Voice_with_ViT-CNN/"
+  },
+  {
+    "id": "mental-stability-transfer-learning",
+    "title": "Transfer Learning for Mental Stability Classification",
+    "category": "Research",
+    "company": "Daffodil International University",
+    "companyLogo": "./assets/logo/diu_logo.png",
+    "timeline": "2024",
+    "scale": "85 Voice Recordings",
+    "summary": "Novel transfer learning approach using CNNs and spectrogram analysis for voice-based mental health diagnostics.",
+    "problem": "Mental health diagnostics often rely on subjective clinical assessments with limited resources. Traditional methods lack objective, non-invasive screening tools. Voice biomarkers offer potential for early detection but face challenges with small datasets and acoustic variability.",
+    "approach": "Converted voice recordings to spectrograms using Short-Time Fourier Transform (STFT). Implemented transfer learning with three pre-trained CNN architectures: VGG16 for spatial hierarchies, InceptionV3 for multi-scale features, and DenseNet121 for feature reuse. Applied data augmentation techniques (SpecAugment, Gaussian noise, random erasing) to improve generalization. Pre-trained models on augmented data, then fine-tuned on non-augmented data for task-specific learning.",
+    "impact": "DenseNet121 achieved 94% accuracy and 0.99 AUC, outperforming other architectures. Demonstrated viability of voice-based mental health screening for tele-psychiatry applications. Research carried out under Dr. Md. Taimur Ahad at the 4IR Research Cell, DIU. Used ethically collected Bengali voice data (85 recordings, balanced stable/unstable, 48 kHz sampling, noise/trim normalization). Provides objective screening method to complement clinical assessment.",
+    "stack": [
+      "TensorFlow",
+      "Keras",
+      "VGG16",
+      "InceptionV3",
+      "DenseNet121",
+      "Librosa",
+      "NumPy"
+    ],
+    "features": [
+      "Voice-to-spectrogram conversion with STFT",
+      "Transfer learning with multiple CNN architectures",
+      "Data augmentation for improved robustness",
+      "Binary classification (stable vs. unstable)",
+      "Training/validation visualization (accuracy, loss, confusion matrix, ROC curves)",
+      "Comparative analysis of VGG16, InceptionV3, and DenseNet121"
+    ],
+    "metrics": {
+      "accuracy": "94%",
+      "auc": "0.99",
+      "dataset": "85 voice recordings"
+    },
+    "architecture": {
+      "description": "Transfer learning pipeline with pre-trained CNNs for voice-based mental health classification",
+      "components": [
+        {
+          "name": "Audio Preprocessing",
+          "description": "STFT conversion to spectrograms with configurable window and hop length"
+        },
+        {
+          "name": "Data Augmentation",
+          "description": "SpecAugment, Gaussian noise, and random erasing for improved generalization"
+        },
+        {
+          "name": "VGG16 Branch",
+          "description": "Pre-trained on ImageNet, fine-tuned for spatial hierarchies in spectrograms"
+        },
+        {
+          "name": "InceptionV3 Branch",
+          "description": "Multi-scale feature extraction with inception modules for diverse acoustic patterns"
+        },
+        {
+          "name": "DenseNet121 Branch",
+          "description": "Dense connectivity for feature reuse and gradient flow, best performer at 94% accuracy"
+        },
+        {
+          "name": "Ensemble Module",
+          "description": "Combines predictions from multiple architectures for robust classification"
+        },
+        {
+          "name": "Evaluation Framework",
+          "description": "Comprehensive metrics including accuracy, loss curves, confusion matrix, and ROC analysis"
+        }
+      ]
+    },
+    "media": {
+      "images": [],
+      "videos": []
+    },
+    "github": "https://rafi0020.github.io/Mental_Stability_TransferLearning/"
+  },
+  {
+    "id": "hybrid-densevitgru-xai",
+    "title": "Hybrid Deep Models for Mental Health Detection with XAI Techniques",
+    "category": "Research",
+    "company": "Daffodil International University",
+    "companyLogo": "./assets/logo/diu_logo.png",
+    "timeline": "2025-2026",
+    "scale": "Ongoing Research",
+    "summary": "Hybrid DenseNet–ViT–GRU architecture with Explainable AI (Grad-CAM, LIME, SHAP) for diagnosing psychological stability from voice spectrograms. Combines local, global, and sequential feature learning with transparent, interpretable predictions.",
+    "problem": "Mental health diagnostics are often subjective and dependent on self-reports and clinician observation. Existing deep learning models lack transparency in clinical decision-making. There is a need for interpretable, multi-level feature extraction that captures local patterns, global context, and temporal sequences in voice data simultaneously.",
+    "approach": "Proposed a three-stage hybrid deep learning architecture: DenseNet-style CNN for extracting local time–frequency patterns from log-mel spectrograms, Vision Transformer (ViT) for capturing long-range global dependencies, and GRU for sequential aggregation of learned representations. Applied SMOTE on training spectrogram features for class balancing. Used SpecAugment-style time/frequency masking and random shifts for augmentation. Evaluated with 5-Fold Cross Validation. Integrated three XAI methods — Grad-CAM heatmaps, LIME local explanations, and SHAP global/local attributions — to interpret model predictions on spectrograms.",
+    "impact": "Achieved ~89.81% combined accuracy across all folds with mean AUC of 0.962. Grad-CAM highlights the most influential time–frequency regions used by the model. LIME identifies positive/negative contributing spectrogram regions. SHAP provides Shapley-value attribution for both stable and unstable predictions. Research carried out under Dr. Md. Taimur Ahad at the 4IR Research Cell, DIU. Manuscript in preparation. Dataset not included due to privacy/ethical constraints.",
+    "stack": [
+      "TensorFlow",
+      "Keras",
+      "DenseNet",
+      "Vision Transformer",
+      "GRU",
+      "LIME",
+      "SHAP",
+      "Grad-CAM",
+      "Librosa",
+      "OpenCV",
+      "Scikit-learn"
+    ],
+    "features": [
+      "Log-mel spectrogram generation from audio signals (128 mel bands, 48 kHz)",
+      "Hybrid DenseNet → ViT → GRU architecture for multi-level feature extraction",
+      "SMOTE applied on training features for class balancing",
+      "SpecAugment-style time/frequency masking and random shifts",
+      "5-Fold Cross Validation with stable ROC-AUC across folds",
+      "Grad-CAM heatmap visualization for model attention",
+      "LIME local explanations (positive/negative contributing regions)",
+      "SHAP global and local attributions on spectrograms"
+    ],
+    "metrics": {
+      "accuracy": "~89.81%",
+      "Mean AUC": "0.962",
+      "AUC Fold Range": "0.95–0.97",
+      "XAI Methods": "Grad-CAM, LIME, SHAP"
+    },
+    "architecture": {
+      "description": "Hybrid DenseNet–ViT–GRU pipeline with XAI for voice-based mental health detection",
+      "components": [
+        {
+          "name": "Audio Preprocessing",
+          "description": "Log-mel spectrogram extraction at 48 kHz sample rate, 2-second segments, 128 mel bands"
+        },
+        {
+          "name": "DenseNet Feature Extractor",
+          "description": "Dense connectivity CNN extracting local time–frequency patterns from spectrograms"
+        },
+        {
+          "name": "Vision Transformer (ViT)",
+          "description": "Captures long-range global dependencies across the spectrogram using self-attention"
+        },
+        {
+          "name": "GRU Sequence Aggregator",
+          "description": "Gated Recurrent Unit for sequential aggregation of learned multi-level representations"
+        },
+        {
+          "name": "XAI Interpretation Layer",
+          "description": "Grad-CAM heatmaps, LIME local explanations, and SHAP attributions for transparent predictions"
+        }
+      ]
+    },
+    "media": {
+      "images": [],
+      "videos": []
+    },
+    "github": "https://rafi0020.github.io/Hybrid-DenseViTGRU-XAI-Voice/"
+  },
+  {
+    "id": "selfsupervised-vit-noisy-voice",
+    "title": "Self-Supervised Learning with ViT for Noisy Real-World Data",
+    "category": "Research",
+    "company": "Daffodil International University",
+    "companyLogo": "./assets/logo/diu_logo.png",
+    "timeline": "2025-2026",
+    "scale": "Ongoing Research",
+    "summary": "Self-supervised pretraining with masked spectrogram reconstruction followed by supervised ViT-style classification for robust mental stability detection from noisy, unprocessed real-world voice data.",
+    "problem": "Real-world voice data collected outside laboratory conditions is often noisy, untrimmed, and distribution-shifted, which significantly degrades the performance of fully supervised models trained on curated datasets. Labeled data is expensive and scarce in the mental health domain. Robust classification under real-world noisy conditions remains a key challenge.",
+    "approach": "Introduced a two-stage framework: (1) Self-supervised pretraining on unlabeled voice spectrograms using a masked reconstruction objective with MSE loss — randomly masks time–frequency regions and trains a reconstruction network to recover the original spectrogram. (2) Supervised fine-tuning of a ViT-style classifier with frequency band attention, Conv1D blocks for local temporal features, and Transformer blocks (Multi-Head Self-Attention + FFN) for global dependencies. Pretrained SSL weights are transferred to the classifier for fine-tuning on unprocessed/noisy data. Evaluated with 5-Fold Cross-Validation and ensemble of top-performing folds.",
+    "impact": "Ensemble accuracy of 84.90% on noisy real-world data (precision 89.79%, recall 82.69%, F1-score 86.10%). Demonstrated that self-supervised pretraining significantly improves robustness under distribution shift. Stable convergence across folds under noisy conditions. Research carried out under Dr. Md. Taimur Ahad at the 4IR Research Cell, DIU. Manuscript in preparation. Dataset not included due to privacy/ethical constraints.",
+    "stack": [
+      "TensorFlow",
+      "Keras",
+      "Vision Transformer",
+      "Conv1D",
+      "Librosa",
+      "NumPy",
+      "Pandas",
+      "Scikit-learn",
+      "imbalanced-learn",
+      "OpenCV"
+    ],
+    "features": [
+      "Self-supervised masked spectrogram reconstruction pretraining (MSE loss)",
+      "ViT-style Transformer classifier with frequency band attention",
+      "Conv1D blocks for local temporal feature extraction",
+      "Multi-Head Self-Attention + FFN for global dependencies",
+      "Transfer learning from SSL pretrained weights to supervised classifier",
+      "5-Fold Cross-Validation with ensemble of top-performing folds",
+      "Robust classification on unprocessed, noisy real-world voice data",
+      "Log-mel spectrogram input representation"
+    ],
+    "metrics": {
+      "Ensemble Accuracy": "84.90%",
+      "Precision": "89.79%",
+      "Recall": "82.69%",
+      "F1-Score": "86.10%"
+    },
+    "architecture": {
+      "description": "Two-stage SSL pretraining + supervised ViT-style classification for noisy voice data",
+      "components": [
+        {
+          "name": "Audio Preprocessing",
+          "description": "Log-mel spectrogram extraction from raw voice segments at 48 kHz, 2-second segments"
+        },
+        {
+          "name": "Self-Supervised Reconstruction",
+          "description": "Masked spectrogram reconstruction on unlabeled data using MSE loss for representation learning"
+        },
+        {
+          "name": "Frequency Band Attention",
+          "description": "Learns importance weights across frequency regions of the spectrogram"
+        },
+        {
+          "name": "Conv1D Temporal Encoder",
+          "description": "Local temporal feature extraction from spectrogram representations"
+        },
+        {
+          "name": "Transformer Classifier",
+          "description": "Multi-Head Self-Attention + Feed-Forward Networks for global dependency modeling"
+        },
+        {
+          "name": "Ensemble Evaluator",
+          "description": "Combines top-performing folds for robust final prediction on noisy test data"
+        }
+      ]
+    },
+    "media": {
+      "images": [],
+      "videos": []
+    },
+    "github": "https://rafi0020.github.io/SelfSupervised-ViT-Noisy-Voice-Spectrograms/"
+  },
+  {
+    "id": "skin-cancer-detection",
+    "title": "Skin Cancer Detection Using Computer Vision",
+    "category": "Research",
+    "company": "Daffodil International University",
+    "companyLogo": "./assets/logo/diu_logo.png",
+    "summary": "Deep CNN-based system for classifying benign and malignant skin lesions to enhance early detection in Bangladesh. Published as arXiv preprint with emphasis on interpretability and transparency in deep learning models.",
+    "problem": "Bangladesh faces significant dermatologist shortage while skin cancer prevalence rises. Early detection crucial for treatment but manual screening time-consuming and error-prone. Need for automated, accessible diagnostic tool.",
+    "approach": "Developed custom DCNN architecture trained on HAM10000 dataset (10,000+ dermoscopy images). Implemented preprocessing pipeline with noise removal, normalization, and data augmentation (rotation, flipping, color shifts). Used transfer learning from InceptionV3. Added saliency maps, Grad-CAM, and attention visualization for interpretability and transparent decision support. Included comparative analysis across transfer learning models plus a computationally efficient model approach.",
+    "impact": "Achieved 93.16% testing accuracy outperforming DenseNet (90.31%) and MobileNet (88.26%). Published paper demonstrating practical application for Bangladesh healthcare context. Model provides explainable predictions through attention maps. Reduced execution time compared to existing models.",
+    "stack": [
+      "TensorFlow",
+      "Keras",
+      "OpenCV",
+      "Scikit-learn",
+      "Matplotlib"
+    ],
+    "features": [
+      "Binary classification (benign/malignant)",
+      "Data preprocessing with augmentation",
+      "Transfer learning from InceptionV3",
+      "Saliency map visualization",
+      "ROC curve and confusion matrix analysis",
+      "Comparative model evaluation"
+    ],
+    "metrics": {
+      "accuracy": "93.16%",
+      "model_type": "Custom DCNN",
+      "dataset": "HAM10000 (10,015 images)",
+      "interpretability": "Saliency & Attention Maps"
+    },
+    "media": {
+      "images": [],
+      "videos": []
+    },
+    "github": "https://github.com/rafi0020/Skin_Cancer_Detection"
+  },
+  {
+    "id": "blockmedix-ai",
+    "title": "BlockMedix AI - Decentralized Healthcare System",
+    "category": "Academic",
+    "company": "Daffodil International University",
+    "companyLogo": "./assets/logo/diu_logo.png",
+    "timeline": "2023",
+    "scale": "Capstone Project",
+    "summary": "Blockchain-powered healthcare management system integrated with AI diagnostics for secure, transparent medical data storage and analysis.",
+    "problem": "Traditional healthcare systems face data security vulnerabilities, lack of patient data ownership, and inefficient data sharing between providers. Need for secure, immutable medical records with AI-powered diagnostic capabilities.",
+    "approach": "Built decentralized system using Ethereum smart contracts for data storage and access control. Integrated deep learning models (CNNs) for disease diagnosis and NLP for medical text analysis. Used BART transformer for health record summarization. Implemented end-to-end encryption for patient privacy compliance (GDPR/HIPAA).",
+    "impact": "Created proof-of-concept for secure healthcare data management with 100% data immutability. AI diagnostic module showed promising accuracy for disease classification. Demonstrated feasibility of patient-controlled health records. Academic project showcasing blockchain-AI integration potential.",
+    "stack": [
+      "Ethereum",
+      "Web3.js",
+      "PyTorch",
+      "Transformers (BART)",
+      "Solidity",
+      "Ganache"
+    ],
+    "features": [
+      "Blockchain-based immutable health records",
+      "Smart contracts for access control",
+      "AI-powered disease diagnosis",
+      "NLP for medical text summarization",
+      "Patient data ownership and consent management",
+      "Web interface for patient-provider interaction"
+    ],
+    "metrics": {
+      "data_immutability": "100%",
+      "encryption": "AES-256",
+      "project_type": "Academic"
+    },
+    "media": {
+      "images": [],
+      "videos": []
+    },
+    "github": "https://github.com/rafi0020/BlockMedix_AI"
+  },
+  {
+    "id": "smart-dining",
+    "title": "Smart Dining Caloric Display System",
+    "category": "Academic",
+    "company": "Daffodil International University",
+    "companyLogo": "./assets/logo/diu_logo.png",
+    "timeline": "2023",
+    "scale": "Course Project",
+    "summary": "Machine learning-based caloric estimation system for traditional Bangladeshi dishes to promote nutritional awareness.",
+    "problem": "Diet-related health issues prevalent in Bangladesh but traditional dishes lack nutritional information. Restaurant menus don't provide caloric content. Need for automated system to estimate calories for informed dietary choices.",
+    "approach": "Compiled dataset of Bangladeshi recipes with ingredient quantities from Food Composition Table for Bangladesh (2022). Trained multiple regression models: Linear Regression, Decision Tree, and Random Forest. Implemented ingredient-based feature extraction and recipe caloric calculation pipeline.",
+    "impact": "Random Forest achieved best performance with 99.99% R² and MSE of 15.75 on test set. System enables real-time caloric prediction for restaurant menus. Academic project demonstrating ML application to local nutritional challenges. Promotes healthier eating through data-driven insights.",
+    "stack": [
+      "Python",
+      "Scikit-learn",
+      "Pandas",
+      "Matplotlib",
+      "NumPy"
+    ],
+    "features": [
+      "Recipe ingredient parsing",
+      "Multi-model evaluation (LR, DT, RF)",
+      "Real-time caloric prediction API",
+      "Bangladeshi cuisine database",
+      "Model performance comparison",
+      "Feature importance analysis"
+    ],
+    "metrics": {
+      "r2_score": "0.9999",
+      "mse": "15.75",
+      "best_model": "Random Forest"
+    },
+    "media": {
+      "images": [],
+      "videos": []
+    },
+    "github": "https://github.com/rafi0020/Smart_Dining_Caloric_Display"
+  },
+  {
+    "id": "physical-activity-prediction",
+    "title": "Physical Activity Level Prediction",
+    "category": "Academic",
+    "company": "Daffodil International University",
+    "companyLogo": "./assets/logo/diu_logo.png",
+    "timeline": "2022",
+    "scale": "ML Course Project",
+    "summary": "Large-scale machine learning models to predict physical activity levels from health parameters for lifestyle intervention.",
+    "problem": "Sedentary lifestyles contribute to numerous health issues. Accurate activity level prediction enables personalized interventions. Need for automated classification system handling large-scale health data.",
+    "approach": "Processed 2.8 million records with features including heart rate, step count, and sleep duration. Implemented Logistic Regression, Decision Tree, and Random Forest with Apache Spark for distributed computing. Applied feature selection using correlation analysis and RFE. Performed hyperparameter tuning with k-fold cross-validation.",
+    "impact": "Random Forest achieved 78.02% accuracy outperforming Decision Tree (77.48%) and Logistic Regression (69.44%). Feature importance analysis identified heart rate and step count as key predictors. Demonstrated scalability with big data framework. Academic project showcasing ML for preventive healthcare.",
+    "stack": [
+      "Apache Spark",
+      "PySpark MLlib",
+      "Python",
+      "Scikit-learn",
+      "Pandas"
+    ],
+    "features": [
+      "Big data processing with Spark",
+      "Multi-class activity classification",
+      "Feature selection and engineering",
+      "Hyperparameter optimization",
+      "K-fold cross-validation",
+      "Confusion matrix and metrics analysis"
+    ],
+    "metrics": {
+      "accuracy": "78.02%",
+      "dataset_size": "2.8M records",
+      "best_model": "Random Forest"
+    },
+    "media": {
+      "images": [],
+      "videos": []
+    },
+    "github": "https://github.com/rafi0020/Physical_Activity_Prediction"
   }
 ]
