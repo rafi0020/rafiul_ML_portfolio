@@ -284,7 +284,7 @@
     "features": [
       "Access control with facial recognition",
       "Boundary security for throw/go-over detection",
-      "PPE monitoring with >80% MOTA accuracy",
+      "PPE monitoring with tracked helmet and vest compliance",
       "Helmet use tracking in stacking alleys",
       "Collision prevention for forklifts and humans",
       "Over-speeding and unsafe behavior detection"
@@ -503,7 +503,7 @@
       {
         "challenge": "Manual Annotation Inefficiency",
         "description": "Annotating thousands of frames for training required weeks of manual work, delaying model improvements and updates.",
-        "solution": "Built semi-automated annotation tool using pre-trained YOLOv11 for initial detection followed by human correction. Reduced annotation time by 70%.",
+        "solution": "Built a semi-automated annotation workflow using YOLO11 pre-annotations followed by human correction and quality review.",
         "technical_details": "YOLOv11 pre-annotation, CVAT integration, active learning for hard example selection, annotation quality metrics, export to COCO format"
       }
     ],
