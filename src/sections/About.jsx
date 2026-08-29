@@ -22,10 +22,9 @@ export default function About({ compact = false }){
                 <img src="./assets/images/profile.jpg" alt="MD Rafiul Islam" style={{width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%', position: 'relative', zIndex: 2}} />
               </div>
               <h3 className="profile-name">MD Rafiul Islam</h3>
-              <p className="profile-title" style={{marginBottom: '1rem'}}>Machine Learning Engineer | Computer Vision Specialist | AI Researcher</p>
+              <p className="profile-title" style={{marginBottom: '1rem'}}>Machine Learning Engineer | Computer Vision & Edge AI</p>
               <p className="profile-bio" style={{marginBottom: '1.5rem', fontSize: '1.1rem', lineHeight: '1.6'}}>
-                Computer science researcher and applied ML engineer focused on computational healthcare, trustworthy AI, and production-grade computer vision systems. 
-                From peer-reviewed research on voice-based mental health diagnostics to real-world deployments across surveillance, logistics, and manufacturing.
+                Machine Learning Engineer building production computer vision systems for safety, security, logistics, manufacturing, and retail. My work spans real-time video analytics, OCR, tracking, temporal decision logic, and edge deployment, alongside peer-reviewed research in computational healthcare.
               </p>
               <Link to="/about" className="btn btn-primary" style={{display: 'inline-flex', alignItems: 'center', gap: '8px'}}>
                 Learn More About Me
@@ -43,9 +42,9 @@ export default function About({ compact = false }){
                 <img src="./assets/images/profile.jpg" alt="MD Rafiul Islam" style={{width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%', position: 'relative', zIndex: 2}} />
               </div>
               <h3 className="profile-name">MD Rafiul Islam</h3>
-              <p className="profile-title">Machine Learning Engineer | Computer Vision Specialist | AI Researcher</p>
+              <p className="profile-title">Machine Learning Engineer | Computer Vision & Edge AI</p>
               <p className="profile-bio">
-                Computer science researcher and applied ML engineer whose work focuses on computational healthcare and trustworthy AI, with emphasis on voice-based psychological stability assessment using Bengali speech. Bridging academic research and real-world deployments across industrial safety, logistics, and manufacturing.
+                Machine Learning Engineer specializing in production computer vision and Edge AI. I build reliable systems that connect model inference with tracking, temporal rules, evidence generation, APIs, and deployment across banking surveillance, industrial safety, logistics, manufacturing, and retail. My research focuses on computational healthcare and trustworthy evaluation of Bengali voice-based mental-health models.
               </p>
               <div className="profile-links">
                 <a href="https://github.com/rafi0020" className="profile-link" target="_blank" rel="noreferrer">
@@ -110,7 +109,7 @@ export default function About({ compact = false }){
                   </div>
                   <div className="info-content">
                     <span className="info-label">Role</span>
-                    <span className="info-value">ML Engineer</span>
+                    <span className="info-value">Machine Learning Engineer</span>
                   </div>
                 </div>
                 <div className="info-item">
@@ -146,7 +145,7 @@ export default function About({ compact = false }){
                   </div>
                   <div className="info-content">
                     <span className="info-label">Projects</span>
-                    <span className="info-value">20+ Deployments</span>
+                    <span className="info-value">20+ AI &amp; CV Projects</span>
                   </div>
                 </div>
               </div>
@@ -194,7 +193,7 @@ export default function About({ compact = false }){
                   </div>
                   <div className="contact-sidebar-content">
                     <span className="contact-sidebar-label">Phone</span>
-                    <a href="tel:+8801568617814" className="contact-sidebar-value" style={{color: 'inherit', textDecoration: 'none', cursor: 'pointer'}}>+880 1679899117</a>
+                    <a href="tel:+8801679899117" className="contact-sidebar-value" style={{color: 'inherit', textDecoration: 'none', cursor: 'pointer'}}>+880 1679899117</a>
                   </div>
                 </div>
                 <div className="contact-sidebar-item">
@@ -344,32 +343,32 @@ export default function About({ compact = false }){
               <div className="content-card-body">
                 <div className="achievement-list">
                   <div className="achievement-item">
-                    <div className="achievement-icon">🎯</div>
-                    <p>Achieved <strong>{'>'}98% accuracy</strong> in container recognition and <strong>{'<'}50ms latency</strong> in counterfeit detection</p>
+                    <div className="achievement-icon">🏭</div>
+                    <p>Built production computer vision systems across <strong>banking, industrial safety, logistics, manufacturing, and retail</strong></p>
+                  </div>
+                  <div className="achievement-item">
+                    <div className="achievement-icon">🚢</div>
+                    <p>Engineered an edge pipeline for <strong>ISO 6346 container-code recognition</strong> with check-digit validation and telemetry integration</p>
                   </div>
                   <div className="achievement-item">
                     <div className="achievement-icon">🚗</div>
-                    <p>Pioneered Bangla ANPR solution with <strong>~94% accuracy</strong> through custom model R&D</p>
+                    <p>Developed track-centric <strong>Bangla ANPR</strong> with oriented plate detection, OCR validation, voting, and deduplication</p>
                   </div>
                   <div className="achievement-item">
                     <div className="achievement-icon">📹</div>
-                    <p>Deployed <strong>150+ cameras</strong> across 17 locations for Unilever's centralized SOP monitoring</p>
+                    <p>Architected <strong>multi-camera video analytics</strong> with tracking, temporal rules, evidence queues, and retryable API senders</p>
                   </div>
                   <div className="achievement-item">
-                    <div className="achievement-icon">🛒</div>
-                    <p>Developed innovative <strong>Customer-Product Interaction tracker</strong> for retail business intelligence</p>
-                  </div>
-                  <div className="achievement-item">
-                    <div className="achievement-icon">💰</div>
-                    <p>Reduced operational costs by <strong>60-90%</strong> through AI automation for multiple clients</p>
+                    <div className="achievement-icon">⚡</div>
+                    <p>Deployed and optimized computer vision workloads for <strong>NVIDIA Jetson, TensorRT, and multi-GPU Linux systems</strong></p>
                   </div>
                   <div className="achievement-item">
                     <div className="achievement-icon">📚</div>
-                    <p>Published research in <strong>Q1 journal (Journal of Voice)</strong> on mental health diagnosis using AI with <strong>~91% accuracy and 0.97 ROC-AUC</strong></p>
+                    <p>First author of a <strong>peer-reviewed Journal of Voice article</strong> reporting ~91% accuracy and ~0.97 ROC-AUC</p>
                   </div>
                   <div className="achievement-item">
                     <div className="achievement-icon">📊</div>
-                    <p>Contributed to the <strong>first open-source Bengali voice dataset</strong> for mental health diagnostics (<a href="https://data.mendeley.com/datasets/s5j25b5tjk/1" target="_blank" rel="noreferrer" style={{color: 'inherit', textDecoration: 'underline'}}>Mendeley Data</a>)</p>
+                    <p>Contributed to a public <strong>Bengali voice dataset</strong> for mental-health research (<a href="https://data.mendeley.com/datasets/s5j25b5tjk/1" target="_blank" rel="noreferrer" style={{color: 'inherit', textDecoration: 'underline'}}>Mendeley Data</a>)</p>
                   </div>
                 </div>
               </div>

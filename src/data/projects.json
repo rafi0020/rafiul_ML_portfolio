@@ -1,17 +1,17 @@
 [
   {
     "id": "anpr-bangla",
-    "title": "New Asia IntelliScan (ANPR: Vehicle & Driver Verification)",
+    "title": "Bangla ANPR & Vehicle Verification",
     "category": "Industry",
-    "company": "New Asia LTD",
+    "company": "New Asia Ltd.",
     "companyLogo": "./assets/logo/new-asia.png",
     "demoLink": "https://rafi0020.github.io/anpr-demo/",
     "timeline": "2025",
     "scale": "Multiple Deployments",
-    "summary": "End-to-end Automatic Number Plate Recognition system for New Asia LTD specifically designed for Bengali license plates. Track-centric plate recognition pipeline with YOLO-OBB plate detection + vehicle tracking + per-track crop sessions; OCR worker with Bangla dictionary + format validation + confidence voting; sender service with deduplication logic across entry/exit and temporal rate limiting.",
-    "problem": "Existing ANPR systems failed on Bangla scripts due to unique character shapes, variable font styles, and environmental challenges (lighting, angles, occlusion). Manual gate operations caused bottlenecks and security gaps.",
+    "summary": "Track-centric Bangla automatic number-plate recognition using YOLO-OBB detection, vehicle association, per-track crop queues, PaddleOCR, district and category validation, confidence voting, deduplication, and API delivery.",
+    "problem": "Bangla plates combine script-specific OCR challenges with blur, angle, glare, occlusion, and inconsistent layouts. Gate workflows also require stable results across a vehicle track rather than a single-frame prediction.",
     "approach": "Developed end-to-end pipeline: YOLOv11 for plate detection, custom PaddleOCR model fine-tuned on Bangla characters with data augmentation for rotation/distortion invariance. Implemented post-processing with Bangla dictionary validation, format validation, confidence voting, and temporal smoothing for vehicle tracking across frames. Sender service with deduplication logic across entry/exit and temporal rate limiting.",
-    "impact": "Deployed at multiple entry points for automated access control. Achieved 95%+ accuracy on clean plates and 85%+ on challenging conditions. Reduced manual intervention by 90% and eliminated unauthorized access incidents.",
+    "impact": "Delivered a real-time pipeline that converts live camera feeds into validated, deduplicated plate events for access-control and parking workflows.",
     "stack": [
       "PaddleOCR",
       "YOLOv11",
@@ -30,9 +30,9 @@
       "Scalable for ANY country license plates"
     ],
     "metrics": {
-      "Accuracy": "94%",
-      "Real-time": "Live RTSP",
-      "Deployment": "Multi-site"
+      "Pipeline": "YOLO-OBB + PaddleOCR",
+      "Reliability": "Per-track voting + format validation",
+      "Integration": "JSON / API events"
     },
     "challenges": [
       {
@@ -126,15 +126,15 @@
     "id": "track-my-container",
     "title": "Track My Container (KDS Logistics)",
     "category": "Industry",
-    "company": "KDS Logistics",
+    "company": "KDS Logistics Ltd.",
     "companyLogo": "./assets/logo/kdsll_logo.png",
     "demoLink": "https://rafi0020.github.io/track-my-container-demo/",
     "timeline": "2025",
     "scale": "6000+ Containers",
-    "summary": "Real-time container tracking and management system for KDS Logistics handling 6000+ containers. Features Reach Stacker (RST) and Side Lifter (SLT) 2-stage depth filtering for top container pickup isolation, fisheye correction, YOLOv11-OBB detection, ver_to_hor.py vertical text OCR reassembly, ISO 6346 check-digit validation, and IoT sensor integration.",
-    "problem": "Port logistics faced massive inefficiencies with manual container logging. Human operators struggled with reading distorted container IDs under harsh lighting, weathering, and partial occlusions. Error rates exceeded 15%, causing shipment delays and inventory mismatches.",
+    "summary": "Edge computer vision pipeline for reading ISO 6346 container numbers from reach stackers and side lifters using fisheye correction, YOLO-OBB detection, crop pairing, PaddleOCR, prefix correction, and check-digit validation.",
+    "problem": "Container codes appear at changing angles and distances, with fisheye distortion, glare, weathering, partial occlusion, and mixed horizontal or vertical layouts.",
     "approach": "Built custom YOLOv11 (Oriented Bounding Box) model to detect containers at any angle. Developed specialized 2-stage filtering for Side Lifter (SLT) and Reach Stacker (RST) camera views to isolate the top container being lifted. Implemented ver_to_hor.py to detect vertical character bounding boxes, sort by y-coordinate, and reassemble into horizontal text before PaddleOCR. Integrated ISO 6346 checksum validation and deployed on NVIDIA Jetson Orin Nano for edge inference.",
-    "impact": "Reduced logging errors from 15% to under 2%. Cut container processing time by 70%. Enabled 24/7 automated operations with audit trails. System handles 500+ containers daily per site with 99.9% uptime.",
+    "impact": "Automates container-code capture and produces validated events that can be associated with equipment telemetry and downstream logistics systems.",
     "stack": [
       "Jetson Orin Nano",
       "OpenCV",
@@ -157,9 +157,9 @@
       "ISO 6346 validation and error correction"
     ],
     "metrics": {
-      "Containers": "6000+",
-      "Daily Ops": "3000+",
-      "Accuracy": "98%"
+      "Detection": "YOLO-OBB",
+      "OCR": "PaddleOCR",
+      "Validation": "ISO 6346 check digit"
     },
     "challenges": [
       {
@@ -257,17 +257,17 @@
   },
   {
     "id": "unilever-argus",
-    "title": "Unilever Argus Automata (KGF Smart Surveillance)",
+    "title": "Argus Automata — Industrial Safety Video Analytics",
     "category": "Industry",
-    "company": "Unilever",
+    "company": "Unilever Bangladesh Ltd.",
     "companyLogo": "./assets/logo/unilever-logo.png",
     "demoLink": "https://rafi0020.github.io/argus-automata-demo/",
     "timeline": "2025",
     "scale": "90+ Cameras",
-    "summary": "Comprehensive multi-module AI surveillance system for Unilever Bangladesh LTD featuring 6 specialized industrial safety engines: Forklift-Worker Collision Risk with Alpha-Beta velocity filtering, Polygon Intrusion Detection, Vehicle Overspeed Estimation via homography scale calibration, Worker PPE Compliance (helmet/vest), General Safety & Behavior Analytics, and Perimeter Throwing Detection.",
-    "problem": "Manual monitoring of 100+ cameras across factory floors was infeasible. Safety violations (missing helmets/vests) went undetected. Restricted zone intrusions lacked real-time alerts. Video footage was reactive, not proactive.",
+    "summary": "Multi-module safety platform covering vehicle overspeed estimation, PPE compliance, forklift-worker collision risk, restricted-area intrusion, unsafe behavior, and perimeter throwing detection.",
+    "problem": "Safety teams need consistent monitoring across live factory cameras, while raw detector outputs create false alerts unless spatial and temporal context is applied.",
     "approach": "Architected event-driven computer vision system with 6 specialized engines (KGF Series). Deployed YOLO11 for detection, ByteTrack for multi-object tracking, and homography matrix calibration for real-world speed measurement. Built Alpha-Beta filtering for velocity smoothing to eliminate collision false alarms, polygon-based ROI for restricted zones, and pose estimation for throwing detection.",
-    "impact": "Achieved real-time monitoring of 100+ cameras with sub-second alert delivery. Reduced safety incidents by 60% through proactive PPE detection. Automated zone intrusion alerts enabled rapid response. System processes 3000+ hours of footage daily.",
+    "impact": "Converted multiple safety policies into config-driven video-analytics modules with ROI gating, tracking, temporal confirmation, evidence capture, local persistence, and API delivery.",
     "stack": [
       "YOLOv11",
       "DeepSORT",
@@ -284,15 +284,15 @@
     "features": [
       "Access control with facial recognition",
       "Boundary security for throw/go-over detection",
-      "PPE monitoring with >80% MOTA accuracy",
+      "PPE monitoring with tracked helmet and vest compliance",
       "Helmet use tracking in stacking alleys",
       "Collision prevention for forklifts and humans",
       "Over-speeding and unsafe behavior detection"
     ],
     "metrics": {
-      "Cameras": "90+",
-      "MOTA": ">80%",
-      "Alert Time": "<1sec"
+      "Modules": "Overspeed, PPE, collision, intrusion, behavior",
+      "Input": "Live RTSP streams",
+      "Reliability": "ROI + temporal confirmation"
     },
     "challenges": [
       {
@@ -450,15 +450,15 @@
     "id": "bat-sop",
     "title": "BAT AI Leaf SOP Checker",
     "category": "Industry",
-    "company": "British American Tobacco",
+    "company": "BAT Bangladesh",
     "companyLogo": "./assets/logo/Bat_bangladesh_logo.png",
     "demoLink": "https://rafi0020.github.io/bat-ai-leaf-sop-demo/",
     "timeline": "2025",
     "scale": "Manufacturing",
-    "summary": "AI-powered Standard Operating Procedure compliance system for British American Tobacco (BAT Bangladesh) automating leaf buying process monitoring. Designed as a multi-process, real-time computer vision auditing system on live RTSP cameras to monitor factory SOP steps and generate evidence-based compliance events. Modular checks include bale opening + barcode scan, weighing step-back/unwanted activity detection, moisture inspection, and layer-by-layer quality verification using YOLO-based models with ROI/IoU-driven logic.",
-    "problem": "Manual SOP audits were time-consuming, subjective, and inconsistent. Workers often skipped critical steps in leaf inspection, grading, and packaging. Compliance rates varied by shift. Quality assurance bottlenecks slowed production.",
+    "summary": "Multiprocess RTSP analytics system that checks six leaf-buying SOP stages: bale opening, barcode scan, moisture inspection, layer-by-layer inspection, weighing step-back, and unwanted activities.",
+    "problem": "Manual SOP review is difficult to apply consistently across repeated production workflows and provides limited searchable evidence for later review.",
     "approach": "Developed multi-stage CV pipeline: YOLOv11 for worker and object detection, DeepSORT for persistent tracking, and ROI-based action recognition to verify SOP steps (e.g., leaf inspection angle, tool usage, packaging sequence). Built rule engine to flag violations with timestamped video evidence.",
-    "impact": "Increased SOP compliance from 70% to 95%. Reduced quality defects by 40%. Automated audit report generation saved 20 hours/week. Provided objective, tamper-proof compliance records for regulatory audits.",
+    "impact": "Produces structured, time-stamped compliance events and snapshots through independent processing and sender services while maintaining persistent workflow state.",
     "stack": [
       "DeepSORT",
       "Multi-Object Tracking",
@@ -477,9 +477,9 @@
       "Dashboard with compliance analytics"
     ],
     "metrics": {
-      "False Alert Reduction": "80%",
-      "SOP Compliance": "100%",
-      "Process Stages": "3"
+      "Workflow Checks": "6",
+      "Architecture": "Multiprocess RTSP pipelines",
+      "Output": "Evidence + API events"
     },
     "challenges": [
       {
@@ -503,7 +503,7 @@
       {
         "challenge": "Manual Annotation Inefficiency",
         "description": "Annotating thousands of frames for training required weeks of manual work, delaying model improvements and updates.",
-        "solution": "Built semi-automated annotation tool using pre-trained YOLOv11 for initial detection followed by human correction. Reduced annotation time by 70%.",
+        "solution": "Built a semi-automated annotation workflow using YOLO11 pre-annotations followed by human correction and quality review.",
         "technical_details": "YOLOv11 pre-annotation, CVAT integration, active learning for hard example selection, annotation quality metrics, export to COCO format"
       }
     ],
@@ -549,15 +549,15 @@
     "id": "staircase-safety",
     "title": "Unilever Smart Staircase Safety",
     "category": "Industry",
-    "company": "Unilever",
+    "company": "Unilever Bangladesh Ltd.",
     "companyLogo": "./assets/logo/unilever-logo.png",
     "demoLink": "https://rafi0020.github.io/stairs-ai-demo/",
     "timeline": "2025",
     "scale": "Multi-floor Coverage",
-    "summary": "AI-powered staircase safety monitoring system for Unilever Bangladesh LTD detecting unsafe behaviors including improper railing usage and phone usage while climbing stairs. Uses YOLO person detection + MediaPipe Pose with handrail compliance via wrist-in-polygon checks, phone-use detection via wrist–ear distance, temporal stability enforcement, and evidence + API delivery via watcher service.",
-    "problem": "Workplace staircase accidents caused injuries and liability issues. Manual safety monitoring was impractical. Post-incident analysis lacked objective data. Need for proactive intervention before accidents occur.",
+    "summary": "Staircase safety monitoring for handrail use and phone usage using YOLO person detection, MediaPipe Pose, dynamic handrail regions, wrist geometry, temporal stability, and evidence delivery.",
+    "problem": "Unsafe stair behavior is brief and posture-dependent, so reliable detection requires pose geometry and confirmation across time rather than single-frame object detection.",
     "approach": "Implemented MediaPipe Pose for real-time human pose estimation. Built risk assessment model analyzing gait patterns, handrail usage, and posture. Created alert system for unsafe behaviors (running, improper posture, phone usage). Integrated with existing CCTV infrastructure.",
-    "impact": "Reduced staircase incidents by 75% within first 6 months. Enabled proactive safety interventions with audio warnings. Generated actionable safety insights for workplace training. Created objective incident documentation for insurance/compliance.",
+    "impact": "Provides reviewable alerts for defined safety behaviors while using temporal checks to reduce transient pose errors.",
     "stack": [
       "Mediapipe",
       "Pose Landmarks",
@@ -575,9 +575,9 @@
       "Live video analysis with NVR storage"
     ],
     "metrics": {
-      "Incident Reduction": "75%",
-      "Multi-person": "Simultaneous",
-      "Coverage": "Multi-floor"
+      "Behaviors": "Handrail use + phone use",
+      "Pose": "YOLO + MediaPipe",
+      "Reliability": "Temporal stability"
     },
     "challenges": [
       {
@@ -633,17 +633,17 @@
   },
   {
     "id": "smart-space",
-    "title": "Smart Space Monitoring (Retail Intelligence Analytics)",
+    "title": "Smart Space Monitoring — Retail Intelligence",
     "category": "Industry",
-    "company": "Runner Group",
+    "company": "Runner Automobiles Ltd.",
     "companyLogo": "./assets/logo/runner-motorcycles-seeklogo.png",
     "demoLink": "https://rafi0020.github.io/smart-space-demo/",
     "timeline": "2025",
     "scale": "Customer Intelligence",
-    "summary": "Data-driven retail intelligence analytics system for Runner Group showrooms featuring footfall analytics, motorcycle entry/exit tracking, bike model recognition (YOLO + ORB feature fallback), employee vs customer desk classification with hysteresis, face recognition service, and interaction manager.",
-    "problem": "Retail stores lacked actionable insights on customer behavior, dwell times, and traffic patterns. Employee vs customer distinction needed for interaction analytics. Bike entry/exit and model recognition were required. ROI on merchandising changes couldn't be measured.",
+    "summary": "Showroom analytics covering entry and exit, footfall, motorcycle movement and recognition, customer-product proximity, employee recognition, desk interaction, CRM capture, service delay, and shutter state.",
+    "problem": "Retail teams need a consistent view of visits, product interactions, and service timing across long-running camera sessions without double-counting people or events.",
     "approach": "Developed multi-stream vision pipeline: YOLOv11-based people detection and tracking with trajectory analysis. Built motorcycle in/out detection and bike model recognition using YOLO + ORB feature fallback. Implemented employee vs customer desk classification with hysteresis and InsightFace for face recognition. Created customer capture for CRM integration, time-to-interaction, service-delay analytics, and shutter open/close monitoring.",
-    "impact": "Enabled data-driven store layout optimization, increasing conversion rates by 15%. Identified peak hours for optimal staff scheduling. Measured engagement for promotional displays. Provided ROI metrics for merchandising changes. Processed data for 5000+ daily visitors per store.",
+    "impact": "Built persistent session tracking and decoupled uploader services that turn live showroom video into structured operational events and analytics.",
     "stack": [
       "YOLOv11",
       "DeepSORT",
@@ -668,9 +668,9 @@
       "Historical reports and trend visualization"
     ],
     "metrics": {
-      "visitors_tracked": "5000+ daily",
-      "conversion_increase": "15%",
-      "stores": "Multiple locations"
+      "Capabilities": "Footfall, product, service analytics",
+      "Identity": "InsightFace",
+      "Architecture": "Persistent sessions + APIs"
     },
     "architecture": {
       "description": "Real-time customer analytics system with distributed processing and centralized reporting",
@@ -724,17 +724,17 @@
   },
   {
     "id": "brac-bank-face-recognition",
-    "title": "BRAC Bank ATM Face Recognition & Review System",
+    "title": "Brac CIN — Face Recognition & Identity Review",
     "category": "Industry",
-    "company": "BRAC Bank / Bondstein Technologies",
+    "company": "Brac Bank PLC",
     "companyLogo": "./assets/logo/bondstein.png",
     "demoLink": "https://rafi0020.github.io/face-rec-demo/",
     "timeline": "2025-2026",
-    "scale": "Commercial Bank ATMs",
-    "summary": "Multi-camera ATM face recognition system built for BRAC Bank featuring InsightFace detection + ArcFace 512d embeddings, real-time web review panel for Whitelist/Blacklist match feedback, registry pollution audit & recovery tools, and automated CIN API alert dispatching.",
-    "problem": "ATM booths faced security risks from blacklisted individuals and needed automated facial verification. Prior face recognition systems suffered from registry pollution over time due to low-light or occluded face enrollments.",
+    "scale": "Enterprise Multi-Camera Network",
+    "summary": "Identity-aware banking surveillance using InsightFace embeddings, FAISS similarity search, whitelist and blacklist categories, unknown-person enrollment, and a review workflow for registry quality.",
+    "problem": "Long-running face registries can accumulate low-quality or incorrect enrollments, especially under low light, occlusion, and changing ATM camera views.",
     "approach": "Engineered multi-camera pipeline using InsightFace for face detection and ArcFace for 512-dimensional embedding generation. Built an interactive web review panel for security officers to validate WL/BL matches and audit face registry quality. Implemented automated registry pollution detection scripts and a background daemon for reliable alert posting.",
-    "impact": "Deployed across BRAC Bank ATM networks. Reduced false positive alerts by 80% through human-in-the-loop review panel and registry audit tools. Enables sub-second blacklist match detection and alert notifications.",
+    "impact": "Combines real-time matching with a human review queue, registry audit tools, and decoupled alert delivery for maintainable identity operations.",
     "stack": [
       "InsightFace",
       "ArcFace 512d",
@@ -754,9 +754,9 @@
       "Asynchronous alert daemon dispatching confirmed matches to CIN API"
     ],
     "metrics": {
-      "Embeddings": "512d ArcFace",
-      "Processing": "Multi-camera Async",
-      "Security": "WL/BL Review Panel"
+      "Embedding": "InsightFace / ArcFace",
+      "Search": "FAISS cosine similarity",
+      "Workflow": "Whitelist, blacklist, unknown review"
     },
     "challenges": [
       {
@@ -798,16 +798,16 @@
   },
   {
     "id": "brac-bank-atm-intrusion",
-    "title": "BRAC Bank ATM Intrusion & Perimeter Breach Detector",
+    "title": "Brac CIN — Intrusion & Perimeter Monitoring",
     "category": "Industry",
-    "company": "BRAC Bank / Bondstein Technologies",
+    "company": "Brac Bank PLC",
     "companyLogo": "./assets/logo/bondstein.png",
     "timeline": "2025-2026",
-    "scale": "Multi-GPU ATM Network",
-    "summary": "Multi-camera, multi-GPU ATM intrusion detection system for BRAC Bank supporting both polygon Region-of-Interest (ROI) mode and directional line-crossing mode. Integrates two-stage TrackAlertVoter debouncing to eliminate false alerts.",
-    "problem": "ATM booths require strict security during non-operating hours or in restricted staff areas. Simple motion detectors triggered frequent false alarms from shadows or passing traffic.",
+    "scale": "Enterprise Multi-Camera Network",
+    "summary": "Configurable intrusion analytics supporting polygon occupancy and directional line crossing, with track-aware confirmation, cooldowns, evidence storage, and retryable API delivery.",
+    "problem": "Simple motion alarms cannot reliably distinguish a policy-defined perimeter breach from lighting changes, passers-by, or brief detector noise.",
     "approach": "Built a scalable multi-camera surveillance architecture with a GPU Inference Pool (YOLOv11s). Designed dual operational modes: Polygon ROI mode for region monitoring and Directional Line-crossing mode for boundary breaches. Implemented two-stage TrackAlertVoter debouncing for zero false alerts.",
-    "impact": "Deployed across high-risk ATM sites. Achieved 99%+ accuracy in detecting illegal booth entry and restricted zone breaches. Reduced false alarms by 95% via temporal voting.",
+    "impact": "Translates camera-specific polygons and lines into confirmed, deduplicated security events across multi-camera GPU workers.",
     "stack": [
       "YOLOv11",
       "PyTorch",
@@ -825,9 +825,9 @@
       "Automated alert storage with SQLite & daemon sender for CIN API"
     ],
     "metrics": {
-      "Architecture": "Multi-GPU Pool",
-      "Modes": "ROI & Line-Crossing",
-      "Reliability": "TrackAlertVoter"
+      "Modes": "Polygon ROI + line crossing",
+      "Reliability": "Track confirmation + cooldown",
+      "Architecture": "Multi-camera GPU workers"
     },
     "challenges": [
       {
@@ -865,16 +865,16 @@
   },
   {
     "id": "brac-bank-cash-theft",
-    "title": "BRAC Bank ATM & Cash Counter Theft Detection System",
+    "title": "Brac CIN — Illegal Theft Detection",
     "category": "Industry",
-    "company": "BRAC Bank / Bondstein Technologies",
+    "company": "Brac Bank PLC",
     "companyLogo": "./assets/logo/bondstein.png",
     "timeline": "2025-2026",
-    "scale": "Branch & ATM Depots",
-    "summary": "AI-driven cash-counter and ATM theft detection system utilizing YOLOv8-Pose with a three-zone ROI structure (customer ROI, buffer ROI, banker ROI), missing object tracking, and local VLM (Vision-Language Model) intent verification.",
-    "problem": "Cash counters and ATM dispensing areas are vulnerable to quick-hand theft and unauthorized bill retrieval. Distinguishing legitimate transactions from suspicious theft attempts required complex spatial and behavioral reasoning.",
+    "scale": "Branch & ATM Surveillance",
+    "summary": "Pose-based illegal-theft monitoring using customer and banker regions, counter-line geometry, role stabilization, temporal voting, evidence capture, and optional local vision-language verification.",
+    "problem": "Suspicious counter interactions are defined by body pose, role, location, and movement across a transaction boundary—not by the presence of a single object.",
     "approach": "Developed a novel 3-zone spatial partition (Customer ROI, Buffer ROI, Banker ROI) combined with YOLOv8-Pose body keypoint tracking to monitor arm reach across boundaries. Added missing object tracking for cash bundles and integrated a local VLM intent verifier to confirm suspicious gestures before alert dispatch.",
-    "impact": "Enhanced cash counter security across bank branches. Automated detection of unauthorized reach across transaction counters with zero manual supervision required.",
+    "impact": "Implements spatial and temporal reasoning for reviewable theft-risk events while keeping API delivery independent from inference.",
     "stack": [
       "YOLOv8-Pose",
       "VLM Verifier",
@@ -892,9 +892,9 @@
       "Automated snapshot generation and incident logging"
     ],
     "metrics": {
-      "Model": "YOLOv8-Pose + VLM",
-      "Spatial Logic": "3-Zone ROI",
-      "Verification": "Vision-Language Model"
+      "Model": "YOLO11 Pose",
+      "Spatial Logic": "Customer / banker ROIs + counter line",
+      "Verification": "Temporal voter + optional VLM"
     },
     "architecture": {
       "description": "Pose-based spatial tracking system with multi-zone ROI and VLM intent verification",
@@ -924,16 +924,16 @@
   },
   {
     "id": "brac-bank-unusual-activity",
-    "title": "BRAC Bank ATM Lying-Person & Medical Emergency Detector",
+    "title": "Brac CIN — Lying-Person & Unusual Activity Monitoring",
     "category": "Industry",
-    "company": "BRAC Bank / Bondstein Technologies",
+    "company": "Brac Bank PLC",
     "companyLogo": "./assets/logo/bondstein.png",
     "timeline": "2025-2026",
-    "scale": "ATM Booth Fleet",
-    "summary": "Real-time surveillance system for detecting incapacitated, fallen, or lying persons and prolonged loitering inside BRAC Bank ATM booths. Uses YOLO11-Pose keypoints with temporal posture classification to trigger immediate emergency alerts.",
-    "problem": "Patrons experiencing medical emergencies, collapses, or individuals sleeping inside ATM booths created safety hazards and blocked customer access. Traditional motion detection failed to identify stationary lying bodies.",
+    "scale": "Enterprise Multi-Camera Network",
+    "summary": "Detects lying or fallen persons and policy-defined unusual activity using YOLO11 Pose, geometry scoring, track history, weighted temporal voting, cooldowns, and evidence deduplication.",
+    "problem": "Stationary emergencies and prolonged booth misuse are difficult to capture with motion detection and require posture, duration, and track-level context.",
     "approach": "Implemented human pose keypoint analysis using YOLO11-Pose to compute body aspect ratios, spine angles, and ground-proximity ratios. Built temporal posture classification to differentiate brief kneeling from prolonged lying/collapse, and integrated loitering dwell time logic.",
-    "impact": "Provides 24/7 automated monitoring for patron medical emergencies and booth misuse across BRAC Bank ATM locations, ensuring immediate security dispatch.",
+    "impact": "Produces evidence-backed events for security review while applying separate temporal policies for posture and dwell-time scenarios.",
     "stack": [
       "YOLO11-Pose",
       "OpenCV",
@@ -950,9 +950,9 @@
       "Automated API dispatch with evidence snapshot storage"
     ],
     "metrics": {
-      "Model": "YOLO11-Pose",
-      "Alert Trigger": "<1 sec",
-      "Deployment": "Multi-camera Booths"
+      "Model": "YOLO11 Pose",
+      "Reasoning": "Geometry + weighted temporal voting",
+      "Output": "Deduplicated evidence events"
     },
     "architecture": {
       "description": "Pose keypoint surveillance engine with temporal posture state machine",
@@ -982,16 +982,16 @@
   },
   {
     "id": "mobil-product-inspector",
-    "title": "Mobil Oil Product Inspection & Authentication System",
+    "title": "Mobil Bottle & Label Inspection",
     "category": "Industry",
-    "company": "Mobil / Industrial Partner",
+    "company": "Mobil Bangladesh Ltd.",
     "companyLogo": "./assets/logo/bondstein.png",
     "timeline": "2026",
     "scale": "Production Line Speed",
-    "summary": "Production-line inspection and anti-counterfeit authentication system for Mobil motor oil containers. Utilizes YOLOv8-OBB (Oriented Bounding Box) for bottle cap/seal inspection, integrated barcode/QR code readers, and human-readable serial OCR.",
-    "problem": "Counterfeit motor oil bottles with misaligned caps, missing seals, or fake serial labels damaged brand trust and caused factory quality control bottlenecks.",
+    "summary": "Operator-facing visual QA application for product identification, label integrity checks, batch inspection, OCR watermark analysis, configurable markers, and genuine-versus-counterfeit review.",
+    "problem": "Packaging QA requires consistent checks across products and batches while preserving inspection evidence and allowing operators to review uncertain cases.",
     "approach": "Trained custom YOLOv8-OBB models to detect rotated bottle caps, seals, and barcodes regardless of container orientation on high-speed belts. Integrated PaddleOCR for serial number validation and pyzbar for QR/barcode verification. Built a Streamlit operator dashboard for real-time line inspection.",
-    "impact": "Automated line-speed container inspection with 98%+ cap/seal alignment accuracy. Reduced manual quality control inspection times by 85%.",
+    "impact": "Delivered a Streamlit workflow that combines object detection, classical image processing, OCR, batch upload, and inspection logs.",
     "stack": [
       "YOLOv8-OBB",
       "PyTorch",
@@ -1009,9 +1009,9 @@
       "Database integration for product authentication logs and audit reports"
     ],
     "metrics": {
-      "Model": "YOLOv8-OBB",
-      "Inspection": "Cap + Barcode + Serial OCR",
-      "Interface": "Streamlit App"
+      "Interface": "Streamlit",
+      "Inspection": "Product + label + OCR checks",
+      "Workflow": "Batch review + logs"
     },
     "architecture": {
       "description": "Oriented object detection and multi-code OCR inspection engine",
@@ -1047,10 +1047,10 @@
     "companyLogo": "./assets/logo/bondstein.png",
     "timeline": "2025-2026",
     "scale": "High-Speed Lines",
-    "summary": "Microservice-architected industrial quality inspection suite. Performs grid cavity fill analysis on pharmaceutical blister packs, cocked/high cap geometry detection, and Sobel row-energy liquid fill level regression at line speed.",
-    "problem": "Pharmaceutical packaging lines require zero-defect quality control for tablet blister packs, cap sealing, and liquid bottle fill levels. Heavy deep learning models were too slow for high-speed conveyor belts.",
+    "summary": "Industrial inspection R&D for blister-pack cavities, cap presence and seating, and liquid fill levels using lightweight geometry and image-processing methods with a queued inference runtime.",
+    "problem": "Packaging inspection must balance defect sensitivity with predictable latency and maintainability on production hardware.",
     "approach": "Built lightweight, classical CV modules powered by a lock-free micro-batched InferenceServer runtime (`vision_core.py`). Implemented grid cavity brightness/fill signature analysis for blister packs, minAreaRect geometry for cap tilt/height, and Sobel row-energy line regression for bottle liquid levels.",
-    "impact": "Achieved sub-10ms per-frame inspection speeds on standard CPU hardware. Enables 100% automated inspection coverage across pharma and bottling packaging lines.",
+    "impact": "Created configurable inspection modules and a micro-batched runtime suitable for controlled line trials and further calibration.",
     "stack": [
       "OpenCV",
       "Python",
@@ -1067,9 +1067,9 @@
       "Config-driven operation requiring zero global model locks"
     ],
     "metrics": {
-      "Modules": "Blister + Cap + Fill Level",
-      "Architecture": "Micro-batched Queue",
-      "Speed": "Line Speed CPU-Friendly"
+      "Modules": "Blister, cap, fill level",
+      "Methods": "Reference comparison + geometry + Sobel energy",
+      "Architecture": "Queued inference runtime"
     },
     "architecture": {
       "description": "Lock-free microservice inspection suite for industrial packaging lines",
@@ -1110,9 +1110,9 @@
     "timeline": "2025-2026",
     "scale": "Industrial Facilities",
     "summary": "Config-driven computer vision modules for industrial gauge digitization and security. Digitizes analog dial meters via Hough needle angle mapping and provides 3-stage threat detection with open-vocabulary YOLO and local Ollama VLM verification.",
-    "problem": "Manual dial gauge monitoring in industrial plants is error-prone. In security monitoring, standard weapon detectors generated too many false alarms from tools or everyday objects.",
+    "problem": "Industrial facilities need repeatable analog-gauge readings and security alerts that separate real threats from tools and visually similar objects.",
     "approach": "Created an automated dial gauge reader using Hough transform line detection inside calibrated dial circles to map needle angles to engineering units. For security, developed a 3-stage threat detection pipeline: open-vocabulary YOLO -> temporal voting -> local Ollama VLM intent verification.",
-    "impact": "Digitized plant meter readings into continuous telemetry streams while achieving ultra-low false positive threat alerts in industrial facility security.",
+    "impact": "Built configurable R&D modules for gauge digitization and multi-stage threat verification using local inference.",
     "stack": [
       "Hough Transform",
       "YOLOv11",
@@ -1129,9 +1129,9 @@
       "Production-grade vision_core runtime engine"
     ],
     "metrics": {
-      "Gauge Accuracy": "Continuous Angle Calibration",
-      "Threat Verification": "Ollama Local VLM",
-      "False Alarm Discipline": "3-Stage Pipeline"
+      "Gauge": "Hough angle mapping",
+      "Threat Pipeline": "Detector + temporal voter + local VLM",
+      "Deployment": "Config-driven local runtime"
     },
     "architecture": {
       "description": "Industrial telemetry & multi-stage security verification engine",
@@ -1168,9 +1168,9 @@
     "timeline": "2025-2026",
     "scale": "Smart Facilities",
     "summary": "Modular computer vision solutions for smart infrastructure: conveyor package directional counting with CentroidTracker, stall-level smart parking occupancy with polygon hysteresis, pyzbar catalog verification, and open-vocabulary fire/smoke detection.",
-    "problem": "Facility operators needed reliable tools for package counting, parking lot occupancy tracking, label verification, and fire detection without deploying separate heavy software stacks.",
+    "problem": "Facility teams often need several focused analytics—counting, parking occupancy, label validation, and fire or smoke screening—without separate, incompatible runtimes.",
     "approach": "Engineered lightweight Vision Suite modules sharing a unified runtime (`vision_core.py`). Implemented single-pass line-crossing package counting with CentroidTracker, per-stall polygon parking occupancy with hysteresis, pyzbar catalog verification, and open-vocabulary fire/smoke detection with zone gating.",
-    "impact": "Provided scalable, infrastructure-agnostic computer vision modules deployed across logistics depots, commercial parking structures, and industrial facilities.",
+    "impact": "Implemented modular, config-driven R&D components that emit structured snapshots and events for dashboard integration.",
     "stack": [
       "YOLOv11",
       "CentroidTracker",
@@ -1188,9 +1188,9 @@
       "Periodic JSON snapshot & event telemetry for dashboard integration"
     ],
     "metrics": {
-      "Modules": "Counting + Parking + Label + Fire/Smoke",
-      "Tracking": "CentroidTracker",
-      "Smoothing": "Hysteresis Polygon Logic"
+      "Modules": "Counting, parking, label, fire/smoke",
+      "Tracking": "Centroid / track deduplication",
+      "Reliability": "Polygon hysteresis + temporal voting"
     },
     "architecture": {
       "description": "Unified vision microservice engine for facility and logistics automation",
@@ -1230,7 +1230,7 @@
     "summary": "Multi-modal public safety analytics system combining YOLO multi-class detection, DeepSORT tracking, depth estimation, and heatmap smoothing for crowd monitoring, threat detection, and weapon-aware escalation.",
     "problem": "Public safety monitoring required real-time detection of crowd densities, suspicious individuals, victims, and weapons across large areas. Traditional surveillance systems lacked depth awareness and intelligent escalation capabilities.",
     "approach": "Developed YOLO-based multi-class detection pipeline for person, suspect, victim, and weapon categories. Integrated DeepSORT tracking with Depth-Anything-V2 for monocular depth estimation. Implemented depth-aware spatial clustering, heatmap smoothing for crowd density, and weapon-aware escalation logic with suspect pinning across frames.",
-    "impact": "Demonstrated capability for real-time multi-class threat detection with depth-aware spatial reasoning. Weapon detection triggers automatic escalation and suspect tracking across camera feeds. Heatmap visualization enables crowd density monitoring for proactive safety management.",
+    "impact": "Built an R&D pipeline for multi-class tracking, depth-aware proximity analysis, crowd heatmaps, and weapon-proximity escalation.",
     "stack": [
       "YOLOv11",
       "DeepSORT",
@@ -1249,9 +1249,9 @@
       "Real-time threat level assessment"
     ],
     "metrics": {
-      "Detection Classes": "4 (person/suspect/victim/weapon)",
-      "Tracking": "DeepSORT + Depth",
-      "Depth Model": "Depth-Anything-V2"
+      "Detection": "People, roles, weapons",
+      "Tracking": "DeepSORT",
+      "Depth": "Depth-Anything-V2"
     },
     "architecture": {
       "description": "Multi-modal detection pipeline with depth-aware reasoning and escalation logic",
@@ -1299,7 +1299,7 @@
     "summary": "U-Net segmentation-based anomaly detection system for juice-flow pipe inspection, designed for Jetson Orin Nano edge deployment with TensorRT optimization and temporal confirmation logic.",
     "problem": "Food-safety inspection of juice-flow pipes required continuous, real-time monitoring for anomalies (contamination, discoloration, blockage). Manual inspection was inconsistent and couldn't cover all production lines simultaneously.",
     "approach": "Developed U-Net segmentation model for pixel-level anomaly detection in juice-flow pipe imagery. Planned deployment on Jetson Orin Nano with TensorRT FP16/INT8 optimization for real-time edge inference. Evaluation emphasis on IoU, precision, recall, false alarm rate, and temporal confirmation to reduce false positives.",
-    "impact": "Demonstrated viable approach for food-safety anomaly segmentation at edge. TensorRT optimization enables real-time processing on resource-constrained hardware. Temporal confirmation logic significantly reduces false alarm rates while maintaining detection sensitivity.",
+    "impact": "Developed and evaluated a U-Net segmentation approach with temporal confirmation, with an optimization path for Jetson Orin Nano and TensorRT.",
     "stack": [
       "U-Net",
       "PyTorch",
@@ -1317,9 +1317,9 @@
       "Real-time pipe flow monitoring"
     ],
     "metrics": {
-      "Model": "U-Net Segmentation",
-      "Deployment": "Jetson Orin Nano",
-      "Optimization": "TensorRT FP16/INT8"
+      "Model": "U-Net segmentation",
+      "Target": "Jetson Orin Nano",
+      "Optimization": "TensorRT FP16 / INT8 plan"
     },
     "architecture": {
       "description": "Edge-optimized segmentation pipeline for real-time food-safety inspection",
@@ -1360,10 +1360,10 @@
     "inDevelopment": true,
     "timeline": "2025",
     "scale": "Production Scale",
-    "summary": "Deep learning-based system for detecting counterfeit tobacco packaging using multi-stage visual inspection.",
-    "problem": "Counterfeit products damaged brand reputation and revenue. Manual inspection was slow, subjective, and missed subtle differences. Need for automated, objective quality control at production scale.",
+    "summary": "Visual inspection R&D for distinguishing genuine and counterfeit packaging using learned features, OCR, and classical image-quality checks.",
+    "problem": "Packaging differences can be subtle and vary with camera, lighting, print quality, and product type, requiring controlled capture and reviewable evidence.",
     "approach": "Built two-stage pipeline: YOLOv11 for package detection/localization, followed by custom CNN classifier trained on authentic vs. counterfeit features (print quality, hologram patterns, text alignment). Used transfer learning from ImageNet with fine-tuning on proprietary dataset. Implemented ensemble model for high-confidence predictions.",
-    "impact": "Achieved 96%+ accuracy in controlled lab testing. Reduced manual inspection time by 80%. Enabled real-time screening of thousands of packages daily. Created tamper-proof audit trail with image evidence for law enforcement.",
+    "impact": "Built a configurable inspection workflow for controlled evaluation and operator review; production performance must be validated per product and capture setup.",
     "stack": [
       "YOLOv11",
       "PyTorch",
@@ -1381,9 +1381,9 @@
       "Audit trail with image storage"
     ],
     "metrics": {
-      "accuracy": "96%",
-      "throughput": "1000+ packages/hour",
-      "false_positive_rate": "<2%"
+      "Methods": "Detection + OCR + image processing",
+      "Output": "Confidence + evidence",
+      "Status": "Internal R&D"
     },
     "media": {
       "images": [],
@@ -1392,17 +1392,17 @@
   },
   {
     "id": "hr-chatbot",
-    "title": "Intelligent HR Assistant with LLM",
+    "title": "Internal AI-Powered HR Assistant",
     "category": "Industry",
     "company": "Bondstein Technologies (Internal R&D)",
     "companyLogo": "./assets/logo/bondstein.png",
     "inDevelopment": true,
     "timeline": "2025",
     "scale": "500+ Employees",
-    "summary": "Enterprise LLM-powered chatbot for automated HR query handling and policy assistance.",
-    "problem": "HR department overwhelmed with repetitive queries about policies, leave, benefits, and procedures. 60%+ of queries were routine but required human response. Knowledge base scattered across documents. New employees struggled with onboarding information.",
+    "summary": "Internal retrieval-augmented assistant for answering HR policy and process questions from an approved knowledge base.",
+    "problem": "HR information is distributed across documents, making common policy and onboarding questions slow to resolve consistently.",
     "approach": "Fine-tuned large language model (LLaMA 2) on company HR documents, policies, and FAQ corpus. Implemented RAG (Retrieval-Augmented Generation) with vector database for accurate, grounded responses. Built conversational interface with multi-turn context awareness. Added guardrails for sensitive topics requiring human escalation.",
-    "impact": "Reduced HR team workload by 65% for routine queries. Achieved 85%+ user satisfaction scores. Enabled 24/7 employee support. Reduced average query resolution time from 4 hours to 2 minutes. Onboarding time decreased by 40%.",
+    "impact": "Built an internal prototype that retrieves relevant policy context, generates grounded answers, and supports escalation when a question requires human judgment.",
     "stack": [
       "LLaMA 2",
       "LangChain",
@@ -1421,9 +1421,9 @@
       "Multi-language support"
     ],
     "metrics": {
-      "workload_reduction": "65%",
-      "satisfaction": "85%",
-      "resolution_time": "2 minutes avg"
+      "Architecture": "Retrieval-augmented generation",
+      "Scope": "Internal HR knowledge",
+      "Status": "Internal prototype"
     },
     "media": {
       "images": [],

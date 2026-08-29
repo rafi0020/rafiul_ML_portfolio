@@ -8,9 +8,9 @@ const CVS = [
 ];
 
 const STATS = [
-  { value: "17+", label: "Industrial projects" },
-  { value: "5+", label: "Research projects" },
-  { value: "2", label: "Publications" },
+  { value: "20+", label: "AI & CV projects" },
+  { value: "5", label: "Enterprise domains" },
+  { value: "2", label: "Published research works" },
 ];
 
 export default function Hero() {
@@ -23,8 +23,6 @@ export default function Hero() {
     const container = particlesRef.current;
     if (!container) return;
 
-    // Skip the decorative particle field entirely for reduced-motion users and
-    // on small screens, where it is pure battery cost.
     const skip =
       window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
       window.matchMedia("(max-width: 768px)").matches;
@@ -76,12 +74,13 @@ export default function Hero() {
       <div className="neural-bg" ref={particlesRef} aria-hidden="true" />
 
       <div className="hero-content">
-        <p className="hero-badge">Available for opportunities</p>
+        <p className="hero-badge">Open to AI/ML and Computer Vision roles</p>
 
         <h1 className="hero-title">MD Rafiul Islam</h1>
-        <p className="hero-role">Applied AI Engineer &amp; Researcher</p>
+        <p className="hero-role">Machine Learning Engineer — Computer Vision &amp; Edge AI</p>
         <p className="hero-subtitle">
-          From peer-reviewed AI research to real-world deployments
+          I build production video analytics, OCR, safety, and inspection systems—from
+          RTSP ingest and model inference to reliable edge deployment.
         </p>
 
         <dl className="hero-stats">
@@ -96,11 +95,9 @@ export default function Hero() {
         <div className="hero-cta">
           <Link className="btn btn-primary" to="/projects">
             <Icon name="repo" size={18} />
-            View projects
+            Explore case studies
           </Link>
 
-          {/* Positioning context lives on this wrapper. Without it the menu
-              anchored to the whole hero section and rendered off-screen. */}
           <div className="cv-dropdown">
             <button
               ref={triggerRef}
