@@ -343,32 +343,32 @@ export default function About({ compact = false }){
               <div className="content-card-body">
                 <div className="achievement-list">
                   <div className="achievement-item">
-                    <div className="achievement-icon">🎯</div>
-                    <p>Achieved <strong>{'>'}98% accuracy</strong> in container recognition and <strong>{'<'}50ms latency</strong> in counterfeit detection</p>
+                    <div className="achievement-icon">🏭</div>
+                    <p>Built production computer vision systems across <strong>banking, industrial safety, logistics, manufacturing, and retail</strong></p>
+                  </div>
+                  <div className="achievement-item">
+                    <div className="achievement-icon">🚢</div>
+                    <p>Engineered an edge pipeline for <strong>ISO 6346 container-code recognition</strong> with check-digit validation and telemetry integration</p>
                   </div>
                   <div className="achievement-item">
                     <div className="achievement-icon">🚗</div>
-                    <p>Pioneered Bangla ANPR solution with <strong>~94% accuracy</strong> through custom model R&D</p>
+                    <p>Developed track-centric <strong>Bangla ANPR</strong> with oriented plate detection, OCR validation, voting, and deduplication</p>
                   </div>
                   <div className="achievement-item">
                     <div className="achievement-icon">📹</div>
-                    <p>Deployed <strong>150+ cameras</strong> across 17 locations for Unilever's centralized SOP monitoring</p>
+                    <p>Architected <strong>multi-camera video analytics</strong> with tracking, temporal rules, evidence queues, and retryable API senders</p>
                   </div>
                   <div className="achievement-item">
-                    <div className="achievement-icon">🛒</div>
-                    <p>Developed innovative <strong>Customer-Product Interaction tracker</strong> for retail business intelligence</p>
-                  </div>
-                  <div className="achievement-item">
-                    <div className="achievement-icon">💰</div>
-                    <p>Reduced operational costs by <strong>60-90%</strong> through AI automation for multiple clients</p>
+                    <div className="achievement-icon">⚡</div>
+                    <p>Deployed and optimized computer vision workloads for <strong>NVIDIA Jetson, TensorRT, and multi-GPU Linux systems</strong></p>
                   </div>
                   <div className="achievement-item">
                     <div className="achievement-icon">📚</div>
-                    <p>Published research in <strong>Q1 journal (Journal of Voice)</strong> on mental health diagnosis using AI with <strong>~91% accuracy and 0.97 ROC-AUC</strong></p>
+                    <p>First author of a <strong>peer-reviewed Journal of Voice article</strong> reporting ~91% accuracy and ~0.97 ROC-AUC</p>
                   </div>
                   <div className="achievement-item">
                     <div className="achievement-icon">📊</div>
-                    <p>Contributed to the <strong>first open-source Bengali voice dataset</strong> for mental health diagnostics (<a href="https://data.mendeley.com/datasets/s5j25b5tjk/1" target="_blank" rel="noreferrer" style={{color: 'inherit', textDecoration: 'underline'}}>Mendeley Data</a>)</p>
+                    <p>Contributed to a public <strong>Bengali voice dataset</strong> for mental-health research (<a href="https://data.mendeley.com/datasets/s5j25b5tjk/1" target="_blank" rel="noreferrer" style={{color: 'inherit', textDecoration: 'underline'}}>Mendeley Data</a>)</p>
                   </div>
                 </div>
               </div>
