@@ -4,7 +4,6 @@ import Icon from "../components/Icon";
 
 const CVS = [
   { href: "/cv/MD_Rafiul_Islam_Academic.pdf", label: "Academic CV", icon: "cap" },
-  { href: "/cv/MD_Rafiul_Islam_Industry.pdf", label: "Industry Résumé", icon: "briefcase" },
 ];
 
 const STATS = [
