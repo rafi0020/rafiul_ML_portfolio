@@ -22,10 +22,9 @@ export default function About({ compact = false }){
                 <img src="./assets/images/profile.jpg" alt="MD Rafiul Islam" style={{width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%', position: 'relative', zIndex: 2}} />
               </div>
               <h3 className="profile-name">MD Rafiul Islam</h3>
-              <p className="profile-title" style={{marginBottom: '1rem'}}>Machine Learning Engineer | Computer Vision Specialist | AI Researcher</p>
+              <p className="profile-title" style={{marginBottom: '1rem'}}>Machine Learning Engineer | Computer Vision & Edge AI</p>
               <p className="profile-bio" style={{marginBottom: '1.5rem', fontSize: '1.1rem', lineHeight: '1.6'}}>
-                Computer science researcher and applied ML engineer focused on computational healthcare, trustworthy AI, and production-grade computer vision systems. 
-                From peer-reviewed research on voice-based mental health diagnostics to real-world deployments across surveillance, logistics, and manufacturing.
+                Machine Learning Engineer building production computer vision systems for safety, security, logistics, manufacturing, and retail. My work spans real-time video analytics, OCR, tracking, temporal decision logic, and edge deployment, alongside peer-reviewed research in computational healthcare.
               </p>
               <Link to="/about" className="btn btn-primary" style={{display: 'inline-flex', alignItems: 'center', gap: '8px'}}>
                 Learn More About Me
@@ -43,9 +42,9 @@ export default function About({ compact = false }){
                 <img src="./assets/images/profile.jpg" alt="MD Rafiul Islam" style={{width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%', position: 'relative', zIndex: 2}} />
               </div>
               <h3 className="profile-name">MD Rafiul Islam</h3>
-              <p className="profile-title">Machine Learning Engineer | Computer Vision Specialist | AI Researcher</p>
+              <p className="profile-title">Machine Learning Engineer | Computer Vision & Edge AI</p>
               <p className="profile-bio">
-                Computer science researcher and applied ML engineer whose work focuses on computational healthcare and trustworthy AI, with emphasis on voice-based psychological stability assessment using Bengali speech. Bridging academic research and real-world deployments across industrial safety, logistics, and manufacturing.
+                Machine Learning Engineer specializing in production computer vision and Edge AI. I build reliable systems that connect model inference with tracking, temporal rules, evidence generation, APIs, and deployment across banking surveillance, industrial safety, logistics, manufacturing, and retail. My research focuses on computational healthcare and trustworthy evaluation of Bengali voice-based mental-health models.
               </p>
               <div className="profile-links">
                 <a href="https://github.com/rafi0020" className="profile-link" target="_blank" rel="noreferrer">
@@ -110,7 +109,7 @@ export default function About({ compact = false }){
                   </div>
                   <div className="info-content">
                     <span className="info-label">Role</span>
-                    <span className="info-value">ML Engineer</span>
+                    <span className="info-value">Machine Learning Engineer</span>
                   </div>
                 </div>
                 <div className="info-item">
@@ -146,7 +145,7 @@ export default function About({ compact = false }){
                   </div>
                   <div className="info-content">
                     <span className="info-label">Projects</span>
-                    <span className="info-value">20+ Deployments</span>
+                    <span className="info-value">20+ AI &amp; CV Projects</span>
                   </div>
                 </div>
               </div>
@@ -194,7 +193,7 @@ export default function About({ compact = false }){
                   </div>
                   <div className="contact-sidebar-content">
                     <span className="contact-sidebar-label">Phone</span>
-                    <a href="tel:+8801568617814" className="contact-sidebar-value" style={{color: 'inherit', textDecoration: 'none', cursor: 'pointer'}}>+880 1679899117</a>
+                    <a href="tel:+8801679899117" className="contact-sidebar-value" style={{color: 'inherit', textDecoration: 'none', cursor: 'pointer'}}>+880 1679899117</a>
                   </div>
                 </div>
                 <div className="contact-sidebar-item">
