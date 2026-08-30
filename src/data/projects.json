@@ -1414,38 +1414,75 @@
   {
     "id": "hr-chatbot",
     "workflowImage": "/assets/projects/workflows/hr-chatbot.webp",
-    "title": "Internal AI-Powered HR Assistant",
+    "title": "Bondstein HR Assist v2.0 — Agentic HR Service Desk",
     "category": "Industry",
-    "company": "Bondstein Technologies (Internal R&D)",
+    "company": "Bondstein Technologies",
     "companyLogo": "./assets/logo/bondstein.png",
-    "inDevelopment": true,
-    "timeline": "2025",
-    "scale": "500+ Employees",
-    "summary": "Internal retrieval-augmented assistant for answering HR policy and process questions from an approved knowledge base.",
-    "problem": "HR information is distributed across documents, making common policy and onboarding questions slow to resolve consistently.",
-    "approach": "Fine-tuned large language model (LLaMA 2) on company HR documents, policies, and FAQ corpus. Implemented RAG (Retrieval-Augmented Generation) with vector database for accurate, grounded responses. Built conversational interface with multi-turn context awareness. Added guardrails for sensitive topics requiring human escalation.",
-    "impact": "Built an internal prototype that retrieves relevant policy context, generates grounded answers, and supports escalation when a question requires human judgment.",
+    "inDevelopment": false,
+    "timeline": "2026",
+    "scale": "Internal service desk",
+    "summary": "Offline-capable agentic HR service desk combining cited policy Q&A, secure employee self-service, approval workflows, SLA escalation, email operations, analytics, and auditability.",
+    "problem": "Employees needed one reliable place to understand HR policy, submit requests, and see where approvals were blocked. HR also needed consistent access control, policy versioning, operational reporting, and an auditable workflow without depending on external cloud services.",
+    "approach": "Built a FastAPI service with server-side sessions, role-based permissions, rate limiting, and segregation-of-duties controls. Policy documents are extracted, cleaned, chunked, and retrieved through BM25 plus optional sentence-transformer vectors fused with Reciprocal Rank Fusion. Answers remain grounded in cited passages and degrade safely to extractive responses when a local Ollama model, vector extension, OCR, or SMTP is unavailable. A data-driven workflow engine resolves manager, department-head, queue, role, and named-user approval steps while tracking SLA deadlines and escalation.",
+    "impact": "Delivered a self-contained v2 service desk that runs on one host with SQLite WAL, supports employee, manager, and HR operations, and remains useful offline. The implementation includes policy administration, ticket and approval lifecycles, threaded HR email, aggregate analytics, CSV/XLSX/PDF exports, immutable-style audit visibility, additive database migrations, and 400 automated API, role, and browser checks.",
     "stack": [
-      "LLaMA 2",
-      "LangChain",
-      "ChromaDB",
       "FastAPI",
-      "React",
-      "PostgreSQL"
+      "SQLite WAL/FTS5",
+      "BM25 + RRF",
+      "Sentence Transformers",
+      "sqlite-vec",
+      "Ollama (Optional)",
+      "Vanilla JavaScript",
+      "Docker",
+      "systemd",
+      "PyPDF"
     ],
     "features": [
-      "Natural language query understanding",
-      "RAG-based accurate policy retrieval",
-      "Multi-turn conversation with context memory",
-      "Automatic escalation for sensitive queries",
-      "Integration with HRMS for personalized responses",
-      "Analytics on common queries and satisfaction",
-      "Multi-language support"
+      "Policy-grounded HR answers with clause-level citations and computed confidence",
+      "Hybrid BM25 and vector retrieval combined through Reciprocal Rank Fusion",
+      "Extractive fallback with optional local Ollama synthesis and no runtime internet dependency",
+      "Employee provisioning, secure sign-up, PBKDF2 password hashing, session expiry, lockout, and rate limits",
+      "Server-enforced Employee, Manager, HR Admin, CEO, and System Owner permissions",
+      "Data-driven multi-step approvals with manager, department, queue, role, and user resolvers",
+      "Segregation of duties that prevents self-approval for every role",
+      "Priority-based SLA clocks, breach flags, notifications, and automatic escalation",
+      "Threaded HR email, policy versioning, aggregate analytics, and CSV/XLSX/PDF exports",
+      "SQLite schema migrations, WAL concurrency, audit logs, health status, and graceful degradation"
     ],
     "metrics": {
-      "Architecture": "Retrieval-augmented generation",
-      "Scope": "Internal HR knowledge",
-      "Status": "Internal prototype"
+      "automated_checks": "400",
+      "roles_tested": "5",
+      "retrieval": "BM25 + vectors + RRF",
+      "deployment": "Single-host, offline-capable"
+    },
+    "architecture": {
+      "description": "Secure employee self-service, grounded policy intelligence, and auditable HR workflow orchestration on a single-host deployment.",
+      "components": [
+        {
+          "name": "Employee & HR Portal",
+          "description": "Role-aware interface for policy chat, requests, approvals, mail, administration, and reporting."
+        },
+        {
+          "name": "Security & RBAC",
+          "description": "PBKDF2 credentials, server-side sessions, lockout, rate limiting, provisioned signup, and permission enforcement."
+        },
+        {
+          "name": "Hybrid Policy RAG",
+          "description": "PDF/DOCX extraction, OCR fallback, structured chunking, BM25, optional vectors, and RRF fusion with department scoping."
+        },
+        {
+          "name": "Grounded Answer Engine",
+          "description": "Cited responses with computed confidence, safe no-answer behavior, extractive fallback, and optional local Ollama synthesis."
+        },
+        {
+          "name": "Workflow & SLA Engine",
+          "description": "Table-driven approval chains, resolver logic, self-approval prevention, ticket events, notifications, and SLA escalation."
+        },
+        {
+          "name": "HR Operations & Reliability",
+          "description": "Policy versions, threaded email, analytics, exports, audit logs, SQLite WAL, additive migrations, and system health reporting."
+        }
+      ]
     },
     "media": {
       "images": [],

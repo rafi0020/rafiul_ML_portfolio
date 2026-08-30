@@ -92,12 +92,9 @@ function CompactAbout() {
         </p>
         <div className="about-compact-actions">
           <Link to="/about" className="btn btn-primary">
-            Explore my background
+            Know More
             <Icon name="arrowRight" />
           </Link>
-          <a href="/cv/MD_Rafiul_Islam_Industry.pdf" className="btn btn-ghost" target="_blank" rel="noreferrer">
-            <Icon name="download" /> Industry résumé
-          </a>
         </div>
       </div>
       <dl className="about-compact-evidence" aria-label="Career highlights">
