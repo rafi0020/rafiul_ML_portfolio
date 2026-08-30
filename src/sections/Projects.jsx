@@ -5,7 +5,7 @@ import Icon from "../components/Icon";
 import SectionCTA from "../components/SectionCTA";
 import { techClass, CATEGORY_ICON } from "../utils/projectMeta";
 
-const FEATURED_IDS = ["track-my-container", "bat-sop", "unilever-argus"];
+const FEATURED_IDS = ["track-my-container", "bat-sop", "unilever-argus", "anpr-bangla"];
 const FILTERS = ["All", "Industry", "Research", "Academic"];
 
 
@@ -16,7 +16,9 @@ export default function Projects({ defaultFilter = "All", compact = false, asPag
   const Heading = asPage ? "h1" : "h2";
 
   const list = useMemo(() => {
-    if (compact) return data.filter((p) => FEATURED_IDS.includes(p.id));
+    if (compact) {
+      return FEATURED_IDS.map((id) => data.find((p) => p.id === id)).filter(Boolean);
+    }
 
     const filtered = filter === "All" ? data : data.filter((p) => p.category === filter);
     return [...filtered].sort((a, b) => {
