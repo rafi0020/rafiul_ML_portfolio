@@ -121,7 +121,15 @@ export default function ProjectDetail(){
       <div className="project-detail-hero">
         {p.companyLogo && (
           <div style={{marginBottom: '16px'}}>
-            <img src={p.companyLogo} alt="" className="project-detail-logo" width="100" height="100" loading="lazy" decoding="async" />
+            <img
+              src={p.companyLogo}
+              alt=""
+              className={`project-detail-logo${p.companyLogoStyle === "wide" ? " is-wide" : ""}`}
+              width={p.companyLogoStyle === "wide" ? "220" : "100"}
+              height="100"
+              loading="lazy"
+              decoding="async"
+            />
           </div>
         )}
         <div className="project-detail-badges">

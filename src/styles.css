@@ -4161,12 +4161,24 @@ main:focus-visible {
   flex-shrink: 0;
 }
 
+.project-company-logo.is-wide {
+  width: 148px;
+  height: 44px;
+  border-radius: 6px;
+}
+
 .project-detail-logo {
   width: 100px;
   height: 100px;
   object-fit: contain;
   border-radius: 8px;
   margin-bottom: 16px;
+}
+
+.project-detail-logo.is-wide {
+  width: min(220px, 100%);
+  height: auto;
+  max-height: 80px;
 }
 
 .project-detail-page {

@@ -75,7 +75,7 @@ export default function Projects({ defaultFilter = "All", compact = false }) {
                       <img
                         src={p.companyLogo}
                         alt=""
-                        className="project-company-logo"
+                        className={`project-company-logo${p.companyLogoStyle === "wide" ? " is-wide" : ""}`}
                         width="60"
                         height="60"
                         loading="lazy"
