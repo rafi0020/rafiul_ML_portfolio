@@ -11,7 +11,7 @@ export default function Home() {
   useSEO({
     title: null,
     description:
-      "Applied AI & Research Engineer building production-grade computer vision and Edge AI systems, and publishing peer-reviewed ML research.",
+      "Machine Learning Engineer building production-grade computer vision and Edge AI systems, with peer-reviewed research in computational healthcare.",
     path: "/",
   });
 

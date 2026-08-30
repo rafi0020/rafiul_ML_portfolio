@@ -35,7 +35,7 @@ export default function Education({ compact = false }){
             <Icon name="cap" />
             Education
           </span>
-          <h2 className="section-title">Academic Background</h2>
+          <h2 className="section-title">Academic background</h2>
           <p className="section-subtitle">
             Formal training supporting applied machine learning and systems engineering
           </p>

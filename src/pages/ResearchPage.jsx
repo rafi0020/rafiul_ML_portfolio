@@ -5,7 +5,7 @@ export default function ResearchPage() {
   useSEO({
     title: "Research",
     description:
-      "Peer-reviewed publications in machine learning, computational healthcare, and trustworthy AI.",
+      "Peer-reviewed research and preprints in machine learning, computational healthcare, and trustworthy AI.",
     path: "/research",
   });
 

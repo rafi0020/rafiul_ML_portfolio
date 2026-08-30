@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Icon from "../components/Icon";
 
 const SOCIAL_LINKS = [
-  { href: "https://github.com/rafi0020", label: "GitHub", icon: "home" },
+  { href: "https://github.com/rafi0020", label: "GitHub", icon: "github" },
   { href: "https://linkedin.com/in/rafi009", label: "LinkedIn", icon: "linkedin" },
   { href: "https://scholar.google.com/citations?user=ORj6wioAAAAJ&hl=en", label: "Google Scholar", icon: "scholar" },
 ];
@@ -92,7 +92,7 @@ function CompactAbout() {
         </p>
         <div className="about-compact-actions">
           <Link to="/about" className="btn btn-primary">
-            Know More
+            More about me
             <Icon name="arrowRight" />
           </Link>
         </div>
@@ -122,7 +122,7 @@ export default function About({ compact = false }) {
               <aside className="about-identity" aria-label="Profile summary">
                 <img className="about-avatar" src="/assets/images/profile.jpg" alt="MD Rafiul Islam" />
                 <div>
-                  <h2>MD Rafiul Islam</h2>
+                  <p className="about-name">MD Rafiul Islam</p>
                   <p className="about-role">Machine Learning Engineer</p>
                   <p className="about-specialty">Computer Vision · Edge AI</p>
                 </div>

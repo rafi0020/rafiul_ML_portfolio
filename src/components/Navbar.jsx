@@ -3,7 +3,7 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import Icon from "./Icon";
 
 const NAV_ITEMS = [
-  { to: "/", label: "Home", icon: "home", end: true },
+  { to: "/", label: "Home", icon: "house", end: true },
   { to: "/about", label: "About", icon: "user" },
   { to: "/skills", label: "Skills", icon: "skills" },
   { to: "/projects", label: "Projects", icon: "repo" },
@@ -14,6 +14,7 @@ const NAV_ITEMS = [
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const navRef = useRef(null);
+  const linksRef = useRef(null);
   const toggleRef = useRef(null);
   const menuId = useId();
   const { pathname } = useLocation();
@@ -24,10 +25,24 @@ export default function Navbar() {
   useEffect(() => {
     if (!menuOpen) return;
 
+    const focusable = Array.from(linksRef.current?.querySelectorAll("a[href]") || []);
+    focusable[0]?.focus();
+
     const onKeyDown = (e) => {
       if (e.key === "Escape") {
         setMenuOpen(false);
         toggleRef.current?.focus();
+      }
+      if (e.key === "Tab" && focusable.length) {
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
       }
     };
     const onPointerDown = (e) => {
@@ -81,7 +96,7 @@ export default function Navbar() {
           </svg>
         </button>
 
-        <div id={menuId} className={`navbar-links ${menuOpen ? "open" : ""}`}>
+        <div ref={linksRef} id={menuId} className={`navbar-links ${menuOpen ? "open" : ""}`}>
           {NAV_ITEMS.map(({ to, label, icon, end }) => (
             <NavLink
               key={to}

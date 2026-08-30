@@ -11,7 +11,7 @@ const QUICK_LINKS = [
 ];
 
 const SOCIALS = [
-  { href: "https://github.com/rafi0020", icon: "home", label: "GitHub" },
+  { href: "https://github.com/rafi0020", icon: "github", label: "GitHub" },
   { href: "https://linkedin.com/in/rafi009", icon: "linkedin", label: "LinkedIn" },
   { href: "https://scholar.google.com/citations?user=ORj6wioAAAAJ&hl=en", icon: "scholar", label: "Google Scholar" },
   { href: "mailto:rafiulislam1921@gmail.com", icon: "mail", label: "Email" },
@@ -25,7 +25,7 @@ export default function Footer() {
       <div className="footer-content">
         <div className="footer-brand">
           <div className="footer-logo">
-            <span className="footer-mark" aria-hidden="true">MR</span>
+            <span className="footer-mark" aria-hidden="true">RI</span>
             <span>MD Rafiul Islam</span>
           </div>
           <p className="footer-description">

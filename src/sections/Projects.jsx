@@ -14,6 +14,7 @@ const FILTERS = ["All", "Industry", "Research", "Academic"];
 export default function Projects({ defaultFilter = "All", compact = false, asPage = false }) {
   const [filter, setFilter] = useState(defaultFilter);
   const Heading = asPage ? "h1" : "h2";
+  const CardHeading = asPage ? "h2" : "h3";
 
   const list = useMemo(() => {
     if (compact) {
@@ -98,13 +99,16 @@ export default function Projects({ defaultFilter = "All", compact = false, asPag
                   {p.companyLogo && (
                     <img src={p.companyLogo.replace(/^\.\/assets/, "/assets")} alt="" className="project-summary-logo" width="44" height="44" loading="lazy" decoding="async" />
                   )}
-                  <h3>{p.title}</h3>
+                  <CardHeading>{p.title}</CardHeading>
                 </div>
                 <p className="project-summary-text">{p.summary}</p>
                 <ul className="project-tech-badges">
                   {p.stack.slice(0, 5).map((tech) => (
                     <li key={tech} className={`tech-badge ${techClass(tech)}`}>{tech}</li>
                   ))}
+                  {p.stack.length > 5 && (
+                    <li className="tech-badge tech-badge-more">+{p.stack.length - 5} more</li>
+                  )}
                 </ul>
                 <Link to={`/projects/${p.id}`} className="project-summary-link">
                   {p.inDevelopment ? "View project" : "View case study"}

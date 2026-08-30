@@ -64,6 +64,7 @@ const skillCategories = [
 export default function Skills({ compact = false, asPage = false }) {
   const displayedCategories = compact ? skillCategories.slice(0, 4) : skillCategories;
   const Heading = asPage ? "h1" : "h2";
+  const CardHeading = asPage ? "h2" : "h3";
 
   return (
     <section id="skills" className="section">
@@ -90,7 +91,7 @@ export default function Skills({ compact = false, asPage = false }) {
                 <div className="skill-category-icon" aria-hidden="true">
                   <Icon name={category.icon} size={24} />
                 </div>
-                <h3 className="skill-category-title">{category.title}</h3>
+                <CardHeading className="skill-category-title">{category.title}</CardHeading>
               </div>
 
               <div className="skill-items">

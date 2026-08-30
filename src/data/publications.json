@@ -1,5 +1,15 @@
 [
   {
+    "id": "arxiv2601-16793",
+    "title": "A Novel Transfer Learning Approach for Mental Stability Classification from Voice Signal",
+    "authors": "Rafiul Islam, Md. Taimur Ahad",
+    "venue": "arXiv preprint arXiv:2601.16793 — submitted 23 January 2026",
+    "year": 2026,
+    "abstract": "A transfer-learning study for mental-stability classification from voice spectrograms under limited-data conditions. VGG16, InceptionV3, and DenseNet121 were evaluated across non-augmented, augmented, and transfer-learning phases with strict data separation. DenseNet121 achieved the strongest reported result: 94% accuracy and 99% AUC.",
+    "link": "https://arxiv.org/abs/2601.16793",
+    "bibtex": "@misc{islam2026transfer,\n  title={A Novel Transfer Learning Approach for Mental Stability Classification from Voice Signal},\n  author={Islam, Rafiul and Ahad, Md. Taimur},\n  year={2026},\n  eprint={2601.16793},\n  archivePrefix={arXiv},\n  primaryClass={cs.SD},\n  doi={10.48550/arXiv.2601.16793}\n}"
+  },
+  {
     "id": "jov2024",
     "title": "Mental Health Diagnosis From Voice Data Using Convolutional Neural Networks and Vision Transformers",
     "authors": "Rafiul Islam, Md. Taimur Ahad, Faruk Ahmed, Bo Song, Yan Li",

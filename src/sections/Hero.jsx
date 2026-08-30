@@ -10,7 +10,7 @@ const CVS = [
 const STATS = [
   { value: "20+", label: "AI & CV projects" },
   { value: "5", label: "Enterprise domains" },
-  { value: "2", label: "Published research works" },
+  { value: "3", label: "Research publications" },
 ];
 
 export default function Hero() {
@@ -136,7 +136,7 @@ export default function Hero() {
             target="_blank"
             rel="noreferrer"
           >
-            <Icon name="home" size={18} />
+            <Icon name="github" size={18} />
             GitHub profile
           </a>
         </div>

@@ -6,15 +6,16 @@ const EMAIL = "rafiulislam1921@gmail.com";
 const CHANNELS = [
   { href: `mailto:${EMAIL}`, icon: "mail", label: "Email", detail: EMAIL },
   { href: "tel:+8801679899117", icon: "phone", label: "Phone", detail: "+880 1679-899117" },
-  { href: "https://wa.me/8801679899117", icon: "phone", label: "WhatsApp", detail: "Message me" },
+  { href: "https://wa.me/8801679899117", icon: "chat", label: "WhatsApp", detail: "Message me" },
   { href: "https://linkedin.com/in/rafi009", icon: "linkedin", label: "LinkedIn", detail: "in/rafi009" },
-  { href: "https://github.com/rafi0020", icon: "home", label: "GitHub", detail: "@rafi0020" },
+  { href: "https://github.com/rafi0020", icon: "github", label: "GitHub", detail: "@rafi0020" },
   { href: "https://scholar.google.com/citations?user=ORj6wioAAAAJ&hl=en", icon: "scholar", label: "Google Scholar", detail: "Publications" },
   { href: "https://www.researchgate.net/profile/Rafiul-Islam-13", icon: "book", label: "ResearchGate", detail: "Profile" },
 ];
 
 export default function Contact({ asPage = false }) {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [status, setStatus] = useState("");
   const Heading = asPage ? "h1" : "h2";
 
   const update = (field) => (event) =>
@@ -33,8 +34,14 @@ export default function Contact({ asPage = false }) {
       form.message,
     ].join("\n");
 
-    window.location.href =
-      `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const composeUrl = new URL("https://mail.google.com/mail/");
+    composeUrl.search = new URLSearchParams({
+      view: "cm", fs: "1", to: EMAIL, su: subject, body,
+    }).toString();
+    const composeWindow = window.open(composeUrl.toString(), "_blank", "noopener,noreferrer");
+    setStatus(composeWindow
+      ? "Your message is ready in Gmail. Review it there, then press Send."
+      : `The compose window was blocked. Email ${EMAIL} directly.`);
   };
 
   return (
@@ -53,7 +60,7 @@ export default function Contact({ asPage = false }) {
 
         <div className="contact-layout">
           <div className="contact-info">
-            <h3>Get in touch</h3>
+            <h2>Get in touch</h2>
             <ul className="contact-links">
               {CHANNELS.map(({ href, icon, label, detail }) => (
                 <li key={label}>
@@ -77,8 +84,8 @@ export default function Contact({ asPage = false }) {
 
           <form className="contact-form" onSubmit={handleSubmit}>
             <p className="form-note">
-              This form opens your own email client with the message pre-filled &mdash;
-              nothing is sent or stored by this site.
+              This form opens Gmail with your message pre-filled. Nothing is stored
+              by this website, and you review the message before sending.
             </p>
 
             <div className="form-group">
@@ -126,8 +133,9 @@ export default function Contact({ asPage = false }) {
 
             <button type="submit" className="btn btn-primary btn-block">
               <Icon name="mail" size={18} />
-              Compose message
+              Continue in Gmail
             </button>
+            {status && <p className="form-status" role="status">{status}</p>}
           </form>
         </div>
       </div>

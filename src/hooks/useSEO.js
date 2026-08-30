@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
-const SITE = "https://rafiulislam.me";
-const DEFAULT_TITLE = "MD Rafiul Islam | Applied AI & Research Engineer";
+const SITE = "https://www.rafiulislam.me";
+const DEFAULT_TITLE = "MD Rafiul Islam | Machine Learning Engineer";
 
 /** Upsert a <meta> tag keyed by either name= or property=. */
 function setMeta(keyAttr, keyValue, content) {
@@ -30,7 +30,7 @@ function setCanonical(href) {
  * current route. Without this every route shares the homepage's metadata,
  * which is what search results and link previews end up showing.
  */
-export default function useSEO({ title, description, path } = {}) {
+export default function useSEO({ title, description, path, noIndex = false } = {}) {
   useEffect(() => {
     const fullTitle = title ? `${title} | MD Rafiul Islam` : DEFAULT_TITLE;
     document.title = fullTitle;
@@ -40,11 +40,14 @@ export default function useSEO({ title, description, path } = {}) {
     setMeta("name", "description", description);
     setMeta("property", "og:description", description);
     setMeta("name", "twitter:description", description);
+    setMeta("name", "robots", noIndex ? "noindex, nofollow" : "index, follow");
 
-    if (path) {
+    if (noIndex) {
+      document.head.querySelector('link[rel="canonical"]')?.remove();
+    } else if (path) {
       const url = `${SITE}${path}`;
       setMeta("property", "og:url", url);
       setCanonical(url);
     }
-  }, [title, description, path]);
+  }, [title, description, path, noIndex]);
 }

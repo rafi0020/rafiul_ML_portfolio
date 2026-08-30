@@ -6,6 +6,7 @@ export default function NotFound() {
   useSEO({
     title: "Page not found",
     description: "That page doesn't exist. Head back to the homepage.",
+    noIndex: true,
   });
 
   return (

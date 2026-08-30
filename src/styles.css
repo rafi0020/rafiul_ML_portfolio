@@ -14,7 +14,7 @@
   --border-muted: #21262d;
   --text-primary: #f0f6fc;
   --text-secondary: #8b949e;
-  --text-muted: #6e7681;
+  --text-muted: #8b949e;
   --accent-primary: #58a6ff;
   --accent-secondary: #1f6feb;
   --accent-success: #3fb950;
@@ -2744,10 +2744,10 @@ section[id] {
   align-items: center;
   gap: 6px;
   padding: 8px 16px;
-  background: var(--bg-subtle);
-  border: 1px solid var(--border-default);
+  background: rgba(88, 166, 255, 0.1);
+  border: 1px solid rgba(88, 166, 255, 0.45);
   border-radius: 6px;
-  color: var(--text-secondary);
+  color: var(--text-primary);
   text-decoration: none;
   font-size: 13px;
   cursor: pointer;
@@ -2758,6 +2758,36 @@ section[id] {
   border-color: var(--accent-primary);
   color: var(--accent-primary);
 }
+
+.publication-btn:focus-visible {
+  outline: 3px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+.project-detail-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 2rem;
+}
+
+.project-demo-link { display: inline-flex; align-items: center; gap: 8px; }
+.project-detail-logo-wrap { margin-bottom: 16px; }
+.project-dev-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border: 1px solid rgba(219, 97, 162, 0.4);
+  border-radius: 999px;
+  background: rgba(219, 97, 162, 0.12);
+  color: #f0a6cf;
+  font-size: 13px;
+  font-weight: 600;
+}
+.tech-badge-more { color: var(--text-primary); border-style: dashed; }
+.form-status { margin: 14px 0 0; color: var(--text-secondary); font-size: 13px; line-height: 1.5; }
 
 .bibtex-modal {
   margin-top: 16px;
@@ -2794,7 +2824,7 @@ section[id] {
   box-shadow: var(--shadow-float);
 }
 
-.contact-info h3 {
+.contact-info h2 {
   font-size: 1.5rem;
   margin-bottom: 24px;
 }
@@ -2840,6 +2870,9 @@ section[id] {
   color: var(--text-muted);
   margin-bottom: 2px;
 }
+
+.contact-link-text { min-width: 0; }
+.contact-link-detail { overflow-wrap: anywhere; }
 
 .contact-form {
   background: var(--gradient-card);
@@ -4342,10 +4375,18 @@ main:focus-visible {
   gap: 12px;
 }
 
+.project-summary-heading h2,
 .project-summary-heading h3 {
   margin: 0;
   font-size: 1.2rem;
   line-height: 1.35;
+}
+
+.about-name {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 1.25rem;
+  font-weight: 700;
 }
 
 .project-summary-logo {
@@ -4406,6 +4447,8 @@ main:focus-visible {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px;
   }
+
+  .contact-links li:first-child { grid-column: 1 / -1; }
 
   .contact-link {
     height: 100%;

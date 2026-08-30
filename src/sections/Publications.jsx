@@ -30,8 +30,10 @@ function BibtexBlock({ bibtex, id }) {
 export default function Publications({ compact = false, asPage = false }) {
   const [openBibtex, setOpenBibtex] = useState(null);
   const baseId = useId();
-  const list = compact ? pubs.slice(0, 2) : pubs;
+  const orderedPublications = [...pubs].sort((a, b) => b.year - a.year);
+  const list = compact ? orderedPublications.slice(0, 2) : orderedPublications;
   const Heading = asPage ? "h1" : "h2";
+  const CardHeading = asPage ? "h2" : "h3";
 
   return (
     <section id="publications" className="section">
@@ -43,7 +45,7 @@ export default function Publications({ compact = false, asPage = false }) {
           </span>
           <Heading className="section-title">Research papers</Heading>
           <p className="section-subtitle">
-            Peer-reviewed publications in machine learning and AI
+            Peer-reviewed research and preprints in machine learning and AI
           </p>
         </div>
 
@@ -58,7 +60,7 @@ export default function Publications({ compact = false, asPage = false }) {
                   <Icon name="book" size={14} />
                   {p.venue} &bull; {p.year}
                 </p>
-                <h3 className="publication-title">{p.title}</h3>
+                <CardHeading className="publication-title">{p.title}</CardHeading>
                 <p className="publication-authors">{p.authors || "MD Rafiul Islam et al."}</p>
                 {p.abstract && <p className="publication-abstract">{p.abstract}</p>}
 
@@ -83,7 +85,7 @@ export default function Publications({ compact = false, asPage = false }) {
                   )}
                   {p.code && (
                     <a href={p.code} target="_blank" rel="noreferrer" className="publication-btn">
-                      <Icon name="home" size={14} />
+                      <Icon name="github" size={14} />
                       Code
                     </a>
                   )}
