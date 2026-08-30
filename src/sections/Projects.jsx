@@ -97,6 +97,23 @@ export default function Projects({ defaultFilter = "All", compact = false }) {
                 </span>
               </header>
 
+              {p.workflowImage && (
+                <Link
+                  to={`/projects/${p.id}`}
+                  className="project-workflow-preview"
+                  aria-label={`Open ${p.title} case study`}
+                >
+                  <img
+                    src={p.workflowImage}
+                    alt={`${p.title} workflow diagram`}
+                    width="1280"
+                    height="720"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </Link>
+              )}
+
               <div className="project-detailed-section">
                 <h4 className="project-section-title">Overview</h4>
                 <p className="project-overview-text">{p.summary}</p>

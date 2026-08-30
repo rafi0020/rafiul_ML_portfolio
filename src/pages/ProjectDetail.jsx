@@ -173,6 +173,20 @@ export default function ProjectDetail(){
         <p className="project-detail-summary">{p.summary}</p>
       </div>
 
+      {p.workflowImage && (
+        <figure className="project-workflow-hero">
+          <img
+            src={p.workflowImage}
+            alt={`${p.title} workflow diagram`}
+            width="1280"
+            height="720"
+            decoding="async"
+            fetchPriority="high"
+          />
+          <figcaption>System workflow</figcaption>
+        </figure>
+      )}
+
       {/* Impact Metrics Highlight */}
       {Object.keys(metrics).length > 0 && (
         <div className="impact-metrics-highlight">

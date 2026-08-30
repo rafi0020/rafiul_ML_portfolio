@@ -1,6 +1,7 @@
 [
   {
     "id": "anpr-bangla",
+    "workflowImage": "/assets/projects/workflows/anpr-bangla.webp",
     "title": "Bangla ANPR & Vehicle Verification",
     "category": "Industry",
     "company": "New Asia Ltd.",
@@ -124,6 +125,7 @@
   },
   {
     "id": "track-my-container",
+    "workflowImage": "/assets/projects/workflows/track-my-container.webp",
     "title": "Track My Container (KDS Logistics)",
     "category": "Industry",
     "company": "KDS Logistics Ltd.",
@@ -257,6 +259,7 @@
   },
   {
     "id": "unilever-argus",
+    "workflowImage": "/assets/projects/workflows/unilever-argus.webp",
     "title": "Argus Automata — Industrial Safety Video Analytics",
     "category": "Industry",
     "company": "Unilever Bangladesh Ltd.",
@@ -448,6 +451,7 @@
   },
   {
     "id": "bat-sop",
+    "workflowImage": "/assets/projects/workflows/bat-sop.webp",
     "title": "BAT AI Leaf SOP Checker",
     "category": "Industry",
     "company": "BAT Bangladesh",
@@ -547,6 +551,7 @@
   },
   {
     "id": "staircase-safety",
+    "workflowImage": "/assets/projects/workflows/staircase-safety.webp",
     "title": "Unilever Smart Staircase Safety",
     "category": "Industry",
     "company": "Unilever Bangladesh Ltd.",
@@ -633,6 +638,7 @@
   },
   {
     "id": "smart-space",
+    "workflowImage": "/assets/projects/workflows/smart-space.webp",
     "title": "Smart Space Monitoring — Retail Intelligence",
     "category": "Industry",
     "company": "Runner Automobiles Ltd.",
@@ -724,6 +730,7 @@
   },
   {
     "id": "brac-bank-face-recognition",
+    "workflowImage": "/assets/projects/workflows/brac-bank-face-recognition.webp",
     "title": "Brac CIN — Face Recognition & Identity Review",
     "category": "Industry",
     "company": "Brac Bank PLC",
@@ -799,6 +806,7 @@
   },
   {
     "id": "brac-bank-atm-intrusion",
+    "workflowImage": "/assets/projects/workflows/brac-bank-atm-intrusion.webp",
     "title": "Brac CIN — Intrusion & Perimeter Monitoring",
     "category": "Industry",
     "company": "Brac Bank PLC",
@@ -867,6 +875,7 @@
   },
   {
     "id": "brac-bank-cash-theft",
+    "workflowImage": "/assets/projects/workflows/brac-bank-cash-theft.webp",
     "title": "Brac CIN — Illegal Theft Detection",
     "category": "Industry",
     "company": "Brac Bank PLC",
@@ -927,6 +936,7 @@
   },
   {
     "id": "brac-bank-unusual-activity",
+    "workflowImage": "/assets/projects/workflows/brac-bank-unusual-activity.webp",
     "title": "Brac CIN — Lying-Person & Unusual Activity Monitoring",
     "category": "Industry",
     "company": "Brac Bank PLC",
@@ -986,6 +996,7 @@
   },
   {
     "id": "mobil-product-inspector",
+    "workflowImage": "/assets/projects/workflows/mobil-product-inspector.webp",
     "title": "Mobil Bottle & Label Inspection",
     "category": "Industry",
     "company": "Mobil Bangladesh Ltd.",
@@ -1045,6 +1056,7 @@
   },
   {
     "id": "vision-suite-pharma-bottling",
+    "workflowImage": "/assets/projects/workflows/vision-suite-pharma-bottling.webp",
     "title": "Vision Suite: Pharma Blister Pack, Cap-Seal & Liquid Fill Inspection",
     "category": "Industry",
     "company": "Bondstein Vision Suite (Production R&D)",
@@ -1107,6 +1119,7 @@
   },
   {
     "id": "vision-suite-meters-threats",
+    "workflowImage": "/assets/projects/workflows/vision-suite-meters-threats.webp",
     "title": "Vision Suite: Analog Gauge Digitization & VLM-Verified Threat Detection",
     "category": "Industry",
     "company": "Bondstein Vision Suite (Production R&D)",
@@ -1165,6 +1178,7 @@
   },
   {
     "id": "vision-suite-logistics-parking",
+    "workflowImage": "/assets/projects/workflows/vision-suite-logistics-parking.webp",
     "title": "Vision Suite: Conveyor Counting, Parking Occupancy & Threat Analytics",
     "category": "Industry",
     "company": "Bondstein Vision Suite (Production R&D)",
@@ -1224,6 +1238,7 @@
   },
   {
     "id": "crowd-mob-detection",
+    "workflowImage": "/assets/projects/workflows/crowd-mob-detection.webp",
     "title": "Crowd / Mob Detection (Multi-Modal Public Safety Analytics)",
     "category": "Industry",
     "company": "Bondstein Technologies (Internal R&D)",
@@ -1293,6 +1308,7 @@
   },
   {
     "id": "juice-flow-anomaly",
+    "workflowImage": "/assets/projects/workflows/juice-flow-anomaly.webp",
     "title": "Juice Flow Anomaly Detection (Food-Safety Edge Anomaly Segmentation)",
     "category": "Industry",
     "company": "Bondstein Technologies (Internal R&D)",
@@ -1357,6 +1373,7 @@
   },
   {
     "id": "counterfeit",
+    "workflowImage": "/assets/projects/workflows/counterfeit.webp",
     "title": "Anti-Counterfeit Detection System",
     "category": "Industry",
     "company": "Bondstein Technologies (Internal R&D)",
@@ -1396,6 +1413,7 @@
   },
   {
     "id": "hr-chatbot",
+    "workflowImage": "/assets/projects/workflows/hr-chatbot.webp",
     "title": "Internal AI-Powered HR Assistant",
     "category": "Industry",
     "company": "Bondstein Technologies (Internal R&D)",
@@ -1436,6 +1454,7 @@
   },
   {
     "id": "voice-vit",
+    "workflowImage": "/assets/projects/workflows/voice-vit.webp",
     "title": "Mental Health Diagnosis Using CNNs and Vision Transformers",
     "category": "Research",
     "company": "Daffodil International University",
@@ -1500,6 +1519,7 @@
   },
   {
     "id": "mental-stability-transfer-learning",
+    "workflowImage": "/assets/projects/workflows/mental-stability-transfer-learning.webp",
     "title": "Transfer Learning for Mental Stability Classification",
     "category": "Research",
     "company": "Daffodil International University",
@@ -1573,6 +1593,7 @@
   },
   {
     "id": "hybrid-densevitgru-xai",
+    "workflowImage": "/assets/projects/workflows/hybrid-densevitgru-xai.webp",
     "title": "Hybrid Deep Models for Mental Health Detection with XAI Techniques",
     "category": "Research",
     "company": "Daffodil International University",
@@ -1645,6 +1666,7 @@
   },
   {
     "id": "selfsupervised-vit-noisy-voice",
+    "workflowImage": "/assets/projects/workflows/selfsupervised-vit-noisy-voice.webp",
     "title": "Self-Supervised Learning with ViT for Noisy Real-World Data",
     "category": "Research",
     "company": "Daffodil International University",
@@ -1720,6 +1742,7 @@
   },
   {
     "id": "skin-cancer-detection",
+    "workflowImage": "/assets/projects/workflows/skin-cancer-detection.webp",
     "title": "Skin Cancer Detection Using Computer Vision",
     "category": "Research",
     "company": "Daffodil International University",
@@ -1757,6 +1780,7 @@
   },
   {
     "id": "blockmedix-ai",
+    "workflowImage": "/assets/projects/workflows/blockmedix-ai.webp",
     "title": "BlockMedix AI - Decentralized Healthcare System",
     "category": "Academic",
     "company": "Daffodil International University",
@@ -1796,6 +1820,7 @@
   },
   {
     "id": "smart-dining",
+    "workflowImage": "/assets/projects/workflows/smart-dining.webp",
     "title": "Smart Dining Caloric Display System",
     "category": "Academic",
     "company": "Daffodil International University",
@@ -1834,6 +1859,7 @@
   },
   {
     "id": "physical-activity-prediction",
+    "workflowImage": "/assets/projects/workflows/physical-activity-prediction.webp",
     "title": "Physical Activity Level Prediction",
     "category": "Academic",
     "company": "Daffodil International University",
