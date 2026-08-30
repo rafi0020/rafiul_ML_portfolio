@@ -27,10 +27,11 @@ function BibtexBlock({ bibtex, id }) {
   );
 }
 
-export default function Publications({ compact = false }) {
+export default function Publications({ compact = false, asPage = false }) {
   const [openBibtex, setOpenBibtex] = useState(null);
   const baseId = useId();
   const list = compact ? pubs.slice(0, 2) : pubs;
+  const Heading = asPage ? "h1" : "h2";
 
   return (
     <section id="publications" className="section">
@@ -40,7 +41,7 @@ export default function Publications({ compact = false }) {
             <Icon name="book" />
             Publications
           </span>
-          <h2 className="section-title">Research papers</h2>
+          <Heading className="section-title">Research papers</Heading>
           <p className="section-subtitle">
             Peer-reviewed publications in machine learning and AI
           </p>

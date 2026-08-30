@@ -38,8 +38,8 @@ export const metricIcon = (key) => match(METRIC_ICON_RULES, key, "repo");
 export const techClass = (tech) => match(TECH_CLASS_RULES, tech, "tech-default");
 
 export const CATEGORY_ICON = {
-  All: "🗂️",
-  Industry: "🏭",
-  Research: "📚",
-  Academic: "🎓",
+  All: "repo",
+  Industry: "briefcase",
+  Research: "book",
+  Academic: "cap",
 };

@@ -13,8 +13,9 @@ const CHANNELS = [
   { href: "https://www.researchgate.net/profile/Rafiul-Islam-13", icon: "book", label: "ResearchGate", detail: "Profile" },
 ];
 
-export default function Contact() {
+export default function Contact({ asPage = false }) {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const Heading = asPage ? "h1" : "h2";
 
   const update = (field) => (event) =>
     setForm((prev) => ({ ...prev, [field]: event.target.value }));
@@ -44,7 +45,7 @@ export default function Contact() {
             <Icon name="mail" />
             Contact
           </span>
-          <h2 className="section-title">Let&rsquo;s connect</h2>
+          <Heading className="section-title">Let&rsquo;s connect</Heading>
           <p className="section-subtitle">
             Open to opportunities, collaborations, and interesting conversations
           </p>

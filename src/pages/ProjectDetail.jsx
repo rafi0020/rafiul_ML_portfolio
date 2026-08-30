@@ -122,7 +122,7 @@ export default function ProjectDetail(){
         {p.companyLogo && (
           <div style={{marginBottom: '16px'}}>
             <img
-              src={p.companyLogo}
+              src={p.companyLogo.replace(/^\.\/assets/, "/assets")}
               alt=""
               className={`project-detail-logo${p.companyLogoStyle === "wide" ? " is-wide" : ""}`}
               width={p.companyLogoStyle === "wide" ? "220" : "100"}

@@ -11,7 +11,7 @@ export default function ResearchPage() {
 
   return (
     <main id="main-content" tabIndex={-1}>
-      <Publications />
+      <Publications asPage />
     </main>
   );
 }

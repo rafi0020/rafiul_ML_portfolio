@@ -473,6 +473,12 @@ section[id] {
   position: relative;
 }
 
+/* Sections own their vertical rhythm; nested containers only provide width. */
+.section > .container {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
 .section-header {
   text-align: center;
   margin-bottom: 60px;
@@ -2043,6 +2049,9 @@ section[id] {
   font-weight: 500;
   cursor: pointer;
   transition: var(--transition-smooth);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .filter-btn:hover {
@@ -4262,6 +4271,145 @@ main:focus-visible {
   font-size: 13px;
   margin-bottom: 1.5rem;
   text-align: center;
+}
+
+/* Concise index cards keep discovery fast; full evidence remains in case studies. */
+.projects-card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+  margin-top: 28px;
+}
+
+.project-summary-card {
+  min-width: 0;
+  overflow: hidden;
+  background: var(--gradient-card);
+  border: 1px solid var(--border-default);
+  border-radius: 16px;
+  box-shadow: var(--shadow-float);
+  transition: var(--transition-smooth);
+}
+
+.project-summary-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-primary);
+  box-shadow: var(--shadow-hover);
+}
+
+.project-summary-card .project-workflow-preview {
+  margin: 0;
+  border: 0;
+  border-bottom: 1px solid var(--border-default);
+  border-radius: 0;
+}
+
+.project-summary-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+}
+
+.project-summary-topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.project-summary-company {
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  text-align: right;
+}
+
+.project-summary-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.project-summary-heading h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  line-height: 1.35;
+}
+
+.project-summary-logo {
+  width: 44px;
+  height: 44px;
+  flex: 0 0 auto;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
+.project-summary-text {
+  display: -webkit-box;
+  margin: 0;
+  overflow: hidden;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.project-summary-card .project-tech-badges {
+  margin: 0;
+}
+
+.project-summary-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  margin-top: auto;
+  color: var(--accent-primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.project-summary-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+@media (max-width: 820px) {
+  .projects-card-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 540px) {
+  .project-summary-body { padding: 20px; }
+  .project-summary-topline { align-items: flex-start; }
+  .project-summary-company { max-width: 50%; }
+}
+
+@media (min-width: 1100px) {
+  .contact-layout {
+    grid-template-columns: 1.15fr 1fr;
+  }
+
+  .contact-links {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .contact-link {
+    height: 100%;
+    padding: 14px;
+  }
+
+  .contact-link:hover {
+    transform: translateY(-3px);
+  }
+
+  .contact-link-icon {
+    width: 42px;
+    height: 42px;
+    flex: 0 0 auto;
+  }
 }
 
 /* Lists used for semantics shouldn't inherit bullet styling. */

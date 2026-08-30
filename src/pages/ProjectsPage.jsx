@@ -30,7 +30,7 @@ export default function ProjectsPage() {
 
   return (
     <main id="main-content" tabIndex={-1}>
-      <Projects defaultFilter="All" />
+      <Projects defaultFilter="All" asPage />
     </main>
   );
 }
