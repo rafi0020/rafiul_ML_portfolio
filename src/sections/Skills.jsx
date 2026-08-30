@@ -4,7 +4,7 @@ import SectionCTA from "../components/SectionCTA";
 const skillCategories = [
   {
     title: "Computer Vision",
-    icon: "skills",
+    icon: "eye",
     skills: [
       "YOLO11", "YOLO-OBB", "YOLOE", "OpenCV", "Object Detection",
       "Instance Segmentation", "Pose Estimation", "PaddleOCR", "Bangla ANPR",
@@ -14,7 +14,7 @@ const skillCategories = [
   },
   {
     title: "Video Analytics & Reliability",
-    icon: "gear",
+    icon: "shield",
     skills: [
       "Multi-camera RTSP", "ROI & Line-Crossing Logic", "Temporal Voting",
       "State Machines", "EMA & Hysteresis", "Session Deduplication",
@@ -24,7 +24,7 @@ const skillCategories = [
   },
   {
     title: "Edge AI & Deployment",
-    icon: "arrowRight",
+    icon: "bolt",
     skills: [
       "NVIDIA Jetson", "TensorRT", "ONNX", "FP16/INT8 Optimization",
       "CUDA", "GStreamer", "Docker", "Linux", "Multi-GPU Inference",
@@ -33,7 +33,7 @@ const skillCategories = [
   },
   {
     title: "Deep Learning & Research",
-    icon: "book",
+    icon: "brain",
     skills: [
       "PyTorch", "TensorFlow", "CNNs", "Vision Transformers", "DenseNet",
       "GRU", "Transfer Learning", "wav2vec 2.0", "WavLM", "Whisper",
@@ -42,7 +42,7 @@ const skillCategories = [
   },
   {
     title: "APIs, Data & MLOps",
-    icon: "repo",
+    icon: "code",
     skills: [
       "Python", "FastAPI", "REST APIs", "SQLite", "PostgreSQL", "Pandas",
       "NumPy", "Scikit-learn", "Weights & Biases", "MLflow", "Git/GitHub",
@@ -51,7 +51,7 @@ const skillCategories = [
   },
   {
     title: "Applied Domains",
-    icon: "briefcase",
+    icon: "factory",
     skills: [
       "Industrial Safety", "Banking Surveillance", "Ports & Logistics",
       "Manufacturing Inspection", "Retail Analytics", "Computational Healthcare",
@@ -62,7 +62,7 @@ const skillCategories = [
 ];
 
 export default function Skills({ compact = false, asPage = false }) {
-  const displayedCategories = compact ? skillCategories.slice(0, 3) : skillCategories;
+  const displayedCategories = compact ? skillCategories.slice(0, 4) : skillCategories;
   const Heading = asPage ? "h1" : "h2";
 
   return (
@@ -79,7 +79,7 @@ export default function Skills({ compact = false, asPage = false }) {
           </p>
         </div>
 
-        <div className="skills-container">
+        <div className={`skills-container${compact ? " is-compact" : ""}`}>
           {displayedCategories.map((category, index) => (
             <div
               key={category.title}
