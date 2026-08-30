@@ -25,10 +25,11 @@ export default function AboutPage() {
   }, [state]);
 
   return (
-    <main id="main-content" tabIndex={-1}>
+    <main id="main-content" className="about-page" tabIndex={-1}>
       <About />
       <Experience />
       <Education />
     </main>
   );
 }
+

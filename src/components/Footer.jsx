@@ -29,8 +29,8 @@ export default function Footer() {
             <span>MD Rafiul Islam</span>
           </div>
           <p className="footer-description">
-            Applied AI engineer &amp; researcher building production-grade computer
-            vision and Edge AI systems. Open to collaborations and opportunities.
+            Machine Learning Engineer building production-grade computer vision
+            and Edge AI systems. Open to collaborations and opportunities.
           </p>
           <ul className="footer-social" aria-label="Social profiles">
             {SOCIALS.map(({ href, icon, label }) => (
@@ -77,7 +77,7 @@ export default function Footer() {
             <li>
               <span className="footer-link is-static">
                 <Icon name="pin" size={14} />
-                Mirpur, Dhaka, Bangladesh
+                Dhaka, Bangladesh
               </span>
             </li>
           </ul>
@@ -90,3 +90,4 @@ export default function Footer() {
     </footer>
   );
 }
+
