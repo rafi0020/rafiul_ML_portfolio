@@ -70,20 +70,45 @@ function SocialLinks() {
 function CompactAbout() {
   return (
     <div className="about-compact">
-      <img className="about-compact-avatar" src="/assets/images/profile.jpg" alt="MD Rafiul Islam" />
+      <div className="about-compact-profile">
+        <img className="about-compact-avatar" src="/assets/images/profile.jpg" alt="MD Rafiul Islam" />
+        <strong>MD Rafiul Islam</strong>
+        <span>Machine Learning Engineer</span>
+        <span>Dhaka, Bangladesh</span>
+      </div>
       <div className="about-compact-copy">
         <span className="section-label"><Icon name="user" /> About</span>
         <h2>Engineering reliable vision systems for the real world</h2>
         <p>
-          I build production computer-vision and Edge AI systems across safety,
-          logistics, manufacturing, surveillance, and retail—connecting models to
-          tracking, decision logic, APIs, and dependable deployment.
+          I&rsquo;m a Machine Learning Engineer specializing in production Computer
+          Vision and Edge AI. I build systems for safety, logistics, manufacturing,
+          banking surveillance, and retail—from data and model development to
+          tracking, decision logic, APIs, and dependable edge deployment.
         </p>
-        <Link to="/about" className="btn btn-primary">
-          Explore my background
-          <Icon name="arrowRight" />
-        </Link>
+        <p>
+          Alongside industry delivery, I conduct peer-reviewed research in
+          computational healthcare. That research discipline strengthens how I
+          evaluate models, communicate uncertainty, and design trustworthy systems.
+        </p>
+        <div className="about-compact-actions">
+          <Link to="/about" className="btn btn-primary">
+            Explore my background
+            <Icon name="arrowRight" />
+          </Link>
+          <a href="/cv/MD_Rafiul_Islam_Industry.pdf" className="btn btn-ghost" target="_blank" rel="noreferrer">
+            <Icon name="download" /> Industry résumé
+          </a>
+        </div>
       </div>
+      <dl className="about-compact-evidence" aria-label="Career highlights">
+        {EVIDENCE.map(({ value, label, icon }) => (
+          <div key={label}>
+            <Icon name={icon} size={19} />
+            <dt>{value}</dt>
+            <dd>{label}</dd>
+          </div>
+        ))}
+      </dl>
     </div>
   );
 }
