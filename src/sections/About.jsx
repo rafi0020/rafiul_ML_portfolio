@@ -262,4 +262,3 @@ export default function About({ compact = false }) {
     </section>
   );
 }
-

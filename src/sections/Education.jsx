@@ -100,4 +100,3 @@ export default function Education({ compact = false }){
     </section>
   );
 }
-

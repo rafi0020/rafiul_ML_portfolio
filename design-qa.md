@@ -44,4 +44,3 @@
 - If a shorter recruiter-only About page is desired later, Experience and Education can be offered as compact summaries with “view details” links.
 
 final result: passed
-
