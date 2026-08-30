@@ -53,7 +53,7 @@ export default function Navbar() {
       <div className="navbar-inner">
         <Link to="/" className="navbar-brand">
           <span className="navbar-name">MD Rafiul Islam</span>
-          <span className="navbar-tagline">AI Engineer &amp; Researcher</span>
+          <span className="navbar-tagline">ML Engineer · Computer Vision &amp; Edge AI</span>
         </Link>
 
         <button
@@ -99,3 +99,4 @@ export default function Navbar() {
     </nav>
   );
 }
+

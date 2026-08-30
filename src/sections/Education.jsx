@@ -14,18 +14,14 @@ const educationData = [
       "Data Mining & Machine Learning",
       "Natural Language Processing",
       "Statistics & Probability",
-      "Numerical Methods",
       "Operating Systems",
-      "Big Data & IoT",
-      "Human Computer Interaction",
-      "Web Engineering",
       "Data Structures and Algorithms",
       "Computer Networks",
       "Database Management Systems",
       "Software Engineering"
     ],
-    thesis: "A NOVEL INTERACTIVE AI-BASED TOOL FOR DETECTING MENTAL STABILITY THROUGH ANALYSIS OF HUMAN VOICE",
-    thesisNote: "Voice recordings processed into spectrogram images; hybrid deep learning models applied for classification with ~96% accuracy. Ethical consent and real-world clinical data acquisition from mental health institutions in Bangladesh.",
+    thesis: "A Novel Interactive AI-Based Tool for Detecting Mental Stability Through Analysis of Human Voice",
+    thesisNote: "The undergraduate thesis experiments reported ~96% accuracy on their study setup. The later peer-reviewed Journal of Voice work used a different evaluation design and reported ~91% accuracy with ~0.97 ROC-AUC.",
     supervisor: "Dr. Md. Taimur Ahad (Associate Professor, Associate Head, Dept. of CSE; Coordinator, 4IR Research Cell, DIU)"
   },
 ];
@@ -41,7 +37,7 @@ export default function Education({ compact = false }){
           </span>
           <h2 className="section-title">Academic Background</h2>
           <p className="section-subtitle">
-            My educational qualifications and key learnings
+            Formal training supporting applied machine learning and systems engineering
           </p>
         </div>
 
@@ -104,3 +100,4 @@ export default function Education({ compact = false }){
     </section>
   );
 }
+

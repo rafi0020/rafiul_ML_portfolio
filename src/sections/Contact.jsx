@@ -50,7 +50,7 @@ export default function Contact() {
           </p>
         </div>
 
-        <div className="contact-grid">
+        <div className="contact-layout">
           <div className="contact-info">
             <h3>Get in touch</h3>
             <ul className="contact-links">
@@ -133,3 +133,4 @@ export default function Contact() {
     </section>
   );
 }
+

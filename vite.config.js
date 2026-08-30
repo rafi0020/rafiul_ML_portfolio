@@ -4,7 +4,11 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   base: "/",
   plugins: [react()],
-  server: { port: 5173 },
+  server: {
+    host: "0.0.0.0",
+    port: 5173,
+    allowedHosts: ["terminal.local"],
+  },
   build: {
     target: "es2020",
     cssCodeSplit: true,
@@ -21,3 +25,4 @@ export default defineConfig({
     },
   },
 });
+

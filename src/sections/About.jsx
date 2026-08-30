@@ -1,592 +1,265 @@
-
 import { Link } from "react-router-dom";
+import Icon from "../components/Icon";
 
-export default function About({ compact = false }){
+const SOCIAL_LINKS = [
+  { href: "https://github.com/rafi0020", label: "GitHub", icon: "home" },
+  { href: "https://linkedin.com/in/rafi009", label: "LinkedIn", icon: "linkedin" },
+  { href: "https://scholar.google.com/citations?user=ORj6wioAAAAJ&hl=en", label: "Google Scholar", icon: "scholar" },
+];
+
+const EVIDENCE = [
+  { value: "20+", label: "AI & CV projects", detail: "Delivered end to end", icon: "repo" },
+  { value: "10+", label: "Industrial deployments", detail: "Across multiple environments", icon: "briefcase" },
+  { value: "CV + Edge AI", label: "Core engineering focus", detail: "Production and impact", icon: "gear" },
+  { value: "Peer reviewed", label: "Research track record", detail: "Journal article and dataset", icon: "book" },
+];
+
+const CAPABILITIES = [
+  { title: "Computer Vision Systems", description: "Detection, tracking, OCR, ANPR, face recognition, pose analysis, and multi-camera video analytics.", icon: "skills" },
+  { title: "Model Engineering", description: "Dataset curation, training, evaluation, error analysis, and reproducible experimentation with PyTorch and TensorFlow.", icon: "gear" },
+  { title: "Edge AI Deployment", description: "Real-time inference on NVIDIA Jetson, TensorRT optimization, GPU Linux systems, and resilient RTSP processing.", icon: "download" },
+  { title: "MLOps & Data Engineering", description: "Annotation workflows, versioned data, experiment tracking, validation, monitoring, and delivery pipelines.", icon: "repo" },
+  { title: "Systems Engineering", description: "FastAPI services, Docker, event queues, temporal rules, evidence generation, telemetry, and retryable integrations.", icon: "briefcase" },
+  { title: "Research & Evaluation", description: "Applied research, subject-aware validation, explainability, signal processing, and peer-reviewed publication.", icon: "book" },
+];
+
+const ACHIEVEMENTS = [
+  { title: "Production CV across industries", description: "Built systems for banking, industrial safety, logistics, manufacturing, and retail environments.", proof: "Multiple real-world domains", icon: "briefcase" },
+  { title: "ISO 6346 container OCR", description: "Engineered an edge pipeline for container-code recognition with validation and telemetry integration.", proof: "Check digit + telemetry", icon: "repo" },
+  { title: "Bangla ANPR system", description: "Developed track-centric plate recognition with oriented detection, OCR validation, voting, and deduplication.", proof: "Detection + OCR + tracking", icon: "gear" },
+  { title: "Multi-camera video analytics", description: "Architected tracking pipelines with temporal rules, evidence queues, and reliable downstream delivery.", proof: "Real-time operational workflows", icon: "skills" },
+  { title: "Jetson & TensorRT deployment", description: "Deployed and optimized computer-vision workloads for NVIDIA Jetson and multi-GPU Linux systems.", proof: "Edge and GPU production stacks", icon: "download" },
+  { title: "Journal of Voice publication", description: "First-authored peer-reviewed research on Bengali voice-based mental-health assessment.", proof: "~91% accuracy · ~0.97 ROC-AUC", icon: "book" },
+];
+
+const BUILD_STAGES = [
+  { number: "01", title: "Data", description: "Collect, label, audit, and version representative datasets." },
+  { number: "02", title: "Modeling", description: "Train, validate, and analyze failure modes against strong baselines." },
+  { number: "03", title: "Systems", description: "Connect inference to tracking, decision logic, APIs, and evidence." },
+  { number: "04", title: "Deployment", description: "Ship to edge or GPU infrastructure with monitoring and recovery paths." },
+];
+
+const TRAINING = [
+  { title: "Tools for Data Science", provider: "IBM · Coursera", date: "Sep 2024" },
+  { title: "Generative AI Productivity Skills", provider: "Microsoft & LinkedIn", date: "Aug 2024" },
+  { title: "Prompt Engineering for Generative AI", provider: "LinkedIn", date: "Jul 2024" },
+  { title: "Brain-Computer Interface", provider: "Pantech.AI Academy", date: "Professional training" },
+];
+
+const COMMUNITY = [
+  { title: "Red Crescent Youth Volunteer", organization: "Bangladesh Red Crescent Society", date: "Feb 2021 – Aug 2022" },
+  { title: "Vice President, Arts and Crafts", organization: "BAF Shaheen College Dhaka Science Club", date: "2017 – 2018" },
+];
+
+function SocialLinks() {
   return (
-    <section id="about" className="section">
+    <ul className="about-socials" aria-label="Professional profiles">
+      {SOCIAL_LINKS.map(({ href, label, icon }) => (
+        <li key={label}>
+          <a href={href} target="_blank" rel="noreferrer">
+            <Icon name={icon} size={17} />
+            <span>{label}</span>
+            <Icon name="externalLink" size={13} />
+          </a>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function CompactAbout() {
+  return (
+    <div className="about-compact">
+      <img className="about-compact-avatar" src="/assets/images/profile.jpg" alt="MD Rafiul Islam" />
+      <div className="about-compact-copy">
+        <span className="section-label"><Icon name="user" /> About</span>
+        <h2>Engineering reliable vision systems for the real world</h2>
+        <p>
+          I build production computer-vision and Edge AI systems across safety,
+          logistics, manufacturing, surveillance, and retail—connecting models to
+          tracking, decision logic, APIs, and dependable deployment.
+        </p>
+        <Link to="/about" className="btn btn-primary">
+          Explore my background
+          <Icon name="arrowRight" />
+        </Link>
+      </div>
+    </div>
+  );
+}
+
+export default function About({ compact = false }) {
+  return (
+    <section id="about" className={`section about-section ${compact ? "about-section-compact" : ""}`}>
       <div className="container">
-        <div className="section-header">
-          <span className="section-label">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-              <path d="M10.5 5a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0zm.061 3.073a4 4 0 10-5.123 0 6.004 6.004 0 00-3.431 5.142.75.75 0 001.498.07 4.5 4.5 0 018.99 0 .75.75 0 101.498-.07 6.005 6.005 0 00-3.432-5.142z"/>
-            </svg>
-            About Me
-          </span>
-          <h2 className="section-title">README.md</h2>
-        </div>
-
         {compact ? (
-          <div style={{maxWidth: '900px', margin: '0 auto'}}>
-            <div className="profile-card" style={{padding: '2rem', textAlign: 'center'}}>
-              <div className="profile-avatar" style={{margin: '0 auto 1.5rem', overflow: 'visible', position: 'relative'}}>
-                <img src="./assets/images/profile.jpg" alt="MD Rafiul Islam" style={{width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%', position: 'relative', zIndex: 2}} />
-              </div>
-              <h3 className="profile-name">MD Rafiul Islam</h3>
-              <p className="profile-title" style={{marginBottom: '1rem'}}>Machine Learning Engineer | Computer Vision & Edge AI</p>
-              <p className="profile-bio" style={{marginBottom: '1.5rem', fontSize: '1.1rem', lineHeight: '1.6'}}>
-                Machine Learning Engineer building production computer vision systems for safety, security, logistics, manufacturing, and retail. My work spans real-time video analytics, OCR, tracking, temporal decision logic, and edge deployment, alongside peer-reviewed research in computational healthcare.
-              </p>
-              <Link to="/about" className="btn btn-primary" style={{display: 'inline-flex', alignItems: 'center', gap: '8px'}}>
-                Learn More About Me
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
-                </svg>
-              </Link>
-            </div>
-          </div>
+          <CompactAbout />
         ) : (
-          <div className="about-grid">
-          <div className="about-profile">
-            <div className="profile-card">
-              <div className="profile-avatar" style={{overflow: 'visible', position: 'relative'}}>
-                <img src="./assets/images/profile.jpg" alt="MD Rafiul Islam" style={{width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%', position: 'relative', zIndex: 2}} />
-              </div>
-              <h3 className="profile-name">MD Rafiul Islam</h3>
-              <p className="profile-title">Machine Learning Engineer | Computer Vision & Edge AI</p>
-              <p className="profile-bio">
-                Machine Learning Engineer specializing in production computer vision and Edge AI. I build reliable systems that connect model inference with tracking, temporal rules, evidence generation, APIs, and deployment across banking surveillance, industrial safety, logistics, manufacturing, and retail. My research focuses on computational healthcare and trustworthy evaluation of Bengali voice-based mental-health models.
-              </p>
-              <div className="profile-links">
-                <a href="https://github.com/rafi0020" className="profile-link" target="_blank" rel="noreferrer">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
-                  </svg>
-                  GitHub
-                </a>
-                <a href="https://linkedin.com/in/rafi009" className="profile-link" target="_blank" rel="noreferrer">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/>
-                    <circle cx="4" cy="4" r="2"/>
-                  </svg>
-                  LinkedIn
-                </a>
-                <a href="https://www.researchgate.net/profile/Rafiul-Islam-13" className="profile-link" target="_blank" rel="noreferrer">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/>
-                    <path d="M12 6v6l4 2"/>
-                  </svg>
-                  ResearchGate
-                </a>
-                <a href="https://scholar.google.com/citations?user=ORj6wioAAAAJ&hl=en&authuser=1" className="profile-link" target="_blank" rel="noreferrer">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
-                    <path d="M6 12v5c3 3 9 3 12 0v-5"/>
-                  </svg>
-                  Google Scholar
-                </a>
-              </div>
-            </div>
+          <>
+            <div className="about-intro-grid">
+              <aside className="about-identity" aria-label="Profile summary">
+                <img className="about-avatar" src="/assets/images/profile.jpg" alt="MD Rafiul Islam" />
+                <div>
+                  <h2>MD Rafiul Islam</h2>
+                  <p className="about-role">Machine Learning Engineer</p>
+                  <p className="about-specialty">Computer Vision · Edge AI</p>
+                </div>
+                <p className="about-identity-summary">
+                  Building production-grade vision systems that connect dependable
+                  engineering with measurable real-world impact.
+                </p>
+                <dl className="about-identity-facts">
+                  <div>
+                    <dt><Icon name="pin" size={16} /> Location</dt>
+                    <dd>Dhaka, Bangladesh</dd>
+                  </div>
+                  <div>
+                    <dt><Icon name="briefcase" size={16} /> Role</dt>
+                    <dd>Machine Learning Engineer</dd>
+                  </div>
+                </dl>
+              </aside>
 
-            {/* Quick Info Card */}
-            <div className="profile-card info-card" style={{marginTop: '1.5rem'}}>
-              <div className="card-header-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <circle cx="12" cy="12" r="10"/>
-                  <line x1="12" y1="16" x2="12" y2="12"/>
-                  <line x1="12" y1="8" x2="12.01" y2="8"/>
-                </svg>
-                <h4>Quick Info</h4>
-              </div>
-              <div className="info-items">
-                <div className="info-item">
-                  <div className="info-icon location">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                      <circle cx="12" cy="10" r="3"/>
-                    </svg>
-                  </div>
-                  <div className="info-content">
-                    <span className="info-label">Location</span>
-                    <span className="info-value">Dhaka, Bangladesh</span>
-                  </div>
-                </div>
-                <div className="info-item">
-                  <div className="info-icon role">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
-                      <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
-                    </svg>
-                  </div>
-                  <div className="info-content">
-                    <span className="info-label">Role</span>
-                    <span className="info-value">Machine Learning Engineer</span>
-                  </div>
-                </div>
-                <div className="info-item">
-                  <div className="info-icon education">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
-                      <path d="M6 12v5c3 3 9 3 12 0v-5"/>
-                    </svg>
-                  </div>
-                  <div className="info-content">
-                    <span className="info-label">Education</span>
-                    <span className="info-value">BSc. in CSE</span>
-                  </div>
-                </div>
-                {/* <div className="info-item">
-                  <div className="info-icon company">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                      <polyline points="9 22 9 12 15 12 15 22"/>
-                    </svg>
-                  </div>
-                  <div className="info-content">
-                    <span className="info-label">Company</span>
-                    <span className="info-value">Bondstein Technologies</span>
-                  </div>
-                </div> */}
-                <div className="info-item">
-                  <div className="info-icon achievement">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <circle cx="12" cy="8" r="7"/>
-                      <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
-                    </svg>
-                  </div>
-                  <div className="info-content">
-                    <span className="info-label">Projects</span>
-                    <span className="info-value">20+ AI &amp; CV Projects</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Contact Information Card - Sidebar */}
-            <div className="profile-card contact-sidebar-card" style={{marginTop: '1.5rem'}}>
-              <div className="card-header-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                  <polyline points="22,6 12,13 2,6"/>
-                </svg>
-                <h4>Contact Info</h4>
-              </div>
-              <div className="contact-sidebar-items">
-                <div className="contact-sidebar-item">
-                  <div className="contact-sidebar-icon location">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                      <circle cx="12" cy="10" r="3"/>
-                    </svg>
-                  </div>
-                  <div className="contact-sidebar-content">
-                    <span className="contact-sidebar-label">Location</span>
-                    <span className="contact-sidebar-value">Mirpur 1, Dhaka</span>
-                  </div>
-                </div>
-                <div className="contact-sidebar-item">
-                  <div className="contact-sidebar-icon email">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                      <polyline points="22,6 12,13 2,6"/>
-                    </svg>
-                  </div>
-                  <div className="contact-sidebar-content">
-                    <span className="contact-sidebar-label">Email</span>
-                    <a href="mailto:rafiulislam1921@gmail.com" className="contact-sidebar-value" style={{color: 'inherit', textDecoration: 'none', cursor: 'pointer'}}>rafiulislam1921@gmail.com</a>
-                  </div>
-                </div>
-                <div className="contact-sidebar-item">
-                  <div className="contact-sidebar-icon phone">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                    </svg>
-                  </div>
-                  <div className="contact-sidebar-content">
-                    <span className="contact-sidebar-label">Phone</span>
-                    <a href="tel:+8801679899117" className="contact-sidebar-value" style={{color: 'inherit', textDecoration: 'none', cursor: 'pointer'}}>+880 1679899117</a>
-                  </div>
-                </div>
-                <div className="contact-sidebar-item">
-                  <div className="contact-sidebar-icon whatsapp">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
-                    </svg>
-                  </div>
-                  <div className="contact-sidebar-content">
-                    <span className="contact-sidebar-label">WhatsApp</span>
-                    <a href="https://wa.me/8801679899117" target="_blank" rel="noreferrer" className="contact-sidebar-value" style={{color: 'inherit', textDecoration: 'none', cursor: 'pointer'}}>+880 1679899117</a>
-                  </div>
-                </div>
-                <div className="contact-sidebar-item">
-                  <div className="contact-sidebar-icon linkedin">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/>
-                      <circle cx="4" cy="4" r="2"/>
-                    </svg>
-                  </div>
-                  <div className="contact-sidebar-content">
-                    <span className="contact-sidebar-label">LinkedIn</span>
-                    <a href="https://linkedin.com/in/rafi009" target="_blank" rel="noreferrer" className="contact-sidebar-value" style={{color: 'inherit', textDecoration: 'none', cursor: 'pointer'}}>linkedin.com</a>
-                  </div>
-                </div>
-                <div className="contact-sidebar-item">
-                  <div className="contact-sidebar-icon researchgate">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/>
-                      <path d="M12 6v6l4 2"/>
-                    </svg>
-                  </div>
-                  <div className="contact-sidebar-content">
-                    <span className="contact-sidebar-label">ResearchGate</span>
-                    <a href="https://www.researchgate.net/profile/Rafiul-Islam-13" target="_blank" rel="noreferrer" className="contact-sidebar-value" style={{color: 'inherit', textDecoration: 'none', cursor: 'pointer'}}>researchgate.net</a>
-                  </div>
-                </div>
-                <div className="contact-sidebar-item">
-                  <div className="contact-sidebar-icon scholar">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
-                      <path d="M6 12v5c3 3 9 3 12 0v-5"/>
-                    </svg>
-                  </div>
-                  <div className="contact-sidebar-content">
-                    <span className="contact-sidebar-label">Google Scholar</span>
-                    <a href="https://scholar.google.com/citations?user=ORj6wioAAAAJ&hl=en&authuser=1" target="_blank" rel="noreferrer" className="contact-sidebar-value" style={{color: 'inherit', textDecoration: 'none', cursor: 'pointer'}}>Google Scholar</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="about-content">
-            {/* Professional Profile Card */}
-            <div className="content-card profile-card-main">
-              <div className="content-card-header">
-                <div className="content-icon profile-icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                    <circle cx="12" cy="7" r="4"/>
-                  </svg>
-                </div>
-                <h3>Professional Profile</h3>
-              </div>
-              <div className="content-card-body">
+              <div className="about-story">
+                <span className="section-label"><Icon name="user" /> About me</span>
+                <h1>Machine Learning Engineer specializing in production Computer Vision and Edge AI.</h1>
                 <p>
-                  I am a computer science researcher and applied machine learning engineer whose work focuses on computational healthcare and trustworthy AI, with a primary emphasis on voice-based psychological stability assessment using Bengali speech. My core research direction treats voice analysis as a vision-driven learning problem by transforming audio into time–frequency representations (log-mel/mel spectrograms) and applying deep learning architectures—including CNNs, Vision Transformers, and hybrid CNN–Transformer models.
+                  I design and deploy reliable computer-vision systems for safety,
+                  security, logistics, manufacturing, and retail. My work spans the
+                  full delivery path—from data and model development to tracking,
+                  temporal decision logic, APIs, evidence generation, and edge inference.
                 </p>
-                <p style={{marginTop: '0.75rem'}}>
-                  In parallel, I have conducted medical computer vision research on skin cancer classification along with broader interests in signal processing, explainable AI (XAI), transfer learning, and noise-robust representation learning. With a track record of 10+ industrial deployments and peer-reviewed publications, I bridge the gap between academic research and real-world applications—from data annotation to model development and on-site edge deployment.
-                </p>
-              </div>
-            </div>
-
-            {/* What I Do Card */}
-            <div className="content-card what-i-do-card">
-              <div className="content-card-header">
-                <div className="content-icon tasks-icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <polyline points="9 11 12 14 22 4"/>
-                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
-                  </svg>
-                </div>
-                <h3>What I Do</h3>
-              </div>
-              <div className="content-card-body">
-                <div className="task-grid">
-                  <div className="task-item">
-                    <div className="task-icon">🎯</div>
-                    <p>Architect end-to-end computer vision systems for enterprise clients</p>
-                  </div>
-                  <div className="task-item">
-                    <div className="task-icon">⚡</div>
-                    <p>Design and deploy computer vision systems for industrial applications</p>
-                  </div>
-                  <div className="task-item">
-                    <div className="task-icon">🔬</div>
-                    <p>Apply advanced data analysis in Signal & Image Processing for research publications</p>
-                  </div>
-                  <div className="task-item">
-                    <div className="task-icon">🚀</div>
-                    <p>Deploy real-time AI model on NVIDIA Jetson edge devices for industrial applications</p>
-                  </div>
-                  <div className="task-item">
-                    <div className="task-icon">🤝</div>
-                    <p>Conduct on-site client visits for system deployment, camera calibration & PoC demos</p>
-                  </div>
-                  <div className="task-item">
-                    <div className="task-icon">💡</div>
-                    <p>Lead R&D on emerging technologies: depth estimation, LLMs, and business intelligence tools</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Professional Journey Card */}
-            {/* <div className="content-card journey-card">
-              <div className="content-card-header">
-                <div className="content-icon journey-icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-                  </svg>
-                </div>
-                <h3>Professional Journey</h3>
-              </div>
-              <div className="content-card-body">
                 <p>
-                  My career journey spans from academic research excellence as a Research Assistant at DIU's 4IR Research Cell, 
-                  through remote data analysis at Pantech Prolabs India, to currently architecting enterprise AI solutions at Bondstein Technologies. 
-                  This progression has equipped me to deliver end-to-end ML solutions—from research-backed model design to production deployment 
-                  in demanding industrial environments.
+                  Alongside production engineering, I conduct peer-reviewed research in
+                  computational healthcare. That research discipline shapes how I evaluate
+                  models, communicate uncertainty, and build systems that remain trustworthy
+                  outside a controlled experiment.
                 </p>
-              </div>
-            </div> */}
-
-            {/* Key Achievements Card */}
-            <div className="content-card achievements-card">
-              <div className="content-card-header">
-                <div className="content-icon achievement-icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                  </svg>
-                </div>
-                <h3>Key Achievements</h3>
-              </div>
-              <div className="content-card-body">
-                <div className="achievement-list">
-                  <div className="achievement-item">
-                    <div className="achievement-icon">🏭</div>
-                    <p>Built production computer vision systems across <strong>banking, industrial safety, logistics, manufacturing, and retail</strong></p>
-                  </div>
-                  <div className="achievement-item">
-                    <div className="achievement-icon">🚢</div>
-                    <p>Engineered an edge pipeline for <strong>ISO 6346 container-code recognition</strong> with check-digit validation and telemetry integration</p>
-                  </div>
-                  <div className="achievement-item">
-                    <div className="achievement-icon">🚗</div>
-                    <p>Developed track-centric <strong>Bangla ANPR</strong> with oriented plate detection, OCR validation, voting, and deduplication</p>
-                  </div>
-                  <div className="achievement-item">
-                    <div className="achievement-icon">📹</div>
-                    <p>Architected <strong>multi-camera video analytics</strong> with tracking, temporal rules, evidence queues, and retryable API senders</p>
-                  </div>
-                  <div className="achievement-item">
-                    <div className="achievement-icon">⚡</div>
-                    <p>Deployed and optimized computer vision workloads for <strong>NVIDIA Jetson, TensorRT, and multi-GPU Linux systems</strong></p>
-                  </div>
-                  <div className="achievement-item">
-                    <div className="achievement-icon">📚</div>
-                    <p>First author of a <strong>peer-reviewed Journal of Voice article</strong> reporting ~91% accuracy and ~0.97 ROC-AUC</p>
-                  </div>
-                  <div className="achievement-item">
-                    <div className="achievement-icon">📊</div>
-                    <p>Contributed to a public <strong>Bengali voice dataset</strong> for mental-health research (<a href="https://data.mendeley.com/datasets/s5j25b5tjk/1" target="_blank" rel="noreferrer" style={{color: 'inherit', textDecoration: 'underline'}}>Mendeley Data</a>)</p>
-                  </div>
-                </div>
+                <SocialLinks />
               </div>
             </div>
 
-            {/* Technical Expertise Card */}
-            {/* <div className="content-card expertise-card">
-              <div className="content-card-header">
-                <div className="content-icon tech-icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
-                    <line x1="8" y1="21" x2="16" y2="21"/>
-                    <line x1="12" y1="17" x2="12" y2="21"/>
-                  </svg>
-                </div>
-                <h3>Technical Expertise</h3>
-              </div>
-              <div className="content-card-body">
-                <div className="expertise-grid">
-                  <div className="expertise-item">
-                    <div className="expertise-header">
-                      <span className="expertise-icon">👁️</span>
-                      <h4>Computer Vision</h4>
-                    </div>
-                    <p>Object Detection (YOLOv11), Pose Estimation (MediaPipe), OCR (PaddleOCR), Face Recognition (InsightFace), Multi-Object Tracking (DeepSORT, ByteTrack), OpenCV</p>
-                  </div>
-                  <div className="expertise-item">
-                    <div className="expertise-header">
-                      <span className="expertise-icon">⚡</span>
-                      <h4>Edge AI & Deployment</h4>
-                    </div>
-                    <p>NVIDIA Jetson (Nano/Xavier/Orin), TensorRT acceleration, Docker containerization, FastAPI microservices, RTSP Streams, real-time inference optimization</p>
-                  </div>
-                  <div className="expertise-item">
-                    <div className="expertise-header">
-                      <span className="expertise-icon">🧠</span>
-                      <h4>Machine Learning</h4>
-                    </div>
-                    <p>Deep Learning frameworks (PyTorch, TensorFlow, Keras), CNN architectures, Vision Transformers, Transfer Learning, Scikit-learn for classical ML</p>
-                  </div>
-                  <div className="expertise-item">
-                    <div className="expertise-header">
-                      <span className="expertise-icon">📊</span>
-                      <h4>Data Analysis</h4>
-                    </div>
-                    <p>Advanced Signal & Image Processing, Pandas, NumPy, Matplotlib, Seaborn, Excel for business intelligence and statistical analysis</p>
-                  </div>
-                  <div className="expertise-item">
-                    <div className="expertise-header">
-                      <span className="expertise-icon">🚀</span>
-                      <h4>Development & Tools</h4>
-                    </div>
-                    <p>Python, SQL, Git/GitLab version control, Streamlit for demos, data annotation & management, API integration & backend development</p>
-                  </div>
-                  <div className="expertise-item">
-                    <div className="expertise-header">
-                      <span className="expertise-icon">📖</span>
-                      <h4>Research & Innovation</h4>
-                    </div>
-                    <p>Q1 journal publications, novel architecture design, experimental design, R&D in emerging tech (monocular depth estimation, LLMs)</p>
+            <dl className="about-evidence" aria-label="Professional highlights">
+              {EVIDENCE.map(({ value, label, detail, icon }) => (
+                <div key={label} className="about-evidence-item">
+                  <span className="about-evidence-icon"><Icon name={icon} size={23} /></span>
+                  <div>
+                    <dt>{value}</dt>
+                    <dd>{label}</dd>
+                    <span>{detail}</span>
                   </div>
                 </div>
-              </div>
-            </div> */}
+              ))}
+            </dl>
 
-            {/* Volunteering & Co-Curricular Card */}
-            <div className="content-card achievements-card">
-              <div className="content-card-header">
-                <div className="content-icon achievement-icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                    <circle cx="9" cy="7" r="4"/>
-                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                  </svg>
-                </div>
-                <h3>Volunteering & Co-Curricular</h3>
+            <section className="about-block" aria-labelledby="capabilities-title">
+              <div className="about-block-heading">
+                <span className="section-label">Core capabilities</span>
+                <h2 id="capabilities-title">Engineering from model to production</h2>
               </div>
-              <div className="content-card-body">
-                <div className="achievement-list">
-                  <div className="achievement-item">
-                    <div className="achievement-icon">🏥</div>
-                    <p><strong>Red Crescent Youth Volunteer</strong> — Bangladesh Red Crescent Society (Feb 2021 – Aug 2022). Supported COVID emergency response including hospital-based vaccination support and patient data workflow assistance.</p>
-                  </div>
-                  <div className="achievement-item">
-                    <div className="achievement-icon">🎨</div>
-                    <p><strong>Vice President (Arts and Crafts)</strong> — BAF Shaheen College Dhaka Science Club (2017 – 2018). Leadership role organizing creative and science events.</p>
-                  </div>
-                </div>
+              <div className="about-capability-list">
+                {CAPABILITIES.map(({ title, description, icon }) => (
+                  <article key={title} className="about-capability-row">
+                    <span className="about-row-icon"><Icon name={icon} size={21} /></span>
+                    <h3>{title}</h3>
+                    <p>{description}</p>
+                  </article>
+                ))}
               </div>
-            </div>
+            </section>
 
-            {/* Certifications & Training Card */}
-            <div className="content-card certifications-main-card">
-              <div className="content-card-header">
-                <div className="content-icon cert-main-icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                  </svg>
-                </div>
-                <h3>Training & Certifications</h3>
+            <section className="about-block" aria-labelledby="achievements-title">
+              <div className="about-block-heading">
+                <span className="section-label">Selected achievements</span>
+                <h2 id="achievements-title">Evidence from production and research</h2>
+                <p>Representative outcomes that show how the work performs beyond a model notebook.</p>
               </div>
-              <div className="content-card-body">
-                <div className="cert-main-grid">
-                  <div className="cert-main-item">
-                    <div className="cert-main-icon-wrapper ibm">
-                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <rect x="2" y="3" width="20" height="18" rx="2"/>
-                        <path d="M8 7h8M8 11h8M8 15h8"/>
-                      </svg>
+              <div className="about-achievement-grid">
+                {ACHIEVEMENTS.map(({ title, description, proof, icon }) => (
+                  <article key={title} className="about-achievement">
+                    <span className="about-achievement-icon"><Icon name={icon} size={23} /></span>
+                    <div>
+                      <h3>{title}</h3>
+                      <p>{description}</p>
+                      <span className="about-proof"><strong>Proof</strong>{proof}</span>
                     </div>
-                    <div className="cert-main-content">
-                      <h4>Tools for Data Science</h4>
-                      <p>IBM • Coursera • Sep 2024</p>
-                      <span className="cert-badge">SQL • Python • Git</span>
-                    </div>
-                  </div>
-                  <div className="cert-main-item">
-                    <div className="cert-main-icon-wrapper microsoft">
-                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <rect x="3" y="3" width="7" height="7"/>
-                        <rect x="14" y="3" width="7" height="7"/>
-                        <rect x="14" y="14" width="7" height="7"/>
-                        <rect x="3" y="14" width="7" height="7"/>
-                      </svg>
-                    </div>
-                    <div className="cert-main-content">
-                      <h4>Generative AI Productivity Skills</h4>
-                      <p>Microsoft & LinkedIn • Aug 2024</p>
-                      <span className="cert-badge">Gemini • ChatGPT</span>
-                    </div>
-                  </div>
-                  <div className="cert-main-item">
-                    <div className="cert-main-icon-wrapper linkedin">
-                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/>
-                        <circle cx="4" cy="4" r="2"/>
-                      </svg>
-                    </div>
-                    <div className="cert-main-content">
-                      <h4>AI Productivity Hacks</h4>
-                      <p>LinkedIn • Jul 2024</p>
-                      <span className="cert-badge">AI Productivity</span>
-                    </div>
-                  </div>
-                  <div className="cert-main-item">
-                    <div className="cert-main-icon-wrapper ibm">
-                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <rect x="2" y="3" width="20" height="18" rx="2"/>
-                        <path d="M8 7h8M8 11h8M8 15h8"/>
-                      </svg>
-                    </div>
-                    <div className="cert-main-content">
-                      <h4>What is Data Science?</h4>
-                      <p>IBM • Coursera • Jul 2024</p>
-                      <span className="cert-badge">Data Science</span>
-                    </div>
-                  </div>
-                  <div className="cert-main-item">
-                    <div className="cert-main-icon-wrapper linkedin">
-                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/>
-                        <circle cx="4" cy="4" r="2"/>
-                      </svg>
-                    </div>
-                    <div className="cert-main-content">
-                      <h4>Prompt Engineering for Generative AI</h4>
-                      <p>LinkedIn • Jul 2024</p>
-                      <span className="cert-badge">Prompt Engineering</span>
-                    </div>
-                  </div>
-                  <div className="cert-main-item">
-                    <div className="cert-main-icon-wrapper fullstack">
-                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-                        <path d="M8 7h8M8 11h8"/>
-                      </svg>
-                    </div>
-                    <div className="cert-main-content">
-                      <h4>Full Stack Web Development</h4>
-                      <p>Bohubrihi • Apr 2023</p>
-                      <span className="cert-badge">Python • JavaScript</span>
-                    </div>
-                  </div>
-                  <div className="cert-main-item">
-                    <div className="cert-main-icon-wrapper web">
-                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <circle cx="12" cy="12" r="10"/>
-                        <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-                      </svg>
-                    </div>
-                    <div className="cert-main-content">
-                      <h4>HTML5, CSS3, Bootstrap4</h4>
-                      <p>Bohubrihi • Apr 2022</p>
-                      <span className="cert-badge">Web Development</span>
-                    </div>
-                  </div>
-                  <div className="cert-main-item">
-                    <div className="cert-main-icon-wrapper bci">
-                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/>
-                        <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/>
-                      </svg>
-                    </div>
-                    <div className="cert-main-content">
-                      <h4>Brain-Computer Interface</h4>
-                      <p>Pantech.AI Academy</p>
-                      <span className="cert-badge">BCI Research</span>
-                    </div>
-                  </div>
+                  </article>
+                ))}
+              </div>
+            </section>
+
+            <section className="about-method-grid" aria-label="Engineering method and research foundation">
+              <div className="about-method-card">
+                <div className="about-block-heading">
+                  <span className="section-label">How I build</span>
+                  <h2>Reliable delivery, end to end</h2>
+                </div>
+                <ol className="about-build-list">
+                  {BUILD_STAGES.map(({ number, title, description }) => (
+                    <li key={title}>
+                      <span>{number}</span>
+                      <div><h3>{title}</h3><p>{description}</p></div>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+
+              <div className="about-method-card">
+                <div className="about-block-heading">
+                  <span className="section-label">Research foundation</span>
+                  <h2>Evaluation grounded in evidence</h2>
+                </div>
+                <p>
+                  My research covers Bengali voice-based mental-health assessment,
+                  spectrogram learning, Vision Transformers, explainability, and
+                  noise-robust evaluation. It strengthens the way I design experiments
+                  and validate production decisions.
+                </p>
+                <div className="about-research-links">
+                  <a href="https://doi.org/10.1016/j.jvoice.2024.10.010" target="_blank" rel="noreferrer">
+                    <Icon name="doc" size={18} /> Journal of Voice article <Icon name="externalLink" size={13} />
+                  </a>
+                  <a href="https://data.mendeley.com/datasets/s5j25b5tjk/1" target="_blank" rel="noreferrer">
+                    <Icon name="repo" size={18} /> Bengali voice dataset <Icon name="externalLink" size={13} />
+                  </a>
                 </div>
               </div>
-            </div>
-          </div>
-          </div>
+            </section>
+
+            <section className="about-support" aria-labelledby="support-title">
+              <div className="about-block-heading">
+                <span className="section-label">Selected training & community</span>
+                <h2 id="support-title">Continuous learning and service</h2>
+              </div>
+              <div className="about-support-grid">
+                <div>
+                  <h3>Training & certifications</h3>
+                  <ul className="about-simple-list">
+                    {TRAINING.map(({ title, provider, date }) => (
+                      <li key={title}>
+                        <Icon name="cap" size={18} />
+                        <div><strong>{title}</strong><span>{provider} · {date}</span></div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <h3>Community & leadership</h3>
+                  <ul className="about-simple-list">
+                    {COMMUNITY.map(({ title, organization, date }) => (
+                      <li key={title}>
+                        <Icon name="user" size={18} />
+                        <div><strong>{title}</strong><span>{organization} · {date}</span></div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </section>
+          </>
         )}
       </div>
     </section>
   );
 }
+
