@@ -30,7 +30,7 @@ function BibtexBlock({ bibtex, id }) {
 export default function Publications({ compact = false, asPage = false }) {
   const [openBibtex, setOpenBibtex] = useState(null);
   const baseId = useId();
-  const orderedPublications = [...pubs].sort((a, b) => b.year - a.year);
+  const orderedPublications = [...pubs].sort((a, b) => a.year - b.year);
   const list = compact ? orderedPublications.slice(0, 2) : orderedPublications;
   const Heading = asPage ? "h1" : "h2";
   const CardHeading = asPage ? "h2" : "h3";
