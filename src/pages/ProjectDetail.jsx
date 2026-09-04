@@ -11,6 +11,7 @@ const getMetricIcon = (metricKey) => <Icon name={metricIcon(metricKey)} size={32
 const isWideLogo = (project) =>
   project.companyLogoStyle === "wide" ||
   /(?:brac-bank|kdsll|bondstein|runner-motorcycles|bat_bangladesh)/i.test(project.companyLogo || "");
+const isUltraWideLogo = (project) => /brac-bank-plc/i.test(project.companyLogo || "");
 
 export default function ProjectDetail(){
   const { id } = useParams();
@@ -94,13 +95,13 @@ export default function ProjectDetail(){
       {/* Hero Header */}
       <div className="project-detail-hero">
         {p.companyLogo && (
-          <div className={`project-detail-logo-wrap${isWideLogo(p) ? " is-wide" : ""}`}>
+          <div className={`project-detail-logo-wrap${isWideLogo(p) ? " is-wide" : ""}${isUltraWideLogo(p) ? " is-ultrawide" : ""}`}>
             <img
               src={p.companyLogo.replace(/^\.\/assets/, "/assets")}
               alt=""
-              className={`project-detail-logo${isWideLogo(p) ? " is-wide" : ""}`}
-              width={isWideLogo(p) ? "240" : "76"}
-              height={isWideLogo(p) ? "62" : "76"}
+              className={`project-detail-logo${isWideLogo(p) ? " is-wide" : ""}${isUltraWideLogo(p) ? " is-ultrawide" : ""}`}
+              width={isUltraWideLogo(p) ? "360" : isWideLogo(p) ? "240" : "76"}
+              height={isUltraWideLogo(p) ? "31" : isWideLogo(p) ? "62" : "76"}
               loading="lazy"
               decoding="async"
             />

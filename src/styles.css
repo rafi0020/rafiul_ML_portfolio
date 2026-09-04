@@ -6087,6 +6087,13 @@ svg {
   padding: 9px 12px;
 }
 
+.project-summary-logo-wrap.is-ultrawide {
+  width: 180px;
+  height: 54px;
+  flex-basis: 180px;
+  padding: 9px 12px;
+}
+
 .project-summary-logo {
   width: 100%;
   height: 100%;
@@ -6135,6 +6142,17 @@ svg {
   width: 58px;
 }
 
+.project-detail-logo-wrap.is-ultrawide {
+  padding: 11px 14px;
+}
+
+.project-detail-logo.is-ultrawide {
+  width: min(360px, 72vw);
+  height: auto;
+  max-width: none;
+  max-height: none;
+}
+
 .project-workflow-hero {
   padding: 10px;
 }
@@ -6169,6 +6187,12 @@ svg {
   .project-summary-logo-wrap.is-wide {
     width: 104px;
     flex-basis: 104px;
+  }
+
+  .project-summary-logo-wrap.is-ultrawide {
+    width: 138px;
+    height: 48px;
+    flex-basis: 138px;
   }
 
   .project-summary-card .project-workflow-preview {

@@ -11,6 +11,7 @@ const FILTERS = ["All", "Industry", "Research", "Academic"];
 const isWideLogo = (project) =>
   project.companyLogoStyle === "wide" ||
   /(?:brac-bank|kdsll|bondstein|runner-motorcycles|bat_bangladesh)/i.test(project.companyLogo || "");
+const isUltraWideLogo = (project) => /brac-bank-plc/i.test(project.companyLogo || "");
 
 
 
@@ -101,12 +102,12 @@ export default function Projects({ defaultFilter = "All", compact = false, asPag
                 </div>
                 <div className="project-summary-heading">
                   {p.companyLogo && (
-                    <span className={`project-summary-logo-wrap${isWideLogo(p) ? " is-wide" : ""}`}>
+                    <span className={`project-summary-logo-wrap${isWideLogo(p) ? " is-wide" : ""}${isUltraWideLogo(p) ? " is-ultrawide" : ""}`}>
                       <img
                         src={p.companyLogo.replace(/^\.\/assets/, "/assets")}
                         alt=""
                         className="project-summary-logo"
-                        width={isWideLogo(p) ? "132" : "48"}
+                        width={isUltraWideLogo(p) ? "180" : isWideLogo(p) ? "132" : "48"}
                         height="48"
                         loading="lazy"
                         decoding="async"
