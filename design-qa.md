@@ -1,46 +1,65 @@
-# Design QA — About redesign
+# Design QA — Complete template-adapted portfolio
 
-## Source visual truth
+- Source visual truth: `/workspace/scratch/f184f224db1a/upload/Animated_Professional_Portfolio.zip`
+- Source implementation inspected: `/workspace/scratch/f184f224db1a/template-reference`
+- Implementation: `/workspace/scratch/f184f224db1a/portfolio-check`
+- Viewport: 1353 × 929 CSS pixels, device density 1
+- State coverage: homepage dark/light, About, Projects, Research, Skills, Contact, and representative project detail
+- Implementation screenshots:
+  - `/workspace/scratch/portfolio-redesign-home-desktop.jpg`
+  - `/workspace/scratch/portfolio-redesign-home-light.jpg`
+  - `/workspace/scratch/portfolio-redesign-about.jpg`
+  - `/workspace/scratch/portfolio-redesign-projects.jpg`
+  - `/workspace/scratch/portfolio-redesign-research.jpg`
+  - `/workspace/scratch/portfolio-redesign-skills.jpg`
+  - `/workspace/scratch/portfolio-redesign-contact.jpg`
+  - `/workspace/scratch/portfolio-redesign-project-detail.jpg`
+- Source screenshot: unavailable because the cloud browser blocked the local reference preview under its URL policy
 
-- Combined final design target: `/workspace/scratch/f184f224db1a/generated_images/exec-d1d82f14-5f0d-46d6-97f1-11946163b020.png`
-- Target pixels: 810 × 1942 (generated desktop scrollable reference).
-- Full comparison: `/workspace/scratch/f184f224db1a/generated_images/about-design-comparison-v2.jpg`
-- Focused comparison: `/workspace/scratch/f184f224db1a/generated_images/about-top-comparison.jpg`
+**Findings**
 
-## Implementation evidence
+- [P1] Exact source-to-implementation comparison is blocked
+  - Location: full template reference and focused regions.
+  - Evidence: implementation pages were browser-rendered and captured, but the same browser blocked the supplied template preview when the preview service switched to the reference project.
+  - Impact: the adapted implementation can be reviewed, but pixel-level fidelity cannot be certified against a same-viewport source capture.
+  - Fix: repeat the reference capture when the cloud-browser local-preview policy permits it, combine it with the implementation homepage capture, and run the final visual comparison.
 
-- Route: `http://terminal.local:4173/about`
-- Full-page screenshot: `/workspace/scratch/portfolio-about-implemented-v2-20260829.jpg`
-- Implementation pixels: 1353 × 5566; CSS viewport approximately 1363 × 936; device scale factor 1.
-- Responsive preview: `/workspace/scratch/portfolio-about-mobile-20260829.jpg` (390 × 844 About iframe inside the browser viewport).
-- Theme/state: dark theme, default page state, no hover overlays.
+**Required fidelity surfaces**
 
-## Comparison findings
+- Fonts and typography: Inter and JetBrains Mono produce the intended premium display hierarchy, readable body copy, and compact technical metadata. Browser captures show consistent sizing and wrapping across implemented routes.
+- Spacing and layout rhythm: the homepage uses the reference-inspired two-column hero, hanging profile card, marquee, glass header, and dock. Secondary routes use consistent page entrances, section spacing, card padding, radii, and two-column project grids.
+- Colors and visual tokens: dark and light themes use shared violet/cyan accent tokens, translucent surfaces, subtle borders, and elevation. Both homepage modes rendered correctly.
+- Image quality and asset fidelity: the real profile photograph, project workflow imagery, and supplied company logos are retained. Images use controlled crops and rounded frames; no placeholder artwork replaces project assets.
+- Copy and content: all fictional template identity, services, statistics, and testimonials were excluded. Content remains tied to verified portfolio projects, experience, achievements, publications, and contact data.
 
-- The implementation preserves the target’s primary hierarchy: profile + narrative, evidence strip, capabilities, About-page achievements, method/research, training/community, then experience and education.
-- The six achievements remain on About and are presented as a compact proof grid rather than the previous tall yellow list.
-- Typography uses the existing Inter/JetBrains Mono system with a clear H1/H2/H3 hierarchy and readable body sizes.
-- Spacing and padding are governed by the new About-specific rhythm: 24–32px card padding, 16px radii, consistent row dividers, and responsive grid collapse rules.
-- Colors and tokens remain within the existing GitHub-dark palette; achievement colors are differentiated by semantic accent rather than warning yellow.
-- Image fidelity is preserved with the supplied profile photo; no new raster assets were required.
-- Icons use the project’s centralized `Icon` registry and are hidden from assistive technology when decorative.
-- Full-page height is more spacious than the compressed generated reference because the live page retains complete Experience and Education detail. This is an intentional content-density difference, classified as P3 polish rather than a blocking mismatch.
+**Primary interactions tested**
 
-## Interaction checks
+- Dark/light toggle and theme persistence.
+- CV dropdown with Academic CV and Industry Résumé.
+- Five-item homepage dock navigation.
+- Primary route navigation across all pages.
+- Project category filtering; Industry produced 18 cards.
+- Research BibTeX disclosure.
+- Representative project-detail page and workflow image.
+- Browser console: no application-origin errors or warnings after fixes. Browser-extension metadata errors were excluded as environment-owned.
+- Production build: passed.
 
-- Primary navigation: About → Contact route tested successfully.
-- Mobile navigation: open/close tested in a 390px iframe preview.
-- External profile and research links are present with target/rel attributes.
-- Contact form remains labeled and functional; it is unchanged except for the non-conflicting layout class.
-- Browser diagnostics: no application console errors. Existing React Router future-flag warnings and an unrelated browser-extension metadata error remain.
+**Comparison history**
 
-## Comparison history
+- Initial pass: desktop mobile-menu button incorrectly appeared at desktop width; fixed with explicit breakpoint display rules.
+- Initial pass: light-theme capture appeared dim because the pointer was over an interactive visual state; moved to a neutral viewport region and recaptured a correct light state.
+- Initial pass: React warned about `fetchPriority`; corrected the DOM attribute and rechecked a fresh browser tab with no application-origin console messages.
+- Initial pass: project-detail sections still used handcrafted inline icons; replaced them with the shared Phosphor icon system.
 
-1. Initial implementation had excessive continuation spacing after About. Tightened About-route section containers, headings, Experience/Education spacing, card padding, and hover behavior.
-2. Re-captured the route and compared the final screenshot against the source full view and focused top region. No actionable P0/P1/P2 findings remained.
+**Implementation checklist**
 
-## Follow-up polish (P3)
+- Capture the template reference at 1353 × 929 when policy permits.
+- Run a combined source/implementation comparison.
+- Perform a dedicated 390-pixel browser capture when viewport resizing is available; responsive CSS breakpoints are implemented but this browser surface exposes no viewport resize control.
+- Resolve any comparison-only P0/P1/P2 differences before publication.
 
-- If a shorter recruiter-only About page is desired later, Experience and Education can be offered as compact summaries with “view details” links.
+**Follow-up polish**
 
-final result: passed
+- Fine-tune motion timing only after comparing the source and implementation side by side.
+
+final result: blocked

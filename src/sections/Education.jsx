@@ -46,10 +46,7 @@ export default function Education({ compact = false }){
             <div key={idx} className="education-card">
               <div className="education-header">
                 <div className="education-icon">
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
-                    <path d="M6 12v5c3 3 9 3 12 0v-5"/>
-                  </svg>
+                  <Icon name="cap" size={32} />
                 </div>
                 <div className="education-info">
                   <h3 className="education-degree">{edu.degree}</h3>
@@ -79,7 +76,7 @@ export default function Education({ compact = false }){
                     <h4>Thesis:</h4>
                     <p className="education-thesis">{edu.thesis}</p>
                     {edu.thesisNote && (
-                      <p className="education-thesis" style={{fontSize: '0.9rem', opacity: 0.85, marginTop: '0.5rem'}}>{edu.thesisNote}</p>
+                      <p className="education-thesis education-thesis-note">{edu.thesisNote}</p>
                     )}
                     {edu.supervisor && (
                       <p className="education-supervisor">Supervisor: {edu.supervisor}</p>

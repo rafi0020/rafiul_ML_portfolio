@@ -20,6 +20,7 @@
   "license": "MIT",
   "description": "Portfolio of MD Rafiul Islam — Machine Learning, Computer Vision, and Edge AI Engineer",
   "dependencies": {
+    "@phosphor-icons/react": "^2.1.10",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.28.0"

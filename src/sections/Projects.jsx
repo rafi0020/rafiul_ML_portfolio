@@ -8,6 +8,10 @@ import { techClass, CATEGORY_ICON } from "../utils/projectMeta";
 const FEATURED_IDS = ["track-my-container", "bat-sop", "unilever-argus", "anpr-bangla"];
 const FILTERS = ["All", "Industry", "Research", "Academic"];
 
+const isWideLogo = (project) =>
+  project.companyLogoStyle === "wide" ||
+  /(?:brac-bank|kdsll|bondstein|runner-motorcycles|bat_bangladesh)/i.test(project.companyLogo || "");
+
 
 
 
@@ -97,7 +101,17 @@ export default function Projects({ defaultFilter = "All", compact = false, asPag
                 </div>
                 <div className="project-summary-heading">
                   {p.companyLogo && (
-                    <img src={p.companyLogo.replace(/^\.\/assets/, "/assets")} alt="" className="project-summary-logo" width="44" height="44" loading="lazy" decoding="async" />
+                    <span className={`project-summary-logo-wrap${isWideLogo(p) ? " is-wide" : ""}`}>
+                      <img
+                        src={p.companyLogo.replace(/^\.\/assets/, "/assets")}
+                        alt=""
+                        className="project-summary-logo"
+                        width={isWideLogo(p) ? "132" : "48"}
+                        height="48"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </span>
                   )}
                   <CardHeading>{p.title}</CardHeading>
                 </div>

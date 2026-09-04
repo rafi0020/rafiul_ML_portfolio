@@ -8,6 +8,9 @@ import useSEO from "../hooks/useSEO";
 import { metricIcon } from "../utils/projectMeta";
 
 const getMetricIcon = (metricKey) => <Icon name={metricIcon(metricKey)} size={32} />;
+const isWideLogo = (project) =>
+  project.companyLogoStyle === "wide" ||
+  /(?:brac-bank|kdsll|bondstein|runner-motorcycles|bat_bangladesh)/i.test(project.companyLogo || "");
 
 export default function ProjectDetail(){
   const { id } = useParams();
@@ -91,13 +94,13 @@ export default function ProjectDetail(){
       {/* Hero Header */}
       <div className="project-detail-hero">
         {p.companyLogo && (
-          <div className="project-detail-logo-wrap">
+          <div className={`project-detail-logo-wrap${isWideLogo(p) ? " is-wide" : ""}`}>
             <img
               src={p.companyLogo.replace(/^\.\/assets/, "/assets")}
               alt=""
-              className={`project-detail-logo${p.companyLogoStyle === "wide" ? " is-wide" : ""}`}
-              width={p.companyLogoStyle === "wide" ? "220" : "100"}
-              height="100"
+              className={`project-detail-logo${isWideLogo(p) ? " is-wide" : ""}`}
+              width={isWideLogo(p) ? "240" : "76"}
+              height={isWideLogo(p) ? "62" : "76"}
               loading="lazy"
               decoding="async"
             />
@@ -144,7 +147,7 @@ export default function ProjectDetail(){
             width="1280"
             height="720"
             decoding="async"
-            fetchPriority="high"
+            fetchpriority="high"
           />
           <figcaption>System workflow</figcaption>
         </figure>
@@ -154,9 +157,7 @@ export default function ProjectDetail(){
       {Object.keys(metrics).length > 0 && (
         <div className="impact-metrics-highlight">
           <h2 className="section-heading">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/>
-            </svg>
+            <Icon name="trend" size={24} />
             Key Impact & Results
           </h2>
           <div className="metrics-highlight-grid">
@@ -177,9 +178,7 @@ export default function ProjectDetail(){
       {(media.images?.length > 0 || media.videos?.length > 0) && (
         <div className="detail-section media-section">
           <h2 className="section-heading">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
-            </svg>
+            <Icon name="image" size={24} />
             Project Media
           </h2>
           <MediaGallery media={media}/>
@@ -189,18 +188,14 @@ export default function ProjectDetail(){
       {/* Overview Section */}
       <div className="detail-section overview-section">
         <h2 className="section-heading">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-          </svg>
+          <Icon name="checkCircle" size={24} />
           Project Overview
         </h2>
         
         <div className="overview-grid">
           <div className="overview-card problem-card">
             <div className="overview-card-header">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
-              </svg>
+              <Icon name="warning" size={28} />
               <h3>Problem Statement</h3>
             </div>
             <p>{p.problem}</p>
@@ -216,9 +211,7 @@ export default function ProjectDetail(){
 
           <div className="overview-card impact-card">
             <div className="overview-card-header">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/>
-              </svg>
+              <Icon name="trend" size={28} />
               <h3>Impact & Results</h3>
             </div>
             <p>{p.impact}</p>
@@ -230,9 +223,7 @@ export default function ProjectDetail(){
       {challenges.length > 0 && (
         <div className="detail-section challenges-section">
           <h2 className="section-heading">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M11 15h2v2h-2zm0-8h2v6h-2zm.99-5C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/>
-            </svg>
+            <Icon name="warning" size={24} />
             Technical Challenges & Solutions
           </h2>
           
@@ -297,18 +288,14 @@ export default function ProjectDetail(){
       {features.length > 0 && (
         <div className="detail-section features-section">
           <h2 className="section-heading">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 2l-5.5 9h11z M12 22l5.5-9h-11z"/>
-            </svg>
+            <Icon name="sparkle" size={24} />
             Key Features & Capabilities
           </h2>
           <div className="features-detailed-grid">
             {features.map((feature, idx) => (
               <div key={idx} className="feature-detailed-card">
                 <div className="feature-icon-circle">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                    <path d="M20 6L9 17l-5-5"/>
-                  </svg>
+                  <Icon name="check" size={20} weight="bold" />
                 </div>
                 <p>{feature}</p>
               </div>
@@ -320,17 +307,13 @@ export default function ProjectDetail(){
       {/* Technologies Used */}
       <div className="detail-section tech-stack-section">
         <h2 className="section-heading">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/>
-          </svg>
+          <Icon name="wrench" size={24} />
           Technologies & Tools
         </h2>
         <div className="tech-stack-detailed">
           {stack.map((tech, idx) => (
             <div key={idx} className="tech-pill-detailed">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                <circle cx="12" cy="12" r="3"/>
-              </svg>
+              <Icon name="dot" size={12} weight="fill" />
               {tech}
             </div>
           ))}

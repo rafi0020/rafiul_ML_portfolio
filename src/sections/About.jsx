@@ -92,7 +92,7 @@ function CompactAbout() {
         </p>
         <div className="about-compact-actions">
           <Link to="/about" className="btn btn-primary">
-            More about me
+            Know More
             <Icon name="arrowRight" />
           </Link>
         </div>

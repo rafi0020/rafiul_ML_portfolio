@@ -9,9 +9,11 @@ const CVS = [
 
 const STATS = [
   { value: "20+", label: "AI & CV projects" },
-  { value: "5", label: "Enterprise domains" },
+  { value: "10+", label: "Industry deployments" },
   { value: "3", label: "Research publications" },
 ];
+
+const TECH_STACK = ["Python", "PyTorch", "YOLO", "OpenCV", "TensorRT", "NVIDIA Jetson", "FastAPI", "Docker"];
 
 export default function Hero() {
   const particlesRef = useRef(null);
@@ -73,29 +75,21 @@ export default function Hero() {
     <section className="hero">
       <div className="neural-bg" ref={particlesRef} aria-hidden="true" />
 
-      <div className="hero-content">
-        <p className="hero-badge">Open to AI/ML and Computer Vision roles</p>
+      <div className="hero-shell">
+        <div className="hero-content">
+          <p className="hero-badge">Available for AI/ML &amp; Computer Vision opportunities</p>
+          <p className="hero-kicker">Hello, I&rsquo;m</p>
+          <h1 className="hero-title">MD Rafiul Islam</h1>
+          <p className="hero-role">Machine Learning Engineer — Computer Vision &amp; Edge AI</p>
+          <p className="hero-subtitle">
+            I engineer production video analytics, OCR, safety, and inspection systems—connecting
+            rigorous model development with reliable real-time deployment at the edge.
+          </p>
 
-        <h1 className="hero-title">MD Rafiul Islam</h1>
-        <p className="hero-role">Machine Learning Engineer — Computer Vision &amp; Edge AI</p>
-        <p className="hero-subtitle">
-          I build production video analytics, OCR, safety, and inspection systems—from
-          RTSP ingest and model inference to reliable edge deployment.
-        </p>
-
-        <dl className="hero-stats">
-          {STATS.map(({ value, label }) => (
-            <div className="hero-stat" key={label}>
-              <dt className="hero-stat-label">{label}</dt>
-              <dd className="hero-stat-value">{value}</dd>
-            </div>
-          ))}
-        </dl>
-
-        <div className="hero-cta">
+          <div className="hero-cta">
           <Link className="btn btn-primary" to="/projects">
             <Icon name="repo" size={18} />
-            Explore case studies
+            View selected work
           </Link>
 
           <div className="cv-dropdown">
@@ -139,6 +133,44 @@ export default function Hero() {
             <Icon name="github" size={18} />
             GitHub profile
           </a>
+          </div>
+
+          <dl className="hero-stats">
+            {STATS.map(({ value, label }) => (
+              <div className="hero-stat" key={label}>
+                <dd className="hero-stat-value">{value}</dd>
+                <dt className="hero-stat-label">{label}</dt>
+              </div>
+            ))}
+          </dl>
+        </div>
+
+        <div className="identity-wrap" aria-label="Professional profile card">
+          <span className="identity-lanyard" aria-hidden="true" />
+          <article className="identity-card">
+            <div className="identity-card-top">
+              <img src="/assets/images/profile.jpg" alt="MD Rafiul Islam" />
+              <span className="identity-online" aria-hidden="true" />
+            </div>
+            <div className="identity-card-body">
+              <p className="identity-eyebrow">Verified professional profile</p>
+              <h2>MD Rafiul Islam</h2>
+              <p className="identity-role">Machine Learning Engineer</p>
+              <dl className="identity-grid">
+                <div><dt>Specialty</dt><dd>CV &amp; Edge AI</dd></div>
+                <div><dt>Location</dt><dd>Dhaka, Bangladesh</dd></div>
+                <div><dt>Focus</dt><dd>Production systems</dd></div>
+                <div><dt>Status</dt><dd className="is-available">Available</dd></div>
+              </dl>
+              <div className="identity-id"><span>RI · ML · 2026</span><strong>PORTFOLIO</strong></div>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div className="tech-marquee" aria-label="Core technology stack">
+        <div className="tech-marquee-track">
+          {[...TECH_STACK, ...TECH_STACK].map((tech, index) => <span key={`${tech}-${index}`}>{tech}</span>)}
         </div>
       </div>
     </section>

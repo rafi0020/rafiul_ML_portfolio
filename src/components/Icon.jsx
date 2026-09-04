@@ -1,3 +1,13 @@
+import {
+  ArrowLeft, ArrowRight, ArrowSquareOut, ArrowUp, BookOpenText, Brain,
+  Briefcase, CaretDown, CaretRight, Check, CheckCircle, Clock, Code,
+  Copy, DownloadSimple, EnvelopeSimple, Eye, Factory, FileText, FolderOpen,
+  GearSix, GithubLogo, GraduationCap, House, LightbulbFilament, LinkedinLogo,
+  MapPin, Phone, ShieldCheck, Stack, Student, TreeStructure, UserCircle,
+  UsersThree, Lightning, TrendUp, ImageSquare, WarningCircle, Sparkle,
+  Wrench, Circle,
+} from "@phosphor-icons/react";
+
 /**
  * Central icon registry. Previously every icon was pasted inline at each call
  * site (the same GitHub mark appeared five times), which made the JSX hard to
@@ -51,28 +61,32 @@ const PATHS = {
   factory: "M1.5 14.5v-8l4 2v-2l4 2V3.5h5v11h-13zm1.5-1.5h10V5h-2v6L7 9v2L3 9v4zm1-1.5h2V13H4v-1.5zm4 0h2V13H8v-1.5z",
 };
 
-export default function Icon({ name, size = 16, title, className = "", ...rest }) {
-  const d = PATHS[name];
-  if (!d) return null;
+const ICONS = {
+  house: House, github: GithubLogo, user: UserCircle, skills: Stack,
+  repo: FolderOpen, book: BookOpenText, mail: EnvelopeSimple,
+  linkedin: LinkedinLogo, phone: Phone, pin: MapPin, briefcase: Briefcase,
+  cap: GraduationCap, gear: GearSix, download: DownloadSimple,
+  chevronDown: CaretDown, arrowRight: ArrowRight, arrowLeft: ArrowLeft,
+  clock: Clock, users: UsersThree, chevronRight: CaretRight,
+  checkCircle: CheckCircle, bulb: LightbulbFilament, architecture: TreeStructure,
+  externalLink: ArrowSquareOut, doc: FileText, copy: Copy, check: Check,
+  arrowUp: ArrowUp, scholar: Student, eye: Eye, shield: ShieldCheck,
+  bolt: Lightning, brain: Brain, code: Code, factory: Factory,
+  trend: TrendUp, image: ImageSquare, warning: WarningCircle,
+  sparkle: Sparkle, wrench: Wrench, dot: Circle,
+};
 
-  // 24-viewBox icons borrowed from Material; the rest use GitHub's 16 grid.
-  const viewBox = name === "scholar" ? "0 0 24 24" : "0 0 16 16";
-
+export default function Icon({ name, size = 16, title, className = "", weight = "duotone", ...rest }) {
+  const Glyph = ICONS[name];
+  if (!Glyph) return null;
   return (
-    <svg
-      width={size}
-      height={size}
-      viewBox={viewBox}
-      fill="currentColor"
+    <Glyph
+      size={size}
+      weight={weight}
       className={className}
-      role={title ? "img" : undefined}
       aria-label={title || undefined}
       aria-hidden={title ? undefined : "true"}
-      focusable="false"
       {...rest}
-    >
-      {title ? <title>{title}</title> : null}
-      <path d={d} />
-    </svg>
+    />
   );
 }

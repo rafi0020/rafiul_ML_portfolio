@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Icon from "./Icon";
 
@@ -19,10 +20,21 @@ const SOCIALS = [
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const roles = ["Computer Vision Engineer", "Edge AI Builder", "Applied AI Researcher", "Production ML Engineer"];
+  const [roleIndex, setRoleIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = window.setInterval(() => setRoleIndex((index) => (index + 1) % roles.length), 2400);
+    return () => window.clearInterval(timer);
+  }, [roles.length]);
 
   return (
     <footer className="footer">
       <div className="footer-content">
+        <div className="footer-role-banner">
+          <span>Designing dependable intelligence</span>
+          <strong aria-live="polite">{roles[roleIndex]}</strong>
+        </div>
         <div className="footer-brand">
           <div className="footer-logo">
             <span className="footer-mark" aria-hidden="true">RI</span>

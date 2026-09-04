@@ -1,8 +1,9 @@
-import { lazy, Suspense, useEffect } from "react";
+import { lazy, Suspense, useCallback, useEffect, useState } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import BackToTop from "./components/BackToTop";
+import FloatingDock from "./components/FloatingDock";
 import Home from "./pages/Home";
 
 // Route-level code splitting: the landing page ships in the initial bundle,
@@ -40,10 +41,12 @@ function ScrollToTop() {
 }
 
 export default function App() {
+  const [navbarVisible, setNavbarVisible] = useState(true);
+  const handleNavbarVisibility = useCallback((visible) => setNavbarVisible(visible), []);
   return (
     <>
       <a className="skip-link" href="#main-content">Skip to main content</a>
-      <Navbar />
+      <Navbar onVisibilityChange={handleNavbarVisibility} />
       <ScrollToTop />
       <Suspense fallback={<RouteFallback />}>
         <Routes>
@@ -59,6 +62,7 @@ export default function App() {
       </Suspense>
       <Footer />
       <BackToTop />
+      <FloatingDock visible={!navbarVisible} />
     </>
   );
 }
