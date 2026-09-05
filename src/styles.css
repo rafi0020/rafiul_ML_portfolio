@@ -5665,6 +5665,15 @@ svg {
   text-align: center;
 }
 
+/* The hero ID card already carries this profile summary on desktop and tablet. */
+.about-section-compact .about-compact {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.about-section-compact .about-compact-profile {
+  display: none;
+}
+
 .about-compact-avatar {
   width: 160px;
   aspect-ratio: 1;
@@ -5780,6 +5789,15 @@ svg {
 }
 
 @media (max-width: 760px) {
+  /* On handhelds, trade the tall hero ID card for the compact About profile. */
+  .hero .identity-wrap {
+    display: none;
+  }
+
+  .about-section-compact .about-compact-profile {
+    display: flex;
+  }
+
   .about-page > .section > .container {
     padding-top: 56px;
     padding-bottom: 56px;
