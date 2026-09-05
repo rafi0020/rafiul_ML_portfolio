@@ -6412,3 +6412,1130 @@ svg {
     padding: 20px;
   }
 }
+
+/* ========================================
+   RESPONSIVE HARDENING — FINAL CASCADE
+   Keeps the desktop composition on tablets and provides deliberate,
+   overflow-safe reflow on handheld screens.
+   ======================================== */
+
+html,
+body,
+#root {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+main,
+section,
+.container,
+.hero-shell,
+.navbar-inner,
+.footer-content,
+.project-detail-page,
+.project-summary-card,
+.skill-category,
+.publication-card,
+.contact-info,
+.contact-form,
+.detail-section {
+  min-width: 0;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+.section-title,
+.project-detail-title,
+.project-summary-heading,
+.publication-title,
+.contact-link-text,
+.footer-column,
+.about-story,
+.about-achievement > div,
+.challenge-content,
+.component-card > div {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.skill-items,
+.project-tech-badges,
+.project-detail-badges,
+.publication-actions,
+.tech-stack-detailed,
+.hero-cta {
+  max-width: 100%;
+}
+
+/* Tablet: retain the desktop information density and two-column rhythm. */
+@media (min-width: 761px) and (max-width: 1100px) {
+  .container,
+  .project-detail-page {
+    width: min(100% - 44px, 1040px);
+    margin-inline: auto;
+    padding-inline: 0;
+  }
+
+  .navbar {
+    top: 14px;
+    right: 14px;
+    left: 14px;
+    width: auto;
+  }
+
+  .navbar-inner {
+    min-height: 64px;
+    gap: 10px;
+    padding: 8px 12px;
+  }
+
+  .navbar-brand {
+    flex: 0 0 auto;
+  }
+
+  .navbar-name {
+    white-space: nowrap;
+    font-size: .94rem;
+  }
+
+  .navbar-links {
+    position: static;
+    display: flex;
+    gap: 1px;
+    min-width: 0;
+    width: auto;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .navbar-link {
+    gap: 5px;
+    min-height: 44px;
+    padding: 8px 9px;
+    white-space: nowrap;
+    font-size: .77rem;
+    border-left: 0 !important;
+  }
+
+  .navbar-link svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .theme-toggle {
+    width: 40px;
+    height: 40px;
+  }
+
+  .navbar-toggle {
+    display: none;
+  }
+
+  .section-title {
+    font-size: clamp(2.35rem, 5vw, 4.25rem);
+  }
+
+  .hero {
+    min-height: 760px;
+    padding: 118px 22px 0;
+  }
+
+  .hero-shell {
+    grid-template-columns: minmax(0, 1.15fr) minmax(250px, .75fr);
+    min-height: 640px;
+    gap: clamp(24px, 4vw, 44px);
+    align-items: center;
+    padding: 0 0 58px;
+  }
+
+  .hero-content {
+    max-width: 590px;
+    text-align: left;
+  }
+
+  .hero-badge {
+    margin-bottom: 20px;
+    margin-inline: 0;
+    font-size: .72rem;
+  }
+
+  .hero-kicker,
+  .hero-subtitle {
+    margin-inline: 0;
+  }
+
+  .hero-kicker {
+    font-size: clamp(2rem, 4vw, 3rem);
+  }
+
+  .hero-title {
+    font-size: clamp(3rem, 6.4vw, 4.6rem);
+  }
+
+  .hero-role {
+    font-size: clamp(1rem, 1.8vw, 1.3rem);
+  }
+
+  .hero-subtitle {
+    margin-bottom: 24px;
+    font-size: .95rem;
+    line-height: 1.65;
+  }
+
+  .hero-cta {
+    gap: 9px;
+    justify-content: flex-start;
+  }
+
+  .hero-cta .btn {
+    min-height: 44px;
+    padding: 11px 15px;
+    font-size: .78rem;
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 9px;
+    margin-top: 26px;
+    justify-content: flex-start;
+  }
+
+  .hero-stat {
+    min-width: 0;
+    padding: 12px;
+  }
+
+  .identity-wrap {
+    padding-top: 54px;
+  }
+
+  .identity-lanyard {
+    top: -72px;
+    height: 150px;
+  }
+
+  .identity-card {
+    width: min(100%, 300px);
+    border-radius: 25px;
+  }
+
+  .identity-card-top {
+    height: 184px;
+    padding: 22px;
+  }
+
+  .identity-card-top img {
+    width: 140px;
+    height: 140px;
+  }
+
+  .identity-online {
+    right: calc(50% - 70px);
+    bottom: 24px;
+  }
+
+  .identity-card-body {
+    padding: 20px;
+  }
+
+  .identity-card h2 {
+    font-size: 1.34rem;
+  }
+
+  .identity-grid {
+    gap: 8px;
+    margin: 16px 0;
+    padding: 12px;
+  }
+
+  .projects-card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .project-summary-body {
+    padding: 22px;
+  }
+
+  .project-summary-link,
+  .filter-btn,
+  .publication-btn,
+  .footer-link,
+  .about-socials a,
+  .about-research-links a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .skills-container,
+  .skills-container.is-compact {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .contact-layout {
+    grid-template-columns: minmax(0, .96fr) minmax(0, 1.04fr);
+    gap: 20px;
+  }
+
+  .contact-info,
+  .contact-form {
+    padding: 26px;
+  }
+
+  .contact-link {
+    gap: 12px;
+    padding: 13px;
+  }
+
+  .contact-link-icon {
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
+  }
+
+  .footer-content {
+    grid-template-columns: minmax(0, 1.35fr) minmax(140px, .65fr) minmax(0, 1fr);
+    gap: 28px;
+  }
+
+  .footer-role-banner,
+  .footer-brand {
+    grid-column: auto;
+  }
+
+  .footer-role-banner {
+    grid-column: 1 / -1;
+  }
+
+  .footer {
+    padding-bottom: 125px;
+  }
+
+  .project-detail-hero,
+  .detail-section,
+  .impact-metrics-highlight {
+    padding: 34px;
+  }
+
+  .project-detail-title {
+    font-size: clamp(2.6rem, 6vw, 4.4rem);
+  }
+
+  .metrics-highlight-grid,
+  .overview-section .overview-grid,
+  .components-grid,
+  .features-detailed-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .project-actions-footer {
+    flex-direction: row;
+  }
+
+  .action-btn {
+    width: auto;
+  }
+}
+
+/* Handheld: explicit reflow, compact spacing, and reliable touch targets. */
+@media (max-width: 760px) {
+  .container,
+  .project-detail-page {
+    width: 100%;
+    max-width: 100%;
+    margin-inline: auto;
+    padding-inline: 18px;
+  }
+
+  .container {
+    padding-block: 66px;
+  }
+
+  main > .section:first-child > .container,
+  .about-page > #about > .container {
+    padding-top: 112px;
+  }
+
+  .section-header {
+    max-width: 100%;
+    margin-bottom: 32px;
+  }
+
+  .section-header .section-title {
+    margin-top: 12px;
+  }
+
+  .section-title {
+    font-size: clamp(1.95rem, 9vw, 2.75rem);
+    line-height: 1.05;
+  }
+
+  .section-subtitle {
+    font-size: .96rem;
+    line-height: 1.65;
+  }
+
+  .section-label {
+    max-width: 100%;
+    padding: 7px 11px;
+    white-space: normal;
+    line-height: 1.25;
+  }
+
+  .navbar {
+    top: 8px;
+    right: 8px;
+    left: 8px;
+    width: auto;
+    border-radius: 18px;
+  }
+
+  .navbar-inner {
+    min-height: 58px;
+    gap: 8px;
+    padding: 8px 10px;
+  }
+
+  .navbar-brand {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .navbar-name {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: .96rem;
+  }
+
+  .navbar-actions {
+    flex: 0 0 auto;
+    gap: 6px;
+  }
+
+  .theme-toggle,
+  .navbar-toggle {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+  }
+
+  .navbar-links {
+    right: 0;
+    left: 0;
+    width: 100%;
+    max-height: calc(100svh - 88px);
+    padding: 8px;
+  }
+
+  .navbar-link {
+    min-height: 46px;
+    border-left: 0 !important;
+    border-radius: 13px;
+  }
+
+  .hero {
+    min-height: auto;
+    padding: 98px 14px 0;
+  }
+
+  .hero-shell {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    gap: 34px;
+    padding: 30px 0 46px;
+  }
+
+  .hero-content {
+    width: 100%;
+    max-width: 620px;
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .hero-badge {
+    width: fit-content;
+    max-width: 100%;
+    margin: 0 auto 28px;
+    padding: 9px 14px;
+    white-space: normal;
+    line-height: 1.45;
+  }
+
+  .hero-kicker {
+    margin-bottom: 10px;
+    font-size: clamp(1.85rem, 8vw, 2.6rem);
+  }
+
+  .hero-title {
+    margin-bottom: 16px;
+    font-size: clamp(2.2rem, 11vw, 3.25rem);
+    line-height: 1;
+    overflow-wrap: normal;
+  }
+
+  .hero-role {
+    margin-inline: auto;
+    font-size: clamp(1rem, 4.8vw, 1.2rem);
+    line-height: 1.45;
+  }
+
+  .hero-subtitle {
+    margin-inline: auto;
+    margin-bottom: 26px;
+    font-size: .95rem;
+    line-height: 1.68;
+  }
+
+  .hero-cta {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .hero-cta .btn,
+  .hero-cta .cv-dropdown,
+  .hero-cta .cv-dropdown > .btn {
+    width: 100%;
+    min-height: 48px;
+    justify-content: center;
+  }
+
+  .cv-dropdown-menu {
+    width: min(100%, 290px);
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    width: 100%;
+    margin-top: 30px;
+  }
+
+  .hero-stat,
+  .hero-stat:last-child {
+    width: auto;
+    min-width: 0;
+    padding: 14px 10px;
+    text-align: center;
+  }
+
+  .hero-stat:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .identity-wrap {
+    width: 100%;
+    padding: 76px 0 18px;
+  }
+
+  .identity-lanyard {
+    top: -36px;
+    height: 128px;
+  }
+
+  .identity-card {
+    width: min(100%, 340px);
+    border-radius: 26px;
+  }
+
+  .identity-card-top {
+    height: 190px;
+    padding: 22px;
+  }
+
+  .identity-card-top img {
+    width: 146px;
+    height: 146px;
+  }
+
+  .identity-online {
+    right: calc(50% - 72px);
+    bottom: 25px;
+  }
+
+  .identity-card-body {
+    padding: 21px;
+  }
+
+  .tech-marquee {
+    width: calc(100% + 28px);
+    margin-left: -14px;
+  }
+
+  .tech-marquee span {
+    padding: 14px 24px;
+  }
+
+  .about-compact,
+  .skills-container,
+  .skills-container.is-compact,
+  .projects-card-grid,
+  .contact-layout,
+  .metrics-highlight-grid,
+  .overview-section .overview-grid,
+  .components-grid,
+  .features-detailed-grid,
+  .media-section .media-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .about-compact {
+    gap: 26px;
+    padding: 24px;
+    border-radius: 24px;
+  }
+
+  .about-compact-evidence {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .about-compact-evidence > div {
+    padding: 12px;
+  }
+
+  .about-page > .section > .container {
+    padding-top: 54px;
+    padding-bottom: 54px;
+  }
+
+  .about-page > .about-section > .container {
+    padding-top: 108px;
+    padding-bottom: 58px;
+  }
+
+  .about-intro-grid {
+    gap: 30px;
+  }
+
+  .about-identity {
+    grid-template-columns: 88px minmax(0, 1fr);
+    gap: 18px;
+    padding: 22px;
+  }
+
+  .about-avatar {
+    width: 88px;
+  }
+
+  .about-story h1 {
+    font-size: clamp(2rem, 9.5vw, 2.8rem);
+    overflow-wrap: normal;
+  }
+
+  .about-socials a,
+  .about-research-links a {
+    min-height: 44px;
+  }
+
+  .about-block,
+  .about-method-grid,
+  .about-support {
+    margin-top: 54px;
+  }
+
+  .about-page .about-block {
+    padding: 18px;
+    border-radius: 24px;
+  }
+
+  .about-page .about-capability-row {
+    grid-template-columns: 42px minmax(0, 1fr);
+    min-height: 0;
+    gap: 10px 14px;
+    padding: 18px;
+  }
+
+  .about-page .about-capability-row p {
+    grid-column: 2;
+  }
+
+  .about-achievement-grid,
+  .about-method-grid,
+  .about-support-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-page .about-achievement {
+    min-height: 0;
+    padding: 20px;
+  }
+
+  .skill-category {
+    padding: 22px;
+    border-radius: 22px;
+  }
+
+  .skill-category-header {
+    gap: 12px;
+  }
+
+  .skill-category-icon {
+    width: 46px;
+    height: 46px;
+    flex: 0 0 46px;
+  }
+
+  .skill-items {
+    gap: 8px;
+  }
+
+  .skill-item,
+  .tech-badge,
+  .tech-pill-detailed {
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .projects-section {
+    padding: 0;
+  }
+
+  .projects-filters {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin-bottom: 26px;
+  }
+
+  .filter-btn {
+    width: 100%;
+    min-height: 46px;
+    justify-content: center;
+    padding: 10px 12px;
+  }
+
+  .projects-card-grid {
+    gap: 20px;
+    margin-top: 22px;
+  }
+
+  .project-summary-body {
+    gap: 14px;
+    padding: 20px;
+  }
+
+  .project-summary-topline {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .project-summary-company {
+    max-width: 58%;
+    overflow-wrap: anywhere;
+  }
+
+  .project-summary-heading {
+    align-items: flex-start;
+  }
+
+  .project-summary-heading h2,
+  .project-summary-heading h3 {
+    font-size: 1.08rem;
+  }
+
+  .project-summary-logo-wrap.is-wide {
+    width: 100px;
+    flex-basis: 100px;
+  }
+
+  .project-summary-logo-wrap.is-ultrawide {
+    width: 132px;
+    height: 48px;
+    flex-basis: 132px;
+  }
+
+  .project-summary-link {
+    min-height: 44px;
+    padding-block: 7px;
+  }
+
+  .publication-card {
+    padding: 22px;
+    border-radius: 22px;
+  }
+
+  .publication-actions {
+    gap: 9px;
+  }
+
+  .publication-btn {
+    min-height: 44px;
+    padding: 10px 14px;
+  }
+
+  .contact-layout {
+    gap: 20px;
+  }
+
+  .contact-info,
+  .contact-form {
+    padding: 22px;
+    border-radius: 24px !important;
+  }
+
+  .contact-info h2 {
+    margin-bottom: 18px;
+    font-size: 1.35rem;
+  }
+
+  .contact-links {
+    gap: 12px;
+  }
+
+  .contact-link {
+    min-height: 72px;
+    gap: 12px;
+    padding: 13px;
+  }
+
+  .contact-link:hover {
+    transform: none;
+  }
+
+  .contact-link-icon {
+    width: 44px;
+    height: 44px;
+    flex: 0 0 44px;
+  }
+
+  .form-input {
+    min-height: 48px;
+    font-size: 16px;
+  }
+
+  .form-textarea {
+    min-height: 138px;
+  }
+
+  .about-page .experience-timeline {
+    padding-left: 22px;
+  }
+
+  .about-page .experience-timeline::before {
+    left: 7px;
+  }
+
+  .about-page .experience-item,
+  .about-page .education-card {
+    padding: 19px;
+  }
+
+  .footer {
+    margin-top: 40px;
+    padding: 42px 18px calc(112px + env(safe-area-inset-bottom));
+    border-radius: 30px 30px 0 0;
+  }
+
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .footer-role-banner,
+  .footer-brand {
+    grid-column: auto;
+  }
+
+  .footer-role-banner {
+    min-height: 150px;
+    margin-bottom: 0;
+    padding: 22px;
+    border-radius: 22px;
+  }
+
+  .footer-role-banner strong {
+    font-size: clamp(1.8rem, 9vw, 2.7rem);
+  }
+
+  .footer-link {
+    min-height: 44px;
+    width: fit-content;
+  }
+
+  .social-link {
+    width: 44px;
+    height: 44px;
+  }
+
+  .footer-bottom {
+    align-items: flex-start;
+    margin-top: 32px;
+  }
+
+  .floating-dock {
+    bottom: max(10px, env(safe-area-inset-bottom));
+    gap: 2px;
+    width: max-content;
+    max-width: calc(100vw - 16px);
+    padding: 6px;
+  }
+
+  .floating-dock a {
+    width: 44px;
+    height: 44px;
+  }
+
+  .back-to-top-btn {
+    right: 14px;
+    bottom: calc(78px + env(safe-area-inset-bottom));
+  }
+
+  .project-detail-page {
+    padding-top: 96px;
+    padding-bottom: 68px;
+  }
+
+  .project-detail-toolbar {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+
+  .project-detail-toolbar > * {
+    min-width: 0;
+    min-height: 48px;
+    justify-content: center;
+    padding: 10px 12px;
+    text-align: center;
+  }
+
+  .project-detail-hero {
+    margin-bottom: 24px;
+    padding: 22px 20px;
+    border-radius: 24px !important;
+  }
+
+  .project-detail-logo-wrap,
+  .project-detail-logo-wrap.is-wide,
+  .project-detail-logo-wrap.is-ultrawide {
+    max-width: 100%;
+    margin-bottom: 16px;
+    padding: 8px 10px;
+  }
+
+  .project-detail-logo,
+  .project-detail-logo.is-wide,
+  .project-detail-logo.is-ultrawide {
+    width: auto;
+    max-width: 100%;
+  }
+
+  .project-detail-logo.is-ultrawide {
+    width: min(100%, 330px);
+  }
+
+  .project-detail-badges {
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .project-category-badge,
+  .project-dev-badge,
+  .project-meta-chip {
+    max-width: 100%;
+    min-height: 38px;
+    padding: 7px 12px;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .project-detail-title,
+  .project-detail-hero h1 {
+    font-size: clamp(2rem, 10vw, 2.85rem);
+    line-height: 1.02;
+  }
+
+  .project-detail-summary {
+    font-size: .98rem;
+    line-height: 1.65;
+  }
+
+  .project-workflow-hero {
+    margin-bottom: 28px;
+    padding: 7px;
+    border-radius: 20px !important;
+  }
+
+  .project-workflow-hero img {
+    border-radius: 14px;
+  }
+
+  .impact-metrics-highlight,
+  .detail-section,
+  .challenges-section,
+  .architecture-section {
+    margin: 30px 0;
+    padding: 20px;
+    border-radius: 24px !important;
+  }
+
+  .section-heading {
+    gap: 10px;
+    margin-bottom: 22px;
+    padding-bottom: 13px;
+    font-size: clamp(1.3rem, 6vw, 1.65rem);
+    line-height: 1.2;
+  }
+
+  .section-heading svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .metric-highlight-card,
+  .overview-card,
+  .component-card,
+  .feature-detailed-card {
+    padding: 20px;
+  }
+
+  .challenges-timeline {
+    padding-left: 27px;
+  }
+
+  .challenges-timeline::before {
+    left: 12px;
+  }
+
+  .challenge-item {
+    margin-bottom: 34px;
+    padding-left: 12px;
+  }
+
+  .solution-box,
+  .technical-details {
+    padding: 16px;
+  }
+
+  .technical-details code {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+
+  .tech-stack-detailed {
+    gap: 8px;
+  }
+
+  .tech-pill-detailed {
+    padding: 9px 13px;
+  }
+
+  .project-actions-footer {
+    gap: 10px;
+    margin-top: 36px;
+    padding: 18px;
+    border-radius: 22px !important;
+  }
+
+  .action-btn {
+    min-height: 48px;
+    padding: 12px 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container,
+  .project-detail-page {
+    padding-inline: 14px;
+  }
+
+  .container {
+    padding-block: 58px;
+  }
+
+  .hero-title {
+    font-size: clamp(2.05rem, 10.8vw, 2.85rem);
+  }
+
+  .about-compact-evidence {
+    grid-template-columns: 1fr;
+  }
+
+  .about-compact-evidence > div + div {
+    border-top: 1px solid var(--border-default);
+    border-left: 0;
+  }
+
+  .about-page .about-evidence,
+  .about-page .about-achievement-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-page .about-evidence-item + .about-evidence-item,
+  .about-page .about-evidence-item:nth-child(3) {
+    border-left: 0;
+  }
+
+  .publication-actions > * {
+    flex: 1 1 120px;
+    justify-content: center;
+  }
+
+  .footer-role-banner strong {
+    font-size: clamp(1.75rem, 9vw, 2.25rem);
+  }
+}
+
+@media (max-width: 360px) {
+  .navbar-name {
+    font-size: .86rem;
+  }
+
+  .theme-toggle,
+  .navbar-toggle {
+    width: 40px;
+    height: 40px;
+  }
+
+  .projects-filters,
+  .project-detail-toolbar {
+    grid-template-columns: 1fr;
+  }
+
+  .floating-dock a {
+    width: 40px;
+    height: 42px;
+  }
+}
+
+/* Consistent page-start rhythm below the fixed navbar.
+   Route sections previously added their own top padding on top of the
+   container offset, producing a 170–190px empty band on inner pages. */
+main#main-content > .section:first-child {
+  padding-top: 0;
+}
+
+main#main-content > .section:first-child > .container,
+.about-page > #about > .container {
+  padding-top: 140px;
+}
+
+@media (min-width: 761px) and (max-width: 1100px) {
+  main#main-content > .section:first-child > .container,
+  .about-page > #about > .container {
+    padding-top: 130px;
+  }
+}
+
+@media (max-width: 760px) {
+  main#main-content > .section:first-child > .container,
+  .about-page > #about > .container {
+    padding-top: 108px;
+  }
+}
