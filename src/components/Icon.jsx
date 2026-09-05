@@ -6,6 +6,7 @@ import {
   MapPin, Phone, ShieldCheck, Stack, Student, TreeStructure, UserCircle,
   UsersThree, Lightning, TrendUp, ImageSquare, WarningCircle, Sparkle,
   Wrench, Circle,
+  WhatsappLogo,
 } from "@phosphor-icons/react";
 
 /**
@@ -74,6 +75,7 @@ const ICONS = {
   bolt: Lightning, brain: Brain, code: Code, factory: Factory,
   trend: TrendUp, image: ImageSquare, warning: WarningCircle,
   sparkle: Sparkle, wrench: Wrench, dot: Circle,
+  chat: WhatsappLogo,
 };
 
 export default function Icon({ name, size = 16, title, className = "", weight = "duotone", ...rest }) {
