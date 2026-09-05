@@ -89,7 +89,7 @@ export default function Hero() {
           <div className="hero-cta">
           <Link className="btn btn-primary" to="/projects">
             <Icon name="repo" size={18} />
-            View selected work
+            View Project Works
           </Link>
 
           <div className="cv-dropdown">
