@@ -1,5 +1,6 @@
 import { useId, useState } from "react";
-import pubs from "../data/publications.json";
+import { orderedPublications } from "../data/portfolio";
+import { Link } from "react-router-dom";
 import Icon from "../components/Icon";
 import SectionCTA from "../components/SectionCTA";
 
@@ -30,7 +31,6 @@ function BibtexBlock({ bibtex, id }) {
 export default function Publications({ compact = false, asPage = false }) {
   const [openBibtex, setOpenBibtex] = useState(null);
   const baseId = useId();
-  const orderedPublications = [...pubs].sort((a, b) => a.year - b.year);
   const list = compact ? orderedPublications.slice(0, 2) : orderedPublications;
   const Heading = asPage ? "h1" : "h2";
   const CardHeading = asPage ? "h2" : "h3";
@@ -65,6 +65,7 @@ export default function Publications({ compact = false, asPage = false }) {
                 {p.abstract && <p className="publication-abstract">{p.abstract}</p>}
 
                 <div className="publication-actions">
+                  {p.projectId && <Link className="publication-btn" to={`/projects/${p.projectId}`}>Read case study</Link>}
                   {p.bibtex && (
                     <button
                       type="button"

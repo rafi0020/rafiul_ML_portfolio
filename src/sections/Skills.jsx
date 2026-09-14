@@ -45,7 +45,7 @@ const skillCategories = [
     icon: "code",
     skills: [
       "Python", "FastAPI", "REST APIs", "SQLite", "PostgreSQL", "Pandas",
-      "NumPy", "Scikit-learn", "Weights & Biases", "MLflow", "Git/GitHub",
+      "NumPy", "scikit-learn", "Weights & Biases", "MLflow", "Git/GitHub",
       "Dataset Versioning", "Configuration-driven Systems"
     ]
   },
@@ -76,7 +76,7 @@ export default function Skills({ compact = false, asPage = false }) {
           </span>
           <Heading className="section-title">Production-focused AI stack</Heading>
           <p className="section-subtitle">
-            Tools and methods demonstrated through deployed systems and research
+            Tools and methods used across industry engineering, R&D, and research
           </p>
         </div>
 

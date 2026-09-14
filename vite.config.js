@@ -1,7 +1,7 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
-export default defineConfig({
+export default defineConfig(({ isSsrBuild }) => ({
   base: "/",
   plugins: [react()],
   server: {
@@ -17,11 +17,11 @@ export default defineConfig({
       output: {
         // Keep React in its own long-lived chunk so content edits don't
         // invalidate the framework for returning visitors.
-        manualChunks: {
+        manualChunks: isSsrBuild ? undefined : {
           react: ["react", "react-dom"],
           router: ["react-router-dom"],
         },
       },
     },
   },
-});
+}));

@@ -1,17 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import Icon from "../components/Icon";
+import { HERO_STATS as STATS } from "../data/portfolio";
 
 const CVS = [
   { href: "/cv/MD_Rafiul_Islam_Academic.pdf", label: "Academic CV", icon: "cap" },
   { href: "/cv/MD_Rafiul_Islam_Industry.pdf", label: "Industry Résumé", icon: "briefcase" },
 ];
 
-const STATS = [
-  { value: "20+", label: "AI & CV projects" },
-  { value: "10+", label: "Industry deployments" },
-  { value: "3", label: "Research publications" },
-];
 
 const TECH_STACK = ["Python", "PyTorch", "YOLO", "OpenCV", "TensorRT", "NVIDIA Jetson", "FastAPI", "Docker"];
 
@@ -153,7 +149,7 @@ export default function Hero() {
               <span className="identity-online" aria-hidden="true" />
             </div>
             <div className="identity-card-body">
-              <p className="identity-eyebrow">Verified professional profile</p>
+              <p className="identity-eyebrow">Professional profile</p>
               <h2>MD Rafiul Islam</h2>
               <p className="identity-role">Machine Learning Engineer</p>
               <dl className="identity-grid">
@@ -170,7 +166,7 @@ export default function Hero() {
 
       <div className="tech-marquee" aria-label="Core technology stack">
         <div className="tech-marquee-track">
-          {[...TECH_STACK, ...TECH_STACK].map((tech, index) => <span key={`${tech}-${index}`}>{tech}</span>)}
+          {[...TECH_STACK, ...TECH_STACK].map((tech, index) => <span key={`${tech}-${index}`} aria-hidden={index >= TECH_STACK.length ? "true" : undefined}>{tech}</span>)}
         </div>
       </div>
     </section>

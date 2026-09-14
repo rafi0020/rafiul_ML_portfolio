@@ -59,3 +59,13 @@ Pushes to `main` are built and deployed through the GitHub Actions workflow in `
 - [Google Scholar](https://scholar.google.com/citations?user=ORj6wioAAAAJ)
 - [Portfolio](https://rafiulislam.me)
 - Email: rafiulislam1921@gmail.com
+
+## Content and release checks
+
+`npm test` checks data regressions, featured selection, publication relationships, and typed result context. `npm run build` validates content, builds the client, prerenders 35 routes, and checks generated routes, headings, links, assets, social metadata, and the sitemap. No new runtime dependencies are required.
+
+Headline statistics and route metadata live in `src/data/portfolio.js`. Projects use explicit `projectType`, `maturity`, `parentSystem`, `highlights`, and `workflow` fields. A case-study count includes separately presented modules and R&D; it is not a count of independent deployments. Study metrics are reported results, not independently reproduced benchmarks.
+
+Workflow diagrams are conceptual, with matching PNG files for social previews and readable HTML stages on detail pages. Static route HTML exposes the same content to crawlers before React loads. The deployment writes a public `release.json` containing only the deployed commit and page count so releases can be verified.
+
+See `design-qa.md` for the scope and limits of verification.

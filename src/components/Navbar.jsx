@@ -26,37 +26,29 @@ export default function Navbar({ onVisibilityChange }) {
   useEffect(() => setMenuOpen(false), [pathname]);
 
   useEffect(() => {
-    let ticking = false;
-
+    let frame;
     const updateNavbar = () => {
-      const currentScrollY = Math.max(window.scrollY, 0);
-      const shouldHide = !menuOpen && currentScrollY > 140;
-
-      setHidden((wasHidden) => {
-        const nextHidden = shouldHide;
-        if (nextHidden !== wasHidden) onVisibilityChange?.(!nextHidden);
-        return nextHidden;
-      });
-
-      ticking = false;
+      setHidden(!menuOpen && window.scrollY > 140);
+      frame = undefined;
     };
-
     const onScroll = () => {
-      if (ticking) return;
-      ticking = true;
-      window.requestAnimationFrame(updateNavbar);
+      if (frame === undefined) frame = window.requestAnimationFrame(updateNavbar);
     };
-
-    onVisibilityChange?.(true);
+    updateNavbar();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [menuOpen, onVisibilityChange]);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (frame !== undefined) window.cancelAnimationFrame(frame);
+    };
+  }, [menuOpen, pathname]);
+
+  useEffect(() => { onVisibilityChange?.(!hidden); }, [hidden, onVisibilityChange]);
 
   useEffect(() => {
     if (!menuOpen) return;
 
-    const focusable = Array.from(linksRef.current?.querySelectorAll("a[href]") || []);
-    focusable[0]?.focus();
+    const focusable = Array.from(navRef.current?.querySelectorAll("a[href], button:not([disabled])") || []).filter(el => el.getClientRects().length > 0);
+    linksRef.current?.querySelector("a[href]")?.focus();
 
     const onKeyDown = (e) => {
       if (e.key === "Escape") {
@@ -94,7 +86,7 @@ export default function Navbar({ onVisibilityChange }) {
   }, [menuOpen]);
 
   return (
-    <nav className={`navbar${hidden ? " is-hidden" : ""}`} ref={navRef} aria-label="Primary">
+    <nav className={`navbar${hidden ? " is-hidden" : ""}`} ref={navRef} aria-label="Primary" aria-hidden={hidden || undefined} inert={hidden ? "" : undefined}>
       <div className="navbar-inner">
         <Link to="/" className="navbar-brand">
           <span className="navbar-brand-copy">

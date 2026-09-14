@@ -5,7 +5,7 @@ import Icon from "../components/Icon";
 import SectionCTA from "../components/SectionCTA";
 import { techClass, CATEGORY_ICON } from "../utils/projectMeta";
 
-const FEATURED_IDS = ["track-my-container", "bat-sop", "unilever-argus", "anpr-bangla"];
+import { FEATURED_IDS } from "../data/portfolio";
 const FILTERS = ["All", "Industry", "Research", "Academic"];
 
 const isWideLogo = (project) =>
@@ -47,7 +47,7 @@ export default function Projects({ defaultFilter = "All", compact = false, asPag
           </span>
           <Heading className="section-title">{compact ? "Featured projects" : "All projects"}</Heading>
           <p className="section-subtitle">
-            Production systems across surveillance, logistics, manufacturing, and smart systems
+            Industry engineering, internal R&D, and research in computer vision and machine learning
           </p>
         </div>
 
@@ -70,7 +70,7 @@ export default function Projects({ defaultFilter = "All", compact = false, asPag
 
         {!compact && (
           <p className="results-count" aria-live="polite">
-            Showing {list.length} {list.length === 1 ? "project" : "projects"}
+            Showing {list.length} {list.length === 1 ? "case study" : "case studies"}. Related system modules are listed separately.
           </p>
         )}
 
@@ -85,7 +85,7 @@ export default function Projects({ defaultFilter = "All", compact = false, asPag
                 >
                   <img
                     src={p.workflowImage}
-                    alt={`${p.title} workflow diagram`}
+                    alt={p.workflowAlt || `${p.title} workflow diagram`}
                     width="1280"
                     height="720"
                     loading="lazy"
@@ -95,10 +95,21 @@ export default function Projects({ defaultFilter = "All", compact = false, asPag
               )}
               <div className="project-summary-body">
                 <div className="project-summary-topline">
-                  <span className={`project-category-badge ${p.category.toLowerCase()}`}>
-                    <Icon name={CATEGORY_ICON[p.category] || "briefcase"} size={15} /> {p.category}
-                  </span>
+                  <div className="project-summary-context">
+                    <span className={`project-category-badge ${p.category.toLowerCase()}`}>
+                      <Icon name={CATEGORY_ICON[p.category] || "briefcase"} size={15} /> {p.category}
+                    </span>
+                    {p.projectType && (
+                      <span className="project-context-badge">
+                        <Icon name="gear" size={15} /> {p.projectType}
+                      </span>
+                    )}
+                  </div>
                   {p.company && <span className="project-summary-company">{p.company}</span>}
+                </div>
+                <div className="project-card-status">
+                  <span className="project-maturity-badge">{p.maturity}</span>
+                  {p.parentSystem && <span>Module of {p.parentSystem}</span>}
                 </div>
                 <div className="project-summary-heading">
                   {p.companyLogo && (

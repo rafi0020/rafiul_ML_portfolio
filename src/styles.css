@@ -1803,6 +1803,90 @@ main > .section:first-child > .container { padding-top: 170px; }
 .project-workflow-preview img { width: 100%; height: 100%; object-fit: cover; }
 .project-summary-body { padding: 26px; }
 .project-summary-link { color: var(--accent-primary); }
+.project-summary-context {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+.project-context-badge,
+.project-maturity-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 36px;
+  padding: 7px 13px;
+  border: 1px solid color-mix(in srgb, var(--accent-purple) 34%, var(--border-default));
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent-purple) 11%, var(--bg-subtle));
+  color: var(--text-primary);
+  font-size: .78rem;
+  font-weight: 650;
+  line-height: 1.2;
+}
+.project-maturity-badge {
+  border-color: color-mix(in srgb, var(--accent-cyan) 32%, var(--border-default));
+  background: color-mix(in srgb, var(--accent-cyan) 9%, var(--bg-subtle));
+}
+.project-context-note {
+  position: relative;
+  z-index: 1;
+  width: fit-content;
+  max-width: 100%;
+  margin: 22px 0 0;
+  padding: 11px 15px;
+  border-left: 3px solid var(--accent-purple);
+  border-radius: 0 12px 12px 0;
+  background: color-mix(in srgb, var(--accent-purple) 8%, transparent);
+  color: var(--text-secondary);
+  font-size: .9rem;
+  line-height: 1.55;
+}
+.limitations-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.limitation-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  min-width: 0;
+  padding: 19px 20px;
+  border: 1px solid color-mix(in srgb, #f59e0b 28%, var(--border-default));
+  border-radius: 18px;
+  background: color-mix(in srgb, #f59e0b 6%, var(--bg-subtle));
+}
+.limitation-card svg {
+  flex: 0 0 auto;
+  margin-top: 2px;
+  color: #f59e0b;
+}
+.limitation-card p {
+  margin: 0;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+.overview-card.contribution-card::before {
+  background: linear-gradient(90deg, var(--accent-purple), var(--accent-primary));
+}
+
+@media (max-width: 760px) {
+  .project-summary-topline {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .project-summary-company { text-align: left; }
+  .project-context-badge,
+  .project-maturity-badge {
+    min-height: 34px;
+    padding: 7px 11px;
+    white-space: normal;
+  }
+  .limitations-grid { grid-template-columns: 1fr; }
+  .limitation-card { padding: 17px; }
+}
 
 .publications-list { gap: 24px; }
 .publication-card { padding: clamp(24px,4vw,38px); }
@@ -1832,7 +1916,16 @@ main > .section:first-child > .container { padding-top: 170px; }
 .project-detail-summary { max-width: 830px; font-size: clamp(1rem,1.7vw,1.2rem); color: var(--text-secondary); }
 .project-detail-logo-wrap { width: max-content; padding: 12px 16px; border: 1px solid var(--border-default); border-radius: 18px; background: rgba(255,255,255,.93); }
 .project-workflow-hero { overflow: hidden; padding: 12px; }
-.project-workflow-hero img { border-radius: 21px; }
+.project-workflow-open {
+  display: block;
+  border-radius: 21px;
+  cursor: zoom-in;
+}
+.project-workflow-open:focus-visible {
+  outline: 3px solid var(--accent-primary);
+  outline-offset: 4px;
+}
+.project-workflow-hero img { border-radius: inherit; }
 .project-workflow-hero figcaption { padding: 11px 10px 3px; color: var(--text-muted); }
 .detail-section, .impact-metrics-highlight { padding: clamp(25px,5vw,48px); }
 .section-heading { display: flex; align-items: center; gap: 12px; letter-spacing: -.035em; }
@@ -7556,4 +7649,49 @@ main#main-content > .section:first-child > .container,
   .about-page > #about > .container {
     padding-top: 108px;
   }
+
+  .project-summary-topline {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .project-summary-company {
+    max-width: 100%;
+    text-align: left;
+  }
+
+  .project-context-badge,
+  .project-maturity-badge {
+    max-width: 100%;
+    min-height: 38px;
+    padding: 8px 12px;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+}
+
+/* Case-study evidence and readable workflow summaries. */
+.project-card-status { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 0 0 18px; color: var(--text-secondary); font-size: .78rem; line-height: 1.5; }
+.project-card-status .project-maturity-badge { margin: 0; padding: 7px 11px; }
+.audit-evidence-link { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; margin-top: 10px; color: var(--accent-primary); font-weight: 600; text-underline-offset: 4px; }
+.workflow-text-section { margin: 32px 0; }
+.workflow-text-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; padding: 0; list-style: none; }
+.workflow-text-grid li { display: flex; align-items: flex-start; gap: 16px; min-width: 0; padding: 24px; border: 1px solid var(--border-default); border-radius: 18px; background: var(--bg-subtle); }
+.workflow-step-number { flex: 0 0 auto; color: var(--accent-primary); font-family: var(--font-mono); font-weight: 700; }
+.workflow-text-grid h3 { margin: 0 0 8px; font-size: 1rem; line-height: 1.45; }
+.workflow-text-grid p { margin: 0; color: var(--text-secondary); line-height: 1.65; }
+.project-workflow-hero figcaption { padding: 16px 10px 8px; line-height: 1.65; color: var(--text-secondary); }
+.project-workflow-hero figcaption a { display: inline-flex; align-items: center; min-height: 44px; color: var(--accent-primary); text-decoration: underline; text-underline-offset: 4px; }
+.metric-kind { margin: 12px 0 0; color: var(--text-secondary); font-size: .75rem; }
+.metric-context { margin: 8px 0 0; color: var(--text-secondary); font-size: .82rem; line-height: 1.6; }
+.audit-stack-list { display: flex; flex-wrap: wrap; gap: 12px; padding: 0; list-style: none; }
+.form-status a { display: inline-flex; align-items: center; min-height: 44px; overflow-wrap: anywhere; }
+.project-context-note, .metric-highlight-value, .project-summary-company { overflow-wrap: anywhere; }
+.navbar.is-hidden { visibility: hidden; }
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible { outline: 3px solid var(--accent-primary); outline-offset: 4px; }
+@media (max-width: 600px) {
+  .workflow-text-grid { grid-template-columns: minmax(0, 1fr); }
+  .workflow-text-grid li { padding: 20px; gap: 12px; }
+  .project-workflow-hero { padding: 8px; }
+  .metric-highlight-card { min-width: 0; }
 }

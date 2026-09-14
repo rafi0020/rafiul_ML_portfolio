@@ -19,7 +19,7 @@ const experiences = [
     company: "4IR Research Cell, Daffodil International University",
     date: "Jan 2024 - Feb 2025",
     description:
-      "Conducted applied research in Bengali voice-based mental-health assessment and interpretable medical AI under Dr. Md. Taimur Ahad. Developed spectrogram-based CNN, Vision Transformer, DenseNet, and recurrent hybrid models; evaluated self-supervised speech representations and explainability methods. First author of a peer-reviewed Journal of Voice article and contributor to continuing work on robust, subject-independent evaluation.",
+      "Conducted applied research in Bengali voice-based mental-health assessment and interpretable medical AI under Dr. Md. Taimur Ahad. Developed spectrogram-based CNN and Vision Transformer experiments and studied model interpretation. Continued research beyond this appointment explores recurrent hybrids and self-supervised speech representations. First author of a peer-reviewed Journal of Voice article and contributor to continuing work on robust, subject-independent evaluation.",
     tech: [
       "PyTorch", "TensorFlow", "Vision Transformers", "DenseNet", "GRU",
       "wav2vec 2.0", "WavLM", "Whisper", "Librosa", "Grad-CAM", "LIME",
@@ -29,7 +29,7 @@ const experiences = [
 ];
 
 export default function Experience({ compact = false }) {
-  const displayExperiences = compact ? experiences.slice(0, 2) : experiences;
+  const displayExperiences = compact ? experiences.slice(0, 1) : experiences;
 
   return (
     <section id="experience" className="section">

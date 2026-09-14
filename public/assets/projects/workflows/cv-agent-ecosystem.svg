@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">CV Agent Ecosystem engineering workflow</title>
+  <desc id="desc">A computer-vision brief passes through product intake, human approval, specialist engineering agents, review, and guarded project scaffold generation.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0b0d1e"/><stop offset="1" stop-color="#121027"/></linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#8b6dff"/><stop offset="1" stop-color="#d06cff"/></linearGradient>
+    <pattern id="dots" width="30" height="30" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.4" fill="#967fff" opacity=".16"/></pattern>
+    <filter id="shadow"><feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#000" flood-opacity=".34"/></filter>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0l10 5-10 5z" fill="#8176a5"/></marker>
+  </defs>
+  <rect width="1280" height="720" rx="30" fill="url(#bg)"/><rect width="1280" height="720" rx="30" fill="url(#dots)"/>
+  <circle cx="1070" cy="60" r="220" fill="#c86cff" opacity=".06"/><circle cx="140" cy="690" r="250" fill="#7961ff" opacity=".08"/>
+  <text x="72" y="78" fill="#a993ff" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="700" letter-spacing="4">INTERNAL R&amp;D • HUMAN-GATED ORCHESTRATION</text>
+  <text x="72" y="124" fill="#f6f4ff" font-family="Inter,Arial,sans-serif" font-size="34" font-weight="750">CV Agent Ecosystem</text>
+  <text x="72" y="157" fill="#a39db8" font-family="Inter,Arial,sans-serif" font-size="17">From a computer-vision brief to an inspectable engineering scaffold</text>
+  <g fill="none" stroke="#8176a5" stroke-width="3" marker-end="url(#arrow)">
+    <path d="M244 333h42"/><path d="M444 333h42"/><path d="M864 333h42"/><path d="M1064 333h42"/>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="72" y="245" width="172" height="176" rx="22" fill="#151329" stroke="#3d3760"/>
+    <rect x="286" y="245" width="158" height="176" rx="22" fill="#151329" stroke="#745da8"/>
+    <rect x="486" y="210" width="378" height="246" rx="26" fill="#151329" stroke="#5d4c8f"/>
+    <rect x="906" y="245" width="158" height="176" rx="22" fill="#151329" stroke="#745da8"/>
+    <rect x="1106" y="245" width="102" height="176" rx="22" fill="#151329" stroke="#3d3760"/>
+  </g>
+  <g font-family="Inter,Arial,sans-serif">
+    <g transform="translate(98 274)"><rect width="46" height="46" rx="13" fill="#866bff" opacity=".2"/><path d="M14 15h18v17H14zM18 11h10v4" fill="none" stroke="#aa98ff" stroke-width="2"/><text y="82" fill="#f6f4ff" font-size="18" font-weight="700">CV brief</text><text y="110" fill="#a39db8" font-size="14">Goals &amp; constraints</text><text y="133" fill="#a39db8" font-size="14">Acceptance criteria</text></g>
+    <g transform="translate(311 274)"><rect width="46" height="46" rx="13" fill="#cf6cff" opacity=".17"/><path d="M23 11l12 5v8c0 8-5 12-12 14-7-2-12-6-12-14v-8zM17 24l4 4 8-9" fill="none" stroke="#e08fff" stroke-width="2"/><text y="82" fill="#f6f4ff" font-size="18" font-weight="700">Approval gate</text><text y="110" fill="#a39db8" font-size="14">Review • revise</text><text y="133" fill="#a39db8" font-size="14">Escalate</text></g>
+    <text x="520" y="253" fill="#d0c6ff" font-size="15" font-weight="700" letter-spacing="2">TYPED SPECIALIST GRAPH</text>
+    <g fill="#1d1938" stroke="#4f4477">
+      <rect x="520" y="278" width="145" height="60" rx="15"/><rect x="685" y="278" width="145" height="60" rx="15"/><rect x="520" y="355" width="145" height="60" rx="15"/><rect x="685" y="355" width="145" height="60" rx="15"/>
+    </g>
+    <g fill="#f0ecff" font-size="15" font-weight="650" text-anchor="middle"><text x="592" y="315">Architecture + Data</text><text x="757" y="315">MLOps + Code</text><text x="592" y="392">Test + Optimize</text><text x="757" y="392">Docs + Operations</text></g>
+    <g transform="translate(931 274)"><rect width="46" height="46" rx="13" fill="#cf6cff" opacity=".17"/><path d="M13 23l7 7 14-16M13 36h21" fill="none" stroke="#e08fff" stroke-width="2"/><text y="82" fill="#f6f4ff" font-size="18" font-weight="700">Review gate</text><text y="110" fill="#a39db8" font-size="14">Quality checks</text><text y="133" fill="#a39db8" font-size="14">Human decision</text></g>
+    <g transform="translate(1128 274)"><rect width="46" height="46" rx="13" fill="#866bff" opacity=".2"/><path d="M12 16h22v17H12zM17 12h12l5 4" fill="none" stroke="#aa98ff" stroke-width="2"/><text y="82" fill="#f6f4ff" font-size="16" font-weight="700">Scaffold</text><text y="110" fill="#a39db8" font-size="13">Code</text><text y="131" fill="#a39db8" font-size="13">Runbook</text></g>
+  </g>
+  <g transform="translate(72 514)">
+    <rect width="1136" height="120" rx="20" fill="#121024" stroke="#3a315c"/>
+    <rect x="22" y="21" width="5" height="78" rx="3" fill="url(#accent)"/>
+    <text x="52" y="51" fill="#f6f4ff" font-family="Inter,Arial,sans-serif" font-size="17" font-weight="700">Guarded execution boundary</text>
+    <text x="52" y="82" fill="#a39db8" font-family="Inter,Arial,sans-serif" font-size="15">Atomic file generation and optional quality hooks are implemented; training, deployment, and live monitoring remain disabled by default.</text>
+  </g>
+</svg>

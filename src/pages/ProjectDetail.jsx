@@ -2,6 +2,7 @@
 import { useParams, Link } from "react-router-dom";
 import { useEffect } from "react";
 import data from "../data/projects.json";
+import publications from "../data/publications.json";
 import MediaGallery from "../sections/MediaGallery";
 import Icon from "../components/Icon";
 import useSEO from "../hooks/useSEO";
@@ -21,6 +22,9 @@ export default function ProjectDetail(){
     title: p ? p.title : "Project not found",
     description: p ? p.summary?.slice(0, 155) : "This project does not exist.",
     path: `/projects/${id}`,
+    noIndex: !p,
+    image: p?.socialImage,
+    imageAlt: p?.workflowAlt,
   });
   
   // Scroll to top when component mounts or id changes
@@ -43,39 +47,12 @@ export default function ProjectDetail(){
   const stack = Array.isArray(p.stack) ? p.stack : [];
   const features = Array.isArray(p.features) ? p.features : [];
   const challenges = Array.isArray(p.challenges) ? p.challenges : [];
+  const limitations = Array.isArray(p.limitations) ? p.limitations : [];
   const media = p.media && typeof p.media === "object" ? p.media : { images: [], videos: [] };
   const demoUrl = p.demoLink || p.demo;
   
-  // Filter out publication/journal/citation/status related metrics, keep only outcome metrics
-  const rawMetrics = p.metrics && typeof p.metrics === "object" ? p.metrics : {};
-  const metrics = Object.fromEntries(
-    Object.entries(rawMetrics).filter(([key, value]) => {
-      const lowerKey = key.toLowerCase();
-      const lowerValue = String(value).toLowerCase();
-      
-      // Exclude publication/journal/citation/status fields
-      if (lowerKey.includes('publication') || 
-          lowerKey.includes('journal') || 
-          lowerKey.includes('citation') ||
-          lowerKey.includes('status') ||
-          lowerKey.includes('potential') ||
-          lowerValue.includes('arxiv') ||
-          lowerValue.includes('journal') ||
-          lowerValue.includes('under review') ||
-          lowerValue.includes('preprint') ||
-          lowerValue.includes('growing') ||
-          lowerValue.includes('future')) {
-        return false;
-      }
-      
-      // Keep dataset only if it's about size/volume (contains numbers)
-      if (lowerKey.includes('dataset')) {
-        return /\d/.test(value);
-      }
-      
-      return true;
-    })
-  );
+  const highlights = p.highlights || [];
+  const paper = publications.find(item => item.id === p.paperId);
 
   return (
     <main id="main-content" tabIndex={-1} className="container project-detail-page">
@@ -87,7 +64,7 @@ export default function ProjectDetail(){
         {demoUrl && (
           <a href={demoUrl} target="_blank" rel="noreferrer" className="btn btn-primary project-demo-link">
             <Icon name="externalLink" size={18} />
-            Live Demo
+            {p.demoLabel || "Open project demo"}
           </a>
         )}
       </div>
@@ -111,7 +88,19 @@ export default function ProjectDetail(){
           <span className={`project-category-badge ${p.category.toLowerCase()}`}>
             {p.category}
           </span>
-          {p.inDevelopment && (
+          {p.projectType && (
+            <span className="project-context-badge">
+              <Icon name="gear" size={14} />
+              {p.projectType}
+            </span>
+          )}
+          {p.maturity && (
+            <span className="project-maturity-badge">
+              <Icon name="clock" size={14} />
+              {p.maturity}
+            </span>
+          )}
+          {p.inDevelopment && p.maturity !== "In development" && p.maturity !== "Ongoing research" && (
             <span className="project-dev-badge">
               <Icon name="clock" size={14} />
               In development
@@ -126,49 +115,71 @@ export default function ProjectDetail(){
           {p.timeline && (
             <span className="project-meta-chip">
               <Icon name="clock" size={16} />
-              {p.timeline}
+              Work period · {p.timeline}
             </span>
           )}
-          {p.scale && (
-            <span className="project-meta-chip scale">
-              <Icon name="users" size={16} />
-              {p.scale}
+          {p.scopeLabel && (
+            <span className="project-meta-chip">
+              <Icon name="gear" size={16} />
+              {p.scopeLabel}
             </span>
           )}
         </div>
         <h1 className="project-detail-title">{p.title}</h1>
         <p className="project-detail-summary">{p.summary}</p>
+        {p.projectContext && <p className="project-context-note">{p.projectContext}</p>}
+        {p.parentSystem && <p className="project-context-note">Module of {p.parentSystem}; presented as a separate case study.</p>}
+        {p.dateNote && <p className="project-context-note">{p.dateNote}</p>}
+        {paper && <a className="audit-evidence-link" href={paper.link} target="_blank" rel="noreferrer">{paper.type === "journal" ? "Journal article" : "Preprint"} · {paper.year} <Icon name="externalLink" size={16} /></a>}
       </div>
 
       {p.workflowImage && (
         <figure className="project-workflow-hero">
-          <img
-            src={p.workflowImage}
-            alt={`${p.title} workflow diagram`}
-            width="1280"
-            height="720"
-            decoding="async"
-            fetchpriority="high"
-          />
-          <figcaption>System workflow</figcaption>
+          <a
+            href={p.workflowImage}
+            target="_blank"
+            rel="noreferrer"
+            className="project-workflow-open"
+            aria-label={`Open the ${p.title} workflow diagram at full size`}
+          >
+            <img
+              src={p.workflowImage}
+              alt={p.workflowAlt || `${p.title} workflow diagram`}
+              width="1280"
+              height="720"
+              decoding="async"
+              fetchpriority="high"
+            />
+          </a>
+          <figcaption>{p.workflowCaption} <a href={p.workflowImage} target="_blank" rel="noreferrer">Open full-size diagram</a></figcaption>
         </figure>
       )}
 
-      {/* Impact Metrics Highlight */}
-      {Object.keys(metrics).length > 0 && (
+      {p.workflow?.length > 0 && (
+        <section className="workflow-text-section" aria-label="Workflow stages">
+          <h2 className="section-heading">Workflow at a glance</h2>
+          <ol className="workflow-text-grid">
+            {p.workflow.map((stage, index) => <li key={stage.title}><span className="workflow-step-number" aria-hidden="true">0{index + 1}</span><div><h3>{stage.title}</h3><p>{stage.description}</p></div></li>)}
+          </ol>
+        </section>
+      )}
+      {/* Explicitly typed facts and reported results */}
+      {highlights.length > 0 && (
         <div className="impact-metrics-highlight">
           <h2 className="section-heading">
             <Icon name="trend" size={24} />
-            Key Impact & Results
+            Project facts & reported results
           </h2>
           <div className="metrics-highlight-grid">
-            {Object.entries(metrics).map(([key, value]) => (
-              <div key={key} className="metric-highlight-card">
+            {highlights.map(({ label, value, kind, context }) => (
+              <div key={label} className="metric-highlight-card">
                 <div className="metric-icon-wrapper">
-                  {getMetricIcon(key)}
+                  {getMetricIcon(label)}
                 </div>
                 <div className="metric-highlight-value">{value}</div>
-                <div className="metric-highlight-label">{key.replace(/_/g, ' ')}</div>
+                <div className="metric-highlight-label">{label}</div>
+                <p className="metric-kind">{kind === "reported-result" ? "Reported result" : "Implementation fact"}</p>
+                {kind === "reported-result" && <p className="metric-context">{context}</p>}
               </div>
             ))}
           </div>
@@ -213,10 +224,20 @@ export default function ProjectDetail(){
           <div className="overview-card impact-card">
             <div className="overview-card-header">
               <Icon name="trend" size={28} />
-              <h3>Impact & Results</h3>
+              <h3>Outcome & Scope</h3>
             </div>
             <p>{p.impact}</p>
           </div>
+
+          {p.contribution && (
+            <div className="overview-card contribution-card">
+              <div className="overview-card-header">
+                <Icon name="wrench" size={25} />
+                <h3>Engineering Contribution</h3>
+              </div>
+              <p>{p.contribution}</p>
+            </div>
+          )}
         </div>
       </div>
 
@@ -305,6 +326,23 @@ export default function ProjectDetail(){
         </div>
       )}
 
+      {limitations.length > 0 && (
+        <div className="detail-section limitations-section">
+          <h2 className="section-heading">
+            <Icon name="warning" size={24} />
+            Current Scope & Limitations
+          </h2>
+          <div className="limitations-grid">
+            {limitations.map((limitation, idx) => (
+              <div key={idx} className="limitation-card">
+                <Icon name="warning" size={19} />
+                <p>{limitation}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* Technologies Used */}
       <div className="detail-section tech-stack-section">
         <h2 className="section-heading">
@@ -321,8 +359,14 @@ export default function ProjectDetail(){
         </div>
       </div>
 
+      {[["optionalStack", "Optional integrations"], ["scaffoldStack", "Generated scaffold integrations"], ["plannedStack", "Planned technologies"]].map(([field, title]) => p[field]?.length > 0 && (
+        <section className="detail-section" key={field}><h2 className="section-heading">{title}</h2><ul className="audit-stack-list">{p[field].map(tech => <li key={tech} className="tech-pill-detailed">{tech}</li>)}</ul></section>
+      ))}
       {/* Links */}
       <div className="project-actions-footer">
+        {paper && <a href={paper.link} target="_blank" rel="noreferrer" className="action-btn secondary-btn">Read paper ({paper.year})</a>}
+        {p.datasetLink && <a href={p.datasetLink} target="_blank" rel="noreferrer" className="action-btn secondary-btn">Research dataset</a>}
+        {p.projectUrl && <a href={p.projectUrl} target="_blank" rel="noreferrer" className="action-btn secondary-btn">Project website</a>}
         {p.github && (
           <a href={p.github} target="_blank" rel="noopener noreferrer" className="action-btn github-btn">
             <Icon name="github" size={20} />
@@ -332,7 +376,7 @@ export default function ProjectDetail(){
         {demoUrl && (
           <a href={demoUrl} target="_blank" rel="noopener noreferrer" className="action-btn demo-btn">
             <Icon name="externalLink" size={20} />
-            Live Demo
+            {p.demoLabel || "Open project demo"}
           </a>
         )}
         <Link to="/projects" className="action-btn secondary-btn">

@@ -38,10 +38,12 @@ export default function Contact({ asPage = false }) {
     composeUrl.search = new URLSearchParams({
       view: "cm", fs: "1", to: EMAIL, su: subject, body,
     }).toString();
-    const composeWindow = window.open(composeUrl.toString(), "_blank", "noopener,noreferrer");
-    setStatus(composeWindow
-      ? "Your message is ready in Gmail. Review it there, then press Send."
-      : `The compose window was blocked. Email ${EMAIL} directly.`);
+    try {
+      window.open(composeUrl.toString(), "_blank", "noopener,noreferrer");
+      setStatus("Gmail was requested in a new tab. Review your draft there and press Send. If no tab appeared, use the email link below; your message stays here.");
+    } catch {
+      setStatus("Gmail could not be opened. Use the email link below; your message stays here.");
+    }
   };
 
   return (
@@ -135,7 +137,7 @@ export default function Contact({ asPage = false }) {
               <Icon name="mail" size={18} />
               Continue in Gmail
             </button>
-            {status && <p className="form-status" role="status">{status}</p>}
+            {status && <div className="form-status"><p role="status">{status}</p><a href={`mailto:${EMAIL}`}>Email {EMAIL}</a></div>}
           </form>
         </div>
       </div>

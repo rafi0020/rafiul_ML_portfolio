@@ -1,17 +1,13 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import useSEO from "../hooks/useSEO";
+import { ROUTE_META } from "../data/portfolio";
 import Projects from "../sections/Projects";
 
 export default function ProjectsPage() {
   const { state } = useLocation();
 
-  useSEO({
-    title: "Projects",
-    description:
-      "Production computer vision and Edge AI systems built for enterprise clients across logistics, manufacturing, and surveillance.",
-    path: "/projects",
-  });
+  useSEO({ ...ROUTE_META["/projects"], path: "/projects" });
 
   useEffect(() => {
     if (!state?.scrollToProject) return;

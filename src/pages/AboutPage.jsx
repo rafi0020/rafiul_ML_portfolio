@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import useSEO from "../hooks/useSEO";
+import { ROUTE_META } from "../data/portfolio";
 import About from "../sections/About";
 import Experience from "../sections/Experience";
 import Education from "../sections/Education";
@@ -8,12 +9,7 @@ import Education from "../sections/Education";
 export default function AboutPage() {
   const { state } = useLocation();
 
-  useSEO({
-    title: "About",
-    description:
-      "Machine learning engineer and researcher working on computer vision, Edge AI, and computational healthcare.",
-    path: "/about",
-  });
+  useSEO({ ...ROUTE_META["/about"], path: "/about" });
 
   useEffect(() => {
     if (!state?.scrollTo) return;

@@ -1,4 +1,5 @@
 import useSEO from "../hooks/useSEO";
+import { ROUTE_META } from "../data/portfolio";
 import Hero from "../sections/Hero";
 import About from "../sections/About";
 import Skills from "../sections/Skills";
@@ -8,12 +9,7 @@ import Publications from "../sections/Publications";
 import Contact from "../sections/Contact";
 
 export default function Home() {
-  useSEO({
-    title: null,
-    description:
-      "Machine Learning Engineer building production-grade computer vision and Edge AI systems, with peer-reviewed research in computational healthcare.",
-    path: "/",
-  });
+  useSEO({ ...ROUTE_META["/"], path: "/" });
 
   return (
     <main id="main-content" tabIndex={-1}>

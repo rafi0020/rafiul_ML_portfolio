@@ -24,6 +24,7 @@ export default function Footer() {
   const [roleIndex, setRoleIndex] = useState(0);
 
   useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const timer = window.setInterval(() => setRoleIndex((index) => (index + 1) % roles.length), 2400);
     return () => window.clearInterval(timer);
   }, [roles.length]);
@@ -33,7 +34,8 @@ export default function Footer() {
       <div className="footer-content">
         <div className="footer-role-banner">
           <span>Designing dependable intelligence</span>
-          <strong aria-live="polite">{roles[roleIndex]}</strong>
+          <strong aria-hidden="true">{roles[roleIndex]}</strong>
+          <span className="sr-only">Computer Vision, Edge AI, and Applied ML Research</span>
         </div>
         <div className="footer-brand">
           <div className="footer-logo">

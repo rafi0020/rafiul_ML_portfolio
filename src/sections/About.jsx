@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import Icon from "../components/Icon";
+import { CAREER_EVIDENCE as EVIDENCE } from "../data/portfolio";
 
 const SOCIAL_LINKS = [
   { href: "https://github.com/rafi0020", label: "GitHub", icon: "github" },
@@ -7,12 +8,6 @@ const SOCIAL_LINKS = [
   { href: "https://scholar.google.com/citations?user=ORj6wioAAAAJ&hl=en", label: "Google Scholar", icon: "scholar" },
 ];
 
-const EVIDENCE = [
-  { value: "20+", label: "AI & CV projects", detail: "Delivered end to end", icon: "repo" },
-  { value: "10+", label: "Industrial deployments", detail: "Across multiple environments", icon: "briefcase" },
-  { value: "CV + Edge AI", label: "Core engineering focus", detail: "Production and impact", icon: "gear" },
-  { value: "Peer reviewed", label: "Research track record", detail: "Journal article and dataset", icon: "book" },
-];
 
 const CAPABILITIES = [
   { title: "Computer Vision Systems", description: "Detection, tracking, OCR, ANPR, face recognition, pose analysis, and multi-camera video analytics.", icon: "skills" },
@@ -29,7 +24,7 @@ const ACHIEVEMENTS = [
   { title: "Bangla ANPR system", description: "Developed track-centric plate recognition with oriented detection, OCR validation, voting, and deduplication.", proof: "Detection + OCR + tracking", icon: "gear" },
   { title: "Multi-camera video analytics", description: "Architected tracking pipelines with temporal rules, evidence queues, and reliable downstream delivery.", proof: "Real-time operational workflows", icon: "skills" },
   { title: "Jetson & TensorRT deployment", description: "Deployed and optimized computer-vision workloads for NVIDIA Jetson and multi-GPU Linux systems.", proof: "Edge and GPU production stacks", icon: "download" },
-  { title: "Journal of Voice publication", description: "First-authored peer-reviewed research on Bengali voice-based mental-health assessment.", proof: "~91% accuracy · ~0.97 ROC-AUC", icon: "book" },
+  { title: "Journal of Voice publication", description: "First-authored peer-reviewed research on Bengali voice-based mental-health assessment.", proof: "Journal of Voice · 2024", icon: "book" },
 ];
 
 const BUILD_STAGES = [
@@ -193,17 +188,18 @@ export default function About({ compact = false }) {
             <section className="about-block" aria-labelledby="achievements-title">
               <div className="about-block-heading">
                 <span className="section-label">Selected achievements</span>
-                <h2 id="achievements-title">Evidence from production and research</h2>
-                <p>Representative outcomes that show how the work performs beyond a model notebook.</p>
+                <h2 id="achievements-title">Selected engineering and research work</h2>
+                <p>Representative contributions across industry implementation and applied research.</p>
               </div>
               <div className="about-achievement-grid">
-                {ACHIEVEMENTS.map(({ title, description, proof, icon }) => (
+                {ACHIEVEMENTS.map(({ title, description, proof, icon }, index) => (
                   <article key={title} className="about-achievement">
                     <span className="about-achievement-icon"><Icon name={icon} size={23} /></span>
                     <div>
                       <h3>{title}</h3>
                       <p>{description}</p>
-                      <span className="about-proof"><strong>Proof</strong>{proof}</span>
+                      <span className="about-proof"><strong>Focus</strong>{proof}</span>
+                      <Link className="audit-evidence-link" to={["/projects", "/projects/track-my-container", "/projects/anpr-bangla", "/projects/unilever-argus", "/projects/track-my-container", "/projects/voice-vit"][index]}>Read case study <Icon name="arrowRight" size={15} /></Link>
                     </div>
                   </article>
                 ))}
