@@ -95,22 +95,12 @@ export default function Projects({ defaultFilter = "All", compact = false, asPag
               )}
               <div className="project-summary-body">
                 <div className="project-summary-topline">
-                  <div className="project-summary-context">
-                    <span className={`project-category-badge ${p.category.toLowerCase()}`}>
-                      <Icon name={CATEGORY_ICON[p.category] || "briefcase"} size={15} /> {p.category}
-                    </span>
-                    {p.projectType && p.projectType.toLowerCase() !== p.category.toLowerCase() && (
-                      <span className="project-context-badge">
-                        <Icon name="gear" size={15} /> {p.projectType}
-                      </span>
-                    )}
-                  </div>
+                  <span className={`project-category-badge ${p.category.toLowerCase()}`}>
+                    <Icon name={CATEGORY_ICON[p.category] || "briefcase"} size={15} /> {p.category}
+                  </span>
                   {p.company && <span className="project-summary-company">{p.company}</span>}
                 </div>
-                <div className="project-card-status">
-                  <span className="project-maturity-badge">{p.maturity}</span>
-                  {p.parentSystem && <span>Module of {p.parentSystem}</span>}
-                </div>
+                {p.parentSystem && <p className="project-card-status">Module of {p.parentSystem}</p>}
                 <div className="project-summary-heading">
                   {p.companyLogo && (
                     <span className={`project-summary-logo-wrap${isWideLogo(p) ? " is-wide" : ""}${isUltraWideLogo(p) ? " is-ultrawide" : ""}`}>

@@ -1308,9 +1308,9 @@
   },
   {
     "id": "visionguard-platform",
-    "workflowImage": "/assets/projects/workflows/visionguard-platform.svg",
-    "workflowAlt": "VisionGuard: On-Prem Video Intelligence Platform project workflow and system architecture",
-    "workflowCaption": "Project workflow and system architecture overview.",
+    "workflowImage": "/assets/projects/workflows/visionguard-platform.webp",
+    "workflowAlt": "VisionGuard dashboard with live CCTV feeds, spatial event overlays, evidence, camera status, and system health",
+    "workflowCaption": "Dashboard view of live monitoring, evidence, and on-premises system health.",
     "title": "VisionGuard: On-Prem Video Intelligence Platform",
     "category": "Industry",
     "projectType": "Internal R&D",
@@ -1425,13 +1425,13 @@
         "description": "Inspect evidence, recordings, and health."
       }
     ],
-    "socialImage": "/assets/projects/workflows/visionguard-platform-overview.png"
+    "socialImage": "/assets/projects/workflows/visionguard-platform.webp"
   },
   {
     "id": "cv-agent-ecosystem",
-    "workflowImage": "/assets/projects/workflows/cv-agent-ecosystem.svg",
-    "workflowAlt": "CV Agent Ecosystem: Multi-Agent Computer Vision Delivery project workflow and system architecture",
-    "workflowCaption": "Project workflow and system architecture overview.",
+    "workflowImage": "/assets/projects/workflows/cv-agent-ecosystem.webp",
+    "workflowAlt": "CV Agent Ecosystem dashboard with specialist workflow stages, human approval, generated artifacts, and validation checks",
+    "workflowCaption": "Dashboard view of the human-gated multi-agent engineering workflow.",
     "title": "CV Agent Ecosystem: Multi-Agent Computer Vision Delivery",
     "category": "Industry",
     "projectType": "Internal R&D",
@@ -1549,16 +1549,16 @@
         "description": "Create artifacts for separate validation."
       }
     ],
-    "socialImage": "/assets/projects/workflows/cv-agent-ecosystem-overview.png",
+    "socialImage": "/assets/projects/workflows/cv-agent-ecosystem.webp",
     "optionalStack": [
       "ChromaDB"
     ]
   },
   {
     "id": "unified-ai-os",
-    "workflowImage": "/assets/projects/workflows/unified-ai-os.svg",
-    "workflowAlt": "Unified AI OS: Local Multi-Assistant Orchestration project workflow and system architecture",
-    "workflowCaption": "Project workflow and system architecture overview.",
+    "workflowImage": "/assets/projects/workflows/unified-ai-os.webp",
+    "workflowAlt": "Unified AI OS dashboard comparing parallel assistant responses, sources, local synthesis, history, and service health",
+    "workflowCaption": "Dashboard view of multi-assistant routing, source comparison, and local synthesis.",
     "title": "Unified AI OS: Local Multi-Assistant Orchestration",
     "category": "Industry",
     "projectType": "Internal R&D",
@@ -1673,7 +1673,7 @@
         "description": "Use a local model; verify the answer separately."
       }
     ],
-    "socialImage": "/assets/projects/workflows/unified-ai-os-overview.png"
+    "socialImage": "/assets/projects/workflows/unified-ai-os.webp"
   },
   {
     "id": "vision-suite-pharma-bottling",

@@ -88,19 +88,7 @@ export default function ProjectDetail(){
           <span className={`project-category-badge ${p.category.toLowerCase()}`}>
             {p.category}
           </span>
-          {p.projectType && p.projectType.toLowerCase() !== p.category.toLowerCase() && (
-            <span className="project-context-badge">
-              <Icon name="gear" size={14} />
-              {p.projectType}
-            </span>
-          )}
-          {p.maturity && (
-            <span className="project-maturity-badge">
-              <Icon name="clock" size={14} />
-              {p.maturity}
-            </span>
-          )}
-          {p.inDevelopment && p.maturity !== "In development" && p.maturity !== "Ongoing research" && (
+          {p.inDevelopment && (
             <span className="project-dev-badge">
               <Icon name="clock" size={14} />
               In development
