@@ -17,6 +17,7 @@ import { SITE, DEFAULT_IMAGE, ROUTE_META } from '../src/data/portfolio';
 
 const pages = { '/': Home, '/about': AboutPage, '/projects': ProjectsPage, '/research': ResearchPage, '/skills': SkillsPage, '/contact': ContactPage };
 const routes = [...Object.keys(pages), ...projects.map(p => `/projects/${p.id}`)];
+const canonicalUrl = route => SITE + (route === '/' ? '/' : `${route}/`);
 const template = fs.readFileSync('dist/index.html', 'utf8');
 const escape = value => String(value).replaceAll('&','&amp;').replaceAll('"','&quot;').replaceAll('<','&lt;').replaceAll('>','&gt;');
 for (const route of routes) {
@@ -40,14 +41,14 @@ for (const route of routes) {
     setMeta(attr,`${prefix}:image`,SITE + (meta.image || DEFAULT_IMAGE));
     setMeta(attr,`${prefix}:image:alt`,meta.alt || 'MD Rafiul Islam — Machine Learning Engineer');
   }
-  setMeta('property','og:url',SITE + route);
+  setMeta('property','og:url',canonicalUrl(route));
   setMeta('property','og:image:width',project ? '1280' : '1200');
   setMeta('property','og:image:height',project ? '720' : '630');
-  output = output.replace(/<link rel="canonical"[^>]*>/, `<link rel="canonical" href="${SITE}${route}"/>`);
+  output = output.replace(/<link rel="canonical"[^>]*>/, `<link rel="canonical" href="${canonicalUrl(route)}"/>`);
   const destination = path.join('dist',route,'index.html');
   fs.mkdirSync(path.dirname(destination),{recursive:true}); fs.writeFileSync(destination,output);
 }
-fs.writeFileSync('dist/sitemap.xml',`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${routes.map(r => `  <url><loc>${SITE}${r}</loc></url>`).join('\n')}\n</urlset>\n`);
+fs.writeFileSync('dist/sitemap.xml',`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${routes.map(r => `  <url><loc>${canonicalUrl(r)}</loc></url>`).join('\n')}\n</urlset>\n`);
 // GitHub Pages serves this for unknown routes; keep it unindexed and let the app show its not-found route.
 const notFound = template.replace(/<title>.*?<\/title>/, '<title>Page not found | MD Rafiul Islam</title>').replace(/<link rel="canonical"[^>]*>/, '').replace('</head>', '<meta name="robots" content="noindex, nofollow"/></head>');
 fs.writeFileSync('dist/404.html',notFound);

@@ -13,7 +13,7 @@ export const CAREER_EVIDENCE = [
   { ...HERO_STATS[1], detail: 'Peer-reviewed research', icon: 'book' },
   { ...HERO_STATS[2], detail: 'Separate from the journal article', icon: 'doc' },
 ];
-export const SITE = 'https://rafiulislam.me';
+export const SITE = 'https://www.rafiulislam.me';
 export const DEFAULT_IMAGE = '/assets/og-cover.png';
 export const ROUTE_META = {
   '/': { title: null, description: 'Machine Learning Engineer building computer vision and Edge AI systems, with research in computational healthcare.' },

@@ -99,7 +99,7 @@ export default function Projects({ defaultFilter = "All", compact = false, asPag
                     <span className={`project-category-badge ${p.category.toLowerCase()}`}>
                       <Icon name={CATEGORY_ICON[p.category] || "briefcase"} size={15} /> {p.category}
                     </span>
-                    {p.projectType && (
+                    {p.projectType && p.projectType.toLowerCase() !== p.category.toLowerCase() && (
                       <span className="project-context-badge">
                         <Icon name="gear" size={15} /> {p.projectType}
                       </span>

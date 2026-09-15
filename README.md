@@ -1,6 +1,6 @@
 # MD Rafiul Islam — Machine Learning & Computer Vision Engineer
 
-Source for [rafiulislam.me](https://rafiulislam.me), a recruiter-focused portfolio covering production computer vision, Edge AI, and applied ML research.
+Source for [rafiulislam.me](https://www.rafiulislam.me), a recruiter-focused portfolio covering production computer vision, Edge AI, and applied ML research.
 
 ## What the portfolio demonstrates
 
@@ -57,7 +57,7 @@ Pushes to `main` are built and deployed through the GitHub Actions workflow in `
 - [LinkedIn](https://www.linkedin.com/in/rafi009)
 - [GitHub](https://github.com/rafi0020)
 - [Google Scholar](https://scholar.google.com/citations?user=ORj6wioAAAAJ)
-- [Portfolio](https://rafiulislam.me)
+- [Portfolio](https://www.rafiulislam.me)
 - Email: rafiulislam1921@gmail.com
 
 ## Content and release checks

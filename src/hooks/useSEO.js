@@ -51,7 +51,7 @@ export default function useSEO({ title, description, path, noIndex = false, imag
     if (noIndex) {
       document.head.querySelector('link[rel="canonical"]')?.remove();
     } else if (path) {
-      const url = `${SITE}${path}`;
+      const url = `${SITE}${path === "/" ? "/" : `${path}/`}`;
       setMeta("property", "og:url", url);
       setCanonical(url);
     }

@@ -88,7 +88,7 @@ export default function ProjectDetail(){
           <span className={`project-category-badge ${p.category.toLowerCase()}`}>
             {p.category}
           </span>
-          {p.projectType && (
+          {p.projectType && p.projectType.toLowerCase() !== p.category.toLowerCase() && (
             <span className="project-context-badge">
               <Icon name="gear" size={14} />
               {p.projectType}
