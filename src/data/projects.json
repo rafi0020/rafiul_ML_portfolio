@@ -1,7 +1,7 @@
 [
   {
     "id": "anpr-bangla",
-    "workflowImage": "/assets/projects/workflows/anpr-bangla-overview.svg",
+    "workflowImage": "/assets/projects/workflows/anpr-bangla.webp",
     "title": "Bangla ANPR & Vehicle Verification",
     "category": "Industry",
     "company": "New Asia Ltd.",
@@ -111,13 +111,13 @@
         "description": "Send deduplicated plate events to integrations."
       }
     ],
-    "workflowAlt": "Conceptual workflow: Detect vehicles → Read plate crops → Validate and vote → Deliver events.",
-    "workflowCaption": "Conceptual workflow; not a screenshot or performance measurement. See the case study for scope and limitations.",
+    "workflowAlt": "Bangla ANPR & Vehicle Verification project workflow and system architecture",
+    "workflowCaption": "Project workflow and system architecture overview.",
     "socialImage": "/assets/projects/workflows/anpr-bangla-overview.png"
   },
   {
     "id": "track-my-container",
-    "workflowImage": "/assets/projects/workflows/track-my-container-overview.svg",
+    "workflowImage": "/assets/projects/workflows/track-my-container.webp",
     "title": "Track My Container: ISO 6346 Container Recognition",
     "category": "Industry",
     "company": "KDS Logistics Ltd.",
@@ -274,13 +274,13 @@
         "description": "Attach telemetry and deliver container events."
       }
     ],
-    "workflowAlt": "Conceptual workflow: Correct imagery → Detect and crop → Read and validate → Associate and send.",
-    "workflowCaption": "Conceptual workflow; not a screenshot or performance measurement. See the case study for scope and limitations.",
+    "workflowAlt": "Track My Container: ISO 6346 Container Recognition project workflow and system architecture",
+    "workflowCaption": "Project workflow and system architecture overview.",
     "socialImage": "/assets/projects/workflows/track-my-container-overview.png"
   },
   {
     "id": "unilever-argus",
-    "workflowImage": "/assets/projects/workflows/unilever-argus-overview.svg",
+    "workflowImage": "/assets/projects/workflows/unilever-argus.webp",
     "title": "Argus Automata: Industrial Safety Video Analytics",
     "category": "Industry",
     "company": "Unilever Bangladesh Ltd.",
@@ -397,13 +397,13 @@
         "description": "Queue evidence and deliver reviewable alerts."
       }
     ],
-    "workflowAlt": "Conceptual workflow: Read video → Detect and track → Evaluate rules → Review evidence.",
-    "workflowCaption": "Conceptual workflow; not a screenshot or performance measurement. See the case study for scope and limitations.",
+    "workflowAlt": "Argus Automata: Industrial Safety Video Analytics project workflow and system architecture",
+    "workflowCaption": "Project workflow and system architecture overview.",
     "socialImage": "/assets/projects/workflows/unilever-argus-overview.png"
   },
   {
     "id": "bat-sop",
-    "workflowImage": "/assets/projects/workflows/bat-sop-overview.svg",
+    "workflowImage": "/assets/projects/workflows/bat-sop.webp",
     "title": "BAT AI Leaf SOP Checker",
     "category": "Industry",
     "company": "BAT Bangladesh",
@@ -516,13 +516,13 @@
         "description": "Store snapshots and send stage-level events."
       }
     ],
-    "workflowAlt": "Conceptual workflow: Read camera feeds → Detect workflow cues → Track SOP state → Deliver evidence.",
-    "workflowCaption": "Conceptual workflow; not a screenshot or performance measurement. See the case study for scope and limitations.",
+    "workflowAlt": "BAT AI Leaf SOP Checker project workflow and system architecture",
+    "workflowCaption": "Project workflow and system architecture overview.",
     "socialImage": "/assets/projects/workflows/bat-sop-overview.png"
   },
   {
     "id": "staircase-safety",
-    "workflowImage": "/assets/projects/workflows/staircase-safety-overview.svg",
+    "workflowImage": "/assets/projects/workflows/staircase-safety.webp",
     "title": "Unilever Smart Staircase Safety",
     "category": "Industry",
     "company": "Unilever Bangladesh Ltd.",
@@ -642,13 +642,13 @@
         "description": "Consolidate observations and deliver evidence."
       }
     ],
-    "workflowAlt": "Conceptual workflow: Locate people → Estimate pose → Check geometry → Confirm and review.",
-    "workflowCaption": "Conceptual workflow; not a screenshot or performance measurement. See the case study for scope and limitations.",
+    "workflowAlt": "Unilever Smart Staircase Safety project workflow and system architecture",
+    "workflowCaption": "Project workflow and system architecture overview.",
     "socialImage": "/assets/projects/workflows/staircase-safety-overview.png"
   },
   {
     "id": "smart-space",
-    "workflowImage": "/assets/projects/workflows/smart-space-overview.svg",
+    "workflowImage": "/assets/projects/workflows/smart-space.webp",
     "title": "Smart Space Monitoring: Retail Intelligence",
     "category": "Industry",
     "company": "Runner Automobiles Ltd.",
@@ -750,8 +750,8 @@
         "description": "Send events for operational review."
       }
     ],
-    "workflowAlt": "Conceptual workflow: Read showroom video → Track activity → Apply session rules → Deliver analytics.",
-    "workflowCaption": "Conceptual workflow; not a screenshot or performance measurement. See the case study for scope and limitations.",
+    "workflowAlt": "Smart Space Monitoring: Retail Intelligence project workflow and system architecture",
+    "workflowCaption": "Project workflow and system architecture overview.",
     "socialImage": "/assets/projects/workflows/smart-space-overview.png",
     "challenges": [
       {
@@ -768,7 +768,7 @@
   },
   {
     "id": "brac-bank-face-recognition",
-    "workflowImage": "/assets/projects/workflows/brac-bank-face-recognition-overview.svg",
+    "workflowImage": "/assets/projects/workflows/brac-bank-face-recognition.webp",
     "title": "BRAC CIN: Face Recognition & Identity Review",
     "category": "Industry",
     "company": "BRAC Bank PLC",
@@ -878,13 +878,13 @@
         "description": "Store evidence for identity review workflows."
       }
     ],
-    "workflowAlt": "Conceptual workflow: Detect faces → Compare embeddings → Assign review state → Review registry.",
-    "workflowCaption": "Conceptual workflow; not a screenshot or performance measurement. See the case study for scope and limitations.",
+    "workflowAlt": "BRAC CIN: Face Recognition & Identity Review project workflow and system architecture",
+    "workflowCaption": "Project workflow and system architecture overview.",
     "socialImage": "/assets/projects/workflows/brac-bank-face-recognition-overview.png"
   },
   {
     "id": "brac-bank-atm-intrusion",
-    "workflowImage": "/assets/projects/workflows/brac-bank-atm-intrusion-overview.svg",
+    "workflowImage": "/assets/projects/workflows/brac-bank-atm-intrusion.webp",
     "title": "BRAC CIN: Intrusion & Perimeter Monitoring",
     "category": "Industry",
     "company": "BRAC Bank PLC",
@@ -986,13 +986,13 @@
         "description": "Queue snapshots and retry event delivery."
       }
     ],
-    "workflowAlt": "Conceptual workflow: Detect and track → Evaluate boundaries → Confirm over time → Deliver evidence.",
-    "workflowCaption": "Conceptual workflow; not a screenshot or performance measurement. See the case study for scope and limitations.",
+    "workflowAlt": "BRAC CIN: Intrusion & Perimeter Monitoring project workflow and system architecture",
+    "workflowCaption": "Project workflow and system architecture overview.",
     "socialImage": "/assets/projects/workflows/brac-bank-atm-intrusion-overview.png"
   },
   {
     "id": "brac-bank-cash-theft",
-    "workflowImage": "/assets/projects/workflows/brac-bank-cash-theft-overview.svg",
+    "workflowImage": "/assets/projects/workflows/brac-bank-cash-theft.webp",
     "title": "BRAC CIN: Counter Interaction Risk Monitoring",
     "category": "Industry",
     "company": "BRAC Bank PLC",
@@ -1089,13 +1089,13 @@
         "description": "Deliver evidence as a risk signal, not proof."
       }
     ],
-    "workflowAlt": "Conceptual workflow: Estimate pose → Check counter regions → Consolidate events → Human assessment.",
-    "workflowCaption": "Conceptual workflow; not a screenshot or performance measurement. See the case study for scope and limitations.",
+    "workflowAlt": "BRAC CIN: Counter Interaction Risk Monitoring project workflow and system architecture",
+    "workflowCaption": "Project workflow and system architecture overview.",
     "socialImage": "/assets/projects/workflows/brac-bank-cash-theft-overview.png"
   },
   {
     "id": "brac-bank-unusual-activity",
-    "workflowImage": "/assets/projects/workflows/brac-bank-unusual-activity-overview.svg",
+    "workflowImage": "/assets/projects/workflows/brac-bank-unusual-activity.webp",
     "title": "BRAC CIN: Lying-Person & Unusual Activity Monitoring",
     "category": "Industry",
     "company": "BRAC Bank PLC",
@@ -1189,13 +1189,13 @@
         "description": "Deliver deduplicated event snapshots."
       }
     ],
-    "workflowAlt": "Conceptual workflow: Detect people → Evaluate activity → Consolidate signals → Review evidence.",
-    "workflowCaption": "Conceptual workflow; not a screenshot or performance measurement. See the case study for scope and limitations.",
+    "workflowAlt": "BRAC CIN: Lying-Person & Unusual Activity Monitoring project workflow and system architecture",
+    "workflowCaption": "Project workflow and system architecture overview.",
     "socialImage": "/assets/projects/workflows/brac-bank-unusual-activity-overview.png"
   },
   {
     "id": "mobil-product-inspector",
-    "workflowImage": "/assets/projects/workflows/mobil-product-inspector-overview.svg",
+    "workflowImage": "/assets/projects/workflows/mobil-product-inspector.webp",
     "title": "Mobil Bottle & Label Inspection",
     "category": "Industry",
     "company": "Mobil Bangladesh Ltd.",
@@ -1290,8 +1290,8 @@
         "description": "Record inspection results for assessment."
       }
     ],
-    "workflowAlt": "Conceptual workflow: Provide product images → Inspect product and label → Check image evidence → Operator review.",
-    "workflowCaption": "Conceptual workflow; not a screenshot or performance measurement. See the case study for scope and limitations.",
+    "workflowAlt": "Mobil Bottle & Label Inspection project workflow and system architecture",
+    "workflowCaption": "Project workflow and system architecture overview.",
     "socialImage": "/assets/projects/workflows/mobil-product-inspector-overview.png",
     "challenges": [
       {
@@ -1308,9 +1308,9 @@
   },
   {
     "id": "visionguard-platform",
-    "workflowImage": "/assets/projects/workflows/visionguard-platform-overview.svg",
-    "workflowAlt": "Conceptual workflow: Configure monitoring → Schedule inference → Evaluate event rules → Observe and review.",
-    "workflowCaption": "Conceptual workflow; not a screenshot or performance measurement. R&D capabilities require separate runtime validation.",
+    "workflowImage": "/assets/projects/workflows/visionguard-platform.svg",
+    "workflowAlt": "VisionGuard: On-Prem Video Intelligence Platform project workflow and system architecture",
+    "workflowCaption": "Project workflow and system architecture overview.",
     "title": "VisionGuard: On-Prem Video Intelligence Platform",
     "category": "Industry",
     "projectType": "Internal R&D",
@@ -1429,9 +1429,9 @@
   },
   {
     "id": "cv-agent-ecosystem",
-    "workflowImage": "/assets/projects/workflows/cv-agent-ecosystem-overview.svg",
-    "workflowAlt": "Conceptual workflow: Define a CV brief → Plan with agents → Human approval → Generate scaffolds.",
-    "workflowCaption": "Conceptual workflow; not a screenshot or performance measurement. R&D capabilities require separate runtime validation.",
+    "workflowImage": "/assets/projects/workflows/cv-agent-ecosystem.svg",
+    "workflowAlt": "CV Agent Ecosystem: Multi-Agent Computer Vision Delivery project workflow and system architecture",
+    "workflowCaption": "Project workflow and system architecture overview.",
     "title": "CV Agent Ecosystem: Multi-Agent Computer Vision Delivery",
     "category": "Industry",
     "projectType": "Internal R&D",
@@ -1556,9 +1556,9 @@
   },
   {
     "id": "unified-ai-os",
-    "workflowImage": "/assets/projects/workflows/unified-ai-os-overview.svg",
-    "workflowAlt": "Conceptual workflow: Submit a query → Route to assistants → Collect responses → Synthesize locally.",
-    "workflowCaption": "Conceptual workflow; not a screenshot or performance measurement. R&D capabilities require separate runtime validation.",
+    "workflowImage": "/assets/projects/workflows/unified-ai-os.svg",
+    "workflowAlt": "Unified AI OS: Local Multi-Assistant Orchestration project workflow and system architecture",
+    "workflowCaption": "Project workflow and system architecture overview.",
     "title": "Unified AI OS: Local Multi-Assistant Orchestration",
     "category": "Industry",
     "projectType": "Internal R&D",
@@ -1677,7 +1677,7 @@
   },
   {
     "id": "vision-suite-pharma-bottling",
-    "workflowImage": "/assets/projects/workflows/vision-suite-pharma-bottling-overview.svg",
+    "workflowImage": "/assets/projects/workflows/vision-suite-pharma-bottling.webp",
     "title": "Vision Suite: Pharma Blister Pack, Cap-Seal & Liquid Fill Inspection",
     "category": "Industry",
     "company": "Bondstein Technologies Ltd.",
@@ -1775,13 +1775,13 @@
         "description": "Present candidate defects for assessment."
       }
     ],
-    "workflowAlt": "Conceptual workflow: Acquire line imagery → Inspect product regions → Apply task rules → Review candidates.",
-    "workflowCaption": "Conceptual workflow; not a screenshot or performance measurement. R&D capabilities require separate runtime validation.",
+    "workflowAlt": "Vision Suite: Pharma Blister Pack, Cap-Seal & Liquid Fill Inspection project workflow and system architecture",
+    "workflowCaption": "Project workflow and system architecture overview.",
     "socialImage": "/assets/projects/workflows/vision-suite-pharma-bottling-overview.png"
   },
   {
     "id": "vision-suite-meters-threats",
-    "workflowImage": "/assets/projects/workflows/vision-suite-meters-threats-overview.svg",
+    "workflowImage": "/assets/projects/workflows/vision-suite-meters-threats.webp",
     "title": "Vision Suite: Analog Gauge Digitization & VLM-Verified Threat Detection",
     "category": "Industry",
     "company": "Bondstein Technologies Ltd.",
@@ -1875,13 +1875,13 @@
         "description": "Inspect readings or flagged event evidence."
       }
     ],
-    "workflowAlt": "Conceptual workflow: Acquire camera frames → Select task workflow → Validate task signals → Review outputs.",
-    "workflowCaption": "Conceptual workflow; not a screenshot or performance measurement. R&D capabilities require separate runtime validation.",
+    "workflowAlt": "Vision Suite: Analog Gauge Digitization & VLM-Verified Threat Detection project workflow and system architecture",
+    "workflowCaption": "Project workflow and system architecture overview.",
     "socialImage": "/assets/projects/workflows/vision-suite-meters-threats-overview.png"
   },
   {
     "id": "vision-suite-logistics-parking",
-    "workflowImage": "/assets/projects/workflows/vision-suite-logistics-parking-overview.svg",
+    "workflowImage": "/assets/projects/workflows/vision-suite-logistics-parking.webp",
     "title": "Vision Suite: Conveyor Counting, Parking Occupancy & Threat Analytics",
     "category": "Industry",
     "company": "Bondstein Technologies Ltd.",
@@ -1976,13 +1976,13 @@
         "description": "Inspect task-specific results and evidence."
       }
     ],
-    "workflowAlt": "Conceptual workflow: Read facility video → Detect and track → Apply module rules → Review outputs.",
-    "workflowCaption": "Conceptual workflow; not a screenshot or performance measurement. R&D capabilities require separate runtime validation.",
+    "workflowAlt": "Vision Suite: Conveyor Counting, Parking Occupancy & Threat Analytics project workflow and system architecture",
+    "workflowCaption": "Project workflow and system architecture overview.",
     "socialImage": "/assets/projects/workflows/vision-suite-logistics-parking-overview.png"
   },
   {
     "id": "crowd-mob-detection",
-    "workflowImage": "/assets/projects/workflows/crowd-mob-detection-overview.svg",
+    "workflowImage": "/assets/projects/workflows/crowd-mob-detection.webp",
     "title": "Crowd and Mob Detection: Multi-Modal Public Safety Analytics",
     "category": "Industry",
     "company": "Bondstein Technologies Ltd.",
@@ -2090,13 +2090,13 @@
         "description": "Flag events for human assessment."
       }
     ],
-    "workflowAlt": "Conceptual workflow: Detect people and objects → Track and estimate depth → Analyze proximity → Review risk signals.",
-    "workflowCaption": "Conceptual workflow; not a screenshot or performance measurement. R&D capabilities require separate runtime validation.",
+    "workflowAlt": "Crowd and Mob Detection: Multi-Modal Public Safety Analytics project workflow and system architecture",
+    "workflowCaption": "Project workflow and system architecture overview.",
     "socialImage": "/assets/projects/workflows/crowd-mob-detection-overview.png"
   },
   {
     "id": "juice-flow-anomaly",
-    "workflowImage": "/assets/projects/workflows/juice-flow-anomaly-overview.svg",
+    "workflowImage": "/assets/projects/workflows/juice-flow-anomaly.webp",
     "title": "Juice Flow Anomaly Detection: Food-Safety Edge Segmentation",
     "category": "Industry",
     "company": "Bondstein Technologies Ltd.",
@@ -2189,13 +2189,13 @@
         "description": "Evaluate Jetson and TensorRT deployment."
       }
     ],
-    "workflowAlt": "Conceptual workflow: Acquire pipe imagery → Segment candidate regions → Confirm over time → Planned edge validation.",
-    "workflowCaption": "Conceptual workflow; not a screenshot or performance measurement. R&D capabilities require separate runtime validation.",
+    "workflowAlt": "Juice Flow Anomaly Detection: Food-Safety Edge Segmentation project workflow and system architecture",
+    "workflowCaption": "Project workflow and system architecture overview.",
     "socialImage": "/assets/projects/workflows/juice-flow-anomaly-overview.png"
   },
   {
     "id": "counterfeit",
-    "workflowImage": "/assets/projects/workflows/counterfeit-overview.svg",
+    "workflowImage": "/assets/projects/workflows/counterfeit.webp",
     "title": "Anti-Counterfeit Detection System",
     "category": "Industry",
     "company": "Bondstein Technologies Ltd.",
@@ -2264,8 +2264,8 @@
         "description": "Review R&D results; authenticity is not assured."
       }
     ],
-    "workflowAlt": "Conceptual workflow: Provide packaging images → Extract visual cues → Compare evidence → Human review.",
-    "workflowCaption": "Conceptual workflow; not a screenshot or performance measurement. R&D capabilities require separate runtime validation.",
+    "workflowAlt": "Anti-Counterfeit Detection System project workflow and system architecture",
+    "workflowCaption": "Project workflow and system architecture overview.",
     "socialImage": "/assets/projects/workflows/counterfeit-overview.png",
     "architecture": {
       "description": "Visual packaging comparison for internal R&D.",
@@ -2303,7 +2303,7 @@
   },
   {
     "id": "hr-chatbot",
-    "workflowImage": "/assets/projects/workflows/hr-chatbot-overview.svg",
+    "workflowImage": "/assets/projects/workflows/hr-chatbot.webp",
     "title": "Bondstein HR Assist v2.0: Agentic HR Service Desk",
     "category": "Industry",
     "company": "Bondstein Technologies Ltd.",
@@ -2421,13 +2421,13 @@
         "description": "Record workflow events, SLA state, and history."
       }
     ],
-    "workflowAlt": "Conceptual workflow: Request with role context → Retrieve policy evidence → Answer or route work → Track and audit.",
-    "workflowCaption": "Conceptual workflow; not a screenshot or performance measurement. R&D capabilities require separate runtime validation.",
+    "workflowAlt": "Bondstein HR Assist v2.0: Agentic HR Service Desk project workflow and system architecture",
+    "workflowCaption": "Project workflow and system architecture overview.",
     "socialImage": "/assets/projects/workflows/hr-chatbot-overview.png"
   },
   {
     "id": "voice-vit",
-    "workflowImage": "/assets/projects/workflows/voice-vit-overview.svg",
+    "workflowImage": "/assets/projects/workflows/voice-vit.webp",
     "title": "Mental Health Diagnosis Using CNNs and Vision Transformers",
     "category": "Research",
     "company": "Daffodil International University",
@@ -2531,13 +2531,13 @@
         "description": "Assess study metrics and interpretation."
       }
     ],
-    "workflowAlt": "Conceptual workflow: Prepare voice data → Learn CNN + ViT features → Classify study labels → Evaluate research results.",
-    "workflowCaption": "Conceptual workflow; not a screenshot or performance measurement. See the case study for scope and limitations.",
+    "workflowAlt": "Mental Health Diagnosis Using CNNs and Vision Transformers project workflow and system architecture",
+    "workflowCaption": "Project workflow and system architecture overview.",
     "socialImage": "/assets/projects/workflows/voice-vit-overview.png"
   },
   {
     "id": "mental-stability-transfer-learning",
-    "workflowImage": "/assets/projects/workflows/mental-stability-transfer-learning-overview.svg",
+    "workflowImage": "/assets/projects/workflows/mental-stability-transfer-learning.webp",
     "title": "Transfer Learning for Mental Stability Classification",
     "category": "Research",
     "company": "Daffodil International University",
@@ -2637,13 +2637,13 @@
         "description": "Compare separate models; no ensemble fusion."
       }
     ],
-    "workflowAlt": "Conceptual workflow: Prepare spectrograms → Define training regimes → Compare three models → Report study results.",
-    "workflowCaption": "Conceptual workflow; not a screenshot or performance measurement. See the case study for scope and limitations.",
+    "workflowAlt": "Transfer Learning for Mental Stability Classification project workflow and system architecture",
+    "workflowCaption": "Project workflow and system architecture overview.",
     "socialImage": "/assets/projects/workflows/mental-stability-transfer-learning-overview.png"
   },
   {
     "id": "hybrid-densevitgru-xai",
-    "workflowImage": "/assets/projects/workflows/hybrid-densevitgru-xai-overview.svg",
+    "workflowImage": "/assets/projects/workflows/hybrid-densevitgru-xai.webp",
     "title": "Hybrid Deep Models for Mental Health Detection with XAI Techniques",
     "category": "Research",
     "company": "Daffodil International University",
@@ -2758,13 +2758,13 @@
         "description": "Research remains in development."
       }
     ],
-    "workflowAlt": "Conceptual workflow: Prepare voice inputs → Explore hybrid learning → Analyze explanations → Ongoing evaluation.",
-    "workflowCaption": "Conceptual workflow; not a screenshot or performance measurement. See the case study for scope and limitations.",
+    "workflowAlt": "Hybrid Deep Models for Mental Health Detection with XAI Techniques project workflow and system architecture",
+    "workflowCaption": "Project workflow and system architecture overview.",
     "socialImage": "/assets/projects/workflows/hybrid-densevitgru-xai-overview.png"
   },
   {
     "id": "selfsupervised-vit-noisy-voice",
-    "workflowImage": "/assets/projects/workflows/selfsupervised-vit-noisy-voice-overview.svg",
+    "workflowImage": "/assets/projects/workflows/selfsupervised-vit-noisy-voice.webp",
     "title": "Self-Supervised Learning with ViT for Noisy Real-World Data",
     "category": "Research",
     "company": "Daffodil International University",
@@ -2882,13 +2882,13 @@
         "description": "Research remains in development."
       }
     ],
-    "workflowAlt": "Conceptual workflow: Prepare noisy voice data → Study self-supervision → Train and compare → Ongoing evaluation.",
-    "workflowCaption": "Conceptual workflow; not a screenshot or performance measurement. See the case study for scope and limitations.",
+    "workflowAlt": "Self-Supervised Learning with ViT for Noisy Real-World Data project workflow and system architecture",
+    "workflowCaption": "Project workflow and system architecture overview.",
     "socialImage": "/assets/projects/workflows/selfsupervised-vit-noisy-voice-overview.png"
   },
   {
     "id": "skin-cancer-detection",
-    "workflowImage": "/assets/projects/workflows/skin-cancer-detection-overview.svg",
+    "workflowImage": "/assets/projects/workflows/skin-cancer-detection.webp",
     "title": "Skin Cancer Detection Using Computer Vision",
     "category": "Research",
     "company": "Daffodil International University",
@@ -2971,13 +2971,13 @@
         "description": "Report research metrics, not clinical readiness."
       }
     ],
-    "workflowAlt": "Conceptual workflow: Prepare lesion images → Train and compare → Explain predictions → Evaluate study results.",
-    "workflowCaption": "Conceptual workflow; not a screenshot or performance measurement. See the case study for scope and limitations.",
+    "workflowAlt": "Skin Cancer Detection Using Computer Vision project workflow and system architecture",
+    "workflowCaption": "Project workflow and system architecture overview.",
     "socialImage": "/assets/projects/workflows/skin-cancer-detection-overview.png"
   },
   {
     "id": "blockmedix-ai",
-    "workflowImage": "/assets/projects/workflows/blockmedix-ai-overview.svg",
+    "workflowImage": "/assets/projects/workflows/blockmedix-ai.webp",
     "title": "BlockMedix AI: Decentralized Healthcare System",
     "category": "Academic",
     "company": "Daffodil International University",
@@ -3046,13 +3046,13 @@
         "description": "Assess academic integration and limitations."
       }
     ],
-    "workflowAlt": "Conceptual workflow: Manage record consent → Use smart contracts → Explore AI assistance → Review prototype.",
-    "workflowCaption": "Conceptual workflow; not a screenshot or performance measurement. See the case study for scope and limitations.",
+    "workflowAlt": "BlockMedix AI: Decentralized Healthcare System project workflow and system architecture",
+    "workflowCaption": "Project workflow and system architecture overview.",
     "socialImage": "/assets/projects/workflows/blockmedix-ai-overview.png"
   },
   {
     "id": "smart-dining",
-    "workflowImage": "/assets/projects/workflows/smart-dining-overview.svg",
+    "workflowImage": "/assets/projects/workflows/smart-dining.webp",
     "title": "Smart Dining Caloric Display System",
     "category": "Academic",
     "company": "Daffodil International University",
@@ -3127,13 +3127,13 @@
         "description": "Present research estimates with limitations."
       }
     ],
-    "workflowAlt": "Conceptual workflow: Prepare food features → Train regression models → Compare predictions → Review estimates.",
-    "workflowCaption": "Conceptual workflow; not a screenshot or performance measurement. See the case study for scope and limitations.",
+    "workflowAlt": "Smart Dining Caloric Display System project workflow and system architecture",
+    "workflowCaption": "Project workflow and system architecture overview.",
     "socialImage": "/assets/projects/workflows/smart-dining-overview.png"
   },
   {
     "id": "physical-activity-prediction",
-    "workflowImage": "/assets/projects/workflows/physical-activity-prediction-overview.svg",
+    "workflowImage": "/assets/projects/workflows/physical-activity-prediction.webp",
     "title": "Physical Activity Level Prediction",
     "category": "Academic",
     "company": "Daffodil International University",
@@ -3208,8 +3208,8 @@
         "description": "Inspect historical course-project results."
       }
     ],
-    "workflowAlt": "Conceptual workflow: Prepare activity data → Process features → Compare classifiers → Review evaluation.",
-    "workflowCaption": "Conceptual workflow; not a screenshot or performance measurement. See the case study for scope and limitations.",
+    "workflowAlt": "Physical Activity Level Prediction project workflow and system architecture",
+    "workflowCaption": "Project workflow and system architecture overview.",
     "socialImage": "/assets/projects/workflows/physical-activity-prediction-overview.png"
   }
 ]
