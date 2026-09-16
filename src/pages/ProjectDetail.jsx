@@ -6,7 +6,7 @@ import publications from "../data/publications.json";
 import MediaGallery from "../sections/MediaGallery";
 import Icon from "../components/Icon";
 import useSEO from "../hooks/useSEO";
-import { metricIcon } from "../utils/projectMeta";
+import { metricIcon, categoryClass } from "../utils/projectMeta";
 
 const getMetricIcon = (metricKey) => <Icon name={metricIcon(metricKey)} size={32} />;
 const isWideLogo = (project) =>
@@ -97,7 +97,7 @@ export default function ProjectDetail(){
           </div>
         )}
         <div className="project-detail-badges">
-          <span className={`project-category-badge ${p.category.toLowerCase()}`}>
+          <span className={`project-category-badge ${categoryClass(p.category)}`}>
             {p.category}
           </span>
           {p.inDevelopment && (

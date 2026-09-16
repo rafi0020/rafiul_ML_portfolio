@@ -2586,6 +2586,16 @@ main > .section:first-child > .container { padding-top: 170px; }
   color: #ff9800;
 }
 
+.project-category-badge.rnd {
+  background: rgba(94, 231, 247, 0.12);
+  border-color: rgba(94, 231, 247, 0.3);
+  color: #5ee7f7;
+}
+
+:root[data-theme="light"] .project-category-badge.rnd {
+  color: #08718c;
+}
+
 .project-category-badge.research {
   background: rgba(88, 166, 255, 0.15);
   border-color: rgba(88, 166, 255, 0.3);
@@ -7243,6 +7253,10 @@ video {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 10px;
     margin-bottom: 26px;
+  }
+
+  .projects-filters .filter-btn:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
   }
 
   .filter-btn {

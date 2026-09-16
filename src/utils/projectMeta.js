@@ -40,6 +40,9 @@ export const techClass = (tech) => match(TECH_CLASS_RULES, tech, "tech-default")
 export const CATEGORY_ICON = {
   All: "repo",
   Industry: "briefcase",
+  "R&D": "gear",
   Research: "book",
   Academic: "cap",
 };
+
+export const categoryClass = (category) => category === "R&D" ? "rnd" : category.toLowerCase();

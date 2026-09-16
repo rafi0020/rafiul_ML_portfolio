@@ -16,7 +16,8 @@ export function validateData(projects, publications, featured, assetExists = () 
   for (const p of projects) {
     assert(/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(p.id), 'Invalid route ID');
     for (const key of ['title', 'summary', 'problem', 'approach', 'impact', 'projectType', 'maturity', 'workflowAlt', 'workflowCaption']) assert(typeof p[key] === 'string' && p[key].trim(), `${p.id}: missing ${key}`);
-    assert(['Industry', 'Research', 'Academic'].includes(p.category), `${p.id}: invalid category`);
+    assert(['Industry', 'R&D', 'Research', 'Academic'].includes(p.category), `${p.id}: invalid category`);
+    assert.equal(p.category === 'R&D', p.projectType === 'Internal R&D', `${p.id}: R&D category and project type differ`);
     assert(Array.isArray(p.stack) && p.stack.every(s => typeof s === 'string' && s.trim()), `${p.id}: invalid stack`);
     assert.equal(new Set(p.stack).size, p.stack.length, `${p.id}: duplicate technology`);
     for (const key of ['features', 'limitations']) assert(Array.isArray(p[key]) && p[key].every(s => typeof s === 'string'), `${p.id}: invalid ${key}`);

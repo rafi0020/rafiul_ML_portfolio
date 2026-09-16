@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import data from "../data/projects.json";
 import Icon from "../components/Icon";
 import SectionCTA from "../components/SectionCTA";
-import { techClass, CATEGORY_ICON } from "../utils/projectMeta";
+import { techClass, CATEGORY_ICON, categoryClass } from "../utils/projectMeta";
 
 import { FEATURED_IDS } from "../data/portfolio";
-const FILTERS = ["All", "Industry", "Research", "Academic"];
+const FILTERS = ["All", "Industry", "R&D", "Research", "Academic"];
 
 const isWideLogo = (project) =>
   project.companyLogoStyle === "wide" ||
@@ -71,7 +71,7 @@ export default function Projects({ defaultFilter = "All", compact = false, asPag
 
         {!compact && (
           <p className="results-count" aria-live="polite">
-            Showing {list.length} {list.length === 1 ? "case study" : "case studies"}. Related system modules are listed separately.
+            Showing {list.length} {list.length === 1 ? "project" : "projects"}. Related system modules are listed separately.
           </p>
         )}
 
@@ -96,7 +96,7 @@ export default function Projects({ defaultFilter = "All", compact = false, asPag
               )}
               <div className="project-summary-body">
                 <div className="project-summary-topline">
-                  <span className={`project-category-badge ${p.category.toLowerCase()}`}>
+                  <span className={`project-category-badge ${categoryClass(p.category)}`}>
                     <Icon name={CATEGORY_ICON[p.category] || "briefcase"} size={15} /> {p.category}
                   </span>
                   {p.company && <span className="project-summary-company">{p.company}</span>}
