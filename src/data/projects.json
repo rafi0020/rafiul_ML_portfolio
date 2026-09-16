@@ -2266,7 +2266,7 @@
     ],
     "workflowAlt": "Anti-Counterfeit Detection System project workflow and system architecture",
     "workflowCaption": "Project workflow and system architecture overview.",
-    "socialImage": "/assets/projects/workflows/counterfeit-overview.png",
+    "socialImage": "/assets/projects/workflows/counterfeit.webp",
     "architecture": {
       "description": "Visual packaging comparison for internal R&D.",
       "components": [
