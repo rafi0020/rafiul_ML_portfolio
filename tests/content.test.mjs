@@ -5,7 +5,7 @@ import { readData, validateData } from '../scripts/validate-data.mjs';
 const { projects, publications, featured } = readData();
 const copy = () => structuredClone(projects);
 test('all content has valid routes, asset references, and typed evidence', () => {
-  assert.deepEqual(validateData(projects, publications, featured, p => fs.existsSync('public/' + p.replace(/^\.\//, '').replace(/^\//, ''))), { projects: 29, publications: 3, featured: 4 });
+  assert.deepEqual(validateData(projects, publications, featured, p => fs.existsSync('public/' + p.replace(/^\.\//, '').replace(/^\//, ''))), { projects: 28, publications: 3, featured: 4 });
 });
 test('missing featured project fails rather than silently shrinking homepage', () => {
   assert.throws(() => validateData(projects.filter(p => p.id !== featured[0]), publications, featured), /Missing featured/);

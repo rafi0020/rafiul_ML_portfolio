@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
-<title id="title">Bondstein HR Assist v2.0: Agentic HR Service Desk — conceptual workflow</title>
+<title id="title">HR Assist: Agentic HR Service Desk — conceptual workflow</title>
 <desc id="desc">Conceptual workflow: Request with role context → Retrieve policy evidence → Answer or route work → Track and audit.</desc>
 <defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#10182b"/><stop offset="1" stop-color="#080e1a"/></linearGradient><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#69cfec"/></marker></defs>
 <rect x="1" y="1" width="1278" height="718" rx="32" fill="url(#bg)" stroke="#33405b"/>
 <g font-family="DejaVu Sans, sans-serif">
 <text x="64" y="66" fill="#9cdef1" font-size="22" letter-spacing="3">INTERNAL R&amp;D · CONCEPTUAL WORKFLOW</text>
-<text x="64" y="118" fill="#f3f5ff" font-size="36" font-weight="700">Bondstein HR Assist v2.0</text>
+<text x="64" y="118" fill="#f3f5ff" font-size="36" font-weight="700">HR Assist</text>
 <path d="M 590 268 H 655" fill="none" stroke="#69cfec" stroke-width="3" marker-end="url(#arrow)"/>
 <path d="M 944 378 V 405" fill="none" stroke="#69cfec" stroke-width="3" marker-end="url(#arrow)"/>
 <path d="M 674 530 H 611" fill="none" stroke="#69cfec" stroke-width="3" marker-end="url(#arrow)"/>

@@ -1555,130 +1555,9 @@
     ]
   },
   {
-    "id": "unified-ai-os",
-    "workflowImage": "/assets/projects/workflows/unified-ai-os.webp",
-    "workflowAlt": "Unified AI OS dashboard comparing parallel assistant responses, sources, local synthesis, history, and service health",
-    "workflowCaption": "Dashboard view of multi-assistant routing, source comparison, and local synthesis.",
-    "title": "Unified AI OS: Local Multi-Assistant Orchestration",
-    "category": "R&D",
-    "projectType": "Internal R&D",
-    "projectContext": "Internal R&D / Personal Engineering Project at Bondstein Technologies Ltd.",
-    "maturity": "R&D prototype",
-    "company": "Bondstein Technologies Ltd.",
-    "companyLogo": "./assets/logo/bondstein.png",
-    "companyLogoStyle": "wide",
-    "timeline": null,
-    "summary": "An AI workspace with local orchestration that sends queries to browser-based assistants, streams progress, and uses a local model to synthesize their responses.",
-    "problem": "Comparing answers across multiple AI assistants requires repetitive prompting, tab switching, manual source tracking, and a separate consolidation step.",
-    "approach": "Built a FastAPI orchestration layer with local Ollama routing and synthesis, concurrent Playwright workers, persistent browser sessions, selector-based extraction, server-sent progress events, SQLite conversation history, and a responsive React interface with tool preferences and source inspection.",
-    "contribution": "Engineering contribution included local routing and synthesis, concurrent browser-worker orchestration, streamed lifecycle events, conversation persistence, source-aware response presentation, and the React workspace; no multi-user or production-service claim is made.",
-    "impact": "Delivered a working internal prototype for routing, comparing, and consolidating multi-assistant responses while preserving conversation history and keeping routing and synthesis local.",
-    "stack": [
-      "Python",
-      "FastAPI",
-      "React",
-      "Vite",
-      "Playwright",
-      "Ollama",
-      "SQLite",
-      "Server-Sent Events",
-      "Zustand"
-    ],
-    "features": [
-      "Local model routing with tool-specific prompt generation",
-      "Concurrent browser workers with timeout handling and managed page reuse",
-      "Streaming routing, worker, source, and synthesis updates over server-sent events",
-      "Local synthesis prompted to use collected assistant responses",
-      "Local conversation history with per-message source metadata",
-      "Automatic, manual, research, and preferred-tool routing modes",
-      "Source inspection, theme settings, and local service health status"
-    ],
-    "challenges": [
-      {
-        "challenge": "Adapting to changing assistant interfaces",
-        "description": "Browser-based integrations depend on user interfaces that can change independently of the orchestrator.",
-        "solution": "Used reloadable selector maps, bounded extraction strategies, timeouts, and explicit per-worker failure reporting."
-      },
-      {
-        "challenge": "Coordinating concurrent sessions",
-        "description": "Parallel workers need reusable browser state without allowing multiple requests to corrupt the same page.",
-        "solution": "Managed persistent sessions through a warm page pool, per-tool locks, and disposable-page fallback."
-      },
-      {
-        "challenge": "Keeping synthesis grounded",
-        "description": "A consolidated answer should reflect collected responses rather than add unsupported claims.",
-        "solution": "Labeled source responses and prompted the local synthesizer to use the provided context. Output still requires factual review."
-      },
-      {
-        "challenge": "Making long-running work understandable",
-        "description": "Routing, browsing, collection, and synthesis can take long enough that a static loading indicator is insufficient.",
-        "solution": "Streamed granular lifecycle events and synthesis tokens to the interface using server-sent events."
-      }
-    ],
-    "architecture": {
-      "description": "A local orchestration service that routes prompts to concurrent browser-based assistants, collects their responses, and synthesizes an answer from collected responses for a unified interface.",
-      "components": [
-        {
-          "name": "React Workspace",
-          "description": "Provides prompt entry, routing controls, streamed progress, source inspection, settings, and conversation history."
-        },
-        {
-          "name": "Local Router",
-          "description": "Uses a local model to select assistants and prepare tool-specific prompts."
-        },
-        {
-          "name": "Browser Worker Pool",
-          "description": "Runs selected assistants concurrently through managed browser sessions and collects bounded results."
-        },
-        {
-          "name": "Local Synthesizer",
-          "description": "Produces the final response from labeled worker outputs using a local model."
-        },
-        {
-          "name": "Conversation Store",
-          "description": "Persists conversations, messages, selected tools, and source metadata in a local database."
-        }
-      ]
-    },
-    "limitations": [
-      "Browser workers depend on third-party interface stability and authenticated user sessions.",
-      "Multi-user authentication and role-based authorization are not implemented.",
-      "No automated test suite was found in the supplied source package.",
-      "The supplied source package was inspected but not executed.",
-      "Queries sent to external assistants leave the local machine. Source-based prompting does not guarantee factual grounding."
-    ],
-    "media": {
-      "images": [],
-      "videos": []
-    },
-    "scopeLabel": "Local Single-User Prototype",
-    "parentSystem": null,
-    "dateNote": "Work dates not published",
-    "highlights": [],
-    "workflow": [
-      {
-        "title": "Submit a query",
-        "description": "Accept a query in the local workspace."
-      },
-      {
-        "title": "Route to assistants",
-        "description": "Send work to external browser-based assistants."
-      },
-      {
-        "title": "Collect responses",
-        "description": "Stream worker progress and response content."
-      },
-      {
-        "title": "Synthesize locally",
-        "description": "Use a local model; verify the answer separately."
-      }
-    ],
-    "socialImage": "/assets/projects/workflows/unified-ai-os.webp"
-  },
-  {
     "id": "vision-suite-pharma-bottling",
     "workflowImage": "/assets/projects/workflows/vision-suite-pharma-bottling.webp",
-    "title": "Vision Suite: Pharma Blister Pack, Cap-Seal & Liquid Fill Inspection",
+    "title": "Pharma Blister Pack, Cap-Seal & Liquid Fill Inspection",
     "category": "R&D",
     "company": "Bondstein Technologies Ltd.",
     "companyLogo": "./assets/logo/bondstein.png",
@@ -1775,14 +1654,14 @@
         "description": "Present candidate defects for assessment."
       }
     ],
-    "workflowAlt": "Vision Suite: Pharma Blister Pack, Cap-Seal & Liquid Fill Inspection project workflow and system architecture",
+    "workflowAlt": "Pharma Blister Pack, Cap-Seal & Liquid Fill Inspection project workflow and system architecture",
     "workflowCaption": "Project workflow and system architecture overview.",
     "socialImage": "/assets/projects/workflows/vision-suite-pharma-bottling-overview.png"
   },
   {
     "id": "vision-suite-meters-threats",
     "workflowImage": "/assets/projects/workflows/vision-suite-meters-threats.webp",
-    "title": "Vision Suite: Analog Gauge Digitization & VLM-Verified Threat Detection",
+    "title": "Analog Gauge Digitization & VLM-Verified Threat Detection",
     "category": "R&D",
     "company": "Bondstein Technologies Ltd.",
     "companyLogo": "./assets/logo/bondstein.png",
@@ -1875,14 +1754,14 @@
         "description": "Inspect readings or flagged event evidence."
       }
     ],
-    "workflowAlt": "Vision Suite: Analog Gauge Digitization & VLM-Verified Threat Detection project workflow and system architecture",
+    "workflowAlt": "Analog Gauge Digitization & VLM-Verified Threat Detection project workflow and system architecture",
     "workflowCaption": "Project workflow and system architecture overview.",
     "socialImage": "/assets/projects/workflows/vision-suite-meters-threats-overview.png"
   },
   {
     "id": "vision-suite-logistics-parking",
     "workflowImage": "/assets/projects/workflows/vision-suite-logistics-parking.webp",
-    "title": "Vision Suite: Conveyor Counting, Parking Occupancy & Threat Analytics",
+    "title": "Conveyor Counting, Parking Occupancy & Threat Analytics",
     "category": "R&D",
     "company": "Bondstein Technologies Ltd.",
     "companyLogo": "./assets/logo/bondstein.png",
@@ -1976,7 +1855,7 @@
         "description": "Inspect task-specific results and evidence."
       }
     ],
-    "workflowAlt": "Vision Suite: Conveyor Counting, Parking Occupancy & Threat Analytics project workflow and system architecture",
+    "workflowAlt": "Conveyor Counting, Parking Occupancy & Threat Analytics project workflow and system architecture",
     "workflowCaption": "Project workflow and system architecture overview.",
     "socialImage": "/assets/projects/workflows/vision-suite-logistics-parking-overview.png"
   },
@@ -2304,7 +2183,7 @@
   {
     "id": "hr-chatbot",
     "workflowImage": "/assets/projects/workflows/hr-chatbot.webp",
-    "title": "Bondstein HR Assist v2.0: Agentic HR Service Desk",
+    "title": "HR Assist: Agentic HR Service Desk",
     "category": "R&D",
     "company": "Bondstein Technologies Ltd.",
     "companyLogo": "./assets/logo/bondstein.png",
@@ -2421,7 +2300,7 @@
         "description": "Record workflow events, SLA state, and history."
       }
     ],
-    "workflowAlt": "Bondstein HR Assist v2.0: Agentic HR Service Desk project workflow and system architecture",
+    "workflowAlt": "HR Assist: Agentic HR Service Desk project workflow and system architecture",
     "workflowCaption": "Project workflow and system architecture overview.",
     "socialImage": "/assets/projects/workflows/hr-chatbot-overview.png"
   },
