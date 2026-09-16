@@ -12,6 +12,7 @@ const isWideLogo = (project) =>
   project.companyLogoStyle === "wide" ||
   /(?:brac-bank|kdsll|bondstein|runner-motorcycles|bat_bangladesh)/i.test(project.companyLogo || "");
 const isUltraWideLogo = (project) => /brac-bank-plc/i.test(project.companyLogo || "");
+const isBondsteinLogo = (project) => /\/bondstein\.png$/i.test(project.companyLogo || "");
 
 
 
@@ -107,12 +108,23 @@ export default function Projects({ defaultFilter = "All", compact = false, asPag
                       <img
                         src={p.companyLogo.replace(/^\.\/assets/, "/assets")}
                         alt=""
-                        className="project-summary-logo"
+                        className={`project-summary-logo${isBondsteinLogo(p) ? " theme-logo--dark" : ""}`}
                         width={isUltraWideLogo(p) ? "180" : isWideLogo(p) ? "132" : "48"}
                         height="48"
                         loading="lazy"
                         decoding="async"
                       />
+                      {isBondsteinLogo(p) && (
+                        <img
+                          src="/assets/logo/bondstein-light.png"
+                          alt=""
+                          className="project-summary-logo theme-logo--light"
+                          width={isWideLogo(p) ? "132" : "48"}
+                          height="48"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      )}
                     </span>
                   )}
                   <CardHeading>{p.title}</CardHeading>

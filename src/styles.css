@@ -6250,6 +6250,21 @@ svg {
   object-fit: contain;
 }
 
+.project-summary-logo.theme-logo--light,
+.project-detail-logo.theme-logo--light {
+  display: none;
+}
+
+:root[data-theme="light"] .project-summary-logo.theme-logo--dark,
+:root[data-theme="light"] .project-detail-logo.theme-logo--dark {
+  display: none;
+}
+
+:root[data-theme="light"] .project-summary-logo.theme-logo--light,
+:root[data-theme="light"] .project-detail-logo.theme-logo--light {
+  display: block;
+}
+
 :root:not([data-theme="light"]) .project-summary-logo[src*="kdsll"],
 :root:not([data-theme="light"]) .project-detail-logo[src*="kdsll"] {
   filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.9))

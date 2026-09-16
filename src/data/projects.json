@@ -1199,7 +1199,7 @@
     "title": "Mobil Bottle & Label Inspection",
     "category": "Industry",
     "company": "Mobil Bangladesh Ltd.",
-    "companyLogo": "./assets/logo/bondstein.png",
+    "companyLogo": "./assets/logo/mobil.png",
     "timeline": "2026",
     "summary": "Operator-facing visual QA application for product identification, label integrity checks, batch inspection, OCR watermark analysis, configurable markers, and genuine-versus-counterfeit review.",
     "problem": "Packaging QA requires consistent checks across products and batches while preserving inspection evidence and allowing operators to review uncertain cases.",

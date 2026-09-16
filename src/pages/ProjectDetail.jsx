@@ -13,6 +13,7 @@ const isWideLogo = (project) =>
   project.companyLogoStyle === "wide" ||
   /(?:brac-bank|kdsll|bondstein|runner-motorcycles|bat_bangladesh)/i.test(project.companyLogo || "");
 const isUltraWideLogo = (project) => /brac-bank-plc/i.test(project.companyLogo || "");
+const isBondsteinLogo = (project) => /\/bondstein\.png$/i.test(project.companyLogo || "");
 
 export default function ProjectDetail(){
   const { id } = useParams();
@@ -76,12 +77,23 @@ export default function ProjectDetail(){
             <img
               src={p.companyLogo.replace(/^\.\/assets/, "/assets")}
               alt=""
-              className={`project-detail-logo${isWideLogo(p) ? " is-wide" : ""}${isUltraWideLogo(p) ? " is-ultrawide" : ""}`}
+              className={`project-detail-logo${isWideLogo(p) ? " is-wide" : ""}${isUltraWideLogo(p) ? " is-ultrawide" : ""}${isBondsteinLogo(p) ? " theme-logo--dark" : ""}`}
               width={isUltraWideLogo(p) ? "360" : isWideLogo(p) ? "240" : "76"}
               height={isUltraWideLogo(p) ? "31" : isWideLogo(p) ? "62" : "76"}
               loading="lazy"
               decoding="async"
             />
+            {isBondsteinLogo(p) && (
+              <img
+                src="/assets/logo/bondstein-light.png"
+                alt=""
+                className={`project-detail-logo${isWideLogo(p) ? " is-wide" : ""} theme-logo--light`}
+                width={isWideLogo(p) ? "240" : "76"}
+                height={isWideLogo(p) ? "62" : "76"}
+                loading="lazy"
+                decoding="async"
+              />
+            )}
           </div>
         )}
         <div className="project-detail-badges">
